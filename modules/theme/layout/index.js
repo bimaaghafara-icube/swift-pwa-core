@@ -14,7 +14,7 @@ import { BREAKPOINTS } from '@theme/vars';
 import PopupInstallAppMobile from '../components/custom-install-popup/mobile';
 
 const BottomNavigation = dynamic(() => import('@common_bottomnavigation'), { ssr: false });
-const HeaderMobile = dynamic(() => import('@common_headermobile'), { ssr: true });
+const HeaderMobile = dynamic(() => import('@common_headermobile'));
 const HeaderDesktop = dynamic(() => import('@common_headerdesktop'), { ssr: true });
 const Message = dynamic(() => import('@common_toast'), { ssr: false });
 const Loading = dynamic(() => import('@common_loaders/Backdrop'), { ssr: false });
