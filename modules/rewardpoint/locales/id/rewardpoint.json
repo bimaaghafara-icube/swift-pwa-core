@@ -1,0 +1,14 @@
+{
+    "title": "Reward Points",  
+    "balanceTitle": "Sisa Poin Anda adalah ",
+    "canbeTitle": "Total yang dapat di redeem saat checkout adalah ",
+    "learnMore": "Untuk mempelajari tentant reward poin. $ Klik disini",
+    "transactionId" : "ID Transaksi",
+    "balance": "Sisa saldo",
+    "comment": "Komentar",
+    "expired" : "Masa berlaku",
+    "point": "Poin",
+    "transactionDate": "Tanggal Transaksi",
+    "emptyMessage" : "Anda tidak mempunyai transaksi",
+    "myPoint": "Poin Saya"
+  }

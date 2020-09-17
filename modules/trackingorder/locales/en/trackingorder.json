@@ -1,0 +1,14 @@
+{   
+    "email": "Email",
+    "shippedTo": "Shipped To",
+    "shippingMethod": "Shipping Method",
+    "paymentMethod": "Payment Method",
+    "shipping": "Shipping & Handling",
+    "trackingOrder": "Track Order",
+    "orderId": "Order Number",
+    "trackingInformation": "Tracking Information",
+    "orderStatus": "Order Status",
+    "status": "Status",
+    "orderTotal": "Order Total",
+    "orderNotFound": "Sorry, order number is not valid"
+}

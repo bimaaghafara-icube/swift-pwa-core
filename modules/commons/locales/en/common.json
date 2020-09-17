@@ -1,0 +1,83 @@
+{
+    "variant": "Variant",
+    "home": {
+        "logoName": "LOGO"
+    },
+    "product": {
+        "titleProduct": "Product Name",
+        "name": "Product"
+    },
+    "search": {
+        "title": "Search",
+        "mainTitle": "New in Collection",
+        "backTitle": "back in stock sale",
+        "location" : "Search Location"
+    },
+    "button": {
+        "edit": "Edit",
+        "save": "Save",
+        "saved": "Saved",
+        "continueShopping": "Continue Shopping",
+        "cancel": "Cancel",
+        "yes": "Yes",
+        "checkout": "Checkout",
+        "change" : "Change",
+        "login": "Login",
+        "register": "Register",
+        "send" : "send",
+        "addAddress": "Add Address",
+        "loadMore": "Load more",
+        "clear": "Clear",
+        "verify": "Verify",
+        "shop": "SHOP NOW",
+        "sendOtp": "Send OTP"
+    },
+    "subtotal": "Subtotal",
+    "price": {
+        "asLowAs": "As low as"
+    },
+    "form": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "phoneNumber": "Phone Number",
+        "confirm": "Confirm Password",
+        "currentPassword": "Current Password",
+        "state": "State/Province",
+        "region": "Region",
+        "city": "City",
+        "country": "Country",
+        "street": "Street Address",
+        "postal": "Postal Code"
+    },
+    "title": {
+        "qty": "Quantity",
+        "color": "Color",
+        "size": "Size",
+        "shortFilter": "Shorting & Filter",
+        "short": "Short By",
+        "search": "Search ...",
+        "brand": "Brand",
+        "category": "Category"
+    },
+    "error": {
+        "notFound" : "Data not found",
+        "fileReject": "Cannot upload, Files must be a type ",
+        "fetchError": "Connection Error. Please try again later."
+    },
+    "fileUpload": {
+        "reject": "Cannot upload, Files must be a type ",
+        "dragActive": "Drop the files here ...",
+        "dragNonActive": "Drag drop some files here, or click to select file"
+    },
+    "menu" : {
+        "confirmpayment" : "Confirm Payment",
+        "trackingorder" : "Tracking Order",
+        "sign" : "Sign",
+        "register" : "Create Account",
+        "or" : "or",
+        "notification": "Notification",
+        "myaccount": "My Account",
+        "mywishlist": "My Wishlist",
+        "signout": "Sign Out"
+    }
+}

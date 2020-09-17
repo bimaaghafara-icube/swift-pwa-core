@@ -1,0 +1,12 @@
+{
+    "balance" : "Saldo saat ini: ",
+    "transactionId" : "ID Transaksi",
+    "adjustment" : "Store Credit Tambahan",
+    "creditbalance" : "Store Credit Saldo",
+    "comment" : "Catatan",
+    "transactionDate" : "Tanggal Transaksi",
+    "editEmail" : "Ubah Pengaturan Email",
+    "emptyMessage" : "You have no transactions.",
+    "item" : "Item",
+    "title" : "Store Credit"
+}

@@ -1,0 +1,10 @@
+{
+    "haveAccount": "Jika sudah punya akun",
+    "pageTitle": "Masuk",
+    "forgotPassword": "Lupa Password",
+    "notHaveAccount": "Belum mempunyai akun ?",
+    "switchPhone": "Login dengan nomor telepon",
+    "success": "Masuk berhasil",
+    "failed": "Masuk gagal",
+    "registerTitle" : "Daftar"
+}

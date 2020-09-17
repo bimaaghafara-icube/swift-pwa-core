@@ -1,0 +1,45 @@
+{
+    "title" : "my order",
+    "order" : "order",
+    "notFound": "Order not found",
+    "shippedTo": "Shipped To",
+    "pickupAt": "Pickup At",
+    "pickupBy": "Pickup By",
+    "shippingMethod": "Shipping Method",
+    "paymentMethod": "Payment Method",
+    "shipping": "Shipping & Handling",
+    "discount": "Discount",
+    "date": "Date",
+    "totalItems": "Total Items",
+    "paymentDate": "Payment Date",
+    "credit": "Store Credit",
+    "giftcard": "Gift Card",
+    "reorder": "Reorder",
+    "return": "request return",
+    "print": "print",
+    "newReturn": "new return for order ",
+    "productReturn": "Products to return",
+    "selectAll": "Select All",
+    "deselectAll" : "Deselect All",
+    "formReturn": {
+        "submit": "Submit Request",
+        "label": {
+            "resolution": "Resolution",
+            "condition" : "Condition",
+            "message": "Message",
+            "tickSelect": "Tick checkbox to select.",
+            "reason": "Reason"
+        },
+        "placeholder": {
+            "message": "Type here to add a message to manager",
+            "uploadFile": "The following file types are allowed: zip, rar, jpg, jpeg, png, gif, pdf, doc, docx, xls, xlsx"
+        }
+    },
+    "trackingOrder": "Track Order",
+    "orderId": "Order Number",
+    "trackingInformation": "Tracking Information",
+    "orderStatus": "Order Status",
+    "status": "Status",
+    "orderTotal": "Order Total",
+    "orderNotFound": "Sorry, order number is not valid"
+}

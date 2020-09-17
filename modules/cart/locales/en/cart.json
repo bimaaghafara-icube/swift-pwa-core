@@ -1,0 +1,24 @@
+{
+    "pageTitle": "Shopping Bag",
+    "counter": {
+        "text": "items in your bag"
+    },
+    "crossell": {
+        "title": "Recommended for You"
+    },
+    "empty": {
+        "text": "Your cart is empty"
+    },
+    "button": {
+        "saveEdit": "Save and Continue",
+        "checkout": "Checkout"
+    },
+    "confirmDelete": "Are you sure want to delete this item?",
+    "deleteSuccess": "delete cart item success",
+    "deleteFailed": "delete cart item failed",
+    "updateSuccess": "update cart item success",
+    "updateFailed": "update cart item failed",
+    "addWishlistSuccess": "Item has been added into your wishlist",
+    "addWishlistFailed": "Failed on adding item into wishlist",
+    "addWishlistWithoutLogin": "Please login to add this item to your wishlist"
+}

@@ -1,0 +1,9 @@
+{
+    "pageTitle": "Create New Account",
+    "title": "Register",
+    "button": "Create an Account",
+    "subscribe": "Sign up for newslater",
+    "isWhatsapp": "Phone number is registered in whatsapp",
+    "success": "Registration is success",
+    "failed": "Registration failed"
+}

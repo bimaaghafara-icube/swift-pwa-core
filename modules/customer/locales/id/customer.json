@@ -1,0 +1,97 @@
+{
+  "dashboard": {
+    "pageTitle": "Beranda Pelanggan"
+  },
+  "newPassword": {
+    "title": "Ubah password",
+    "success": "Password berhasil diperbarui",
+    "failed": "Password gagal diperbarui"
+  },
+  "button": {
+    "logout": "Keluar"
+  },
+  "setting" : {
+    "title" : "Pengaturan",
+    "newslater" : "Langganan buletin",
+    "language" : "Bahasa"
+  },
+  "profile" : {
+    "title" : "akun saya",
+    "successUpdate": "Profil berhasil diperbarui",
+    "successChangePass": "Password berhasil diperbarui"
+  },
+  "address" : {
+    "pageTitle" : "Daftar alamat",
+    "addTitle" : "Tambah alamat baru",
+    "editTitle" : "Ubah alamat",
+    "defaultBilling": "Alamat Pembayaran Default ",
+    "defaultShiping": "Alamat Pengiriman Default",
+    "useBilling" : "gunakan sebagai alamat default pembayaran",
+    "useShipping" : "gunakan sebagai alamat default pengiriman",
+    "firstname" : "Nama Depan",
+    "lastname" : "Nama Belakang",
+    "street" : "Alamat Lengkap",
+    "city" : "Kota/Kecamatan",
+    "country" : "Negara",
+    "state" : "Provinsi",
+    "postcode" : "Kode Pos",
+    "phone" : "Telepon",
+    "emptyMessage" : "Kamu belum menambahkan alamat"
+  },
+  "menu": {
+    "aboutUs": "Tentang Kami",
+    "contactUs": "Hubungi Kami",
+    "myPoint": "Point Saya",
+    "myOrder": "Pesanan Saya",
+    "myAccount": "Akun Saya",
+    "address": "Buku Alamat",
+    "setting": "Pengaturan",
+    "storeCredit": "Store Credit",
+    "readMore": "Selengkapnya",
+    "rewardPoint": "Reward Poin",
+    "blog": "Artikel",
+    "return": "Retur Saya",
+    "confirmPayment": "Konfirmasi Pembayaran",
+    "accountInformation": "Informasi Akun",
+    "notification": "Notifikasi",
+    "viewall" : "Lihat Semua"
+  },
+  "giftCard": {
+    "notFound": "Anda tidak memiliki gift card",
+    "inputSearch": "Masukan kode gift card",
+    "buttonSearch": "Cek sisa dan status",
+    "required": "Code tidak boleh kosong"
+  },
+  "haveAccount": "Jika sudah punya akun",
+  "notHaveAccount": "Belum mempunyai akun ?",
+  "isWhatsapp": "Nomor telephone telah terdaftar di Whatsapp",
+  "wishlist": {
+    "pageTitle": "Wishlist",
+    "title": "Wishlist",
+    "removeSucess": "Produk berhasil dihapus dari wishlist",
+    "removeFailed": "Produk gagal dihapus dari wishlist",
+    "addSuccess": "Prodduk berhasil ditambahkan ke wishlist",
+    "addFailed": "Prodduk gagal ditambahkan ke wishlist",
+    "addToBag": "tambah ke keranjang",
+    "addAllToBag": "tambah semua ke keranjang",
+    "notFound": "Kamu tidak memiliki produk di wishlist",
+    "warningDelete": "Anda yakin mau menghapus produk ini dari wishlist?",
+    "addAllToBagSuccess": "Semua produk di wishlist berhasil ditambahkan ke keranjang",
+    "addPartToBagSuccess": "$ produk berhasil ditambahkan ke keranjang",
+    "failedAddToBagOption": "Silahkan pilih opsi terlebih dahulu untuk beberapa produk",
+    "successAddCart": "Produk berhasil ditambahkan ke keranjang",
+    "failedAddCart": "Produk gagal ditambahkan ke keranjang",
+    "addWithoutLogin": "Silahkan masuk untuk menambahkan produk ini ke wishlist"
+  },
+  "order": {
+    "recentOrder" : "Order Terbaru",
+    "order" : "Order",
+    "date": "Tanggal",
+    "shippedTo": "Pengiriman",
+    "orderTotal": "Total Order",
+    "status": "Status",
+    "action": "Aksi"
+  },
+  "notHaveNotification" : "Anda belum mempunyai notifikasi",
+  "notHaveOrder" : "Riwayat transaksi kosong"
+}

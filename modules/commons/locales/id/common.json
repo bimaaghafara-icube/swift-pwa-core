@@ -1,0 +1,83 @@
+{
+    "variant": "Varian",
+    "home": {
+        "logoName": "LOGO"
+    },
+    "product": {
+        "title_product": "Nama Produk",
+        "name": "Produk"
+    },
+    "search": {
+        "title": "Cari",
+        "mainTitle": "Koleksi terbaru",
+        "backTitle": "kembali ke produk",
+        "location": "Cari Lokasi"
+    },
+    "button": {
+        "edit": "Edit",
+        "save": "Simpan",
+        "saved": "Tersimpan",
+        "continueShopping": "Lanjut Berbelanja",
+        "cancel": "Batal",
+        "yes": "Ya",
+        "checkout": "Checkout",
+        "change": "Ubah",
+        "send": "kirim",
+        "manage": "Manage",
+        "addAddress": "Tambah Alamat",
+        "loadMore": "Lihat lagi",
+        "clear": "Bersihkan",
+        "verify": "Verifikasi",
+        "shop": "Beli Sekarang",
+        "sendOtp": "Kirim OTP"
+    },
+    "subtotal": "Subtotal",
+    "price": {
+        "asLowAs": "Termurah"
+    },
+    "qty": "Jumlah",
+    "form": {
+        "firstName": "Nama Depan",
+        "lastName": "Nama Belakang",
+        "phoneNumber": "Nomor Telepon",
+        "confirm": "Konfirmasi Password",
+        "currentPasword": "Password Lama",
+        "state": "Bagian / Provinsi",
+        "region": "Negara",
+        "city": "Kota",
+        "country": "Negara",
+        "street": "Alamat Jalan",
+        "postal": "Code Pos"
+    },
+    "title": {
+        "qty": "Jumlah",
+        "color": "Warna",
+        "size": "Ukuran",
+        "shortFilter": "Urutan & Filter",
+        "short": "Urutkan dari",
+        "search": "Pencarian ...",
+        "brand": "Brand",
+        "category": "Kategory"
+    },
+    "error": {
+        "notFound" : "Data tidak di temukan",
+        "fileReject": "Tidak dapat mengupload file harus ber type ",
+        "fetchError": "Terjadi kesalahan. Silakan coba lagi nanti"
+    },
+    "fileUpload": {
+        "reject": "Tidak dapat mengupload, file harus ber type  ",
+        "dragActive": "Taruh file kesini ...",
+        "dragNonActive": "Tarik dan taruh file kesini, atau klik untuk pilih file"
+    },
+    "menu" : {
+        "confirmpayment" : "Konfirmasi Pembayaran",
+        "trackingorder" : "Lacak Pesanan",
+        "sign" : "Masuk",
+        "register" : "Buat Akun",
+        "or" : "Atau",
+        "notification": "Notifikasi",
+        "myaccount": "Akun Saya",
+        "mywishlist": "Daftar Saya",
+        "signout": "keluar"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "addToCart" : "Add to Shopping Bag",
+    "recomendedTitle" : "recomended for your",
+    "review" : "review",
+    "colorOption" : "color option",
+    "customerReview" : "customer reviews",
+    "writeReview" : "write a review",
+    "moreReview" : "Read more reviews",
+    "viewGuide" : "view site guide",
+    "shareTitle" : "Share",
+    "title" : "title",
+    "nickname" : "nickname",
+    "submitReview" : "Submit Review" ,
+    "rate" : "Rate",
+    "upsellTitle": "You might also like",
+    "validate": {
+        "nickname": "Nickname is required",
+        "rating": "Rating is required",
+        "title": "Title is required",
+        "detail": "Detail is required"
+    },
+    "addRateSuccess": "Thanks for review this product",
+    "addRateFailed": "Upload your raview is failed",
+    "successAddCart": "Item has been added into your bag",
+    "failedAddCart": "Failed on adding item into your bag",
+    "emptyProductSearchResult": "We can't find products matching the selection.",
+    "productNotAvailable": "We don’t support this product type yet"
+}

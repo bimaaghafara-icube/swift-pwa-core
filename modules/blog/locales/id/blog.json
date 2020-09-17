@@ -1,0 +1,8 @@
+{
+    "title": "Kontet",
+    "error": {
+        "notFound" : "Kontent Data tidak di temukan",
+        "fetch": "Kesalahan saat mengambil data atau koneksi, coba lagi nanti"
+    },
+    "loadMore": "Muat lainya"
+}

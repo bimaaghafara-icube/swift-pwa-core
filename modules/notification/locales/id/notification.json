@@ -1,0 +1,12 @@
+{
+    "notification": "Pemberitahuan",
+    "empty" : "Anda tidak mempunyai notifikasi",
+    "not_found" : "Data tidak di temukan",
+    "notificationList": {
+      "pageTitle" : "Daftar Pemberitahuan"
+    },
+    "notificationData": {
+      "pageTitle" : "Data Pemberitahuan"
+    }
+  }
+  

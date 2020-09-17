@@ -1,0 +1,12 @@
+{
+    "balance" : "Current balance: ",
+    "transactionId" : "Transaction ID ",
+    "adjustment" : "Store Credit Adjustment ",
+    "creditbalance" : "Store Credit Balance",
+    "comment" : "Comment",
+    "transactionDate" : "Transaction Date",
+    "editEmail" : "Edit Email Preferences",
+    "emptyMessage" : "You have no transactions.",
+    "item" : "Item(s)",
+    "title" : "Store Credit"
+  }

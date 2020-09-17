@@ -1,0 +1,8 @@
+{
+    "title": "Contents",
+    "error": {
+        "notFound" : "Contents Data not found",
+        "fetch": "Error during fetch data or connections, try again later"
+    },
+    "loadMore": "Load More"
+}
