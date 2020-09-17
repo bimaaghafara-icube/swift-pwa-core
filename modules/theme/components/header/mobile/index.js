@@ -19,7 +19,11 @@ const Header = ({
     const styles = useStyles();
     const router = useRouter();
     const back = () => {
-        router.push(sessionStorage.getItem('prevUrl'));
+        if (sessionStorage.getItem('prevUrl') === '/') {
+            router.push('/');
+        } else {
+            router.back();
+        }
     };
 
     if (pageConfig && !pageConfig.header) return null;
