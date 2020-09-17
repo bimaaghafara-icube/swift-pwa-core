@@ -9,7 +9,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import { formatPrice } from '@helpers/currency';
+import { formatPrice } from '@helper_currency';
 import classNames from 'classnames';
 
 import useStyles from './style';

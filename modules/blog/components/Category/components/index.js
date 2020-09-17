@@ -3,7 +3,7 @@ import Typography from '@common_typography';
 import Menu from '@material-ui/icons/Menu';
 import React from 'react';
 import classNames from 'classnames';
-import { breakPointsUp } from '@helpers/theme';
+import { breakPointsUp } from '@helper_theme';
 import { modules } from '@config';
 import Router from 'next/router';
 import Divider from '@material-ui/core/Divider';

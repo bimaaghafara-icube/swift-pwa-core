@@ -4,7 +4,7 @@ import Slider from '@material-ui/core/Slider';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@common_typography';
 import PropTypes from 'prop-types';
-import { formatPrice } from '@helpers/currency';
+import { formatPrice } from '@helper_currency';
 import { sliderStyle, useStyles } from './style';
 
 const CustomSlider = withStyles(sliderStyle)(Slider);

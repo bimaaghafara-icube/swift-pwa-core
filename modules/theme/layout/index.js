@@ -7,8 +7,8 @@ import TagManager from 'react-gtm-module';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 import { custDataNameCookie, features } from '@config';
-import { getHost } from '@helpers/config';
-import { breakPointsUp } from '@helpers/theme';
+import { getHost } from '@helper_config';
+import { breakPointsUp } from '@helper_theme';
 import { BREAKPOINTS } from '@theme/vars';
 
 import PopupInstallAppMobile from '../components/custom-install-popup/mobile';

@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { getCartId, setCartId } from '@helpers/cartId';
+import { getCartId, setCartId } from '@helper_cartid';
 import { useQuery } from '@apollo/client';
 import Router from 'next/router';
 import Layout from '@layout';

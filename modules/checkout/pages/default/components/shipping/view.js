@@ -1,7 +1,7 @@
 import Radio from '@common_forms/Radio';
 import Typography from '@common_typography';
 import Skeleton from '@material-ui/lab/Skeleton';
-import { formatPrice } from '@helpers/currency';
+import { formatPrice } from '@helper_currency';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';

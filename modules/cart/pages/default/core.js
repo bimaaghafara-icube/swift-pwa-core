@@ -1,7 +1,7 @@
 /* eslint-disable radix */
 /* eslint-disable no-plusplus */
 import { useState, useEffect } from 'react';
-import { getCartId } from '@helpers/cartId';
+import { getCartId } from '@helper_cartid';
 import { useMutation } from '@apollo/client';
 import TagManager from 'react-gtm-module';
 import Layout from '@layout';

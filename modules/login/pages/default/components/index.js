@@ -5,7 +5,7 @@ import Typography from '@common_typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Divider from '@material-ui/core/Divider';
-import { breakPointsUp } from '@helpers/theme';
+import { breakPointsUp } from '@helper_theme';
 import classNames from 'classnames';
 import OtpBlock from '../../../plugins/otp';
 import OtpView from '../../../plugins/otp/view';

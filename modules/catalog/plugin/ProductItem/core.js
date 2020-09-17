@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { modules } from '@config';
-import { getLoginInfo } from '@helpers/auth';
-import { setCookies } from '@helpers/cookies';
+import { getLoginInfo } from '@helper_auth';
+import { setCookies } from '@helper_cookies';
 import { useTranslation } from '@i18n';
 import route from 'next/router';
 import React from 'react';

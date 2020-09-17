@@ -1,6 +1,6 @@
 /* eslint-disable radix */
-import { getHost } from '@helpers/config';
-import { StripHtmlTags } from '@helpers/text';
+import { getHost } from '@helper_config';
+import { StripHtmlTags } from '@helper_text';
 
 const generate = (product) => {
     let today = new Date();

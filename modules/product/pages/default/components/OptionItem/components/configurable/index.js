@@ -1,9 +1,9 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
 import { useApolloClient } from '@apollo/client';
-import ProductByVariant, { getCombinationVariants, CheckAvailableOptions, CheckAvailableStock } from '@helpers/productByVariant';
-import { getLoginInfo } from '@helpers/auth';
-import { getCartId, setCartId } from '@helpers/cartId';
+import ProductByVariant, { getCombinationVariants, CheckAvailableOptions, CheckAvailableStock } from '@helper_productbyvariant';
+import { getLoginInfo } from '@helper_auth';
+import { getCartId, setCartId } from '@helper_cartid';
 import TagManager from 'react-gtm-module';
 import { localTotalCart } from '@services/graphql/schema/local';
 import {

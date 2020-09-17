@@ -1,4 +1,4 @@
-import urlParser from '@helpers/urlParser';
+import urlParser from '@helper_urlparser';
 import Layout from '@layout';
 import CustomerLayout from '@core_modules/customer/components/layout';
 import PropTypes from 'prop-types';

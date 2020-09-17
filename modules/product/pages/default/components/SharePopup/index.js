@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { getHost } from '@helpers/config';
+import { getHost } from '@helper_config';
 import Drawer from '@material-ui/core/Drawer';
 import Typogrphy from '@common_typography';
 import Button from '@common_button';

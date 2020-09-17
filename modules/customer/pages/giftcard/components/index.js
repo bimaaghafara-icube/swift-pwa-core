@@ -8,7 +8,7 @@ import React from 'react';
 import Alert from '@material-ui/lab/Alert';
 import Button from '@common_button';
 import TextField from '@common_textfield';
-import { formatPrice } from '@helpers/currency';
+import { formatPrice } from '@helper_currency';
 import { debuging } from '@config';
 import Layout from '@core_modules/customer/components/layout';
 import ModalDetail from './detail';

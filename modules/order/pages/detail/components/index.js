@@ -4,8 +4,8 @@
 import React from 'react';
 import Typography from '@common_typography';
 import classNames from 'classnames';
-import formatDate from '@helpers/date';
-import { formatPrice } from '@helpers/currency';
+import formatDate from '@helper_date';
+import { formatPrice } from '@helper_currency';
 import Alert from '@material-ui/lab/Alert';
 import Layout from '@core_modules/customer/components/layout';
 import useStyles from '../style';

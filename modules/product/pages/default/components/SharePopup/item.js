@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import { shareIcon } from '@config';
-import { getHost } from '@helpers/config';
+import { getHost } from '@helper_config';
 import {
     FacebookIcon,
     FacebookShareButton,

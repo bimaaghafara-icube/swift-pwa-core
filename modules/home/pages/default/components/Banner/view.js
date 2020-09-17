@@ -1,6 +1,6 @@
 import Banner from '@common_slick/Banner';
 import classNames from 'classnames';
-import { breakPointsUp } from '@helpers/theme';
+import { breakPointsUp } from '@helper_theme';
 import useStyles from '../style';
 
 const BannerView = (props) => {

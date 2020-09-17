@@ -8,7 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import classNames from 'classnames';
-import { breakPointsUp } from '@helpers/theme';
+import { breakPointsUp } from '@helper_theme';
 import useStyles from './style';
 import Layout from '../../../components/layout';
 

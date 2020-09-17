@@ -7,7 +7,7 @@ import Header from '@common_headermobile';
 import IconButton from '@material-ui/core/IconButton';
 import Close from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
-import { breakPointsUp } from '@helpers/theme';
+import { breakPointsUp } from '@helper_theme';
 
 import useStyles from './style';
 

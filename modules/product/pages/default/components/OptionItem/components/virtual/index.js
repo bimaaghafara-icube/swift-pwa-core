@@ -1,5 +1,5 @@
-import { getCartId, setCartId } from '@helpers/cartId';
-import { getLoginInfo } from '@helpers/auth';
+import { getCartId, setCartId } from '@helper_cartid';
+import { getLoginInfo } from '@helper_auth';
 import { useApolloClient } from '@apollo/client';
 import { localTotalCart } from '@services/graphql/schema/local';
 // import Router from 'next/router';

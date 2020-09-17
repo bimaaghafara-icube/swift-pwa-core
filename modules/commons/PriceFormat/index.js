@@ -2,7 +2,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Typography from '@common_typography';
-import { formatPrice } from '@helpers/currency';
+import { formatPrice } from '@helper_currency';
 import useStyles from './style';
 
 const getLowestTierPrice = (tier_price) => {

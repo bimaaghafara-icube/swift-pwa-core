@@ -1,7 +1,7 @@
 import Typography from '@common_typography';
-import formatDate from '@helpers/date';
+import formatDate from '@helper_date';
 import Link from 'next/link';
-import { formatPrice } from '@helpers/currency';
+import { formatPrice } from '@helper_currency';
 import useStyles from '../style';
 
 const ItemOrder = ({

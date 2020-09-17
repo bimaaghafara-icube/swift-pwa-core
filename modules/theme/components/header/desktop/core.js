@@ -1,6 +1,6 @@
 import Router from 'next/router';
-import { removeIsLoginFlagging } from '@helpers/auth';
-import { removeCartId } from '@helpers/cartId';
+import { removeIsLoginFlagging } from '@helper_auth';
+import { removeCartId } from '@helper_cartid';
 import Cookies from 'js-cookie';
 import { useApolloClient } from '@apollo/client';
 import { localTotalCart } from '@services/graphql/schema/local';

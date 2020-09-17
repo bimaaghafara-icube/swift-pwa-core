@@ -1,4 +1,4 @@
-import ProductByVariant, { getCombinationVariants, CheckAvailableOptions } from '@helpers/productByVariant';
+import ProductByVariant, { getCombinationVariants, CheckAvailableOptions } from '@helper_productbyvariant';
 import useStyles from './style';
 
 const ConfigurableOpt = (props) => {

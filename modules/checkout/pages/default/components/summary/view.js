@@ -7,7 +7,7 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Button from '@common_button';
 import Typography from '@common_typography';
-import { formatPrice } from '@helpers/currency';
+import { formatPrice } from '@helper_currency';
 import checkStyles from '../style';
 import useStyles from './style';
 

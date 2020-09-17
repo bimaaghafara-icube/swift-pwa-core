@@ -1,7 +1,7 @@
 import Button from '@common_button';
 import TextField from '@common_forms/TextField';
 import Typography from '@common_typography';
-import { regexPhone } from '@helpers/regex';
+import { regexPhone } from '@helper_regex';
 import { useTranslation } from '@i18n';
 import AppBar from '@material-ui/core/AppBar';
 import Dialog from '@material-ui/core/Dialog';

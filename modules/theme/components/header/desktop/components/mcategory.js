@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import { WHITE, PRIMARY } from '@theme/colors';
 import Thumbor from '@common_image';
-import getPath from '@helpers/getPath';
+import getPath from '@helper_getpath';
 import {
     features,
 } from '@config';

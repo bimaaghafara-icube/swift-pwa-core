@@ -1,7 +1,7 @@
 import Layout from '@layout';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { regexPhone } from '@helpers/regex';
+import { regexPhone } from '@helper_regex';
 import { cmsContactIdentifiers, recaptcha, debuging } from '@config';
 import getConfig from 'next/config';
 import gqlService from '../../services/graphql';

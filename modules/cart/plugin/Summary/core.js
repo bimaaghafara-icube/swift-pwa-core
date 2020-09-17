@@ -1,4 +1,4 @@
-import { formatPrice } from '@helpers/currency';
+import { formatPrice } from '@helper_currency';
 import _ from 'lodash';
 
 const CoreSummary = (props) => {

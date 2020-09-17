@@ -1,5 +1,5 @@
 import Typography from '@common_typography';
-import { formatPrice } from '@helpers/currency';
+import { formatPrice } from '@helper_currency';
 import React from 'react';
 import { useTranslation } from '@i18n';
 import useStyles from './styles';

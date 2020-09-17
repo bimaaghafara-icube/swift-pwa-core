@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/alt-text */
 import classNames from 'classnames';
-import { formatPrice } from '@helpers/currency';
+import { formatPrice } from '@helper_currency';
 import useStyles from './style';
 
 const OptionsItem = (props) => {

@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable-next-line jsx-a11y/click-events-have-key-events */
-import { getCartId, setCartId, removeCartId } from '@helpers/cartId';
-import { getLoginInfo } from '@helpers/auth';
+import { getCartId, setCartId, removeCartId } from '@helper_cartid';
+import { getLoginInfo } from '@helper_auth';
 import { useQuery } from '@apollo/client';
 import { localTotalCart } from '@services/graphql/schema/local';
 import Router from 'next/router';

@@ -1,5 +1,5 @@
 import Layout from '@layout';
-import { getHost } from '@helpers/config';
+import { getHost } from '@helper_config';
 
 const HomeCore = (props) => {
     const {

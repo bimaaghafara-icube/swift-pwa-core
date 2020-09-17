@@ -1,4 +1,4 @@
-import noReload from '@helpers/noReload';
+import noReload from '@helper_noreload';
 import { useRouter } from 'next/router';
 import { getCmsBlocks } from '../../../services/graphql';
 

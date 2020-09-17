@@ -8,7 +8,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TablePagination from '@material-ui/core/TablePagination';
 import Typography from '@common_typography';
 import Link from 'next/link';
-import formatDate from '@helpers/date';
+import formatDate from '@helper_date';
 import Alert from '@material-ui/lab/Alert';
 import Layout from '@core_modules/customer/components/layout';
 import useStyles from '../style';

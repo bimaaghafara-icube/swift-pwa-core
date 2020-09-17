@@ -1,6 +1,6 @@
 import Layout from '@layout';
 import { useFormik } from 'formik';
-import { regexPhone } from '@helpers/regex';
+import { regexPhone } from '@helper_regex';
 import * as Yup from 'yup';
 import Router from 'next/router';
 import { requestLinkToken, otpConfig } from '../../services/graphql';

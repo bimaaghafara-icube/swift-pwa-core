@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useApolloClient } from '@apollo/client';
-import { setCartId, removeCartId } from '@helpers/cartId';
-import { setCheckoutData } from '@helpers/cookies';
+import { setCartId, removeCartId } from '@helper_cartid';
+import { setCheckoutData } from '@helper_cookies';
 import _ from 'lodash';
 import { localTotalCart } from '@services/graphql/schema/local';
 import SummaryPlugin from '@core_modules/cart/plugin/Summary';

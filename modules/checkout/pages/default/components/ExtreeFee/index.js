@@ -6,7 +6,7 @@ import Radio from '@common_radio';
 import Select from '@common_select';
 import Checkbox from '@common_checkbox';
 import classanames from 'classnames';
-import { formatPrice } from '@helpers/currency';
+import { formatPrice } from '@helper_currency';
 import Skeleton from '@material-ui/lab/Skeleton';
 import gqlService from '../../../../services/graphql';
 

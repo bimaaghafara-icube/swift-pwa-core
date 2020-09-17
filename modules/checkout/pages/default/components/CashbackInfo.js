@@ -1,4 +1,4 @@
-import { formatPrice } from '@helpers/currency';
+import { formatPrice } from '@helper_currency';
 import Alert from '@material-ui/lab/Alert';
 import Typography from '@common_typography';
 

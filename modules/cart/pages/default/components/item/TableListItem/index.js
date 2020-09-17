@@ -7,7 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@common_typography';
-import { formatPrice } from '@helpers/currency';
+import { formatPrice } from '@helper_currency';
 import Alert from '@material-ui/lab/Alert';
 import IconButton from '@material-ui/core/IconButton';
 import CreateOutlined from '@material-ui/icons/CreateOutlined';

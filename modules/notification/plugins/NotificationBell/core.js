@@ -1,5 +1,5 @@
 import propTypes from 'prop-types';
-import { getLoginInfo } from '@helpers/auth';
+import { getLoginInfo } from '@helper_auth';
 import { customerNotificationList } from '../../services/graphql';
 import Content from './components';
 

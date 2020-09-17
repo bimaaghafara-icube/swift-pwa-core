@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-import { regexPhone } from '@helpers/regex';
+import { regexPhone } from '@helper_regex';
 import { useFormik } from 'formik';
 import _ from 'lodash';
 import React, { useEffect, useState } from 'react';

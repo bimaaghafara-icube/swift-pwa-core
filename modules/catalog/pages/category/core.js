@@ -1,5 +1,5 @@
 import Layout from '@layout';
-import { StripHtmlTags } from '@helpers/text';
+import { StripHtmlTags } from '@helper_text';
 import { getCategory } from '../../services/graphql';
 import generateSchemaOrg from '../../helpers/schema.org';
 

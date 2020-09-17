@@ -1,6 +1,6 @@
 import Button from '@common_button';
 import Typography from '@common_typography';
-import formatDate from '@helpers/date';
+import formatDate from '@helper_date';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';

@@ -1,11 +1,11 @@
 /* eslint-disable array-callback-return */
 import Layout from '@layout';
 import Error from 'next/error';
-import { StripHtmlTags } from '@helpers/text';
+import { StripHtmlTags } from '@helper_text';
 import { features } from '@config';
 import { useRouter } from 'next/router';
 import TagManager from 'react-gtm-module';
-import { getCookies } from '@helpers/cookies';
+import { getCookies } from '@helper_cookies';
 import Loading from './components/Loader';
 import { getProduct, addWishlist as mutationAddWishlist } from '../../services/graphql';
 import Header from './components/header';

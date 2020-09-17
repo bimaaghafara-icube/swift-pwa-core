@@ -1,7 +1,7 @@
 import Layout from '@layout';
 import { useRouter } from 'next/router';
-import getQueryFromPath from '@helpers/generateQuery';
-import { getHost } from '@helpers/config';
+import getQueryFromPath from '@helper_generatequery';
+import { getHost } from '@helper_config';
 import PropTypes from 'prop-types';
 
 const SearchResult = (props) => {

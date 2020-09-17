@@ -1,7 +1,7 @@
 import Layout from '@layout';
 
-import { setLogin } from '@helpers/auth';
-import { setCartId, getCartId } from '@helpers/cartId';
+import { setLogin } from '@helper_auth';
+import { setCartId, getCartId } from '@helper_cartid';
 import { expiredToken, custDataNameCookie, recaptcha } from '@config';
 import Cookies from 'js-cookie';
 import { useQuery } from '@apollo/client';
@@ -10,7 +10,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Router from 'next/router';
 
-import { regexPhone } from '@helpers/regex';
+import { regexPhone } from '@helper_regex';
 import getConfig from 'next/config';
 import {
     register, otpConfig as queryOtpConfig, mergeCart as mutationMergeCart, getCustomerCartId,

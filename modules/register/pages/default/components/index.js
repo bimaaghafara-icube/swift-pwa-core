@@ -5,7 +5,7 @@ import Typography from '@common_typography';
 import { Checkbox, FormControlLabel } from '@material-ui/core/';
 import OtpBlock from '@core_modules/login/plugins/otp';
 import classNames from 'classnames';
-import { breakPointsUp } from '@helpers/theme';
+import { breakPointsUp } from '@helper_theme';
 import ReCAPTCHA from 'react-google-recaptcha';
 import useStyles from './style';
 

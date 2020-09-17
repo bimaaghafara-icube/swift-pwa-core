@@ -4,7 +4,7 @@ import Alert from '@material-ui/lab/Alert';
 import { GraphCategory } from '@services/graphql';
 import React from 'react';
 import Router from 'next/router';
-import getPath from '@helpers/getPath';
+import getPath from '@helper_getpath';
 import CategorySkeleton from './CategorySkeleton';
 import SubVesMenu from './SubVesMenu';
 import VesMenu from './VesMenu';

@@ -1,4 +1,4 @@
-import { breakPointsUp } from '@helpers/theme';
+import { breakPointsUp } from '@helper_theme';
 import classNames from 'classnames';
 import AllBrands from './all';
 import useStyles from './style';

@@ -4,7 +4,7 @@ import Zoom from '@material-ui/core/Zoom';
 import CreateOutlined from '@material-ui/icons/CreateOutlined';
 import FavoriteBorderOutlined from '@material-ui/icons/FavoriteBorderOutlined';
 import DeleteOutlineOutlined from '@material-ui/icons/DeleteOutlineOutlined';
-import { formatPrice } from '@helpers/currency';
+import { formatPrice } from '@helper_currency';
 
 import { features } from '@config';
 import Image from '@common_image';

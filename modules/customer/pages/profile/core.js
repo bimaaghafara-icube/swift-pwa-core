@@ -2,7 +2,7 @@ import Layout from '@layout';
 import CustomerLayout from '@core_modules/customer/components/layout';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { regexPhone } from '@helpers/regex';
+import { regexPhone } from '@helper_regex';
 import {
     updateCustomerProfile as gqlUpdateCustomer,
     changeCustomerPassword as gqlChangeCustomerPassword, getCustomer,

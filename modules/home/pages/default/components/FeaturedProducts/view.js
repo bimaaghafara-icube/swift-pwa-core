@@ -3,7 +3,7 @@ import Router from 'next/router';
 import { modules } from '@config';
 import Carousel from '@common_slick/Caraousel';
 import ProductItem from '@core_modules/catalog/plugin/ProductItem';
-import { breakPointsUp } from '@helpers/theme';
+import { breakPointsUp } from '@helper_theme';
 import Typography from '@common_typography';
 import Button from '@common_button';
 import classNames from 'classnames';

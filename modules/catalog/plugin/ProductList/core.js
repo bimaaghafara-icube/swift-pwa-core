@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Router, { useRouter } from 'next/router';
-import getQueryFromPath from '@helpers/generateQuery';
+import getQueryFromPath from '@helper_generatequery';
 import TagManager from 'react-gtm-module';
 import { getProduct, getProductAgragations } from '../../services/graphql';
 import * as Schema from '../../services/graphql/productSchema';

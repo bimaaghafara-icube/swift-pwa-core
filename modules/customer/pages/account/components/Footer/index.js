@@ -1,5 +1,5 @@
-import { removeIsLoginFlagging } from '@helpers/auth';
-import { removeCartId } from '@helpers/cartId';
+import { removeIsLoginFlagging } from '@helper_auth';
+import { removeCartId } from '@helper_cartid';
 import { useApolloClient } from '@apollo/client';
 import Router from 'next/router';
 import { localTotalCart } from '@services/graphql/schema/local';

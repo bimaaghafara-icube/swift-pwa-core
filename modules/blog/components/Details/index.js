@@ -1,8 +1,8 @@
 /* eslint-disable react/no-danger */
 import Typography from '@common_typography';
 import { modules } from '@config';
-import formatDate from '@helpers/date';
-import { getHost } from '@helpers/config';
+import formatDate from '@helper_date';
+import { getHost } from '@helper_config';
 import Divider from '@material-ui/core/Divider';
 import React from 'react';
 import Button from '@common_button';

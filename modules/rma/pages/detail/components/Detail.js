@@ -5,7 +5,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import React from 'react';
-import formatDate from '@helpers/date';
+import formatDate from '@helper_date';
 import useStyles from './styles';
 
 const DetailComponents = ({ detail_rma, t }) => {

@@ -1,7 +1,7 @@
 import Layout from '@layout';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import formatDate from '@helpers/date';
+import formatDate from '@helper_date';
 import { confirmPayment } from '../../services/graphql';
 
 const ConfirmPaymentPage = (props) => {

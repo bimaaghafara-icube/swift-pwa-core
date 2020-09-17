@@ -2,8 +2,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { features } from '@config';
-import setDefaultWhenEmpty from '@helpers/checkImageSrc';
-import { breakPointsUp } from '@helpers/theme';
+import setDefaultWhenEmpty from '@helper_checkimagesrc';
+import { breakPointsUp } from '@helper_theme';
 import classNames from 'classnames';
 import useStyles from './style';
 import Thumbor from './Thumbor';

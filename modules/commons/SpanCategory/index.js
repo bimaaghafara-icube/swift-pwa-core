@@ -3,7 +3,7 @@ import Typography from '@common_typography';
 import Link from 'next/link';
 import { useTranslation } from '@i18n';
 import { features } from '@config';
-import setDefaultWhenEmpty from '@helpers/checkImageSrc';
+import setDefaultWhenEmpty from '@helper_checkimagesrc';
 import classNames from 'classnames';
 import useStyles from './style';
 import Thumbor from '../Image';

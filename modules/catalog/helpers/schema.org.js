@@ -1,5 +1,5 @@
 /* eslint-disable no-plusplus */
-import { getHost } from '@helpers/config';
+import { getHost } from '@helper_config';
 
 const generate = (category, storeConfig) => {
     const itemList = [

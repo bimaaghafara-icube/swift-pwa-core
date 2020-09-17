@@ -2,7 +2,7 @@
 /* eslint-disable consistent-return */
 import Layout from '@layout';
 import TagManager from 'react-gtm-module';
-import { removeCheckoutData, getCheckoutData } from '@helpers/cookies';
+import { removeCheckoutData, getCheckoutData } from '@helper_cookies';
 import Router from 'next/router';
 import { debuging } from '@config';
 import { getOrder } from '../../services/graphql';

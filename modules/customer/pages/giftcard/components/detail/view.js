@@ -9,7 +9,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Alert from '@material-ui/lab/Alert';
 import { debuging } from '@config';
-import { formatPrice } from '@helpers/currency';
+import { formatPrice } from '@helper_currency';
 import Loader from '../skeleton';
 
 const DetailView = (props) => {

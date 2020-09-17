@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { features } from '@config';
-import setDefaultWhenEmpty from '@helpers/checkImageSrc';
+import setDefaultWhenEmpty from '@helper_checkimagesrc';
 import Thumbor from '@common_image';
 import useStyles from './style';
 
