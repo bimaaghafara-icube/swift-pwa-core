@@ -2,6 +2,8 @@ import Typography from '@common_typography';
 import { formatPrice } from '@helpers/currency';
 import React from 'react';
 import { useTranslation } from '@i18n';
+import Image from '@common_image';
+import { features } from '@config';
 import useStyles from './styles';
 
 const ItemProduct = (props) => {
@@ -10,16 +12,19 @@ const ItemProduct = (props) => {
         currency = 'IDR', custom_fields,
     } = props;
     const { t } = useTranslation(['return']);
+    const { imageSize } = features;
     const styles = useStyles();
     return (
         <div className="column">
             <div className={styles.itemContainer}>
                 <div className={styles.productImgContainer}>
-                    <img
-                        src={image_url || '/assets/img/placeholder.png'}
+                    <Image
+                        src={image_url}
                         className={styles.productImg}
                         alt={name}
-                        onError={(e) => { e.target.onerror = null; e.target.src = '/assets/img/placeholder.png'; }}
+                        width={imageSize.product.width}
+                        height={imageSize.product.height}
+                        quality={80}
                     />
                 </div>
                 <div className={styles.detailItem}>

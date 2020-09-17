@@ -1,20 +1,23 @@
 import Typography from '@common_typography';
 import { formatPrice } from '@helpers/currency';
 import React from 'react';
+import Image from '@common_image';
 import useStyles from '../style';
 
 const ItemProduct = ({
-    name, price, qty_ordered, currency, t, image_url,
+    name, price, qty_ordered, currency, t, image_url, features: { imageSize },
 }) => {
     const styles = useStyles();
     return (
         <div className={styles.itemContainer}>
             <div className={styles.productImgContainer}>
-                <img
-                    src={image_url || '/assets/img/placeholder.png'}
+                <Image
+                    src={image_url}
                     className={styles.productImg}
                     alt={name}
-                    onError={(e) => { e.target.onerror = null; e.target.src = '/assets/img/placeholder.png'; }}
+                    width={imageSize.product.width}
+                    height={imageSize.product.height}
+                    quality={80}
                 />
             </div>
             <div className={styles.detailItem}>

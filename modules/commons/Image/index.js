@@ -9,7 +9,7 @@ const imgError = (image) => {
 };
 
 const Image = ({
-    src, width = 500, height = 500, className = '', alt = 'Image', quality = 100, style = {}, lazy = false,
+    src, width = 500, height = 500, className = '', alt = 'Image', quality = 100, style = {}, lazy = false, ...other
 }) => (
     <div
         // ref={imgContainer}
@@ -22,6 +22,7 @@ const Image = ({
     >
         {!lazy ? (
             <img
+                ARIA
                 data-pagespeed-no-defer
                 style={{
                     width: '100%',
@@ -36,6 +37,7 @@ const Image = ({
                 }
                 onError={(e) => { e.target.onerror = null; e.target.src = '/assets/img/placeholder.png'; }}
                 alt={alt}
+                {...other}
             />
         ) : null}
     </div>

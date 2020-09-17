@@ -1,8 +1,8 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import {
-    Centering, FlexRow, CreatePadding, CreateMargin,
+    Centering, FlexRow, CreatePadding,
 } from '@theme/mixins';
-import { WHITE, GRAY_PRIMARY } from '@theme/colors';
+import { WHITE } from '@theme/colors';
 
 export default makeStyles((theme) => ({
     container: {
@@ -106,15 +106,27 @@ export default makeStyles((theme) => ({
     },
 
     itemLookContainer: {
-        backgroundColor: GRAY_PRIMARY,
-        ...Centering,
-        ...CreateMargin(12, 12, 12, 12),
-        width: 99,
-        height: 122,
-        margin: 'auto',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    imageLookContainer: {
+        width: '80%',
+        height: '90%',
+        maxWidth: 89,
+        maxHeight: 112,
+        padding: 15,
+        [theme.breakpoints.down('xs')]: {
+            width: '90%',
+            height: '95%',
+            padding: 5,
+        },
     },
     img: {
-        width: 50,
-        height: 50,
+        width: 99,
+        height: 'auto',
+        [theme.breakpoints.up('sm')]: {
+            width: '80%',
+        },
     },
 }));

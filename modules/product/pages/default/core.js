@@ -250,6 +250,7 @@ const ContentDetail = ({
             wishlist={wishlist}
             expandData={expandData}
             relateData={relateData}
+            features={features}
         />
     );
 };
