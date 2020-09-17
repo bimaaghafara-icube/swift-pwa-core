@@ -41,17 +41,13 @@ const PageProgressLoader = () => {
         }, 500);
     };
 
-    const setSessionUrl = () => {
+    const handleRouteChangeComplete = () => {
         const sessionCurrentUrl = sessionStorage.getItem('currentUrl');
         const prevUrl = sessionCurrentUrl && sessionCurrentUrl !== Router.asPath
             ? sessionCurrentUrl
             : '/';
         sessionStorage.setItem('prevUrl', prevUrl);
         sessionStorage.setItem('currentUrl', Router.asPath);
-    };
-
-    const handleRouteChangeComplete = () => {
-        setSessionUrl();
         clearInterval(timer);
         setProgress(100);
         setTimeout(() => {
@@ -69,7 +65,8 @@ const PageProgressLoader = () => {
     };
 
     useEffect(() => {
-        setSessionUrl();
+        sessionStorage.setItem('prevUrl', '/');
+        sessionStorage.setItem('currentUrl', Router.asPath);
         Router.events.on('routeChangeStart', handleRouteChangeStart);
         Router.events.on('routeChangeComplete', handleRouteChangeComplete);
         Router.events.on('RouteChangeError', handleRouteChangeError);
