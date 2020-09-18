@@ -76,8 +76,8 @@ class NextScriptCustom extends NextScript {
 
         return (
             <>
-                {initialLoadScripts.map(({ props }) => (
-                    <script key={props.id} {...props} src={props.src} />
+                {initialLoadScripts.map(({ props }, idx) => (
+                    <script key={idx} {...props} src={props.src} />
                 ))}
 
                 <script id="__NEXT_SCRIPT_CUSTOM" defer dangerouslySetInnerHTML={{ __html: jsContent }} />

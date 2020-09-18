@@ -1,4 +1,5 @@
 import { withTranslation } from '@i18n';
+import { withApollo } from '@lib_apollo';
 import Core from './core';
 import Content from './components';
 
@@ -8,4 +9,4 @@ Top.getInitialProps = async () => ({
     namespacesRequired: ['common'],
 });
 
-export default withTranslation()(Top);
+export default withApollo({ ssr: true })(withTranslation()(Top));
