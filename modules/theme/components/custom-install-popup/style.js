@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { PRIMARY, WHITE } from '@theme/colors';
+import { PRIMARY, WHITE } from '@theme_color';
 
 const useStyles = makeStyles(() => ({
     containerMobile: {

@@ -1,9 +1,9 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { PRIMARY } from '@theme/colors';
+import { PRIMARY } from '@theme_color';
 import {
     CreateBorder,
     FlexRow,
-} from '@theme/mixins';
+} from '@theme_mixins';
 
 export default makeStyles(() => ({
     root: {

@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { PRIMARY, GRAY_SECONDARY } from '@theme/colors';
-import { CreateMargin } from '@theme/mixins';
+import { PRIMARY, GRAY_SECONDARY } from '@theme_color';
+import { CreateMargin } from '@theme_mixins';
 
 const useStyles = makeStyles(() => ({
     container: {

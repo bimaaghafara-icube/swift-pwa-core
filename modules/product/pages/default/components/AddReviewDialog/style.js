@@ -4,7 +4,7 @@ import {
     CreatePadding,
     Centering,
     CreateMargin,
-} from '@theme/mixins';
+} from '@theme_mixins';
 
 export default makeStyles((theme) => ({
     root: {

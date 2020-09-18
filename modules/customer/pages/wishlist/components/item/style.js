@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { GRAY_PRIMARY, WHITE } from '@theme/colors';
-import { FlexColumn, FlexRow, Centering } from '@theme/mixins';
+import { GRAY_PRIMARY, WHITE } from '@theme_color';
+import { FlexColumn, FlexRow, Centering } from '@theme_mixins';
 
 const useStyles = makeStyles((theme) => ({
     card: {

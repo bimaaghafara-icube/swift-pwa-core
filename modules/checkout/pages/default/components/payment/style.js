@@ -1,6 +1,6 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { CreateMargin, CreatePadding } from '@theme/mixins';
-import { PRIMARY } from '@theme/colors';
+import { CreateMargin, CreatePadding } from '@theme_mixins';
+import { PRIMARY } from '@theme_color';
 
 export const useStyles = makeStyles(() => ({
     container: {

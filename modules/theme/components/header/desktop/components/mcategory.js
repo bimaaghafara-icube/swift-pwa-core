@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Link from 'next/link';
-import { WHITE, PRIMARY } from '@theme/colors';
+import { WHITE, PRIMARY } from '@theme_color';
 import Thumbor from '@common_image';
 import getPath from '@helper_getpath';
 import {

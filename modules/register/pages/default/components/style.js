@@ -2,10 +2,10 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import {
     CreatePadding, FlexColumn, CreateMargin, CenterAbsolute, FlexRow,
-} from '@theme/mixins';
+} from '@theme_mixins';
 import {
     GRAY_PRIMARY, RED, GREEN, ORANGE,
-} from '@theme/colors';
+} from '@theme_color';
 
 export default makeStyles(() => ({
     container: {

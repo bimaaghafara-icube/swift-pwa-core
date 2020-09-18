@@ -1,8 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { GRAY_PRIMARY, WHITE, GRAY_LIGHT } from '@theme/colors';
+import { GRAY_PRIMARY, WHITE, GRAY_LIGHT } from '@theme_color';
 import {
     CreateMargin, CreatePadding, CenterAbsolute, Centering,
-} from '@theme/mixins';
+} from '@theme_mixins';
 
 const useStyles = makeStyles((theme) => ({
     container: {

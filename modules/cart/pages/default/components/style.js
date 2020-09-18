@@ -1,12 +1,12 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { PRIMARY, WHITE_IMPORTANT } from '@theme/colors';
+import { PRIMARY, WHITE_IMPORTANT } from '@theme_color';
 import {
     FlexColumn,
     FlexRow,
     CreatePadding,
     CreateMargin,
-} from '@theme/mixins';
-import { FONT_14, FONT_BIG } from '@theme/typography';
+} from '@theme_mixins';
+import { FONT_14, FONT_BIG } from '@theme_typography';
 
 const useStyles = makeStyles(() => ({
     container: {

@@ -1,6 +1,6 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { GRAY_PRIMARY, WHITE } from '@theme/colors';
-import { FlexColumn } from '@theme/mixins';
+import { GRAY_PRIMARY, WHITE } from '@theme_color';
+import { FlexColumn } from '@theme_mixins';
 
 const useStyles = makeStyles(() => ({
     container: {

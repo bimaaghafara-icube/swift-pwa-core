@@ -1,9 +1,9 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { WHITE } from '@theme/colors';
+import { WHITE } from '@theme_color';
 import {
     CreatePadding, CreateMargin,
     Centering, FlexColumn,
-} from '@theme/mixins';
+} from '@theme_mixins';
 
 const useStyles = makeStyles((theme) => ({
     checkoutBox: {

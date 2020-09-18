@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import {
     Centering, CreateMargin,
-} from '@theme/mixins';
+} from '@theme_mixins';
 
 const useStyles = makeStyles((theme) => ({
     title: {

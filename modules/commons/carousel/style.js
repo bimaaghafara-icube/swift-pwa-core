@@ -1,8 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { WHITE } from '@theme/colors';
+import { WHITE } from '@theme_color';
 import {
     Centering, CreateMargin,
-} from '@theme/mixins';
+} from '@theme_mixins';
 
 const itemContainerWidth = {
     xs: '60vw',

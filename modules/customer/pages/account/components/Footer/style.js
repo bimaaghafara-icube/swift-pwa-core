@@ -1,5 +1,5 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { FONT_DEFAULT } from '@theme/typography';
+import { FONT_DEFAULT } from '@theme_typography';
 
 export default makeStyles({
     account_block: {

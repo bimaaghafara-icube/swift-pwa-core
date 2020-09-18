@@ -1,6 +1,6 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { CreatePadding, FlexRow } from '@theme/mixins';
-import { RED, GREEN } from '@theme/colors';
+import { CreatePadding, FlexRow } from '@theme_mixins';
+import { RED, GREEN } from '@theme_color';
 
 export default makeStyles((theme) => ({
     itemContainer: {

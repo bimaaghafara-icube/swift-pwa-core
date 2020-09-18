@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { CreateMargin } from '@theme/mixins';
+import { CreateMargin } from '@theme_mixins';
 
 const useStyles = makeStyles(() => ({
     container: {

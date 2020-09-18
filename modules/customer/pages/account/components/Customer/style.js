@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { GRAY_PRIMARY, GRAY_LIGHT } from '@theme/colors';
+import { GRAY_PRIMARY, GRAY_LIGHT } from '@theme_color';
 
 const useStyles = makeStyles(() => ({
     root: {

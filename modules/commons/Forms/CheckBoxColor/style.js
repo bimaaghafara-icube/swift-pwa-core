@@ -1,6 +1,6 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { GRAY_PRIMARY, PRIMARY, WHITE } from '@theme/colors';
-import { Centering } from '@theme/mixins';
+import { GRAY_PRIMARY, PRIMARY, WHITE } from '@theme_color';
+import { Centering } from '@theme_mixins';
 
 export default makeStyles((theme) => ({
     container: {

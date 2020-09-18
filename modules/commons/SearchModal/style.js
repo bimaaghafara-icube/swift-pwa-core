@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { Centering, CreatePadding } from '@theme/mixins';
-import { WHITE } from '@theme/colors';
+import { Centering, CreatePadding } from '@theme_mixins';
+import { WHITE } from '@theme_color';
 
 const useStyles = makeStyles(() => ({
     container: {

@@ -1,9 +1,9 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import {
     FlexColumn, CreatePadding, Centering,
-} from '@theme/mixins';
+} from '@theme_mixins';
 
-import { GRAY_LIGHT } from '@theme/colors';
+import { GRAY_LIGHT } from '@theme_color';
 
 export default makeStyles({
     root: {

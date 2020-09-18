@@ -1,7 +1,7 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { CreateBorder, CreateMargin, CreatePadding } from '@theme/mixins';
-import { PRIMARY } from '@theme/colors';
-import { FONT_DEFAULT, FONT_10, FONT_REGULAR } from '@theme/typography';
+import { CreateBorder, CreateMargin, CreatePadding } from '@theme_mixins';
+import { PRIMARY } from '@theme_color';
+import { FONT_DEFAULT, FONT_10, FONT_REGULAR } from '@theme_typography';
 
 export default makeStyles((theme) => ({
     root: {

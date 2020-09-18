@@ -1,8 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { GRAY_PRIMARY, PRIMARY } from '@theme/colors';
+import { GRAY_PRIMARY, PRIMARY } from '@theme_color';
 import {
     CreatePadding, FlexRow, FlexColumn,
-} from '@theme/mixins';
+} from '@theme_mixins';
 
 const useStyles = makeStyles((theme) => ({
     root: {

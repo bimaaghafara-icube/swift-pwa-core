@@ -1,7 +1,7 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { GRAY_SECONDARY } from '@theme/colors';
-import { FlexRow, CreatePadding } from '@theme/mixins';
-import { FONT_10 } from '@theme/typography';
+import { GRAY_SECONDARY } from '@theme_color';
+import { FlexRow, CreatePadding } from '@theme_mixins';
+import { FONT_10 } from '@theme_typography';
 
 const useStyles = makeStyles(() => ({
     filterContainer: {

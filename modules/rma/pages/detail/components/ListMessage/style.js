@@ -2,8 +2,8 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import {
     CreatePadding,
     FlexColumn,
-} from '@theme/mixins';
-import { GRAY_LIGHT, WHITE, GRAY_SECONDARY } from '@theme/colors';
+} from '@theme_mixins';
+import { GRAY_LIGHT, WHITE, GRAY_SECONDARY } from '@theme_color';
 
 export default makeStyles({
     container: {

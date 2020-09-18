@@ -1,8 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { GRAY_PRIMARY, GREEN, PRIMARY } from '@theme/colors';
+import { GRAY_PRIMARY, GREEN, PRIMARY } from '@theme_color';
 import {
     CreateMargin, CreatePadding, FlexColumn, FlexRow,
-} from '@theme/mixins';
+} from '@theme_mixins';
 
 const useStyles = makeStyles((theme) => ({
     displayFlexRow: {

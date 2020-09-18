@@ -1,4 +1,4 @@
-import { CreatePadding } from '@theme/mixins';
+import { CreatePadding } from '@theme_mixins';
 
 const configStyleIcon = {
     width: 30,

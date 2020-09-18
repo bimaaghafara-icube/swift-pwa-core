@@ -7,8 +7,8 @@ import {
     FlexColumn,
     FlexRow,
     Centering,
-} from '@theme/mixins';
-import { WHITE } from '@theme/colors';
+} from '@theme_mixins';
+import { WHITE } from '@theme_color';
 
 export default makeStyles(() => ({
     footer: {

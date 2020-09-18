@@ -5,8 +5,8 @@ import {
     FlexColumn,
     FlexRow,
     CreateMargin,
-} from '@theme/mixins';
-import { GRAY_PRIMARY, GRAY_LIGHT } from '@theme/colors';
+} from '@theme_mixins';
+import { GRAY_PRIMARY, GRAY_LIGHT } from '@theme_color';
 
 export default makeStyles(() => ({
     block: {

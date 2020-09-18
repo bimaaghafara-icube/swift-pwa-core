@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { WHITE, PRIMARY } from '@theme/colors';
+import { WHITE, PRIMARY } from '@theme_color';
 
 const useStyles = makeStyles(() => ({
     caraousel: {

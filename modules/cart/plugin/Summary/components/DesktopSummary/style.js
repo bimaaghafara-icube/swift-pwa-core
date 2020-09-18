@@ -1,10 +1,10 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { GRAY_LIGHT, GRAY_PRIMARY } from '@theme/colors';
+import { GRAY_LIGHT, GRAY_PRIMARY } from '@theme_color';
 import {
     FlexColumn,
     CreateBorder,
     CenterAbsolute,
-} from '@theme/mixins';
+} from '@theme_mixins';
 
 const useStyles = makeStyles(() => ({
     container: {

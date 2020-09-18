@@ -1,10 +1,10 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import {
     GRAY_PRIMARY, PRIMARY, WHITE, GRAY_SECONDARY,
-} from '@theme/colors';
+} from '@theme_color';
 import {
     CenterAbsolute, CreateBorder, CreateMargin, CreatePadding, FlexColumn, FlexRow, Centering,
-} from '@theme/mixins';
+} from '@theme_mixins';
 
 const useStyles = makeStyles((theme) => ({
     container: {

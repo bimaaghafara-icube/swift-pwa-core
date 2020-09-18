@@ -3,8 +3,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import Typography from '@common_typography';
-import { GRAY_SECONDARY, WHITE, GRAY_PRIMARY } from '@theme/colors';
-import { Centering, CreateBorder } from '@theme/mixins';
+import { GRAY_SECONDARY, WHITE, GRAY_PRIMARY } from '@theme_color';
+import { Centering, CreateBorder } from '@theme_mixins';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const useStyles = makeStyles(() => ({

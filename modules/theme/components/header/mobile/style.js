@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { CreatePadding, CreateMargin, CenterAbsolute } from '@theme/mixins';
-import { GRAY_PRIMARY } from '@theme/colors';
+import { CreatePadding, CreateMargin, CenterAbsolute } from '@theme_mixins';
+import { GRAY_PRIMARY } from '@theme_color';
 
 const useStyles = makeStyles((theme) => ({
     container: {

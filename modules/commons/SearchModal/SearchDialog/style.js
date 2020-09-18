@@ -1,9 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { WHITE, PRIMARY } from '@theme/colors';
+import { WHITE, PRIMARY } from '@theme_color';
 import {
     CreateMargin, CreatePadding, FlexRow, FlexColumn, showHide,
-} from '@theme/mixins';
-import { FONT_BIG } from '@theme/typography';
+} from '@theme_mixins';
+import { FONT_BIG } from '@theme_typography';
 
 const useStyles = makeStyles(() => ({
     appBar: {

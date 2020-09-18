@@ -1,6 +1,6 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { GRAY_PRIMARY, GRAY_SECONDARY } from '@theme/colors';
-import { FlexRow, Centering, CreateBorder } from '@theme/mixins';
+import { GRAY_PRIMARY, GRAY_SECONDARY } from '@theme_color';
+import { FlexRow, Centering, CreateBorder } from '@theme_mixins';
 
 const useStyles = makeStyles(() => ({
     box: {

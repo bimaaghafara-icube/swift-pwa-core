@@ -9,7 +9,7 @@ import Cookies from 'js-cookie';
 import { custDataNameCookie, features } from '@config';
 import { getHost } from '@helper_config';
 import { breakPointsUp } from '@helper_theme';
-import { BREAKPOINTS } from '@theme/vars';
+import { BREAKPOINTS } from '@theme_vars';
 
 import PopupInstallAppMobile from '../components/custom-install-popup/mobile';
 

@@ -1,7 +1,7 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { FlexColumn, FlexRow } from '@theme/mixins';
+import { FlexColumn, FlexRow } from '@theme_mixins';
 
-import { RED, GREEN } from '@theme/colors';
+import { RED, GREEN } from '@theme_color';
 
 export default makeStyles((theme) => ({
     displayFlexRow: {

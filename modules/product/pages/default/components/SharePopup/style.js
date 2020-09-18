@@ -1,5 +1,5 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { FlexRow, CreatePadding, CenterAbsolute } from '@theme/mixins';
+import { FlexRow, CreatePadding, CenterAbsolute } from '@theme_mixins';
 
 export default makeStyles((theme) => ({
     container: {

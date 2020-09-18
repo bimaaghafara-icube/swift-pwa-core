@@ -1,6 +1,6 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { FONT_14 } from '@theme/typography';
-import { CreateMargin } from '@theme/mixins';
+import { FONT_14 } from '@theme_typography';
+import { CreateMargin } from '@theme_mixins';
 
 const useStyles = makeStyles(() => ({
     crossselTitle: {

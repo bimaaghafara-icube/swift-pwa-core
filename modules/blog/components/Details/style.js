@@ -1,5 +1,5 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { Centering, CreateMargin } from '@theme/mixins';
+import { Centering, CreateMargin } from '@theme_mixins';
 
 export default makeStyles((theme) => ({
     containerItemBlog: {

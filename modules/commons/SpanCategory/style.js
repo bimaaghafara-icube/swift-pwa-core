@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { GRAY_PRIMARY, PRIMARY, WHITE } from '@theme/colors';
+import { GRAY_PRIMARY, PRIMARY, WHITE } from '@theme_color';
 
 const useStyles = makeStyles(() => ({
     container: {

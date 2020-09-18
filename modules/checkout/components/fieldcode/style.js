@@ -1,12 +1,12 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { GRAY_PRIMARY } from '@theme/colors';
+import { GRAY_PRIMARY } from '@theme_color';
 import {
     Centering,
     CreateBorder,
     CreatePadding,
     FlexRow,
     CreateMargin,
-} from '@theme/mixins';
+} from '@theme_mixins';
 
 export default makeStyles(() => ({
     block: {

@@ -1,7 +1,7 @@
 import { storeConfig as ConfigSchema } from '@services/graphql/schema/config';
 import Core from './core';
 import Content from './components';
-import graphRequest from '../../../../../src/api/graphql';
+import graphRequest from '../../../../api/graphql';
 
 const Error = (props) => <Core {...props} Content={Content} />;
 

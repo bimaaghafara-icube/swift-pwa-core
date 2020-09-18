@@ -1,8 +1,8 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import {
     FlexColumn, CreatePadding, CreateBorder,
-} from '@theme/mixins';
-import { GRAY_PRIMARY } from '@theme/colors';
+} from '@theme_mixins';
+import { GRAY_PRIMARY } from '@theme_color';
 
 export default makeStyles((theme) => ({
     container: {

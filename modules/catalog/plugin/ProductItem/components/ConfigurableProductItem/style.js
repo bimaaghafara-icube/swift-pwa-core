@@ -1,5 +1,5 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { CreateMargin, CreatePadding, FlexRow } from '@theme/mixins';
+import { CreateMargin, CreatePadding, FlexRow } from '@theme_mixins';
 
 export default makeStyles(() => ({
     colorContainer: {

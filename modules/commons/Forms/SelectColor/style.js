@@ -1,6 +1,6 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { CreateMargin, CreateBorder } from '@theme/mixins';
-import { PRIMARY, SECONDARY } from '@theme/colors';
+import { CreateMargin, CreateBorder } from '@theme_mixins';
+import { PRIMARY, SECONDARY } from '@theme_color';
 
 export default makeStyles(() => ({
     container: {

@@ -1,12 +1,12 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { GRAY_PRIMARY, WHITE, RED } from '@theme/colors';
+import { GRAY_PRIMARY, WHITE, RED } from '@theme_color';
 import {
     CenterAbsolute,
     CreateBorder,
     CreatePadding,
     FlexColumn,
     CreateMargin,
-} from '@theme/mixins';
+} from '@theme_mixins';
 
 export default makeStyles((theme) => ({
     dialog: {

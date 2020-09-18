@@ -7,10 +7,10 @@ import {
     FONT_14,
     FONT_16,
     FONT_24,
-} from '@theme/typography';
+} from '@theme_typography';
 import {
     PRIMARY, RED, GREEN, ORANGE, WHITE,
-} from '@theme/colors';
+} from '@theme_color';
 
 const useStyles = makeStyles(() => ({
     default: {

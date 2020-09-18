@@ -1,8 +1,8 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import {
     CreatePadding, CenterAbsolute, FlexColumn, CreateMargin,
-} from '@theme/mixins';
-import { WHITE } from '@theme/colors';
+} from '@theme_mixins';
+import { WHITE } from '@theme_color';
 
 export default makeStyles((theme) => ({
     container: {
