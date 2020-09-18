@@ -55,7 +55,8 @@
     "confirmPayment": "Konfirmasi pembayaran",
     "accountInformation": "Informasi akun",
     "notification": "Notifikasi",
-    "viewall" : "Lihat semua"
+    "viewall" : "Lihat semua",
+    "trackingOrder": "Lacak Pesanan"
   },
   "giftCard": {
     "notFound": "Anda tidak memiliki gift card",

@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SortDesktop = (props) => {
     const {
-        isSearch, defaultSort, filterValue, setFiltervalue,
+        isSearch, defaultSort, filterValue, setFiltervalue, t,
     } = props;
     const sortByData = isSearch ? sortByDataSearch : sortByDataCatalog;
 
@@ -62,7 +62,7 @@ const SortDesktop = (props) => {
     return (
         <div className={classes.container}>
             <span className={classes.sortTitle}>
-                Sort By
+                {t('common:title:short')}
             </span>
             <FormControl className={classes.formControl}>
                 <NativeSelect

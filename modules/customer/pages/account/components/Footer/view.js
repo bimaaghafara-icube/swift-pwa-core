@@ -70,7 +70,7 @@ const FooterView = (props) => {
                     modules.trackingorder.enabled ? (
                         <li className={styles.account_navigation_item}>
                             <Link href="/sales/order/track">
-                                <a className={styles.account_navigation_link}>{t('order:trackingOrder')}</a>
+                                <a className={styles.account_navigation_link}>{t('customer:menu:trackingOrder')}</a>
                             </Link>
                         </li>
                     ) : null

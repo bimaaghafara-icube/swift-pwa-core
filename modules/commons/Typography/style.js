@@ -38,22 +38,20 @@ const useStyles = makeStyles(() => ({
     },
     h1: {
         fontWeight: 'bold',
-        'text-transform': 'uppercase',
         ...FONT_24,
     },
     span: {
         ...FONT_12,
         fontWeight: '400',
         margin: 5,
+    },
+    lettercapitalize: {
         'text-transform': 'capitalize',
     },
-    capitalize: {
-        'text-transform': 'capitalize',
-    },
-    uppercase: {
+    letteruppercase: {
         'text-transform': 'uppercase',
     },
-    lowercase: {
+    letterlowercase: {
         'text-transform': 'lowercase',
     },
     title: {

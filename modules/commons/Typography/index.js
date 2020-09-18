@@ -49,13 +49,13 @@ const CustomTypography = ({
     const styles = useStyles();
     const customStyle = classNames(
         styles.root,
-        styles[letter],
         styles[variant],
         styles[type],
         styles[align],
         styles[decoration],
         styles[color],
         styles[`size${size}`],
+        styles[`letter${letter}`],
         className,
     );
     const variantType = getVariant(variant);

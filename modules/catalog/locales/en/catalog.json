@@ -3,8 +3,8 @@
     "title": {
         "color": "Color",
         "size": "Size",
-        "shortFilter": "Short & Filter",
-        "short": "Short by",
+        "shortFilter": "Sort & Filter",
+        "short": "Sort by",
         "search": "Search ...",
         "brand": "Brand",
         "category": "Category",

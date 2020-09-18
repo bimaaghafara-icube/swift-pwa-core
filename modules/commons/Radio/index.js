@@ -56,7 +56,7 @@ function CustomRadio({
         <div className={rootStyle}>
             {!noLabel ? (
                 <Typography variant="label" type="bold" letter="uppercase">
-                    {label}
+                    {label.replace(/_/g, ' ')}
                 </Typography>
             ) : null}
 

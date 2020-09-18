@@ -55,7 +55,8 @@
     "confirmPayment": "Confirm payment",
     "accountInformation": "Account information",
     "notification": "Notifications",
-    "viewall" : "View all"
+    "viewall" : "View all",
+    "trackingOrder": "Tracking Order"
   },
   "giftCard": {
     "notFound": "You don't have gift card item",
