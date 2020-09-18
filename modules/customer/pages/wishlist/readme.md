@@ -27,7 +27,7 @@ import Core from '@core_modules/customer/pages/wishlist/core';
 #### example code
 ````
 import { withTranslation } from '@i18n';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import Core from '@core_modules/customer/pages/wishlist/core';
 import Skeleton from '@core_modules/customer/pages/wishlist/components/skeleton';
 

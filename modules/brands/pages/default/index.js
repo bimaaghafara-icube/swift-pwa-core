@@ -1,5 +1,5 @@
 import { withTranslation } from '@i18n';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import Core from './core';
 import Content from './components';
 import Skeleton from './components/skeleton';

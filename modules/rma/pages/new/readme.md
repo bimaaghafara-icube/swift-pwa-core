@@ -61,7 +61,7 @@ import Skeleton from '@core_modules/rma/pages/new/Skeleton';
 
 import CoreBase from '@core_modules/pages/new/core'; //must import core & uses
 import { withTranslation } from '@i18n';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import Skeleton from '@core_modules/pages/new/components/Skeleton';  //point to your custom components
 import WarningInfo from '@core_modules/pages/new/components/Info'; //point to your custom components
 import ItemProductView from '@core_modules/pages/new/components/ItemProduct/views'; //point to your custom components

@@ -26,7 +26,7 @@ import Core from '@core_modules/storelocator/pages/default/core';
 ### example code
 ````
 import { withTranslation } from '@i18n';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 
 import Content from './components';
 import Core from '@core_modules/storelocator/pages/default/core';

@@ -66,7 +66,7 @@ import Skeleton from '@core_modules/home/pages/default/components/Skeleton';
 
 import FeaturedSkeleton from '@common_slider/Carousel/Skeleton';
 import { withTranslation } from '@i18n';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import BannerSliderSkeleton from './components/Skeleton/BannerSkeleton';
 import ErrorInfo from './components/ErrorInfo';
 import BannerView from './components/Banner/view';

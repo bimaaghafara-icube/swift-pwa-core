@@ -1,4 +1,4 @@
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import { withTranslation } from '@i18n';
 import Core from './core';
 import Content from './components';

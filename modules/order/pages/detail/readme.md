@@ -35,7 +35,7 @@ import Skeleton from '@core_modules/order/pages/detail/components/skeleton';
 #### example code
 ````
 import { withTranslation } from '@i18n';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import Page from '@core_modules/order/pages/detail/core';
 // import custom template
 import Content from './template';

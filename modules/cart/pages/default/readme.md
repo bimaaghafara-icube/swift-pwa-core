@@ -34,7 +34,7 @@ import Skeleton from '@core_modules/cart/pages/default/components/skeleton';
 ````
 import Layout from '@layout';
 import { withTranslation } from '@i18n';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import dynamic from 'next/dynamic';
 import ItemView from '@core_modules/cart/pages/default/components/item';
 import EmptyView from '@core_modules/cart/pages/default/components/empty';

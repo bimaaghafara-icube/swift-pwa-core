@@ -1,5 +1,5 @@
 import { withTranslation } from '@i18n';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import { getCheckoutDataFromRequest } from '@helper_cookies';
 import redirect from 'next-redirect';
 import Core from './core';

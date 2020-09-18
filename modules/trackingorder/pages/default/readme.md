@@ -29,7 +29,7 @@ import Skeleton from '@core_modules/trackingorder/pages/components/skeleton';
 
 ````
 import { withTranslation } from '@i18n';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import FormView from '@core_modules/trackingorder/pages/components/form/view';
 // custome result view
 import ResultView from './template/result';

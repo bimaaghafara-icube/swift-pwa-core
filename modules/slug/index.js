@@ -1,4 +1,4 @@
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import CategoryPage from '@core_modules/catalog/pages/category';
 import ProductPage from '@core_modules/product/pages/default';
 import CmsPage from '@core_modules/cms/pages/default';

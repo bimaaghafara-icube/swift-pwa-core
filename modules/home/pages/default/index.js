@@ -1,5 +1,5 @@
 import { withTranslation } from '@i18n';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import FeaturedSkeleton from './components/Skeleton/FeaturedSkeleton';
 import BannerSliderSkeleton from './components/Skeleton/BannerSkeleton';
 import ErrorInfo from './components/ErrorInfo';

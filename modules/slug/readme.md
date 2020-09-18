@@ -53,7 +53,7 @@ import LoadingView from '@core_modules/commons/Backdrop';
 
 ```node
 
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import CategoryPage from '@core_modules/catalog/pages/category'; // point to your custom page
 import ProductPage from '@pages/slug/pages/product'; // point to your custom page
 import CmsPage from '@pages/slug/pages/cms'; // point to your custom page

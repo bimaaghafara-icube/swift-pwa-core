@@ -1,5 +1,5 @@
 import { withTranslation } from '@i18n';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import dynamic from 'next/dynamic';
 import ItemView from './components/item';
 import EmptyView from './components/empty';

@@ -24,7 +24,7 @@ import Core from '@core_modules/contact/pages/default/core';
 #### example code
 ````
 import { withTranslation } from '@i18n';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import Core from './core';
 
 // import yout custom content

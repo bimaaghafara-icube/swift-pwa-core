@@ -1,6 +1,6 @@
 import BrowseModal from '@common_searchmodal';
 import ShoppingBagIcon from '@core_modules/cart/plugin/ShoppingBag';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import HomeIcon from '@material-ui/icons/Home';

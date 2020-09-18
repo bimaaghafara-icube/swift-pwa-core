@@ -33,7 +33,7 @@ import Skeleton from '@core_modules/brands/pages/default/components/skeleton';
 #### example code
 ````
 import { withTranslation } from '@i18n';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import Brand from '@core_modules/brands/pages/default/core';
 
 // your custom components import

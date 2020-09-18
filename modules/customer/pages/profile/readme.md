@@ -30,7 +30,7 @@ import Core from '@core_modules/customer/pages/profile/core';
 #### example code
 ````
 import { withTranslation } from '@i18n';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import Core from '@core_modules/customer/pages/profile/core';
 import Skeleton from '@core_modules/customer/pages/profile/components/skeleton';
 

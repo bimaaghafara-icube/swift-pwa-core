@@ -69,7 +69,7 @@ import FormComment from '@core_modules/rma/pages/detail/components/FormComment';
 import Detail from '@core_modules/rma/pages/detail/components/Detail';  // import your custom component
 import Footer from '@core_modules/rma/pages/detail/components/Footer';  // import your custom component
 import { withTranslation } from '@i18n';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 
 const Page = (props) => (
     <CoreBase

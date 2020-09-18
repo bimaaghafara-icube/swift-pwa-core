@@ -1,5 +1,5 @@
 import { withTranslation } from '@i18n';
-import { withApollo } from '@lib/apollo';
+import { withApollo } from '@lib_apollo';
 import Core from './core';
 import Skeleton from './components/skeletonform';
 import FormView from './components/form/view';
