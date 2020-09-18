@@ -1,7 +1,7 @@
 {
     "haveAccount": "If you have an account",
-    "pageTitle": "Sign In",
-    "forgotPassword": "forgot password",
+    "pageTitle": "Sign in",
+    "forgotPassword": "Forgot password",
     "notHaveAccount": "Don't have an account?",
     "switchPhone": "Login with phone number",
     "success": "Login is success",

@@ -4,11 +4,11 @@
     "shippingMethod": "Metode pengiriman",
     "paymentMethod": "Metode pembayaran",
     "shipping": "Pengiriman & Perawatan",
-    "trackingOrder": "Lacak Pesanan",
-    "orderId": "Nomor Pesanan",
-    "trackingInformation": "Informasi Pesanan",
-    "orderStatus": "Status Pesanan",
+    "trackingOrder": "Lacak pesanan",
+    "orderId": "Nomor pesanan",
+    "trackingInformation": "Informasi pesanan",
+    "orderStatus": "Status pesanan",
     "status": "Status",
-    "orderTotal": "Total Pesanan",
+    "orderTotal": "Total pesanan",
     "orderNotFound": "Maaf, nomor pesanan tidak ditemukan"
 }

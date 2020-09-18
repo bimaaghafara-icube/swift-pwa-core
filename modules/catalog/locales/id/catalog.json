@@ -1,31 +1,6 @@
 {
-    "addToCart" : "Tambahkan ke keranjang",
-    "recomendedTitle" : "Direkomendasikan untuk kamu",
-    "review" : "ulasan",
-    "colorOption" : "pilihan warna",
-    "customerReview" : "ulasan pelanggan",
-    "writeReview" : "beri ulasan",
-    "moreReview" : "Lihat ulasan lainya",
-    "viewGuide" : "view site guide",
-    "shareTitle" : "Bagikan",
-    "nickname" : "Nama",
-    "submitReview" : "Kirim Review" ,
-    "rate" : "Rating",
-    "upsellTitle": "Mungkin kamu juga suka",
-    "validate": {
-        "nickname": "Nickname tidak boleh kosong",
-        "rating": "Rating tidak boleh kosong",
-        "title": "Title tidak boleh kosong",
-        "detail": "Detail tidak boleh kosong"
-    },
-    "addRateSuccess": "Terimakasih atas ulasannya.",
-    "addRateFailed": "Gagal mengirim ulasan",
-    "successAddCart": "Produk telah ditambahkan ke tas Anda",
-    "failedAddCart": "Gagal menambahkan produk ke keranjang",
     "emptyProductSearchResult": "Kami tidak dapat menemukan produk yang sesuai dengan pilihan.",
-    "productNotAvailable": "Sekarang kami belum support untuk type produk ini",
     "title": {
-        "qty": "Jumlah",
         "color": "Warna",
         "size": "Ukuran",
         "shortFilter": "Urutan & Filter",
@@ -33,14 +8,14 @@
         "search": "Pencarian ...",
         "brand": "Brand",
         "category": "Kategory",
-        "searchResult": "Hasil Pencarian"
+        "searchResult": "Hasil pencarian"
     },
     "button": {
         "save": "Simpan",
         "clear": "Bersihkan"
     },
     "product": {
-        "title_product": "Nama Produk",
+        "title_product": "Nama produk",
         "name": "Produk"
     },
     "wishlist": {

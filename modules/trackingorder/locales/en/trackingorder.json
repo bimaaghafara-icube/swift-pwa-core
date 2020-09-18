@@ -1,14 +1,14 @@
 {   
     "email": "Email",
-    "shippedTo": "Shipped To",
-    "shippingMethod": "Shipping Method",
-    "paymentMethod": "Payment Method",
+    "shippedTo": "Shipped to",
+    "shippingMethod": "Shipping method",
+    "paymentMethod": "Payment method",
     "shipping": "Shipping & Handling",
-    "trackingOrder": "Track Order",
-    "orderId": "Order Number",
-    "trackingInformation": "Tracking Information",
-    "orderStatus": "Order Status",
+    "trackingOrder": "Track order",
+    "orderId": "Order number",
+    "trackingInformation": "Tracking information",
+    "orderStatus": "Order status",
     "status": "Status",
-    "orderTotal": "Order Total",
+    "orderTotal": "Order total",
     "orderNotFound": "Sorry, order number is not valid"
 }

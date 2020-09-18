@@ -1,12 +1,12 @@
 {
     "balance" : "Saldo saat ini: ",
     "transactionId" : "ID Transaksi",
-    "adjustment" : "Store Credit Tambahan",
-    "creditbalance" : "Store Credit Saldo",
+    "adjustment" : "Kredit toko tambahan",
+    "creditbalance" : "Saldo kredit toko",
     "comment" : "Catatan",
-    "transactionDate" : "Tanggal Transaksi",
-    "editEmail" : "Ubah Pengaturan Email",
-    "emptyMessage" : "You have no transactions.",
+    "transactionDate" : "Tanggal transaksi",
+    "editEmail" : "Ubah pengaturan email",
+    "emptyMessage" : "Tidak ada transaksi.",
     "item" : "Item",
-    "title" : "Store Credit"
+    "title" : "Kredit toko"
 }
