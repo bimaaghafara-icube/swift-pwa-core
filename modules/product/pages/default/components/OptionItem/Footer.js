@@ -32,9 +32,10 @@ export default ({
                 >
                     <Typography
                         align="center"
-                        type="regular"
-                        letter="capitalize"
-                        className={styles.textBtnAddToCard}
+                        type="bold"
+                        letter="uppercase"
+                        color="white"
+                        variant="span"
                     >
                         {t('product:addToCart')}
                     </Typography>

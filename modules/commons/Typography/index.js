@@ -60,7 +60,7 @@ const CustomTypography = ({
     );
     const variantType = getVariant(variant);
     return (
-        <Typography variant={variantType} className={customStyle} align={align} {...other}>
+        <Typography variant={variantType} align={align} {...other} className={customStyle}>
             {children}
         </Typography>
     );

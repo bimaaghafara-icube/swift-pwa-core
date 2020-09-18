@@ -247,6 +247,7 @@ const Summary = ({
                         dataCart={checkout.data.cart}
                         isDesktop={false}
                         showItems
+                        label={t('checkout:placeOrder')}
                     />
                 </div>
                 <SummaryPlugin

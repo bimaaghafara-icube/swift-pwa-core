@@ -26,7 +26,7 @@ const OtpView = (props) => {
                 </div>
                 <div className={styles.button}>
                     <Button fullWidth onClick={handleSend} disabled={!!(!phoneProps.value || phoneProps.value === '' || phoneProps.error)}>
-                        <Typography variant="p" color="white" align="center">
+                        <Typography variant="p" type="bold" letter="uppercase" color="white" align="center">
                             {t('common:button:sendOtp')}
                         </Typography>
                     </Button>
@@ -60,7 +60,7 @@ const OtpView = (props) => {
                 </div>
                 <div className={styles.button}>
                     <Button fullWidth disabled={manySend <= 1} onClick={handleCheck}>
-                        <Typography variant="p" color="white">
+                        <Typography variant="p" type="bold" letter="uppercase" color="white">
                             {t('common:button:verify')}
                         </Typography>
                     </Button>

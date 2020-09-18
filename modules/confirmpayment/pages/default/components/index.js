@@ -80,7 +80,7 @@ const ConfirmPayment = (props) => {
                         />
                         <div className={styles.footer}>
                             <Button fullWidth className={styles.button} type="submit">
-                                <Typography color="white" variant="label" type="semiBold">
+                                <Typography variant="span" type="bold" letter="uppercase" color="white">
                                     {t('payment:confirmPayment:form:button')}
                                 </Typography>
                             </Button>

@@ -174,7 +174,7 @@ const ViewFilter = (props) => {
                                 if (val !== 'attribute_set_id') {
                                     return (
                                         <li onClick={(e) => onChangeTabs(e, idx + 1)} className={styles.listCategory} key={idx}>
-                                            <Typography variant="span">
+                                            <Typography variant="span" letter="capitalize">
                                                 {val.replace(/_/g, ' ')}
                                             </Typography>
                                         </li>
@@ -201,7 +201,13 @@ const ViewFilter = (props) => {
                             aria-controls="panel1a-content"
                             id="panel1a-header"
                         >
-                            <Typography className={styles.heading} letter="capitalize">{itemFilter.label.replace(/_/g, ' ')}</Typography>
+                            <Typography
+                                className={styles.heading}
+                                variant="span"
+                                letter="capitalize"
+                            >
+                                {itemFilter.label.replace(/_/g, ' ')}
+                            </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                             {generateFilter(filter, itemFilter, idx)}

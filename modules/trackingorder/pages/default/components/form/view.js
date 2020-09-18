@@ -1,5 +1,6 @@
 import Button from '@common_button';
 import TextField from '@common_textfield';
+import Typography from '@common_typography';
 import Modal from '../modal';
 import useStyles from '../style';
 
@@ -42,7 +43,9 @@ const FormTemplate = (props) => {
                         fullWidth
                         type="submit"
                     >
-                        {t('common:search:title')}
+                        <Typography variant="span" type="bold" letter="uppercase" color="white">
+                            {t('common:search:title')}
+                        </Typography>
                     </Button>
                 </div>
             </form>

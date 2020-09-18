@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '@common_button';
+import Typography from '@common_typography';
 import classNames from 'classnames';
 import Delivery from './delivery';
 import Email from './email';
@@ -218,7 +219,9 @@ const Content = (props) => {
                     disabled={disabled}
                     className={styles.placeOrderDesktop}
                 >
-                    {t('checkout:placeOrder')}
+                    <Typography variant="span" letter="uppercase" type="bold" color="white">
+                        {t('checkout:placeOrder')}
+                    </Typography>
                 </Button>
             </div>
         </div>

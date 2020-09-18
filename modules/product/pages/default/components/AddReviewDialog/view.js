@@ -89,7 +89,9 @@ const ReviewDialogView = (props) => {
                         )}
                     </div>
                     <Button type="submit" color="primary">
-                        {t('product:submitReview')}
+                        <Typography variant="span" color="white" letter="uppercase" type="bold">
+                            {t('product:submitReview')}
+                        </Typography>
                     </Button>
                 </form>
             </div>

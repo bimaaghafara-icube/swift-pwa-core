@@ -26,7 +26,7 @@ const CheckDefault = ({
                     size="small"
                 />
             )}
-            label={label}
+            label={label.replace(/_/g, ' ')}
         />
     );
 };

@@ -316,7 +316,7 @@ const AddressView = (props) => {
 
                         <div className={styles.wrapper}>
                             <Button className={addBtn} fullWidth type="submit" disabled={loading} loading={loading}>
-                                <Typography className={styles.fontWhite} variant="title" type="regular" letter="capitalize">
+                                <Typography variant="span" type="bold" letter="uppercase" color="white">
                                     {t(success ? 'common:button:saved' : 'common:button:save')}
                                 </Typography>
                             </Button>

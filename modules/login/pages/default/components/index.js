@@ -30,7 +30,7 @@ const Login = (props) => {
             <div className={classNames('row between-sm between-md between-lg', styles.desktopContainer)}>
                 <div className="col-sm-12 col-md-12 col-lg-12 hidden-mobile">
                     <Typography type="bold" variant="h1" className={styles.title}>
-                        Customer Login
+                        {t('login:customerLogin')}
                     </Typography>
                 </div>
                 <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -38,7 +38,7 @@ const Login = (props) => {
                         <div className="col-sm-12 hidden-mobile">
                             <div className={styles.headerSpan}>
                                 <Typography variant="span" className="clear-margin-padding" letter="uppercase">
-                                    Registered Customer
+                                    {t('login:registerCustomer')}
                                 </Typography>
                             </div>
                         </div>
@@ -47,7 +47,7 @@ const Login = (props) => {
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div className={classNames(styles.spanLabel, 'hidden-mobile')}>
                                         <Typography type="bold" variant="p" className="clear-margin-padding">
-                                            If you have an account, sign in with your email address or phone number.
+                                            {t('login:loginInformation')}
                                         </Typography>
                                     </div>
                                     <form onSubmit={formik.handleSubmit}>
@@ -81,14 +81,20 @@ const Login = (props) => {
                                                     fullWidth={!desktop}
                                                     type="submit"
                                                     disabled={(desktop) ? false : disabled}
+                                                    align={desktop ? 'left' : 'center'}
                                                 >
-                                                    <Typography variant="title" type="regular" letter="capitalize" color="white">
+                                                    <Typography variant="span" type="bold" letter="uppercase" color="white">
                                                         {loading ? 'Loading' : t('login:pageTitle')}
                                                     </Typography>
                                                 </Button>
                                             </div>
                                             <div className="col-xs-12 col-sm-12">
-                                                <Button fullWidth={false} variant="text" href="/customer/account/forgotpassword">
+                                                <Button
+                                                    fullWidth={false}
+                                                    variant="text"
+                                                    href="/customer/account/forgotpassword"
+                                                    align={desktop ? 'left' : 'center'}
+                                                >
                                                     <Typography variant="span" type="regular" letter="capitalize" decoration="underline">
                                                         {t('login:forgotPassword')}
                                                     </Typography>
@@ -111,7 +117,7 @@ const Login = (props) => {
                                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                     <div className={classNames(styles.spanLabel, 'hidden-mobile')}>
                                         <Typography type="bold" variant="p" className="clear-margin-padding">
-                                            If you have an account with registered phone number, sign in with your phone number.
+                                            {t('login:loginOtpInformation')}
                                         </Typography>
                                     </div>
                                     <form onSubmit={formikOtp.handleSubmit} className={styles.formOtp}>
@@ -144,8 +150,9 @@ const Login = (props) => {
                                                     fullWidth={!desktop}
                                                     type="submit"
                                                     disabled={disabled}
+                                                    align={desktop ? 'left' : 'center'}
                                                 >
-                                                    <Typography variant="title" type="regular" letter="capitalize" color="white">
+                                                    <Typography variant="span" type="bold" letter="uppercase" color="white">
                                                         {loading ? 'Loading' : t('common:button:submit')}
                                                     </Typography>
                                                 </Button>
@@ -162,13 +169,13 @@ const Login = (props) => {
                         <div className="col-sm-12">
                             <div className={styles.headerSpan}>
                                 <Typography className="clear-margin-padding" variant="span" letter="uppercase">
-                                    New Customer
+                                    {t('login:newCustomer')}
                                 </Typography>
                             </div>
                         </div>
                         <div className="col-sm-12">
                             <Typography variant="p">
-                                Creating an account has many benefits: check out faster, keep more than one address, track orders and more.
+                                {t('login:registerInformation')}
                             </Typography>
                         </div>
                         <div className="col-sm-12">
@@ -177,8 +184,9 @@ const Login = (props) => {
                                 fullWidth={false}
                                 href="/customer/account/create"
                                 disabled={(desktop) ? false : disabled}
+                                align={desktop ? 'left' : 'center'}
                             >
-                                <Typography color="white" variant="title" type="regular" letter="capitalize">
+                                <Typography color="white" variant="span" type="bold" letter="uppercase">
                                     {t('login:registerTitle')}
                                 </Typography>
                             </Button>

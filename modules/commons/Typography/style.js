@@ -9,7 +9,7 @@ import {
     FONT_24,
 } from '@theme/typography';
 import {
-    PRIMARY, RED, GREEN, ORANGE, WHITE,
+    PRIMARY, RED, GREEN, ORANGE, WHITE, GRAY_SECONDARY,
 } from '@theme/colors';
 
 const useStyles = makeStyles(() => ({
@@ -27,6 +27,9 @@ const useStyles = makeStyles(() => ({
     },
     orange: {
         color: ORANGE,
+    },
+    gray: {
+        color: GRAY_SECONDARY,
     },
     root: {
         margin: 5,

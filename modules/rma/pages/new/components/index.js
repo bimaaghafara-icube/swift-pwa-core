@@ -254,7 +254,7 @@ const NewContent = (props) => {
                 </div>
                 <div className={styles.block}>
                     <Button fullWidth onClick={handleSubmit}>
-                        <Typography letter="capitalize" color="white">{t('rma:form:submit')}</Typography>
+                        <Typography letter="uppercase" type="bold" variant="span" color="white">{t('rma:form:submit')}</Typography>
                     </Button>
                 </div>
             </div>

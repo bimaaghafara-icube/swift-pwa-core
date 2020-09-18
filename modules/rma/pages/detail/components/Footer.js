@@ -22,14 +22,14 @@ const Footer = ({
     if (cancelButton) {
         CancelButton = () => (
             <Button fullWidth variant="outlined" onClick={confirmCancel}>
-                <Typography letter="capitalize">{t('rma:view:cancelButton')}</Typography>
+                <Typography variant="span" type="bold" letter="uppercase">{t('rma:view:cancelButton')}</Typography>
             </Button>
         );
     }
     if (updateButton) {
         UpdateButton = () => (
             <Button fullWidth variant="outlined" onClick={() => handleUpdate()}>
-                <Typography letter="capitalize">{t('rma:view:updateButton')}</Typography>
+                <Typography variant="span" type="bold" letter="uppercase">{t('rma:view:updateButton')}</Typography>
             </Button>
         );
     }
@@ -38,11 +38,11 @@ const Footer = ({
             <>
                 <a href={detail_rma.confirm_shipping.print_label_url} download className={styles.btnPrintLabel}>
                     <Button fullWidth variant="outlined">
-                        <Typography letter="capitalize">{t('rma:view:printLabel')}</Typography>
+                        <Typography variant="span" type="bold" letter="uppercase">{t('rma:view:printLabel')}</Typography>
                     </Button>
                 </a>
                 <Button fullWidth variant="outlined" onClick={actionUpdateStatus}>
-                    <Typography letter="capitalize">{t('rma:view:confirmShipping')}</Typography>
+                    <Typography variant="span" type="bold" letter="uppercase">{t('rma:view:confirmShipping')}</Typography>
                 </Button>
             </>
         );
