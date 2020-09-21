@@ -52,7 +52,7 @@ const MobileView = ({
                 </div>
                 <div className={classNames('col-xs-12 col-sm-12', category_image ? 'col-lg-8' : '')}>
                     <div className={classNames('row center-xs', styles.contentFeatured)}>
-                        <div className={classNames('col-xs-12')}>
+                        <div className={classNames('col-xs-12', styles.contentMobileFeatured)}>
                             <Carousel data={products} showArrow={desktop} slideLg={category_image ? 4 : 6} Item={ProductItem} />
                         </div>
                         <div className={classNames('col-xs-12', styles.footerFeatured)}>

@@ -59,6 +59,10 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: 20,
         paddingBottom: 20,
         textAlign: 'center',
+        [theme.breakpoints.down('sm')]: {
+            paddingTop: 10,
+            paddingBottom: 10,
+        },
     },
     contentContainer: {
         marginLeft: 'auto',
@@ -67,6 +71,8 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('sm')]: {
             // marginLeft: '20px',
             // marginRight: 'auto',
+            marginTop: 10,
+            marginBottom: 10,
         },
         [theme.breakpoints.up('sm')]: {
             width: 750,
@@ -85,6 +91,8 @@ const useStyles = makeStyles((theme) => ({
         height: '100%',
         [theme.breakpoints.down('sm')]: {
             padding: '0',
+            marginTop: 10,
+            marginBottom: 10,
         },
     },
     featuresBox: {
@@ -92,7 +100,9 @@ const useStyles = makeStyles((theme) => ({
         border: `1px solid ${GRAY_LIGHT}`,
         padding: 0,
         [theme.breakpoints.down('sm')]: {
-            margin: '0 0 20px 0',
+            margin: '0',
+            boxShadow: 'unset',
+            border: '0',
         },
     },
     contentFeatured: {
@@ -101,8 +111,16 @@ const useStyles = makeStyles((theme) => ({
         borderBottomLeftRadius: 5,
         // padding: '20px 20px 0px 10px',
     },
+    contentMobileFeatured: {
+        [theme.breakpoints.down('sm')]: {
+            padding: '0',
+        },
+    },
     footerFeatured: {
         paddingBottom: 20,
+        [theme.breakpoints.down('sm')]: {
+            paddingBottom: '0',
+        },
     },
     imgFeaturedContainer: {
         padding: 0,
