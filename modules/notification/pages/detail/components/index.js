@@ -14,7 +14,7 @@ const NotificationData = (props) => {
     const item = data.readNotification.items[0];
 
     return (
-        <Layout {...props}>
+        <Layout {...props} activeMenu="/inboxnotification/notification">
             <div className="container">
                 <Typography variant="p" style={{ marginBottom: 12 }} size="10" type="regular">
                     {localDateString(item.createdAt)}

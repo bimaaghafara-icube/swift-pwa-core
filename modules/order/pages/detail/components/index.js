@@ -28,7 +28,7 @@ const DetailOrder = (props) => {
     }
     if (detail.length > 0) {
         return (
-            <Layout t={t} wishlist={[]}>
+            <Layout t={t} wishlist={[]} activeMenu="/sales/order/history">
                 <div className="column">
                     <div className={classNames('hidden-mobile', styles.blockHeader)}>
                         <Typography
