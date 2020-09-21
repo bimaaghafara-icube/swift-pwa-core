@@ -11,7 +11,7 @@ import ConfigurableOpt from './components/ConfigurableProductItem';
 
 const ProductItem = (props) => {
     const {
-        id, url_key = '', categorySelect, review, ImageProductView, DetailProductView, ...other
+        id, url_key = '', categorySelect, review, ImageProductView, DetailProductView, LabelView, ...other
     } = props;
     const styles = useStyles();
     const { t } = useTranslation(['catalog']);
@@ -66,6 +66,11 @@ const ProductItem = (props) => {
     return (
         <>
             <div className={styles.itemContainer}>
+                {
+                    modules.catalog.productListing.label.enabled ? (
+                        <LabelView {...other} />
+                    ) : null
+                }
                 <div className={styles.imgItem}>
                     <ImageProductView handleClick={handleClick} spesificProduct={spesificProduct} {...other} />
                 </div>
