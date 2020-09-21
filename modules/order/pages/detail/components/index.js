@@ -14,7 +14,9 @@ import Footer from './footer';
 import Table from './TableListItem';
 
 const DetailOrder = (props) => {
-    const { t, detail, currency } = props;
+    const {
+        t, detail, currency, features,
+    } = props;
     const styles = useStyles();
     let items = [];
     if (detail.length > 0 && detail[0].detail[0].items.length) {
@@ -194,7 +196,9 @@ const DetailOrder = (props) => {
                             <div className="col-xs-12">
                                 <div className="hidden-desktop">
                                     {items.length > 0
-                                    && items.map((item, key) => <ItemProduct t={t} key={key} {...item} currency={currency} />)}
+                                    && items.map((item, key) => (
+                                        <ItemProduct t={t} key={key} {...item} currency={currency} features={features} />
+                                    ))}
                                 </div>
                                 <div className="hidden-mobile">
                                     <Table

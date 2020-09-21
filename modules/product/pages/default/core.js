@@ -171,7 +171,7 @@ const ContentDetail = ({
             },
         ];
     }
-    if (item.more_info) {
+    if (item.more_info && item.more_info.length > 0) {
         expandData = [
             ...expandData,
             {
@@ -250,6 +250,7 @@ const ContentDetail = ({
             wishlist={wishlist}
             expandData={expandData}
             relateData={relateData}
+            features={features}
         />
     );
 };

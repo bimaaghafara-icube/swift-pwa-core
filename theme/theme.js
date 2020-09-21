@@ -59,7 +59,6 @@ const theme = createMuiTheme({
         MuiFormControlLabel: {
             label: {
                 ...FONT_REGULAR,
-                'text-transform': 'capitalize',
             },
             root: {
                 marginBottom: -15,

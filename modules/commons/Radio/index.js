@@ -15,7 +15,7 @@ const RadioItem = (props) => {
         <FormControlLabel
             value={value || ''}
             control={<Radio color="default" size="small" />}
-            label={label || ''}
+            label={label.replace(/_/g, ' ') || ''}
             className={customStyle}
         />
     );
@@ -56,7 +56,7 @@ function CustomRadio({
         <div className={rootStyle}>
             {!noLabel ? (
                 <Typography variant="label" type="bold" letter="uppercase">
-                    {label}
+                    {label.replace(/_/g, ' ')}
                 </Typography>
             ) : null}
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import Typography from '@common_typography';
 import Button from '@common_button';
 import TextField from '@common_textfield';
@@ -84,7 +85,9 @@ const ContactForm = (props) => {
                 ) : null
             }
             <Button className={styles.btn} type="submit">
-                {t('common:button:send')}
+                <Typography variant="span" letter="uppercase" color="white" type="bold">
+                    {t('common:button:send')}
+                </Typography>
             </Button>
         </form>
     );

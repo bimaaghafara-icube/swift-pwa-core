@@ -2,6 +2,8 @@ import Typography from '@common_typography';
 import { formatPrice } from '@helper_currency';
 import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
+import Image from '@common_image';
+import { features } from '@config';
 import useStyles from '../../styles';
 
 const ItemProductView = (props) => {
@@ -14,14 +16,13 @@ const ItemProductView = (props) => {
         <div className={styles.itemContainer}>
             <Checkbox checked={checked} disabled={disabled} onChange={handleChange} inputProps={{ 'aria-label': name }} />
             <div className={styles.productImgContainer}>
-                <img
-                    src={image_url || '/assets/img/placeholder.png'}
+                <Image
+                    src={image_url}
                     className={styles.productImg}
                     alt={name}
-                    onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = '/assets/img/placeholder.png';
-                    }}
+                    width={features.imageSize.product.width}
+                    height={features.imageSize.product.height}
+                    quality={80}
                 />
             </div>
             <div className={styles.detailItem}>

@@ -98,7 +98,9 @@ export default (props) => {
                     </div>
                     <div className={styles.shareContainer}>
                         <Button onClick={() => setOpenReview(true)} variant="outlined">
-                            {props.t('product:writeReview')}
+                            <Typography variant="span" type="bold" letter="uppercase">
+                                {props.t('product:writeReview')}
+                            </Typography>
                         </Button>
                     </div>
                 </div>
@@ -107,7 +109,7 @@ export default (props) => {
                     <div className={styles.btnLoadReview}>
                         {review && review.totalCount > review.items.length && (
                             <Button variant="text" onClick={handleLoad} disabled={loading || loadMore}>
-                                <Typography variant="span" type="regular" letter="capitalize">
+                                <Typography variant="span" type="bold" letter="capitalize">
                                     {loadMore || loading ? 'Loading ...' : props.t('product:moreReview')}
                                 </Typography>
                             </Button>

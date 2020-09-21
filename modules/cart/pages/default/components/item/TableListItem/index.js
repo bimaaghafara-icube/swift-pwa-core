@@ -14,6 +14,8 @@ import CreateOutlined from '@material-ui/icons/CreateOutlined';
 import FavoriteBorderOutlined from '@material-ui/icons/FavoriteBorderOutlined';
 import DeleteOutlineOutlined from '@material-ui/icons/DeleteOutlineOutlined';
 import Link from 'next/link';
+import Image from '@common_image';
+import { features } from '@config';
 import useStyles from './style';
 import ConfirmationDelete from '../../confirmDelete';
 
@@ -110,13 +112,13 @@ const TableListProduct = ({
                                                             as={`/${val.product.url_key}`}
                                                         >
                                                             <a>
-                                                                <img
-                                                                    src={val.product.small_image.url || '/assets/img/placeholder.png'}
+                                                                <Image
+                                                                    src={val.product.small_image.url}
                                                                     className={styles.productImg}
                                                                     alt={val.product.name}
-                                                                    onError={(e) => {
-                                                                        e.target.onerror = null; e.target.src = '/assets/img/placeholder.png';
-                                                                    }}
+                                                                    width={features.imageSize.product.width}
+                                                                    height={features.imageSize.product.height}
+                                                                    quality={80}
                                                                 />
                                                             </a>
                                                         </Link>

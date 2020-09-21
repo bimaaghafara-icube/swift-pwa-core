@@ -87,7 +87,9 @@ const ForgotPassword = (props) => {
                         />
                     )}
                     <Button disabled={disabled || load} className={styles.btn} fullWidth type="submit">
-                        {t('common:button:send')}
+                        <Typography variant="span" type="bold" letter="uppercase" coor="white">
+                            {t('common:button:send')}
+                        </Typography>
                     </Button>
                 </form>
             </div>

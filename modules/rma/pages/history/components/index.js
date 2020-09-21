@@ -198,6 +198,7 @@ const HistoryContent = (props) => {
                                                                     '/rma/customer/view/id/[id]',
                                                                     `/rma/customer/view/id/${val.increment_id}`,
                                                                 )}
+                                                                align="left"
                                                             >
                                                                 <Typography
                                                                     className="clear-margin-padding"

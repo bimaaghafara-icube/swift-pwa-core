@@ -16,6 +16,7 @@ const CustomButton = ({
     loading = false,
     customRootStyle = {},
     href = null,
+    align = 'center',
     ...other
 }) => {
     const styles = useStyles();
@@ -26,6 +27,7 @@ const CustomButton = ({
     );
     const rootClass = classNames(
         styles.loadRoot,
+        styles[`${align}Align`],
         rootClassName,
     );
     return (

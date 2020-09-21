@@ -1,7 +1,8 @@
 import Layout from '@layout';
-import customerLayout from '@core_modules/customer/components/layout';
+import CustomerLayout from '@core_modules/customer/components/layout';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
+import { features } from '@config';
 import { getOrderDetail } from '../../services/graphql';
 
 const OrderDetail = (props) => {
@@ -22,9 +23,9 @@ const OrderDetail = (props) => {
     if (loading || !data || error) {
         return (
             <Layout pageConfig={pageConfig} {...props}>
-                <customerLayout {...props}>
+                <CustomerLayout {...props}>
                     <Skeleton />
-                </customerLayout>
+                </CustomerLayout>
             </Layout>
         );
     }
@@ -42,7 +43,7 @@ const OrderDetail = (props) => {
     };
     return (
         <Layout pageConfig={pageConfig} {...props}>
-            <Content {...props} detail={detail} currency={currency} />
+            <Content {...props} detail={detail} currency={currency} features={features} />
         </Layout>
     );
 };

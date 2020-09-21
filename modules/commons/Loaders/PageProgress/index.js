@@ -42,7 +42,12 @@ const PageProgressLoader = () => {
     };
 
     const handleRouteChangeComplete = () => {
-        // console.log('Router change complete');
+        const sessionCurrentUrl = sessionStorage.getItem('currentUrl');
+        const prevUrl = sessionCurrentUrl && sessionCurrentUrl !== Router.asPath
+            ? sessionCurrentUrl
+            : '/';
+        sessionStorage.setItem('prevUrl', prevUrl);
+        sessionStorage.setItem('currentUrl', Router.asPath);
         clearInterval(timer);
         setProgress(100);
         setTimeout(() => {
@@ -60,6 +65,8 @@ const PageProgressLoader = () => {
     };
 
     useEffect(() => {
+        sessionStorage.setItem('prevUrl', '/');
+        sessionStorage.setItem('currentUrl', Router.asPath);
         Router.events.on('routeChangeStart', handleRouteChangeStart);
         Router.events.on('routeChangeComplete', handleRouteChangeComplete);
         Router.events.on('RouteChangeError', handleRouteChangeError);

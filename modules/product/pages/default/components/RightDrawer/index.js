@@ -5,23 +5,28 @@
 import Drawer from '@material-ui/core/Drawer';
 import Typography from '@common_typography';
 import Link from 'next/link';
+import classNames from 'classnames';
+import Image from '@common_image';
+import Tooltip from '@material-ui/core/Tooltip';
 import useStyles from './style';
 
 const ItemLook = (props) => {
-    const { url_key, small_image: { url, label } } = props;
-    const img = url || '/assets/img/noun_Image.svg';
+    const { url_key, small_image: { url, label }, features } = props;
     const styles = useStyles();
     return (
-        <div className="col-xs-12 col-lg-3">
+        <div className={classNames('col-xs-12 col-sm-12 col-md-6 col-lg-6', styles.itemLookContainer)}>
             <Link href="[...slug]" as={`${url_key}`}>
-                <a>
-                    <img
-                        // eslint-disable-next-line no-nested-ternary
-                        src={url || '/assets/img/placeholder.png'}
-                        className={styles.itemLookContainer}
-                        onError={(e) => { e.target.onerror = null; e.target.src = '/assets/img/placeholder.png'; }}
-                        alt={label && url ? label : 'Product'}
-                    />
+                <a className={styles.imageLookContainer}>
+                    <Tooltip title={label}>
+                        <Image
+                            src={url}
+                            className={styles.img}
+                            alt={label && url ? label : 'Product'}
+                            width={features.imageSize.product.width}
+                            height={features.imageSize.product.height}
+                            quality={80}
+                        />
+                    </Tooltip>
                 </a>
             </Link>
         </div>
@@ -29,7 +34,9 @@ const ItemLook = (props) => {
 };
 
 const RightDrawer = (props) => {
-    const { open = false, setOpen = () => {}, t } = props;
+    const {
+        open = false, setOpen = () => {}, t, features,
+    } = props;
     const data = props.data.upsell_products ? props.data.upsell_products : [];
     const styles = useStyles();
     const contetStyle = data.length > 3 ? styles.content : styles.contentMin;
@@ -72,7 +79,7 @@ const RightDrawer = (props) => {
                         <div className="row" style={{ height: 'fit-content' }}>
                             {
                                 data.length > 0
-                                && data.map((item, index) => (<ItemLook key={index} {...item} />))
+                                && data.map((item, index) => (<ItemLook key={index} {...item} features={features} />))
                             }
                         </div>
                     </div>

@@ -92,7 +92,9 @@ const Summary = (props) => {
             {
                 !hideButton ? (
                     <Button loading={loading} disabled={disabled} className={styles.btnCheckout} onClick={handleActionSummary}>
-                        {t('common:button:checkout')}
+                        <Typography variant="span" color="white" type="bold" letter="uppercase">
+                            {t('common:button:checkout')}
+                        </Typography>
                     </Button>
                 ) : null
             }

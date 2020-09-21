@@ -1,64 +1,66 @@
 {
   "dashboard": {
-    "pageTitle": "Customer Dashboard"
+    "pageTitle": "Customer dashboard"
   },
   "newPassword": {
     "title": "Change new password",
-    "success": "Password has been updated successfully",
+    "success": "Password has been update successfully",
     "failed": "Failed on updating password"
   },
   "button": {
     "logout": "Sign out"
   },
   "setting": {
-    "title": "Setting",
-    "newslater": "NEWSLETTER SUBSCRIPTIONS",
+    "title": "Settings",
+    "newslater": "Newsletter subscriptions",
     "language": "Language"
   },
   "profile" : {
-      "title" : "my account",
+      "title" : "My account",
       "successUpdate": "Profile has been updated",
       "successChangePass": "Password has been updated"
   },
   "address" : {
-    "pageTitle" : "Address Book",
+    "pageTitle" : "Address book",
     "addTitle" : "Add new address",
     "editTitle" : "Edit address",
-    "defaultBilling": "Default Billing Address",
-    "defaultShiping": "Default Shiping Address",
-    "useBilling" : "use as my default billing address",
-    "useShipping" : "use as my default shipping address",
-    "firstname" : "First Name",
-    "lastname" : "Last Name",
-    "street" : "Street Addres",
+    "defaultBilling": "Default billing address",
+    "defaultShiping": "Default shiping address",
+    "useBilling" : "Use as my default billing address",
+    "useShipping" : "Use as my default shipping address",
+    "firstname" : "First name",
+    "lastname" : "Last name",
+    "street" : "Street addres",
     "city" : "City",
     "country" : "Country",
     "state" : "State",
-    "postcode" : "Zip/Postal Code",
-    "phone" : "Phone",
+    "postcode" : "Zip/Postal code",
+    "phone" : "Phone number",
     "emptyMessage" : "You haven't added an address"
   },
   "menu": {
-    "aboutUs": "About Us",
-    "contactUs": "Contact Us",
-    "myPoint": "My Point",
-    "myOrder": "My Order",
-    "myAccount": "My Account",
-    "address": "Address Book",
+    "aboutUs": "About us",
+    "contactUs": "Contact us",
+    "myPoint": "My point",
+    "myOrder": "My order",
+    "myAccount": "My account",
+    "address": "Address book",
+    "findAStore": "Find a Store",
     "setting": "Settings",
-    "storeCredit": "Store Credit",
-    "readMore": "Read More",
-    "rewardPoint": "Reward Points",
+    "storeCredit": "Store credit",
+    "readMore": "Read more",
+    "rewardPoint": "Reward points",
     "blog": "Blog",
-    "return": "My Returns",
-    "confirmPayment": "Confirm Payment",
-    "accountInformation": "Account Information",
+    "return": "My returns",
+    "confirmPayment": "Confirm payment",
+    "accountInformation": "Account information",
     "notification": "Notifications",
-    "viewall" : "View All"
+    "viewall" : "View all",
+    "trackingOrder": "Tracking Order"
   },
   "giftCard": {
     "notFound": "You don't have gift card item",
-    "inputSearch": "Enter Gift Card code",
+    "inputSearch": "Enter gift card code",
     "buttonSearch": "Check status & balance",
     "required": "Code is required"
   },
@@ -84,14 +86,14 @@
     "addWithoutLogin": "Please login to add this item to your wishlist"
   },
   "order": {
-    "recentOrder" : "Recent Order",
+    "recentOrder" : "Recent order",
     "order" : "Order",
     "date": "Date",
-    "shippedTo": "Shipped To",
-    "orderTotal": "Order Total",
+    "shippedTo": "Shipped to",
+    "orderTotal": "Order total",
     "status": "Status",
     "action": "Action"
   },
-  "notHaveNotification" : "you don't have notification yet",
+  "notHaveNotification" : "You don't have notification yet",
   "notHaveOrder" : "Empty order history"
 }

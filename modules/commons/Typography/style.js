@@ -9,8 +9,8 @@ import {
     FONT_24,
 } from '@theme_typography';
 import {
-    PRIMARY, RED, GREEN, ORANGE, WHITE,
-} from '@theme_color';
+    PRIMARY, RED, GREEN, ORANGE, WHITE, GRAY_SECONDARY,
+} from '@theme/colors';
 
 const useStyles = makeStyles(() => ({
     default: {
@@ -28,6 +28,9 @@ const useStyles = makeStyles(() => ({
     orange: {
         color: ORANGE,
     },
+    gray: {
+        color: GRAY_SECONDARY,
+    },
     root: {
         margin: 5,
         // color: PRIMARY,
@@ -38,22 +41,20 @@ const useStyles = makeStyles(() => ({
     },
     h1: {
         fontWeight: 'bold',
-        'text-transform': 'uppercase',
         ...FONT_24,
     },
     span: {
         ...FONT_12,
         fontWeight: '400',
         margin: 5,
+    },
+    lettercapitalize: {
         'text-transform': 'capitalize',
     },
-    capitalize: {
-        'text-transform': 'capitalize',
-    },
-    uppercase: {
+    letteruppercase: {
         'text-transform': 'uppercase',
     },
-    lowercase: {
+    letterlowercase: {
         'text-transform': 'lowercase',
     },
     title: {

@@ -19,7 +19,7 @@ const Content = ({
                     && data.getBlogByFilter.items.map((blog, index) => <ContentItem key={index} short {...blog} t={t} />)}
             {data && data.getBlogByFilter.total_count > data.getBlogByFilter.items.length && data.getBlogByFilter.total_pages > page && (
                 <Button variant="text" onClick={handleLoadMore} disabled={loading || loadMore} fullWidth>
-                    <Typography variant="span" type="regular" letter="capitalize">
+                    <Typography variant="span" type="bold" letter="uppercase" color="gray">
                         {loadMore || loading ? 'Loading ...' : t('blog:loadMore')}
                     </Typography>
                 </Button>

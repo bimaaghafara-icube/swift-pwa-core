@@ -88,76 +88,79 @@ const FilterDialog = ({
                         });
                     }
 
-                    if (itemFilter.field === 'price') {
-                        const price = priceRange;
-                        price[1] = price[1] || parseInt(itemFilter.value[itemFilter.value.length - 1].value);
-                        return (
-                            <div className={styles[idx < data.length - 1 ? 'fieldContainer' : 'fieldContainerLast']} key={idx}>
-                                <RangeSlider
-                                    label={itemFilter.label}
-                                    maxValue={parseInt(itemFilter.value[itemFilter.value.length - 1].value)}
-                                    value={price}
-                                    onChange={
-                                        itemProps.priceRangeChange
-                                        || setPriceRange
-                                    }
-                                />
-                            </div>
-                        );
-                    } if (itemFilter.field === 'color') {
-                        return (
-                            <div className={styles[idx < data.length - 1 ? 'fieldContainer' : 'fieldContainerLast']} key={idx}>
-                                <CheckBox
-                                    name={itemFilter.field}
-                                    label={itemFilter.label || t('catalog:title:color')}
-                                    data={ItemValueByLabel}
-                                    value={selectedFilter[itemFilter.field] ? selectedFilter[itemFilter.field].split(',') : []}
-                                    flex={itemProps.selectSizeFlex || 'row'}
-                                    CustomItem={itemProps.selectColorItem || CheckBoxColor}
-                                    onChange={(val) => setCheckedFilter(itemFilter.field, val)}
-                                />
-                            </div>
-                        );
-                    } if (itemFilter.field === 'size') {
-                        return (
-                            <div className={styles[idx < data.length - 1 ? 'fieldContainer' : 'fieldContainerLast']} key={idx}>
-                                <CheckBox
-                                    name={itemFilter.field}
-                                    label={itemFilter.label || t('catalog:title:size')}
-                                    data={ItemValueByLabel}
-                                    value={selectedFilter[itemFilter.field] ? selectedFilter[itemFilter.field].split(',') : []}
-                                    flex={itemProps.selectSizeFlex || 'row'}
-                                    CustomItem={itemProps.selectSizeItem || CheckBoxSize}
-                                    onChange={(val) => setCheckedFilter(itemFilter.field, val)}
-                                />
-                            </div>
-                        );
-                    } if (itemFilter.field === 'cat' || itemFilter.field === 'category_id') {
-                        return <span key={idx} />;
-                    }
-                    return (
-                        <div className={styles[idx < data.length - 1 ? 'fieldContainer' : 'fieldContainerLast']} key={idx}>
-                            {elastic ? (
-                                <CheckBox
-                                    field={itemFilter.field}
-                                    label={itemFilter.label || ''}
-                                    data={ItemValueByLabel}
-                                    value={selectedFilter[itemFilter.field] ? selectedFilter[itemFilter.field].split(',') : []}
-                                    flex="column"
-                                    onChange={(val) => setCheckedFilter(itemFilter.field, val)}
-                                />
-                            )
-                                : (
-                                    <RadioGroup
-                                        name={itemFilter.field}
-                                        label={itemFilter.label || ''}
-                                        valueData={itemFilter.value || []}
-                                        value={selectedFilter[itemFilter.field]}
-                                        onChange={(value) => setSelectedFilter(itemFilter.field, value)}
+                    if (itemFilter.field !== 'attribute_set_id') {
+                        if (itemFilter.field === 'price') {
+                            const price = priceRange;
+                            price[1] = price[1] || parseInt(itemFilter.value[itemFilter.value.length - 1].value);
+                            return (
+                                <div className={styles[idx < data.length - 1 ? 'fieldContainer' : 'fieldContainerLast']} key={idx}>
+                                    <RangeSlider
+                                        label={itemFilter.label}
+                                        maxValue={parseInt(itemFilter.value[itemFilter.value.length - 1].value)}
+                                        value={price}
+                                        onChange={
+                                            itemProps.priceRangeChange
+                                            || setPriceRange
+                                        }
                                     />
-                                )}
-                        </div>
-                    );
+                                </div>
+                            );
+                        } if (itemFilter.field === 'color') {
+                            return (
+                                <div className={styles[idx < data.length - 1 ? 'fieldContainer' : 'fieldContainerLast']} key={idx}>
+                                    <CheckBox
+                                        name={itemFilter.field}
+                                        label={itemFilter.label || t('catalog:title:color')}
+                                        data={ItemValueByLabel}
+                                        value={selectedFilter[itemFilter.field] ? selectedFilter[itemFilter.field].split(',') : []}
+                                        flex={itemProps.selectSizeFlex || 'row'}
+                                        CustomItem={itemProps.selectColorItem || CheckBoxColor}
+                                        onChange={(val) => setCheckedFilter(itemFilter.field, val)}
+                                    />
+                                </div>
+                            );
+                        } if (itemFilter.field === 'size') {
+                            return (
+                                <div className={styles[idx < data.length - 1 ? 'fieldContainer' : 'fieldContainerLast']} key={idx}>
+                                    <CheckBox
+                                        name={itemFilter.field}
+                                        label={itemFilter.label || t('catalog:title:size')}
+                                        data={ItemValueByLabel}
+                                        value={selectedFilter[itemFilter.field] ? selectedFilter[itemFilter.field].split(',') : []}
+                                        flex={itemProps.selectSizeFlex || 'row'}
+                                        CustomItem={itemProps.selectSizeItem || CheckBoxSize}
+                                        onChange={(val) => setCheckedFilter(itemFilter.field, val)}
+                                    />
+                                </div>
+                            );
+                        } if (itemFilter.field === 'cat' || itemFilter.field === 'category_id') {
+                            return <span key={idx} />;
+                        }
+                        return (
+                            <div className={styles[idx < data.length - 1 ? 'fieldContainer' : 'fieldContainerLast']} key={idx}>
+                                {elastic ? (
+                                    <CheckBox
+                                        field={itemFilter.field}
+                                        label={itemFilter.label || ''}
+                                        data={ItemValueByLabel}
+                                        value={selectedFilter[itemFilter.field] ? selectedFilter[itemFilter.field].split(',') : []}
+                                        flex="column"
+                                        onChange={(val) => setCheckedFilter(itemFilter.field, val)}
+                                    />
+                                )
+                                    : (
+                                        <RadioGroup
+                                            name={itemFilter.field}
+                                            label={itemFilter.label || ''}
+                                            valueData={itemFilter.value || []}
+                                            value={selectedFilter[itemFilter.field]}
+                                            onChange={(value) => setSelectedFilter(itemFilter.field, value)}
+                                        />
+                                    )}
+                            </div>
+                        );
+                    }
+                    return null;
                 })}
             </div>
 

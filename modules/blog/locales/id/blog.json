@@ -1,8 +1,11 @@
 {
-    "title": "Kontet",
+    "title": "Blog",
     "error": {
-        "notFound" : "Kontent Data tidak di temukan",
+        "notFound" : "Kontent data tidak di temukan",
         "fetch": "Kesalahan saat mengambil data atau koneksi, coba lagi nanti"
     },
-    "loadMore": "Muat lainya"
+    "loadMore": "Muat lainnya",
+    "category": "Kategori",
+    "readMore": "Baca selengkapnya",
+    "share": "Bagikan"
 }

@@ -1,5 +1,5 @@
 {
-    "pageTitle": "Shopping Bag",
+    "pageTitle": "Shopping bag",
     "counter": {
         "text": "items in your bag"
     },
@@ -10,14 +10,14 @@
         "text": "Your cart is empty"
     },
     "button": {
-        "saveEdit": "Save and Continue",
+        "saveEdit": "Save and continue",
         "checkout": "Checkout"
     },
     "confirmDelete": "Are you sure want to delete this item?",
-    "deleteSuccess": "delete cart item success",
-    "deleteFailed": "delete cart item failed",
-    "updateSuccess": "update cart item success",
-    "updateFailed": "update cart item failed",
+    "deleteSuccess": "Delete cart item success",
+    "deleteFailed": "Delete cart item failed",
+    "updateSuccess": "Update cart item success",
+    "updateFailed": "Update cart item failed",
     "addWishlistSuccess": "Item has been added into your wishlist",
     "addWishlistFailed": "Failed on adding item into wishlist",
     "addWishlistWithoutLogin": "Please login to add this item to your wishlist"

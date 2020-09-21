@@ -17,9 +17,13 @@ const Header = ({
     pageConfig,
 }) => {
     const styles = useStyles();
-    const route = useRouter();
+    const router = useRouter();
     const back = () => {
-        route.back();
+        if (sessionStorage.getItem('prevUrl') === '/') {
+            router.push('/');
+        } else {
+            router.back();
+        }
     };
 
     if (pageConfig && !pageConfig.header) return null;

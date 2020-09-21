@@ -1,5 +1,5 @@
 {
-    "pageTitle": "Keranjang Belanja",
+    "pageTitle": "Keranjang belanja",
     "counter": {
         "text": "item di keranjang"
     },
@@ -13,12 +13,12 @@
         "saveEdit": "Simpan",
         "checkout": "Checkout"
     },
-    "confirmDelete": "Apakah Anda yakin menghapus item ini?",
+    "confirmDelete": "Apakah anda yakin menghapus item ini?",
     "deleteSuccess": "Hapus item cart berhasil",
     "deleteFailed": "Hapus item cart gagal",
-    "updateSuccess": "update item cart berhasil",
-    "updateFailed": "update item cart gagal",
-    "addWishlistSuccess": "Prodduk berhasil ditambahkan ke wishlist",
-    "addWishlistFailed": "Prodduk gagal ditambahkan ke wishlist",
+    "updateSuccess": "Update item cart berhasil",
+    "updateFailed": "Update item cart gagal",
+    "addWishlistSuccess": "Produk berhasil ditambahkan ke wishlist",
+    "addWishlistFailed": "Produk gagal ditambahkan ke wishlist",
     "addWishlistWithoutLogin": "Silahkan masuk untuk menambahkan produk ini ke wishlist"
 }

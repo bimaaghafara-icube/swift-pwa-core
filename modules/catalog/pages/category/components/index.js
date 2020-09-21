@@ -99,7 +99,7 @@ const CategoryPage = ({
             }
             {
                 categoryList
-                && (categoryList.display_mode === 'PRODUCTS_AND_PAGE' || categoryList.display_mode === 'PRODUCTS')
+                && (!categoryList.display_mode || categoryList.display_mode === 'PRODUCTS_AND_PAGE' || categoryList.display_mode === 'PRODUCTS')
                 && (
                     <Product
                         defaultSort={{ key: 'position', value: 'ASC' }}

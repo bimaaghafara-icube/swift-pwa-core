@@ -17,7 +17,7 @@ import classNames from 'classnames';
 import useStyles from './style';
 
 const CheckoutDrawer = ({
-    editMode, t, summary, handleActionSummary, loading, disabled, showItems = false, items = [],
+    editMode, t, summary, handleActionSummary, loading, disabled, showItems = false, items = [], label = '',
 }) => {
     const styles = useStyles();
     const [expanded, setExpanded] = useState(null);
@@ -132,7 +132,9 @@ const CheckoutDrawer = ({
                         className={styles.goToCheckout}
                         onClick={handleActionSummary}
                     >
-                        {t('common:button:checkout')}
+                        <Typography variant="span" color="white" type="bold" letter="uppercase">
+                            {label || t('common:button:checkout')}
+                        </Typography>
                     </Button>
                 </div>
             </div>

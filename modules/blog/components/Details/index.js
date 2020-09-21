@@ -66,7 +66,7 @@ export default (props) => {
                             <Link href={link.detail.href} as={link.detail.as + url_key}>
                                 <a>
                                     <Button rootClassName={styles.btnRead}>
-                                        <Typography color="white" letter="capitalize" varinat="span" type="semiBold">
+                                        <Typography color="white" letter="uppercase" varinat="span" type="bold">
                                             {t('blog:readMore')}
                                         </Typography>
                                     </Button>

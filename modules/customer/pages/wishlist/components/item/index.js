@@ -5,6 +5,8 @@ import ConfirmationDelete from '@common_confirmdialog';
 import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
 import Link from 'next/link';
+import Image from '@common_image';
+import { features } from '@config';
 import useStyles from './style';
 
 export default ({
@@ -33,14 +35,13 @@ export default ({
             />
             <div className={styles.card}>
                 <div className={styles.imgItem}>
-                    <img
+                    <Image
                         src={imageSrc}
-                        className={styles.imgProduct}
+                        className={styles.productImg}
                         alt={name}
-                        onError={(e) => {
-                            e.target.onerror = null;
-                            e.target.src = '/assets/img/placeholder.png';
-                        }}
+                        width={features.imageSize.product.width}
+                        height={features.imageSize.product.height}
+                        quality={80}
                     />
                 </div>
                 <div className={styles.content}>

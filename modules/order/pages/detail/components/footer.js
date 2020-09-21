@@ -18,7 +18,7 @@ export default ({ t, detail }) => {
                                 `/rma/customer/new/order_id/${detail[0].order_number}`,
                             )}
                         >
-                            <Typography variant="span">{t('order:return')}</Typography>
+                            <Typography variant="span" type="bold" letter="uppercase">{t('order:return')}</Typography>
                         </Button>
                     )
             }

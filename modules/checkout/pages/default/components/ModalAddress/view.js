@@ -6,6 +6,7 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Add from '@material-ui/icons/Add';
 import AddressFormDialog from '@core_modules/customer/plugins/AddressFormDialog';
+import Typography from '@common_typography';
 import ItemAddress from './Item';
 import useStyles from './style';
 
@@ -90,7 +91,9 @@ const AddressView = (props) => {
                             </RadioGroup>
                             <div className={[styles.address_action].join(' ')}>
                                 <Button variant="outlined" size="small" onClick={() => handleOpenNew('new')}>
-                                    <span style={{ marginRight: '15px' }}>{t('customer:address:addTitle')}</span>
+                                    <Typography variant="span" letter="uppercase" type="bold">
+                                        {t('customer:address:addTitle')}
+                                    </Typography>
                                     <Add />
                                 </Button>
                             </div>

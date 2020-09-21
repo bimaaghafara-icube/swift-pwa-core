@@ -50,6 +50,7 @@ const Content = (props) => {
                     filterValue={query}
                     setFiltervalue={setFiltervalue}
                     isSearch={!!config.search}
+                    t={t}
                     {...other}
                 />
             </div>
@@ -96,7 +97,9 @@ const Content = (props) => {
                                     type="button"
                                     onClick={handleLoadMore}
                                 >
-                                    {loadmore ? 'Loading' : 'Load More Items'}
+                                    <Typography variant="span" type="bold" letter="uppercase" color="gray">
+                                        {loadmore ? 'Loading' : t('common:button:loadMore')}
+                                    </Typography>
                                 </button>
                             )}
                     </div>

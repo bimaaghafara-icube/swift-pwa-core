@@ -160,8 +160,9 @@ const RegisterView = ({
                         fullWidth={!desktop}
                         className={styles.btnSigin}
                         type="submit"
+                        align={desktop ? 'left' : 'center'}
                     >
-                        <Typography variant="title" type="regular" letter="capitalize" color="white">
+                        <Typography variant="span" type="bold" letter="uppercase" color="white">
                             {t('register:button')}
                         </Typography>
                     </Button>

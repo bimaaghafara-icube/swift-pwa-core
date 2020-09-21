@@ -7,13 +7,13 @@ export default ({ t, data: { detail } }) => {
     return (
         <div className={styles.footer}>
             <Button fullWidth variant="outlined">
-                <Typography variant="span">{t('order:reorder')}</Typography>
+                <Typography variant="span" letter="uppercase" type="bold">{t('order:reorder')}</Typography>
             </Button>
             {
                 (detail[0].status_label === 'complete' || detail[0].status_label.toLowerCase() === 'complete')
                     && (
                         <Button fullWidth variant="outlined">
-                            <Typography variant="span">{t('order:return')}</Typography>
+                            <Typography variant="span" letter="uppercase" type="bold">{t('order:return')}</Typography>
                         </Button>
                     )
             }

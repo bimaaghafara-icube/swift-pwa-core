@@ -233,7 +233,7 @@ const ProductPage = (props) => {
                             align="center"
                             className={styles.carouselTitle}
                         >
-                            Related Product
+                            {t('common:title:relatedProduct')}
                         </Typography>
                         <Caraousel
                             data={relateData}
@@ -252,10 +252,11 @@ const ProductPage = (props) => {
                                 disabled={data && data.stock_status === 'OUT_STOCK'}
                             >
                                 <Typography
+                                    variant="span"
                                     align="center"
-                                    type="regular"
-                                    letter="capitalize"
-                                    className={styles.textBtnAddToCard}
+                                    type="bold"
+                                    letter="uppercase"
+                                    color="white"
                                 >
                                     {t('product:addToCart')}
                                 </Typography>

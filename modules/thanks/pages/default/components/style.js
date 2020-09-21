@@ -16,6 +16,9 @@ export default makeStyles((theme) => ({
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundImage: 'url("/assets/img/thanks/background.jpg")',
+        [theme.breakpoints.up('md')]: {
+            alignItems: 'flex-start',
+        },
     },
     iconContainer: {
         width: '65%',
@@ -32,20 +35,37 @@ export default makeStyles((theme) => ({
         overflow: 'hidden',
     },
     title: {
-        fontSize: '18px',
-        fontWeight: 'bold',
-        textTransform: 'uppercase',
+        marginBottom: 30,
+        marginLeft: 0,
+        fontSize: 30,
+        [theme.breakpoints.up('sm')]: {
+            marginTop: 30,
+        },
+        [theme.breakpoints.down('xs')]: {
+            fontSize: 18,
+            marginBottom: 20,
+        },
     },
 
     info: {
         marginTop: 20,
+        width: '100%',
         ...FlexColumn,
+        alignItems: 'flex-start',
+        [theme.breakpoints.down('sm')]: {
+            alignItems: 'center',
+            '&> *': {
+                textAlign: 'center',
+            },
+        },
     },
 
     footer: {
         width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'space-arround',
+        justifyContent: 'center',
         position: 'fixed',
         bottom: 0,
         left: 0,
@@ -54,7 +74,6 @@ export default makeStyles((theme) => ({
     },
     btnConfirm: {
         height: 30,
-        ...CenterAbsolute,
         fontSize: 10,
     },
     btnConfirmFirst: {
@@ -87,6 +106,7 @@ export default makeStyles((theme) => ({
     },
     dateOver: {
         marginTop: 15,
+        marginLeft: 0,
     },
 
     footerDesktop: {
