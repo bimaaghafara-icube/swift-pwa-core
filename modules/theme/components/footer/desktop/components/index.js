@@ -1,10 +1,10 @@
 import Loading from '@common_loaders/Backdrop';
 import Alert from '@material-ui/lab/Alert';
-import { MAX_WIDTH } from '@theme_vars';
+import { MAX_WIDTH } from '@theme/vars';
 
 const FooterView = (props) => {
     const {
-        data, t, loading, error, storeConfig,
+        data, t, loading, error,
     } = props;
     if (error) {
         return (
@@ -18,9 +18,6 @@ const FooterView = (props) => {
         <div className="cms-container wrapper-footer">
             {/* eslint-disable-next-line react/no-danger */}
             <div dangerouslySetInnerHTML={{ __html: data.cmsBlocks.items[0].content }} />
-            <div className="copyright">
-                <span>{storeConfig.copyright}</span>
-            </div>
             <style jsx global>
                 {`
                     .wrapper-footer {
@@ -51,15 +48,6 @@ const FooterView = (props) => {
                     }
                     .container-footer .content-assets ul li a {
                         color: #575757;
-                    }
-                    .copyright {
-                        text-align: center;
-                        background-color: #6E716E;
-                        padding: 10px;
-                    }
-                    .copyright span {
-                        color: #FFFFFF;
-                        letter-spacing: 0.03em;
                     }
                 `}
             </style>
