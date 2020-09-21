@@ -49,13 +49,16 @@ const useStyles = makeStyles(() => ({
         margin: 5,
     },
     lettercapitalize: {
-        'text-transform': 'capitalize',
+        textTransform: 'capitalize',
     },
     letteruppercase: {
-        'text-transform': 'uppercase',
+        textTransform: 'uppercase',
     },
     letterlowercase: {
-        'text-transform': 'lowercase',
+        textTransform: 'lowercase',
+    },
+    letternone: {
+        textTransform: 'none',
     },
     title: {
         fontSize: 16,

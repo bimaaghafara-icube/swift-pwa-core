@@ -3,8 +3,9 @@ import * as Yup from 'yup';
 import _ from 'lodash';
 import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
-import { removeCheckoutData, getCheckoutData } from '@helper_cookies';
-import { formatPrice } from '@helper_currency';
+import { removeCheckoutData, getCheckoutData } from '@helpers/cookies';
+import { getCartId } from '@helpers/cartId';
+import { formatPrice } from '@helpers/currency';
 import Layout from '@layout';
 import Head from 'next/head';
 import { modules } from '@config';
@@ -13,13 +14,16 @@ import gqlService from '../../services/graphql';
 const Checkout = (props) => {
     const {
         t,
-        cartId,
         storeConfig,
         isLogin,
         config,
         pageConfig,
         Content,
     } = props;
+    let { cartId } = props;
+    if (typeof window !== 'undefined') {
+        cartId = getCartId();
+    }
     const { snap_is_production, snap_client_key } = storeConfig;
     const configPage = {
         title: t('checkout:pageTitle'),

@@ -25,7 +25,7 @@ const EmailView = (props) => {
         if (config && config.loginRedirect && config.loginRedirect.link) {
             return config.loginRedirect.link;
         }
-        return '/customer/account/login';
+        return '/customer/account/login?redirect=/checkout';
     };
 
     return (
@@ -77,15 +77,20 @@ const EmailView = (props) => {
             </div>
             {!isExternalLoginLink
                 ? (
-                    <Button variant="text" href={generateLoginRedirect()} className="clear-margin-padding">
-                        <Typography variant="p" type="regular" decoration="underline" letter="capitalize">
+                    <Button align="left" variant="text" href={generateLoginRedirect()} className="clear-margin-padding">
+                        <Typography variant="span" type="regular" decoration="underline" size="14">
                             {t('checkout:haveAccount')}
                         </Typography>
                     </Button>
                 )
                 : (
-                    <Button variant="text" className="clear-margin-padding" onClick={() => { window.location.href = generateLoginRedirect(); }}>
-                        <Typography variant="p" type="regular" decoration="underline" letter="capitalize">
+                    <Button
+                        align="left"
+                        variant="text"
+                        className="clear-margin-padding"
+                        onClick={() => { window.location.href = generateLoginRedirect(); }}
+                    >
+                        <Typography variant="span" type="regular" decoration="underline" size="14">
                             {t('checkout:haveAccount')}
                         </Typography>
                     </Button>
