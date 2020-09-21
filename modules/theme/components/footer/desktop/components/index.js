@@ -1,6 +1,6 @@
 import Loading from '@common_loaders/Backdrop';
 import Alert from '@material-ui/lab/Alert';
-import { MAX_WIDTH } from '@theme/vars';
+import { MAX_WIDTH } from '@theme_vars';
 
 const FooterView = (props) => {
     const {
