@@ -1,4 +1,5 @@
 import React from 'react';
+import Alert from '@material-ui/lab/Alert';
 import AddressFormDialog from '@core_modules/customer/plugins/AddressFormDialog';
 import Button from '@common_button';
 import Typography from '@common_typography';
@@ -13,6 +14,7 @@ const AddressView = (props) => {
     const {
         data, checkout, setAddress, setCheckout, t, dialogProps, loading, address, content, manageCustomer, ...other
     } = props;
+    const { dest_latitude, dest_longitude } = (data && data.cart && data.cart.dest_location) || {};
 
     const [openAddress, setOpenAddress] = React.useState(false);
 
@@ -98,6 +100,9 @@ const AddressView = (props) => {
                     )}
                 </div>
             </div>
+            {!(loading.addresses || loading.all) && (!dest_latitude || !dest_longitude) && (
+                <Alert style={{ fontSize: 10 }} severity="warning">{t('customer:address:emptyPinPointMessage')}</Alert>
+            )}
         </div>
     );
 };

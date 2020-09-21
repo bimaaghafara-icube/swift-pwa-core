@@ -3,6 +3,10 @@ import { gql } from '@apollo/client';
 const cartSubSelection = `
     id
     email
+    dest_location {
+        dest_latitude
+        dest_longitude
+    }
     billing_address {
         city
         company
