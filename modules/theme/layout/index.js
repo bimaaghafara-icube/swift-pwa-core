@@ -12,6 +12,7 @@ import { breakPointsUp } from '@helper_theme';
 import { BREAKPOINTS } from '@theme_vars';
 
 import PopupInstallAppMobile from '../components/custom-install-popup/mobile';
+import Copyright from '../components/footer/desktop/components/copyright';
 
 const BottomNavigation = dynamic(() => import('@common_bottomnavigation'), { ssr: false });
 const HeaderMobile = dynamic(() => import('@common_headermobile'));
@@ -191,6 +192,9 @@ const Layout = (props) => {
                             />
                         ) : null
                     }
+                    <Copyright
+                        storeConfig={storeConfig}
+                    />
                 </div>
                 {
                     desktop
