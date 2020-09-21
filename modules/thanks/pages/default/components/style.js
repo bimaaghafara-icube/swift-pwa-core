@@ -16,9 +16,6 @@ export default makeStyles((theme) => ({
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundImage: 'url("/assets/img/thanks/background.jpg")',
-        [theme.breakpoints.up('md')]: {
-            alignItems: 'flex-start',
-        },
     },
     iconContainer: {
         width: '65%',
@@ -40,6 +37,7 @@ export default makeStyles((theme) => ({
         fontSize: 30,
         [theme.breakpoints.up('sm')]: {
             marginTop: 30,
+            marginLeft: '0px !important',
         },
         [theme.breakpoints.down('xs')]: {
             fontSize: 18,
@@ -55,7 +53,7 @@ export default makeStyles((theme) => ({
         [theme.breakpoints.down('sm')]: {
             alignItems: 'center',
             '&> *': {
-                textAlign: 'center',
+                textAlign: 'center !important',
             },
         },
     },
@@ -75,6 +73,9 @@ export default makeStyles((theme) => ({
     btnConfirm: {
         height: 30,
         fontSize: 10,
+        [theme.breakpoints.up('sm')]: {
+            paddingLeft: 0,
+        },
     },
     btnConfirmFirst: {
         marginBottom: 15,
@@ -106,7 +107,7 @@ export default makeStyles((theme) => ({
     },
     dateOver: {
         marginTop: 15,
-        marginLeft: 0,
+        marginLeft: '0px !important',
     },
 
     footerDesktop: {

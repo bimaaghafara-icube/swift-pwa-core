@@ -14,12 +14,14 @@ const View = (props) => {
     const styles = useStyles();
     return (
         <div className={styles.container}>
-            <Typography variant="h1" type="bold" letter="uppercase" className={styles.title}>
-                {t('thanks:thanks')}
-            </Typography>
-            <Typography variant="span" className="clear-margin-padding" letter="none">
-                {t('thanks:placeInfo')}
-            </Typography>
+            <div className={styles.info}>
+                <Typography variant="h1" type="bold" letter="uppercase" className={styles.title}>
+                    {t('thanks:thanks')}
+                </Typography>
+                <Typography variant="span" className="clear-margin-padding" letter="none">
+                    {t('thanks:placeInfo')}
+                </Typography>
+            </div>
             <div className={styles.info}>
                 <Typography variant="span" className="clear-margin-padding" letter="none">
                     {`${t('thanks:yourOrderId')} : `}
