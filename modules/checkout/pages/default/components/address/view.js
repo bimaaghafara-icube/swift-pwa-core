@@ -20,6 +20,13 @@ const AddressView = (props) => {
 
     return (
         <div className={styles.block}>
+            <style jsx>
+                {`
+                    .alert-empty-pin-point :global(.MuiAlert-icon) {
+                        font-size: 16px;
+                    }
+                `}
+            </style>
             <ModalAddress
                 open={openAddress}
                 setOpen={(status) => setOpenAddress(status)}
@@ -100,10 +107,12 @@ const AddressView = (props) => {
                     )}
                 </div>
             </div>
-            {address && !(loading.addresses || loading.all)
-                && ((!dest_latitude || !dest_longitude) || (dest_latitude === '0' && dest_longitude === '0')) && (
-                <Alert style={{ fontSize: 10 }} severity="warning">{t('customer:address:emptyPinPointMessage')}</Alert>
-            )}
+            <div className="alert-empty-pin-point">
+                {address && !(loading.addresses || loading.all)
+                    && ((!dest_latitude || !dest_longitude) || (dest_latitude === '0' && dest_longitude === '0')) && (
+                    <Alert style={{ fontSize: 10 }} severity="warning">{t('customer:address:emptyPinPointMessage')}</Alert>
+                )}
+            </div>
         </div>
     );
 };
