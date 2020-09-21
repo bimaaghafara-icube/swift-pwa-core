@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
             height: 'auto',
         },
         [theme.breakpoints.down('sm')]: {
-            maxWidth: 'calc(100vw - 30px)',
+            maxWidth: '100vw',
         },
     },
     arrow: {
