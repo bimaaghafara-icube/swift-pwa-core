@@ -100,7 +100,8 @@ const AddressView = (props) => {
                     )}
                 </div>
             </div>
-            {address && !(loading.addresses || loading.all) && (!dest_latitude || !dest_longitude) && (
+            {address && !(loading.addresses || loading.all)
+                && ((!dest_latitude || !dest_longitude) || (dest_latitude === '0' && dest_longitude === '0')) && (
                 <Alert style={{ fontSize: 10 }} severity="warning">{t('customer:address:emptyPinPointMessage')}</Alert>
             )}
         </div>
