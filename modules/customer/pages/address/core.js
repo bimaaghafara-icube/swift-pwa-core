@@ -123,6 +123,7 @@ const AddressCustomer = (props) => {
             if (openNew) {
                 setOpenDialogNew(false);
             }
+            setSuccess(false);
             handleDialogSubmit();
         }, 1000);
     };

@@ -26,7 +26,8 @@ const AddressFormDialog = (props) => {
         defaultBilling = false,
         addressId = null,
         setOpen,
-        customAttributes,
+        latitude,
+        longitude,
         pageTitle,
         disableDefaultAddress = false,
         Content,
@@ -84,11 +85,9 @@ const AddressFormDialog = (props) => {
         return data.find((item) => item.label === label) ? data.find((item) => item.label === label) : null;
     };
 
-    const getCustomAttributesValue = (attribute_code) => (customAttributes.find((el) => el.attribute_code === attribute_code) || {}).value;
-
     const [mapPosition, setMapPosition] = useState({
-        lat: customAttributes ? getCustomAttributesValue('latitude') : '-6.197361',
-        lng: customAttributes ? getCustomAttributesValue('longitude') : '106.774535',
+        lat: latitude || '-6.197361',
+        lng: longitude || '106.774535',
     });
 
     const displayLocationInfo = (position) => {
@@ -143,10 +142,8 @@ const AddressFormDialog = (props) => {
                 regionCode: _.isObject(values.region) ? values.region.code : null,
                 regionId: _.isObject(values.region) ? values.region.id : null,
                 addressId,
-                customAttributes: [
-                    { attribute_code: 'latitude', value: String(mapPosition.lat) },
-                    { attribute_code: 'longitude', value: String(mapPosition.lng) },
-                ],
+                latitude: String(mapPosition.lat),
+                longitude: String(mapPosition.lng),
             };
 
             const type = addressId ? 'update' : 'add';
@@ -198,10 +195,10 @@ const AddressFormDialog = (props) => {
         }
 
         // update map position after edit data
-        if (open && getCustomAttributesValue('latitude') && getCustomAttributesValue('longitude')) {
+        if (open && latitude && longitude) {
             setMapPosition({
-                lat: getCustomAttributesValue('latitude'),
-                lng: getCustomAttributesValue('longitude'),
+                lat: latitude,
+                lng: longitude,
             });
         }
     }, [open]);

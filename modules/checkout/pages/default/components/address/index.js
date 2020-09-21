@@ -162,18 +162,8 @@ const Address = (props) => {
 
     const isAddressNotSame = (current = null, previous = null, prevDestLocation = null) => {
         if (previous) {
-            let currentDestLatitude = null;
-            let currentDestLongitude = null;
-
-            // eslint-disable-next-line array-callback-return
-            current.custom_attributes.map((item) => {
-                if (item.attribute_code === 'latitude') {
-                    currentDestLatitude = item.value;
-                }
-                if (item.attribute_code === 'longitude') {
-                    currentDestLongitude = item.value;
-                }
-            });
+            const currentDestLatitude = current.latitude;
+            const currentDestLongitude = current.longitude;
 
             const currentStringfy = JSON.stringify({
                 city: current.city,
