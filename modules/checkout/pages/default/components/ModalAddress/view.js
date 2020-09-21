@@ -35,6 +35,7 @@ const AddressView = (props) => {
         } else {
             content = address.map((item) => (
                 <ItemAddress
+                    {...item}
                     checked={item.id === selectedAddressId}
                     key={item.id}
                     addressId={item.id}
@@ -47,7 +48,6 @@ const AddressView = (props) => {
                     country={item.country_code}
                     street={item.street.join(' ')}
                     value={item.id}
-                    customAttributes={item.custom_attributes}
                     defaultBilling={item.default_billing}
                     defaultShipping={item.default_shipping}
                     loadingAddress={loadingAddress}

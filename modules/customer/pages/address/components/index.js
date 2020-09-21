@@ -46,6 +46,7 @@ const Content = (props) => {
                                     <>
                                         {address.map((item, index) => (
                                             <ItemMobile
+                                                {...item}
                                                 first={index === 0}
                                                 handleAddress={handleAddress}
                                                 checked={item.id == selectedAddressId}
@@ -60,7 +61,6 @@ const Content = (props) => {
                                                 country={item.country_code}
                                                 street={item.street.join(' ')}
                                                 value={item.id}
-                                                customAttributes={item.custom_attributes}
                                                 defaultBilling={item.default_billing}
                                                 defaultShipping={item.default_shipping}
                                                 loadingAddress={loadingAddress}
@@ -97,6 +97,7 @@ const Content = (props) => {
                                     <>
                                         {address.map((item) => (
                                             <TableAddress
+                                                {...item}
                                                 handleAddress={handleAddress}
                                                 checked={item.id == selectedAddressId}
                                                 key={item.id}
@@ -110,7 +111,6 @@ const Content = (props) => {
                                                 country={item.country_code}
                                                 street={item.street.join(' ')}
                                                 value={item.id}
-                                                customAttributes={item.custom_attributes}
                                                 defaultBilling={item.default_billing}
                                                 defaultShipping={item.default_shipping}
                                                 loadingAddress={loadingAddress}

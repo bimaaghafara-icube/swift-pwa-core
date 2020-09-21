@@ -153,10 +153,6 @@ export const getCustomer = gql`
         city
         default_billing
         default_shipping
-        custom_attributes {
-            attribute_code
-            value
-        }
         extension_attributes {
             attribute_code
             value
@@ -171,6 +167,8 @@ export const getCustomer = gql`
         }
         street
         telephone
+        latitude
+        longitude
     }
      wishlist {
       id
@@ -261,7 +259,6 @@ export const updateCustomerAddress = gql`
     mutation updateCustomerAddress(
         $city: String!
         $countryCode: CountryCodeEnum!
-        $customAttributes: [CustomerAddressAttributeInput]
         $defaultBilling: Boolean!
         $defaultShipping: Boolean!
         $firstname: String!
@@ -273,6 +270,8 @@ export const updateCustomerAddress = gql`
         $region: String!
         $regionCode: String
         $regionId: Int
+        $longitude: String
+        $latitude: String
     ) {
         updateCustomerAddress(
             id: $addressId
@@ -280,7 +279,6 @@ export const updateCustomerAddress = gql`
                 city: $city
                 country_code: $countryCode
                 country_id: $countryCode
-                custom_attributes: $customAttributes
                 default_billing: $defaultBilling
                 default_shipping: $defaultShipping
                 firstname: $firstname
@@ -289,6 +287,8 @@ export const updateCustomerAddress = gql`
                 street: [$street]
                 telephone: $telephone
                 region: { region: $region, region_code: $regionCode, region_id: $regionId }
+                longitude: $longitude
+                latitude: $latitude
             }
         ) {
             id
@@ -303,7 +303,6 @@ export const createCustomerAddress = gql`
     mutation createCustomerAddress(
         $city: String!
         $countryCode: CountryCodeEnum!
-        $customAttributes: [CustomerAddressAttributeInput]
         $defaultBilling: Boolean!
         $defaultShipping: Boolean!
         $firstname: String!
@@ -314,13 +313,14 @@ export const createCustomerAddress = gql`
         $region: String!
         $regionCode: String
         $regionId: Int
+        $longitude: String
+        $latitude: String
     ) {
         createCustomerAddress(
             input: {
                 city: $city
                 country_code: $countryCode
                 country_id: $countryCode
-                custom_attributes: $customAttributes
                 default_billing: $defaultBilling
                 default_shipping: $defaultShipping
                 firstname: $firstname
@@ -329,6 +329,8 @@ export const createCustomerAddress = gql`
                 street: [$street]
                 telephone: $telephone
                 region: { region: $region, region_code: $regionCode, region_id: $regionId }
+                longitude: $longitude
+                latitude: $latitude
             }
         ) {
             id
