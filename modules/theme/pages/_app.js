@@ -15,7 +15,7 @@ import { storeConfig as ConfigSchema } from '@services/graphql/schema/config';
 import Cookie from 'js-cookie';
 import cookies from 'next-cookies';
 import {
-    expiredCokies, storeConfigNameCokie, GTM, custDataNameCookie, features,
+    expiredCokies, storeConfigNameCokie, GTM, custDataNameCookie, features, sentry,
 } from '@config';
 import {
     getLoginInfo,
@@ -27,6 +27,8 @@ import PageProgressLoader from '@common_loaders/PageProgress';
 import getConfig from 'next/config';
 import routeMiddleware from '@middleware_route';
 import graphRequest from '@graphql_request';
+import * as Sentry from '@sentry/browser';
+import { RewriteFrames } from '@sentry/integrations';
 
 // sementara di comment dlu sampa nanti di gunakan
 // import Notification from '@lib_firebase/notification';
@@ -37,6 +39,23 @@ import graphRequest from '@graphql_request';
 // import '../core/styles/flexboxgrid.min.css';
 
 const { publicRuntimeConfig } = getConfig();
+
+if (sentry.enabled && typeof publicRuntimeConfig !== 'undefined' && sentry.dsn[publicRuntimeConfig.appEnv]) {
+    const distDir = `${publicRuntimeConfig.rootDir}/.next`;
+    Sentry.init({
+        enabled: process.env.NODE_ENV === sentry.enableMode,
+        integrations: [
+            new RewriteFrames({
+                iteratee: (frame) => {
+                    // eslint-disable-next-line no-param-reassign
+                    frame.filename = frame.filename.replace(distDir, 'app:///_next');
+                    return frame;
+                },
+            }),
+        ],
+        dsn: sentry.dsn[publicRuntimeConfig.appEnv],
+    });
+}
 
 class MyApp extends App {
     constructor(props) {
