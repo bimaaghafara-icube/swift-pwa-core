@@ -39,9 +39,8 @@ export default makeStyles((theme) => ({
         bottom: 0,
         ...CreateBorder('1px', '1px', 0, '1px', GRAY_PRIMARY),
         ...CreatePadding(15, 14, 20, 14),
-        ...FlexColumn,
         alignItems: 'center',
-        justifyContent: 'space-around',
+        overflowX: 'scroll',
     },
     btnClose: {
         ...CreateMargin(0, 0, 15, 0),
