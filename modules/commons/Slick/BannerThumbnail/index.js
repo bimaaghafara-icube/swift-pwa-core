@@ -25,33 +25,30 @@ const Banner = ({
     autoplaySpeed = 4000,
 }) => {
     const styles = useStyles();
-    const [slideIndex, setIndex] = useState(0);
+    const [slideIndex, setIndex] = useState(data.length - 1);
     const [count, setCount] = useState(0);
     let sliderRef = React.createRef();
-
     const dotActive = data.length > 1
         ? classNames(styles.dotsItem, styles.dotActive)
         : styles.hide;
     const dotItem = data.length > 1 ? styles.dotsItem : styles.hide;
     const handleLeftArrow = () => {
-        if (slideIndex === 0) {
-            sliderRef.slickGoTo(data.length - 1);
-        } else {
-            sliderRef.slickGoTo(slideIndex - 1);
-        }
-    };
-
-    const handleRightArrow = () => {
         if (slideIndex === data.length - 1) {
             sliderRef.slickGoTo(0);
         } else {
             sliderRef.slickGoTo(slideIndex + 1);
         }
     };
-
+    const handleRightArrow = () => {
+        if (slideIndex === 0) {
+            sliderRef.slickGoTo(data.length - 1);
+        } else {
+            sliderRef.slickGoTo(slideIndex - 1);
+        }
+    };
     const settings = {
         // className: thumbnail ? 'slick-thumbnail' : 'slick-pwa',
-        infinite: true,
+        infinite: false,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: autoPlay,
@@ -68,11 +65,13 @@ const Banner = ({
                 <div>
                     {data.map((item, id) => (
                         <div
-                            className={slideIndex === id
+                            className={slideIndex === data.length - (id + 1)
                                 ? classNames(styles.thumbnail, styles.thumbnailActive, 'hidden-mobile')
                                 : classNames(styles.thumbnail, 'hidden-mobile')}
                             key={id}
-                            onClick={() => sliderRef.slickGoTo(id)}
+                            onClick={() => {
+                                sliderRef.slickGoTo(data.length - (id + 1));
+                            }}
                         >
                             <Thumbor
                                 src={item.imageUrl}
@@ -123,7 +122,9 @@ const Banner = ({
                         <div
                             className={slideIndex === id ? dotActive : dotItem}
                             key={id}
-                            onClick={() => sliderRef.slickGoTo(id)}
+                            onClick={() => {
+                                sliderRef.slickGoTo(data.length - (id + 1));
+                            }}
                         />
                     ))}
                 </div>
@@ -131,5 +132,4 @@ const Banner = ({
         </div>
     );
 };
-
 export default Banner;
