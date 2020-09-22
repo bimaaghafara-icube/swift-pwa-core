@@ -8,7 +8,7 @@ import {
 } from '@theme_mixins';
 import { FONT_14, FONT_BIG } from '@theme_typography';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     container: {
         width: '100%',
         height: '100%',
@@ -94,6 +94,24 @@ const useStyles = makeStyles(() => ({
     },
     emptyCart: {
         ...CreateMargin(20, 0, 20, 0),
+    },
+    containerEmpty: {
+        [theme.breakpoints.up('sm')]: {
+            minHeight: 'calc(100vh - 437px)',
+        },
+        [theme.breakpoints.down('sm')]: {
+            minHeight: 'calc(100vh - 93px)',
+            position: 'relative',
+            margin: 0,
+        },
+    },
+    butonEmpty: {
+        [theme.breakpoints.down('sm')]: {
+            bottom: 0,
+            position: 'absolute',
+            padding: 0,
+            left: 0,
+        },
     },
 }));
 
