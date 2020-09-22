@@ -280,9 +280,11 @@ const AddressView = (props) => {
                             error={!!(formik.touched.telephone && formik.errors.telephone)}
                             errorMessage={(formik.touched.telephone && formik.errors.telephone) || null}
                         />
-                        <div className={styles.boxMap}>
-                            <IcubeMaps height="230px" mapPosition={mapPosition} dragMarkerDone={handleDragPosition} gmapKey={gmapKey} />
-                        </div>
+                        {gmapKey && (
+                            <div className={styles.boxMap}>
+                                <IcubeMaps height="230px" mapPosition={mapPosition} dragMarkerDone={handleDragPosition} gmapKey={gmapKey} />
+                            </div>
+                        )}
 
                         {disableDefaultAddress ? null : (
                             <div>
