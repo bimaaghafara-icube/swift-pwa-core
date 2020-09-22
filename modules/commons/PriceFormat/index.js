@@ -213,11 +213,14 @@ const OtherProductTypePrice = ({ priceRange, specialFromDate, specialToDate }) =
     const regularPrice = priceRange.minimum_price.regular_price;
     const finalPrice = priceRange.minimum_price.final_price;
     let validSpecial = true;
-    if (specialFromDate && specialFromDate !== null && specialToDate && specialToDate !== null) {
+    const nowTime = new Date(Date.now()).getTime();
+    if (specialFromDate && specialFromDate !== null) {
         const startTime = new Date(specialFromDate).getTime();
-        const nowTime = new Date(Date.now()).getTime();
+        if (nowTime < startTime) validSpecial = false;
+    }
+    if (specialToDate && specialToDate !== null) {
         const endTime = new Date(specialToDate).getTime();
-        validSpecial = startTime <= nowTime && endTime >= nowTime;
+        if (nowTime > endTime) validSpecial = false;
     }
 
     if (regularPrice.value === finalPrice.value) {
