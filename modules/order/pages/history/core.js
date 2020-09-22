@@ -44,7 +44,7 @@ const HistoryOrder = (props) => {
         }
     }, [loading, data]);
 
-    if ((loading && !loadMore) || (!data && !loadMore)) {
+    if (loading || (!data && !loadMore)) {
         return (
             <Layout pageConfig={pageConfig} {...props}>
                 <CustomerLayout {...props}>
