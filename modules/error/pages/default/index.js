@@ -5,9 +5,9 @@ import Core from './core';
 import Content from './components';
 import graphRequest from '../../../../api/graphql';
 
-const Error = (props) => <Core {...props} Content={Content} />;
+const ErrorPage = (props) => <Core {...props} Content={Content} />;
 
-Error.getInitialProps = async ({ res, err, asPath }) => {
+ErrorPage.getInitialProps = async ({ res, err, asPath }) => {
     const errorInitialProps = await NextErrorComponent.getInitialProps({
         res,
         err,
@@ -35,4 +35,4 @@ Error.getInitialProps = async ({ res, err, asPath }) => {
     return errorInitialProps;
 };
 
-export default Error;
+export default ErrorPage;
