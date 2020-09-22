@@ -30,7 +30,7 @@ import GoogleMaps from '{pathModule}/commons/GoogleMaps';
 
 ```node
 ...
-<GoogleMaps height="230px" mapPosition={mapPosition} dragMarkerDone={handleDragPosition} />
+<GoogleMaps height="230px" mapPosition={mapPosition} dragMarkerDone={handleDragPosition} gmapKey={gmapKey} />
 ...
 ```
 
