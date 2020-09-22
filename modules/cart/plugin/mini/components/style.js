@@ -79,6 +79,7 @@ const useStyles = makeStyles(() => ({
         listStyle: 'none none',
         textTransform: 'uppercase',
         '& li': {
+            padding: '5px 0px',
             position: 'relative',
             borderBottom: '1px solid #ccc',
             '& .product': {
@@ -131,7 +132,7 @@ const useStyles = makeStyles(() => ({
             },
             '& .delete': {
                 position: 'absolute',
-                top: 0,
+                top: 10,
                 right: 0,
                 fontSize: 10,
                 cursor: 'pointer',

@@ -4,78 +4,42 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import Drawer from '@material-ui/core/Drawer';
 import { useRouter } from 'next/router';
+import Skeleton from './skeleton';
+import ItemCart from './product';
 import useStyles from './style';
 
 const MiniComponent = (props) => {
     const router = useRouter();
-    const { open, setOpen } = props;
+    const {
+        open, setOpen, count, t, loading,
+    } = props;
     const styles = useStyles();
     return (
         <Drawer anchor="right" open={open} onClose={setOpen}>
             <div className={styles.container}>
                 <div className={styles.mini_top}>
                     <span>
-                        2 Item
+                        {count}
+                        {' '}
+                        Items
                     </span>
                     <span>
-                        My Cart
+                        {t('common:cart:myCart')}
                     </span>
                     <span onClick={setOpen}>
-                        Close
+                        {t('common:button:close')}
                     </span>
                 </div>
-                <ol className={styles.miniCartItems}>
-                    <li>
-                        <div className="product">
-                            <a className="product-item-photo">
-                                <img
-                                    className="product-image-photo"
-                                    src="https://swiftpwa-be.testingnow.me/media/catalog/product/cache/a5a223edfa4da3fa7fe4c58714d48103/w/s/wsh11-blue_main_2.jpg"
-                                    alt="Ina Compression Short"
-                                    style={{ width: '75px', height: '75px' }}
-                                />
-                            </a>
-                            <div className="product-item-details">
-                                <strong className="product-item-name">
-                                    <a href="https://swiftpwa-be.testingnow.me/ina-compression-short.html">Ina Compression Short</a>
-                                </strong>
-                                <div className="product-options">
-                                    <div className="option-wrapper">
-                                        <strong>Size</strong>
-                                        {' '}
-                                        : xl
-                                    </div>
-                                    <div className="option-wrapper">
-                                        <strong>Color</strong>
-                                        {' '}
-                                        : Blue
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="product-item-pricing">
-                                <div className="details-qty qty">
-                                    <label
-                                        className="label"
-                                        htmlFor="cart-item"
-                                    >
-                                        Qty
-                                    </label>
+                {loading ? <Skeleton /> : (
+                    <ItemCart />
+                )}
 
-                                    <span className="item-minus qty-update" />
-                                    <span className="item-count">1</span>
-                                    <span className="item-plus qty-update" />
-                                </div>
-                                <div className="item-price">
-                                    $10
-                                </div>
-                            </div>
-                            <div className="delete">x</div>
-                        </div>
-                    </li>
-                </ol>
                 <div className={styles.mini_bottom}>
                     <div className="sub-total">
-                        <span>Cart Subtotal:</span>
+                        <span>
+                            {t('common:cart:cardTotal')}
+                            :
+                        </span>
                         <span>$28</span>
                     </div>
                     <div
@@ -85,7 +49,7 @@ const MiniComponent = (props) => {
                             router.push('/checkout/cart');
                         }}
                     >
-                        View and Edit Cart
+                        {t('common:button:viewandedit')}
                     </div>
                     <div className="checkout">
                         <div
@@ -95,7 +59,7 @@ const MiniComponent = (props) => {
                                 router.push('/checkout');
                             }}
                         >
-                            Go to Checkout
+                            {t('common:button:goCheckout')}
                         </div>
                     </div>
                 </div>

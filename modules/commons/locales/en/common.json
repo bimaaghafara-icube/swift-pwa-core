@@ -32,7 +32,14 @@
         "shop": "SHOP NOW",
         "sendOtp": "Send OTP",
         "submit": "Submit",
-        "viewAll": "View All"
+        "viewAll": "View All",
+        "close": "Close",
+        "goCheckout": "Go to checkout",
+        "viewandedit": "View and Edit"
+    },
+    "cart": {
+        "myCart": "My Cart",
+        "cardTotal": "Cart Subtotal"
     },
     "subtotal": "Subtotal",
     "price": {
