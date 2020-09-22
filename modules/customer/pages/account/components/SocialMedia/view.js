@@ -20,7 +20,7 @@ const SocialView = (props) => {
             </style>
             <div
                 className="cms-container"
-                dangerouslySetInnerHTML={{ __html: data.cmsBlocks.items[0].content }}
+                dangerouslySetInnerHTML={{ __html: data && data.cmsBlocks ? data.cmsBlocks.items[0].content : '' }}
             />
         </>
     );
