@@ -8,13 +8,13 @@ const EmptyView = (props) => {
     const styles = useStyles();
     const { t } = props;
     return (
-        <div className={classNames(styles.container, 'row center-xs')}>
+        <div className={classNames(styles.container, styles.containerEmpty, 'row center-xs')}>
             <div className="col-xs-12">
                 <Typography variant="span" type="regular" align="center">
                     <span className={styles.emptyCart}>{t('cart:empty:text')}</span>
                 </Typography>
             </div>
-            <div className="col-xs-12">
+            <div className={classNames(styles.butonEmpty, 'col-xs-12')}>
                 <Link href="/">
                     <a>
                         <Button className={styles.toolbarButton}>
