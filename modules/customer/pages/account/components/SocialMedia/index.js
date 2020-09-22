@@ -6,8 +6,9 @@ import { getCmsBlocks } from '../../../../services/graphql';
 
 const SocialMediaLink = (props) => {
     const { SocialMediaView } = props;
-    const { error, data } = getCmsBlocks({ identifiers: [cmsSocialMediaLinkIdentifiers] });
+    const { error, loading, data } = getCmsBlocks({ identifiers: [cmsSocialMediaLinkIdentifiers] });
     if (error) return <div>{`Error: ${JSON.stringify(error)}`}</div>;
+    if (loading) return <div />;
 
     return <SocialMediaView data={data} />;
 };
