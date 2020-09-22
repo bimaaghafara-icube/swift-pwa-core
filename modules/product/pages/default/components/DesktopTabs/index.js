@@ -1,5 +1,4 @@
 import React from 'react';
-import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -46,10 +45,6 @@ const TabsView = (props) => {
         setValue(newValue);
     };
 
-    const handleChangeIndex = (index) => {
-        setValue(index);
-    };
-
     return (
         <Paper square>
             <AppBar position="static" color="default">
@@ -63,43 +58,37 @@ const TabsView = (props) => {
                     <Tab label="Reviews" />
                 </Tabs>
             </AppBar>
-            <SwipeableViews
-                axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                index={value}
-                onChangeIndex={handleChangeIndex}
-            >
-                {dataInfo.map((item, index) => (
-                    <TabPanel value={value} index={index} key={index} dir={theme.direction}>
-                        {item.type === 'html'
-                            ? (
-                                <div className={styles.descriptionHtml}>
-                                    {item.content && HtmlParser(item.content)}
-                                </div>
-                            )
-                            : item.type === 'array' && (
-                                <List>
-                                    {
-                                        item.content.map((content, idx) => (
-                                            <ListItem key={idx}>
-                                                <ListItemText
-                                                    primary={content.label}
-                                                    secondary={content.value}
-                                                    classes={{
-                                                        primary: styles.listLabel,
-                                                        secondary: styles.listValue,
-                                                    }}
-                                                />
-                                            </ListItem>
-                                        ))
-                                    }
-                                </List>
-                            )}
-                    </TabPanel>
-                ))}
-                <TabPanel value={value} index={2} dir={theme.direction}>
-                    <ListReviews {...props} />
+            {dataInfo.map((item, index) => (
+                <TabPanel value={value} index={index} key={index} dir={theme.direction}>
+                    {item.type === 'html'
+                        ? (
+                            <div className={styles.descriptionHtml}>
+                                {item.content && HtmlParser(item.content)}
+                            </div>
+                        )
+                        : item.type === 'array' && (
+                            <List>
+                                {
+                                    item.content.map((content, idx) => (
+                                        <ListItem key={idx}>
+                                            <ListItemText
+                                                primary={content.label}
+                                                secondary={content.value}
+                                                classes={{
+                                                    primary: styles.listLabel,
+                                                    secondary: styles.listValue,
+                                                }}
+                                            />
+                                        </ListItem>
+                                    ))
+                                }
+                            </List>
+                        )}
                 </TabPanel>
-            </SwipeableViews>
+            ))}
+            <TabPanel value={value} index={2} dir={theme.direction}>
+                <ListReviews {...props} />
+            </TabPanel>
         </Paper>
     );
 };
