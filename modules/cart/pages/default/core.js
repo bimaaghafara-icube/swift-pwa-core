@@ -254,7 +254,7 @@ const Cart = (props) => {
     crosssell = getCrossSellProduct(dataCart.items);
     const globalCurrency = storeConfig.default_display_currency_code;
 
-    if (dataCart.id && dataCart.items.length > 0) {
+    if (dataCart.id && dataCart.items.length > 0 && dataCart.total_quantity > 0) {
         const contentProps = {
             dataCart,
             t,
