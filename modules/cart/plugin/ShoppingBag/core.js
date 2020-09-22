@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable-next-line jsx-a11y/click-events-have-key-events */
 import { getCartId, setCartId, removeCartId } from '@helper_cartid';
+import dynamic from 'next/dynamic';
 import { getLoginInfo } from '@helper_auth';
 import { useQuery } from '@apollo/client';
 import { localTotalCart } from '@services/graphql/schema/local';
@@ -10,9 +11,12 @@ import propTypes from 'prop-types';
 import { getCartIdUser } from '../../services/graphql/schema';
 import { getCountCart } from '../../services/graphql';
 
+const MiniCart = dynamic(() => import('@core_minicart'), { ssr: false });
+
 const ShoppingBagIcon = ({ withLink, WihtLinkView, WithoutLinkView }) => {
     let isLogin = 0;
     let cartId = '';
+    const [open, setOpen] = React.useState(false);
     if (typeof window !== 'undefined') {
         isLogin = getLoginInfo();
         cartId = getCartId();
@@ -47,17 +51,29 @@ const ShoppingBagIcon = ({ withLink, WihtLinkView, WithoutLinkView }) => {
     }, [getQty]);
 
     const cartData = data && data.totalCart ? data.totalCart : 0;
-    const handleLink = () => Router.push('/checkout/cart');
+    const handleLink = () => {
+        if (window.innerWidth >= 768) {
+            setOpen(true);
+        } else {
+            Router.push('/checkout/cart');
+        }
+    };
     if (withLink) {
         return (
-            <WihtLinkView
-                cartData={cartData}
-                handleLink={handleLink}
-            />
+            <>
+                <MiniCart open={open} setOpen={() => setOpen(!open)} />
+                <WihtLinkView
+                    cartData={cartData}
+                    handleLink={handleLink}
+                />
+            </>
         );
     }
     return (
-        <WithoutLinkView cartData={cartData} />
+        <>
+            <MiniCart open={open} setOpen={() => setOpen(!open)} />
+            <WithoutLinkView cartData={cartData} />
+        </>
     );
 };
 
