@@ -61,7 +61,7 @@ const ShoppingBagIcon = ({ withLink, WihtLinkView, WithoutLinkView }) => {
     if (withLink) {
         return (
             <>
-                <MiniCart open={open} setOpen={() => setOpen(!open)} />
+                {typeof window !== 'undefined' && cartData > 0 ? <MiniCart open={open} setOpen={() => setOpen(!open)} count={cartData} /> : null}
                 <WihtLinkView
                     cartData={cartData}
                     handleLink={handleLink}
@@ -71,7 +71,7 @@ const ShoppingBagIcon = ({ withLink, WihtLinkView, WithoutLinkView }) => {
     }
     return (
         <>
-            <MiniCart open={open} setOpen={() => setOpen(!open)} />
+            {typeof window !== 'undefined' && cartData > 0 ? <MiniCart open={open} setOpen={() => setOpen(!open)} count={cartData} /> : null}
             <WithoutLinkView cartData={cartData} />
         </>
     );
