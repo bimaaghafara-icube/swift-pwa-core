@@ -1,8 +1,9 @@
 /* eslint-disable camelcase */
 import React from 'react';
+import { useTranslation } from '@i18n';
 import useStyles from './style';
 
-const generateNew = (newFromDate, newToDate) => {
+const generateNew = ({ newFromDate, newToDate }) => {
     let showLabelNew = false;
     const nowTime = new Date(Date.now()).getTime();
     if (newFromDate === null && newToDate === null) {
@@ -34,74 +35,53 @@ const generateNew = (newFromDate, newToDate) => {
     return showLabelNew;
 };
 
-const SimpleProductLabel = ({
-    newFromDate, newToDate, sale, config,
+const generateSale = ({
+    priceRange, specialFromDate, specialToDate,
 }) => {
-    const styles = useStyles();
-    const showLabelNew = generateNew(newFromDate, newToDate);
-
-    return (
-        <>
-            {
-                config.enabled && config.new.enabled && showLabelNew ? (
-                    <span className={styles.spanNew}>
-                        New
-                    </span>
-                ) : null
-            }
-            {
-                config.enabled && config.sale.enabled && sale ? (
-                    <span className={styles.spanSale}>
-                        Sale
-                    </span>
-                ) : null
-            }
-        </>
-    );
-};
-
-const OtherProductLabel = (props) => {
-    const {
-        newFromDate, newToDate, sale, config,
-    } = props;
-    const styles = useStyles();
-    const showLabelNew = generateNew(newFromDate, newToDate);
-
-    return (
-        <>
-            {
-                config.enabled && config.new.enabled && showLabelNew ? (
-                    <span className={styles.spanNew}>
-                        New
-                    </span>
-                ) : null
-            }
-            {
-                config.enabled && config.sale.enabled && sale ? (
-                    <span className={styles.spanSale}>
-                        Sale
-                    </span>
-                ) : null
-            }
-        </>
-    );
-};
-
-const SalesNewLabel = (props) => {
-    const { productType } = props;
-    if (productType === 'SimpleProduct') {
-        return (
-            <SimpleProductLabel
-                {...props}
-            />
-        );
+    const regularPrice = priceRange.minimum_price.regular_price;
+    const finalPrice = priceRange.minimum_price.final_price;
+    let validSpecial = true;
+    const nowTime = new Date(Date.now()).getTime();
+    if (specialFromDate && specialFromDate !== null) {
+        const startTime = new Date(specialFromDate).getTime();
+        if (nowTime < startTime) validSpecial = false;
     }
+    if (specialToDate && specialToDate !== null) {
+        const endTime = new Date(specialToDate).getTime();
+        if (nowTime > endTime) validSpecial = false;
+    }
+    if (regularPrice.value === finalPrice.value) {
+        validSpecial = false;
+    }
+    return validSpecial;
+};
 
+const ProductLabel = (props) => {
+    const {
+        priceRange, specialFromDate, specialToDate, newFromDate, newToDate, config,
+    } = props;
+    const { t } = useTranslation();
+    const styles = useStyles();
+    const showLabelNew = generateNew({ newFromDate, newToDate });
+    const showSale = generateSale({ priceRange, specialFromDate, specialToDate });
     return (
-        <OtherProductLabel
-            {...props}
-        />
+        <>
+            {
+                config.enabled && config.new.enabled && showLabelNew ? (
+                    <span className={styles.spanNew}>
+                        {t('common:title:new')}
+                    </span>
+                ) : null
+            }
+            {
+                config.enabled && config.sale.enabled && showSale ? (
+                    <span className={styles.spanSale}>
+                        {`${t('common:title:sale')}!`}
+                    </span>
+                ) : null
+            }
+        </>
     );
 };
 
-export default SalesNewLabel;
+export default ProductLabel;

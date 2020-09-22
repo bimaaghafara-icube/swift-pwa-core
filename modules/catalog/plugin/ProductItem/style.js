@@ -18,11 +18,12 @@ export default makeStyles((theme) => ({
         position: 'absolute',
         top: 5,
         left: 5,
+        right: 5,
         borderRadius: 5,
         zIndex: 99,
         ...FlexRow,
         justifyContent: 'space-between',
-        minWidth: '50%',
+        width: '100%',
     },
     imgItem: {
         width: '100%',
