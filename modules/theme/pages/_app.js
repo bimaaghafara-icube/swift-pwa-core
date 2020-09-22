@@ -27,8 +27,9 @@ import PageProgressLoader from '@common_loaders/PageProgress';
 import getConfig from 'next/config';
 import routeMiddleware from '@middleware_route';
 import graphRequest from '@graphql_request';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/node';
 import { RewriteFrames } from '@sentry/integrations';
+import { Integrations } from '@sentry/tracing';
 
 // sementara di comment dlu sampa nanti di gunakan
 // import Notification from '@lib_firebase/notification';
@@ -52,8 +53,11 @@ if (sentry.enabled && typeof publicRuntimeConfig !== 'undefined' && sentry.dsn[p
                     return frame;
                 },
             }),
+            new Integrations.BrowserTracing(),
         ],
+        environment: publicRuntimeConfig.appEnv,
         dsn: sentry.dsn[publicRuntimeConfig.appEnv],
+        tracesSampleRate: 1.0,
     });
 }
 
