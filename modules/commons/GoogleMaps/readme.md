@@ -39,4 +39,5 @@ import GoogleMaps from '{pathModule}/commons/GoogleMaps';
 | :---        | :---     | :---        |:---  |
 | `mapPosition`    | true    | object current position maps and must be have key `lat` and `lng` | `object` |
 | `dragMarkerDone`        | true     | function get update postiin lattitude and langitude  | `function` |
+| `gmapKey`        | true     | the Google Map API key  | `string` |
 
