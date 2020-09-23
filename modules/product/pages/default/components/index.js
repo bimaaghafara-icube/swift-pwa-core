@@ -23,6 +23,7 @@ import ListReviews from './ListReviews';
 import OptionItem from './OptionItem';
 import RightDrawer from './RightDrawer';
 import SharePopup from './SharePopup';
+import ModalPopupImage from './ModalPopupImage';
 
 const DesktopOptions = dynamic(() => import('./OptionItem/DesktopOptions'), { ssr: false });
 const TabsView = dynamic(() => import('./DesktopTabs'), { ssr: false });
@@ -48,6 +49,8 @@ const ProductPage = (props) => {
         wishlist,
         expandData,
         relateData,
+        openImageDetail,
+        handleOpenImageDetail,
     } = props;
 
     const desktop = breakPointsUp('sm');
@@ -70,6 +73,11 @@ const ProductPage = (props) => {
                         />
                     )
                 }
+                <ModalPopupImage
+                    open={openImageDetail}
+                    setOpen={handleOpenImageDetail}
+                    banner={banner}
+                />
             </div>
             <OptionItem
                 {...props}
@@ -98,6 +106,7 @@ const ProductPage = (props) => {
                         autoPlay={false}
                         width={960}
                         height={1120}
+                        actionImage={handleOpenImageDetail}
                     />
                     <div className="hidden-desktop">
                         {
