@@ -4,6 +4,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import Drawer from '@material-ui/core/Drawer';
 import { useRouter } from 'next/router';
+import { formatPrice } from '@helper_currency';
 import Skeleton from './skeleton';
 import ItemCart from './product';
 import useStyles from './style';
@@ -11,7 +12,7 @@ import useStyles from './style';
 const MiniComponent = (props) => {
     const router = useRouter();
     const {
-        open, setOpen, count, t, loading,
+        open, setOpen, count, t, loading, data, deleteCart, updateCart,
     } = props;
     const styles = useStyles();
     return (
@@ -30,8 +31,12 @@ const MiniComponent = (props) => {
                         {t('common:button:close')}
                     </span>
                 </div>
-                {loading ? <Skeleton /> : (
-                    <ItemCart />
+                {loading || !data.items ? <Skeleton /> : (
+                    <ItemCart
+                        data={data.items}
+                        deleteCart={deleteCart}
+                        updateCart={updateCart}
+                    />
                 )}
 
                 <div className={styles.mini_bottom}>
@@ -40,7 +45,11 @@ const MiniComponent = (props) => {
                             {t('common:cart:cardTotal')}
                             :
                         </span>
-                        <span>$28</span>
+                        <span>
+                            {data.prices ? formatPrice(
+                                data.prices.subtotal_excluding_tax.value, data.prices.subtotal_excluding_tax.currency || 'IDR',
+                            ) : '-'}
+                        </span>
                     </div>
                     <div
                         className="edit-cart"

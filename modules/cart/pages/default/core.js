@@ -162,7 +162,7 @@ const Cart = (props) => {
     if (typeof window !== 'undefined') {
         cartId = getCartId();
         if (cartId) {
-            const { loading, data } = getCartData(token, cartId);
+            const { loading, data } = getCartData(cartId);
             loadingCart = loading;
             if (!loading && data && data.cart) {
                 dataCart = data.cart;

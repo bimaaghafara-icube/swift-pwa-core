@@ -12,6 +12,18 @@ export default makeStyles((theme) => ({
         height: '100%',
         overflow: 'hidden',
         ...CreateMargin(0, 0, 16, 0),
+        position: 'relative',
+    },
+    badgesNewSales: {
+        position: 'absolute',
+        top: 5,
+        left: 5,
+        right: 5,
+        borderRadius: 5,
+        zIndex: 99,
+        ...FlexRow,
+        justifyContent: 'space-between',
+        width: '100%',
     },
     imgItem: {
         width: '100%',

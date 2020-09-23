@@ -33,7 +33,7 @@ example `{pages}/index.js`
 example
 
 ```node
-import Page from '@pages/home';     //point to your custom page components
+import Page from '@core_modules/home/pages/default';     //point to your custom page components
 
 export default Page;
 

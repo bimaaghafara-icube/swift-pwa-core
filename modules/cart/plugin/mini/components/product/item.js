@@ -1,21 +1,27 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import Link from 'next/link';
+import { formatPrice } from '@helper_currency';
+
 const Item = (props) => {
-    const { t } = props;
+    const {
+        quantity, prices, product, deleteCart, updateCart, id,
+    } = props;
     return (
         <li>
             <div className="product">
                 <a className="product-item-photo">
                     <img
                         className="product-image-photo"
-                        src="https://swiftpwa-be.testingnow.me/media/catalog/product/cache/a5a223edfa4da3fa7fe4c58714d48103/w/s/wsh11-blue_main_2.jpg"
-                        alt="Ina Compression Short"
+                        src={product.small_image.url}
+                        alt={product.small_image.label}
                         style={{ width: '75px', height: '75px' }}
                     />
                 </a>
                 <div className="product-item-details">
                     <strong className="product-item-name">
-                        <a href="https://swiftpwa-be.testingnow.me/ina-compression-short.html">Ina Compression Short</a>
+                        <Link href="/[...slug]" as={`/${product.url_key}`}><a>{product.name}</a></Link>
                     </strong>
                     <div className="product-options">
                         <div className="option-wrapper">
@@ -39,15 +45,24 @@ const Item = (props) => {
                             Qty
                         </label>
 
-                        <span className="item-minus qty-update" />
-                        <span className="item-count">1</span>
-                        <span className="item-plus qty-update" />
+                        <span className="item-minus qty-update" onClick={() => (quantity > 1 ? updateCart(id, quantity - 1) : '')} />
+                        <span className="item-count">{quantity}</span>
+                        <span className="item-plus qty-update" onClick={() => updateCart(id, quantity + 1)} />
                     </div>
                     <div className="item-price">
-                        $10
+                        {formatPrice(
+                            prices.row_total.value, prices.row_total.currency || 'IDR',
+                        )}
                     </div>
                 </div>
-                <div className="delete">x</div>
+                <div
+                    className="delete"
+                    onClick={() => {
+                        deleteCart(id);
+                    }}
+                >
+                    x
+                </div>
             </div>
         </li>
     );
