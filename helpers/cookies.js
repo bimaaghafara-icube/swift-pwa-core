@@ -48,4 +48,42 @@ export const removeCookies = (key) => {
     return true;
 };
 
-export default {};
+const set = (key, value) => {
+    const maxChar = 1000;
+    const str = JSON.stringify(value);
+    if (str.length > maxChar) {
+        let subKeys = '';
+        for (let i = 0; i < str.length; i += maxChar) {
+            Cookies.set(`__${key}_${i}`, str.slice(i, i + maxChar), { expires: expiredDefault });
+            subKeys += i + maxChar >= str.length ? i : `${i},`;
+            if (i + maxChar >= str.length) {
+                Cookies.set(`__${key}_subKeys`, JSON.stringify(subKeys), { expires: expiredDefault });
+            }
+        }
+    } else {
+        Cookies.set(key, str, { expires: expiredDefault });
+    }
+};
+
+const get = (key) => {
+    const subKeys = Cookies.getJSON(`__${key}_subKeys`);
+    if (subKeys) {
+        const str = subKeys.split(',').reduce((result, subKey) => result + Cookies.getJSON(`__${key}_${subKey}`), '');
+        return JSON.parse(str || null);
+    }
+    return JSON.parse(Cookies.getJSON(key) || null);
+};
+
+const remove = (key) => {
+    const subKeys = Cookies.getJSON(`__${key}_subKeys`);
+    if (subKeys) {
+        subKeys.split(',').forEach((subKey) => Cookies.remove(`__${key}_${subKey}`));
+        Cookies.remove(`__${key}_subKeys`);
+    } else {
+        Cookies.remove(key);
+    }
+};
+
+export default {
+    set, get, remove,
+};

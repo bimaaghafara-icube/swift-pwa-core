@@ -14,6 +14,7 @@ import { appWithTranslation } from '@i18n';
 import { storeConfig as ConfigSchema } from '@services/graphql/schema/config';
 import Cookie from 'js-cookie';
 import cookies from 'next-cookies';
+import helperCookies from '@helper_cookies';
 import {
     expiredCokies, storeConfigNameCokie, GTM, custDataNameCookie, features, sentry,
 } from '@config';
@@ -162,19 +163,16 @@ class MyApp extends App {
         // remove config cookie if page reload
         if (typeof window !== 'undefined') {
             window.onbeforeunload = function () {
-                Cookie.remove(storeConfigNameCokie);
+                helperCookies.remove(storeConfigNameCokie);
             };
         }
     }
 
     render() {
         const { Component, pageProps } = this.props;
-        const storeCokie = Cookie.get(storeConfigNameCokie);
+        const storeCokie = helperCookies.get(storeConfigNameCokie);
         if (!storeCokie) {
-            Cookie.set(storeConfigNameCokie, pageProps.storeConfig, {
-                path: '',
-                expires: expiredCokies,
-            });
+            helperCookies.set(storeConfigNameCokie, pageProps.storeConfig);
         }
         pageProps.storeConfig = pageProps.storeConfig ? pageProps.storeConfig : {};
         return (
