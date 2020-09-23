@@ -8,6 +8,7 @@ import classNames from 'classnames';
 import LeftArrowIcon from '@material-ui/icons/ArrowBackIos';
 import RightArrowIcon from '@material-ui/icons/ArrowForwardIos';
 import Slider from 'react-slick';
+import Zoom from 'react-prismazoom';
 import ImageSlide from '../Banner/ImageSlide';
 import useStyles from './style';
 import Thumbor from '../Banner/Thumbor';
@@ -24,6 +25,8 @@ const Banner = ({
     speed = 500,
     autoplaySpeed = 4000,
     actionImage = () => {},
+    zoom = false,
+    zoomRef = null,
 }) => {
     const styles = useStyles();
     const [slideIndex, setIndex] = useState(data.length - 1);
@@ -90,14 +93,29 @@ const Banner = ({
                 <Slider ref={(slider) => sliderRef = slider} {...settings}>
                     {data.map((item, key) => (
                         <div onClick={actionImage}>
-                            <ImageSlide
-                                height={height}
-                                customClass={styles.customClass}
-                                width={width}
-                                noLink={noLink}
-                                key={key}
-                                {...item}
-                            />
+                            {
+                                zoom ? (
+                                    <Zoom ref={zoomRef}>
+                                        <ImageSlide
+                                            height={height}
+                                            customClass={styles.customClass}
+                                            width={width}
+                                            noLink={noLink}
+                                            key={key}
+                                            {...item}
+                                        />
+                                    </Zoom>
+                                ) : (
+                                    <ImageSlide
+                                        height={height}
+                                        customClass={styles.customClass}
+                                        width={width}
+                                        noLink={noLink}
+                                        key={key}
+                                        {...item}
+                                    />
+                                )
+                            }
                         </div>
                     ))}
                 </Slider>

@@ -106,7 +106,7 @@ const ProductPage = (props) => {
                         autoPlay={false}
                         width={960}
                         height={1120}
-                        actionImage={handleOpenImageDetail}
+                        actionImage={desktop ? handleOpenImageDetail : () => {}}
                     />
                     <div className="hidden-desktop">
                         {
