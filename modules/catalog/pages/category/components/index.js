@@ -57,67 +57,77 @@ const CategoryPage = ({
         active: true,
     });
     return (
-        <div className={styles.container}>
-            <div className={classNames(styles.breadcrumbs, 'hidden-mobile')}>
-                <BreadcrumbView data={breadcrumbsData} />
-            </div>
-            {dataBanner.length > 0
-                ? (
-                    <div className={styles.headContainer}>
-                        <BannerView
-                            data={dataBanner}
-                            width={features.imageSize.category.width}
-                            height={features.imageSize.category.height}
-                        />
-                        {' '}
-                    </div>
-                ) : null}
-            <div className={classNames(styles.breadcrumbs, 'hidden-desktop')}>
-                <BreadcrumbView data={breadcrumbsData} />
-            </div>
-            <Typography variant="h3">
-                {categoryList.name}
-            </Typography>
-            {dataBanner[0] && dataBanner[0].description && (
-                /* eslint-disable-next-line react/no-danger */
-                <div className="cms-container" dangerouslySetInnerHTML={{ __html: dataBanner[0].description }} />
-            )}
-            <div className="hidden-desktop">
-                <TabView
-                    data={categoryTabs(categoryList.children)}
-                    onChange={handleChange}
-                    value={value}
-                />
-            </div>
-            {
-                categoryList
-                && (categoryList.display_mode === 'PRODUCTS_AND_PAGE' || categoryList.display_mode === 'PAGE')
-                && categoryList.cms_block
-                && (
-                    <div dangerouslySetInnerHTML={{ __html: categoryList.cms_block.content }} />
-                )
-            }
-            {
-                categoryList
-                && (!categoryList.display_mode || categoryList.display_mode === 'PRODUCTS_AND_PAGE' || categoryList.display_mode === 'PRODUCTS')
-                && (
-                    <Product
-                        defaultSort={{ key: 'position', value: 'ASC' }}
-                        // sementara di comment dlu, untuk custom filter memakai aggregations product
-                        // customFilter={customFilter.loading ? [] : customFilter.data.getFilterAttributeOptions.data}
-                        catId={categoryList.id}
-                        categoryPath={categoryList.url_path}
-                        catalog_search_engine={storeConfig.catalog_search_engine}
-                        t={t}
-                        category={categoryTabs(categoryList.children)}
-                        dataTabs={categoryTabs(categoryList.children)}
-                        onChangeTabs={handleChange}
-                        storeConfig={storeConfig}
-                        {...other}
+        <>
+            <style jsx>
+                {`
+                    .cms-block-category :global(img) {
+                        width: 100%;
+                        max-width: 100%;
+                    }
+                `}
+            </style>
+            <div className={styles.container}>
+                <div className={classNames(styles.breadcrumbs, 'hidden-mobile')}>
+                    <BreadcrumbView data={breadcrumbsData} />
+                </div>
+                {dataBanner.length > 0
+                    ? (
+                        <div className={styles.headContainer}>
+                            <BannerView
+                                data={dataBanner}
+                                width={features.imageSize.category.width}
+                                height={features.imageSize.category.height}
+                            />
+                            {' '}
+                        </div>
+                    ) : null}
+                <div className={classNames(styles.breadcrumbs, 'hidden-desktop')}>
+                    <BreadcrumbView data={breadcrumbsData} />
+                </div>
+                <Typography variant="h3">
+                    {categoryList.name}
+                </Typography>
+                {dataBanner[0] && dataBanner[0].description && (
+                    /* eslint-disable-next-line react/no-danger */
+                    <div className="cms-container" dangerouslySetInnerHTML={{ __html: dataBanner[0].description }} />
+                )}
+                <div className="hidden-desktop">
+                    <TabView
+                        data={categoryTabs(categoryList.children)}
+                        onChange={handleChange}
+                        value={value}
                     />
-                )
-            }
-        </div>
+                </div>
+                {
+                    categoryList
+                    && (categoryList.display_mode === 'PRODUCTS_AND_PAGE' || categoryList.display_mode === 'PAGE')
+                    && categoryList.cms_block
+                    && (
+                        <div className="cms-block-category" dangerouslySetInnerHTML={{ __html: categoryList.cms_block.content }} />
+                    )
+                }
+                {
+                    categoryList
+                    && (!categoryList.display_mode || categoryList.display_mode === 'PRODUCTS_AND_PAGE' || categoryList.display_mode === 'PRODUCTS')
+                    && (
+                        <Product
+                            defaultSort={{ key: 'position', value: 'ASC' }}
+                            // sementara di comment dlu, untuk custom filter memakai aggregations product
+                            // customFilter={customFilter.loading ? [] : customFilter.data.getFilterAttributeOptions.data}
+                            catId={categoryList.id}
+                            categoryPath={categoryList.url_path}
+                            catalog_search_engine={storeConfig.catalog_search_engine}
+                            t={t}
+                            category={categoryTabs(categoryList.children)}
+                            dataTabs={categoryTabs(categoryList.children)}
+                            onChangeTabs={handleChange}
+                            storeConfig={storeConfig}
+                            {...other}
+                        />
+                    )
+                }
+            </div>
+        </>
     );
 };
 
