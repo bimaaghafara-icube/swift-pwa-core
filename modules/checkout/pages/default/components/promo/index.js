@@ -22,10 +22,12 @@ const DiscountSection = (props) => {
         if (isApplied) {
             const result = await applyCouponTocart({ variables: { cartId: checkout.data.cart.id, coupon: formik.values.coupon } });
             cart = result && result.data.applyCouponToCart.cart;
-            handleOpenMessage({
-                variant: 'success',
-                text: t('checkout:message:couponApplied'),
-            });
+            if (cart) {
+                handleOpenMessage({
+                    variant: 'success',
+                    text: t('checkout:message:couponApplied'),
+                });
+            }
         } else {
             const result = await removeCouponFromCart({ variables: { cartId: checkout.data.cart.id } });
             cart = result && result.data.removeCouponFromCart.cart;
