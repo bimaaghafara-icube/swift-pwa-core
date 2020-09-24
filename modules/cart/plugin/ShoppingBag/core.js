@@ -61,7 +61,7 @@ const ShoppingBagIcon = ({ withLink, WihtLinkView, WithoutLinkView }) => {
     if (withLink) {
         return (
             <>
-                {typeof window !== 'undefined' && cartData > 0 ? <MiniCart open={open} setOpen={() => setOpen(!open)} count={cartData} /> : null}
+                {typeof window !== 'undefined' ? <MiniCart open={open} setOpen={() => setOpen(!open)} count={cartData} /> : null}
                 <WihtLinkView
                     cartData={cartData}
                     handleLink={handleLink}

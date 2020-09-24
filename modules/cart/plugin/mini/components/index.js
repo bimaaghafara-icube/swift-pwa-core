@@ -34,44 +34,47 @@ const MiniComponent = (props) => {
                 {loading || !data.items ? <Skeleton /> : (
                     <ItemCart
                         data={data.items}
+                        t={t}
                         deleteCart={deleteCart}
                         updateCart={updateCart}
                     />
                 )}
-
-                <div className={styles.mini_bottom}>
-                    <div className="sub-total">
-                        <span>
-                            {t('common:cart:cardTotal')}
-                            :
-                        </span>
-                        <span>
-                            {data.prices ? formatPrice(
-                                data.prices.subtotal_excluding_tax.value, data.prices.subtotal_excluding_tax.currency || 'IDR',
-                            ) : '-'}
-                        </span>
-                    </div>
-                    <div
-                        className="edit-cart"
-                        onClick={() => {
-                            setOpen();
-                            router.push('/checkout/cart');
-                        }}
-                    >
-                        {t('common:button:viewandedit')}
-                    </div>
-                    <div className="checkout">
+                {data && data.total_quantity > 0 ? (
+                    <div className={styles.mini_bottom}>
+                        <div className="sub-total">
+                            <span>
+                                {t('common:cart:cardTotal')}
+                                :
+                            </span>
+                            <span>
+                                {data.prices ? formatPrice(
+                                    data.prices.subtotal_excluding_tax.value, data.prices.subtotal_excluding_tax.currency || 'IDR',
+                                ) : '-'}
+                            </span>
+                        </div>
                         <div
-                            className="checkout-button"
+                            className="edit-cart"
                             onClick={() => {
                                 setOpen();
-                                router.push('/checkout');
+                                router.push('/checkout/cart');
                             }}
                         >
-                            {t('common:button:goCheckout')}
+                            {t('common:button:viewandedit')}
+                        </div>
+                        <div className="checkout">
+                            <div
+                                className="checkout-button"
+                                onClick={() => {
+                                    setOpen();
+                                    router.push('/checkout');
+                                }}
+                            >
+                                {t('common:button:goCheckout')}
+                            </div>
                         </div>
                     </div>
-                </div>
+                ) : null}
+
             </div>
         </Drawer>
     );

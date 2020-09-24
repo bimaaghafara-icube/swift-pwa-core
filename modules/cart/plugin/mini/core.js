@@ -60,13 +60,13 @@ const MiniCart = (props) => {
             getCartData();
             window.toastMessage({
                 open: true,
-                text: t('cart:updateSuccess'),
+                text: t('common:cart:updateSuccess'),
                 variant: 'success',
             });
         }).catch((e) => {
             window.toastMessage({
                 open: true,
-                text: e.message.split(':')[1] || t('cart:updateFailed'),
+                text: e.message.split(':')[1] || t('common:cart:updateFailed'),
                 variant: 'error',
             });
         });
@@ -86,21 +86,20 @@ const MiniCart = (props) => {
             loadingCart = false;
             window.toastMessage({
                 open: true,
-                text: t('cart:deleteSuccess'),
+                text: t('common:cart:deleteSuccess'),
                 variant: 'success',
             });
         }).catch((e) => {
             loadingCart = false;
             window.toastMessage({
                 open: true,
-                text: e.message.split(':')[1] || t('cart:deleteFailed'),
+                text: e.message.split(':')[1] || t('common:cart:deleteFailed'),
                 variant: 'error',
             });
         });
     };
     return (
         <Content
-            Content={Content}
             open={open}
             setOpen={setOpen}
             count={count}

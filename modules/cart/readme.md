@@ -22,4 +22,8 @@ this module use 3rd party, so you need install before install this module
 
 then you can install module [Cart](pages/default/readme.md)  
 
+## Plugins
+
+1. [Mini Cart](plugin/mini/readme.md)  
+
 
