@@ -147,6 +147,130 @@ export const getCart = gql`
     }
 `;
 
+export const getMiniCart = gql`
+    query getCartData($cartId: String!) {
+        cart(cart_id: $cartId) {
+            id
+            total_quantity
+            prices {
+                discounts {
+                    amount {
+                        currency
+                        value
+                    }
+                    label
+                }
+                grand_total {
+                    currency
+                    value
+                }
+                subtotal_excluding_tax {
+                  currency
+                  value
+                }
+            }
+            items {
+              id
+              quantity
+              ... on ConfigurableCartItem {
+                  configurable_options {
+                  option_label
+                  value_label
+                }
+              }
+              prices {
+                discounts {
+                  amount {
+                    currency
+                    value
+                  }
+                }
+                price {
+                  value
+                  currency
+                }
+                row_total {
+                  currency
+                  value
+                }
+                total_item_discount {
+                  currency
+                  value
+                }
+            }
+            product {
+                id
+                name
+                small_image {
+                  url
+                  label
+                }
+                categories {
+                  name
+                }
+                url_key
+                sku
+                stock_status
+                crosssell_products {
+                  id
+                  name
+                  url_key
+                  sku
+                  thumbnail {
+                    url
+                  }
+                  small_image {
+                    url,
+                    label
+                  }
+                  price_tiers {
+                    discount {
+                      percent_off
+                      amount_off
+                    }
+                    final_price {
+                      currency
+                      value
+                    }
+                    quantity
+                  }
+                  price_range {
+                    maximum_price {
+                      discount {
+                        amount_off
+                        percent_off
+                      }
+                      final_price {
+                        currency
+                        value
+                      }
+                      regular_price {
+                        currency
+                        value
+                      }
+                    }
+                    minimum_price {
+                      discount {
+                        amount_off
+                        percent_off
+                      }
+                      final_price {
+                        currency
+                        value
+                      }
+                      regular_price {
+                        currency
+                        value
+                      }
+                    }
+                  }
+                }
+              }
+          }
+        }
+    }
+`;
+
 export const deleteCartitem = gql`
     mutation deleteCartItem($cartId: String!, $cart_item_id: Int!) {
       removeItemFromCart(

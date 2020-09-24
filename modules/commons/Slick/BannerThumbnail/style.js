@@ -125,6 +125,10 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('sm')]: {
             width: '100%',
         },
+        [theme.breakpoints.up('sm')]: {
+            width: 'auto',
+            height: 'calc(100vh - 100px)',
+        },
     },
 }));
 

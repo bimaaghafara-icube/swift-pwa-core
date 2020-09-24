@@ -31,7 +31,13 @@
         "shop": "Beli Sekarang",
         "sendOtp": "Kirim OTP",
         "submit": "Kirimkan",
-        "viewAll": "Lihat Semua"
+        "viewAll": "Lihat Semua",
+        "goCheckout": "Checkout",
+        "viewandedit": "Lihat dan Ubah"
+    },
+    "cart" : {
+        "myCart": "Cart Saya",
+        "cardTotal": "Cart Subtotal"
     },
     "subtotal": "Subtotal",
     "price": {

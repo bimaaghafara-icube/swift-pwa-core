@@ -2,7 +2,7 @@
 import Layout from '@layout';
 import Error from 'next/error';
 import { StripHtmlTags } from '@helper_text';
-import { features } from '@config';
+import { features, modules } from '@config';
 import { useRouter } from 'next/router';
 import TagManager from 'react-gtm-module';
 import { getCookies } from '@helper_cookies';
@@ -101,6 +101,7 @@ const ContentDetail = ({
     const [openOption, setOpenOption] = React.useState(false);
     const [openDrawer, setOpenDrawer] = React.useState(false);
     const [openShare, setOpenShare] = React.useState(false);
+    const [openImageDetail, setOpenImageDetail] = React.useState(false);
     const [banner, setBanner] = React.useState(bannerData);
     const [price, setPrice] = React.useState({
         priceRange: item.price_range,
@@ -228,6 +229,10 @@ const ContentDetail = ({
         }
     };
 
+    const handleOpenImageDetail = () => {
+        setOpenImageDetail(!openImageDetail);
+    };
+
     return (
         <Content
             data={product.items[0]}
@@ -251,6 +256,9 @@ const ContentDetail = ({
             expandData={expandData}
             relateData={relateData}
             features={features}
+            config={modules.catalog.pdp}
+            openImageDetail={openImageDetail}
+            handleOpenImageDetail={handleOpenImageDetail}
         />
     );
 };
