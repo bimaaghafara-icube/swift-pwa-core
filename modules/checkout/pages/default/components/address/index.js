@@ -198,7 +198,7 @@ const Address = (props) => {
     };
     // let storeConfig = {};
     // if (typeof window !== 'undefined') {
-    //     storeConfig = cookies.getJSON(storeConfigNameCokie);
+    //     storeConfig = cookies.getJSON(storeConfigNameCookie);
     // }
     useEffect(() => {
         if (defaultAddress && !checkout.data.isGuest) {

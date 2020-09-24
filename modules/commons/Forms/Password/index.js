@@ -9,7 +9,7 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import checkPassword from '@helper_passwordstrength';
 import classNames from 'classnames';
 import Cookies from 'js-cookie';
-import { storeConfigNameCokie, passwordStrength } from '@config';
+import { storeConfigNameCookie, passwordStrength } from '@config';
 import useStyles from './style';
 
 const PasswordField = ({
@@ -34,7 +34,7 @@ const PasswordField = ({
 
     let { numberOfRequiredClass, minValue } = passwordStrength;
 
-    const config = Cookies.getJSON(storeConfigNameCokie);
+    const config = Cookies.getJSON(storeConfigNameCookie);
 
     if (config && config.customer_password_minimum_password_length) {
         minValue = config.customer_password_minimum_password_length;
