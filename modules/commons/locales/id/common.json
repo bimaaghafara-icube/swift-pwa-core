@@ -41,7 +41,8 @@
         "deleteSuccess": "Hapus item cart berhasil",
         "deleteFailed": "Hapus item cart gagal",
         "updateSuccess": "Update item cart berhasil",
-        "updateFailed": "Update item cart gagal"
+        "updateFailed": "Update item cart gagal",
+        "emptyCart": "ANDA TIDAK MEMILIKI ITEM DI KERANJANG BELANJA ANDA."
     },
     "subtotal": "Subtotal",
     "price": {

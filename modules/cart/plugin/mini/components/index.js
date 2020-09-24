@@ -15,7 +15,6 @@ const MiniComponent = (props) => {
         open, setOpen, count, t, loading, data, deleteCart, updateCart,
     } = props;
     const styles = useStyles();
-    console.log(data);
     return (
         <Drawer anchor="right" open={open} onClose={setOpen}>
             <div className={styles.container}>
@@ -35,6 +34,7 @@ const MiniComponent = (props) => {
                 {loading || !data.items ? <Skeleton /> : (
                     <ItemCart
                         data={data.items}
+                        t={t}
                         deleteCart={deleteCart}
                         updateCart={updateCart}
                     />

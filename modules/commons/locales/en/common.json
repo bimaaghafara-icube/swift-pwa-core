@@ -43,7 +43,8 @@
         "deleteSuccess": "Delete cart item success",
         "deleteFailed": "Delete cart item failed",
         "updateSuccess": "Update cart item success",
-        "updateFailed": "Update cart item failed"
+        "updateFailed": "Update cart item failed",
+        "emptyCart": "YOU HAVE NO ITEMS IN YOUR SHOPPING CART."
     },
     "subtotal": "Subtotal",
     "price": {
