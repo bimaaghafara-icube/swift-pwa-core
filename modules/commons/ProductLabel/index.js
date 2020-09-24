@@ -60,7 +60,7 @@ const ProductLabel = (props) => {
     const {
         priceRange, specialFromDate, specialToDate, newFromDate, newToDate, config,
     } = props;
-    const { t } = useTranslation();
+    const { t } = useTranslation(['common']);
     const styles = useStyles();
     const showLabelNew = generateNew({ newFromDate, newToDate });
     const showSale = generateSale({ priceRange, specialFromDate, specialToDate });
