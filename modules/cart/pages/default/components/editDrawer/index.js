@@ -39,7 +39,7 @@ const EditDrawer = ({
                     <Typography variant="span">{t('common:title:qty')}</Typography>
                     <Qty
                         value={qty}
-                        onChange={(e) => { setQty(e.target.value); }}
+                        onChange={setQty}
                         max={10000}
                     />
                 </div>

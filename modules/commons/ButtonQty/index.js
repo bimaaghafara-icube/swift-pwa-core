@@ -4,21 +4,21 @@ import React from 'react';
 import classNames from 'classnames';
 import useStyles from './style';
 
-const ButtonQty = ({ value = 1, handleChange, max = 100 }) => {
+const ButtonQty = ({ value = 1, onChange, max = 100 }) => {
     const styles = useStyles();
     const [localValue, setLocalValue] = React.useState(value);
     const handleMinus = () => {
         if (localValue > 1 && localValue <= max) {
-            if (handleChange) {
-                handleChange(localValue - 1);
+            if (onChange) {
+                onChange(localValue - 1);
             }
             setLocalValue(parseInt(localValue, 0) - 1);
         }
     };
     const handlePlus = () => {
         if (localValue > 0 && localValue < max) {
-            if (handleChange) {
-                handleChange(localValue + 1);
+            if (onChange) {
+                onChange(localValue + 1);
             }
             setLocalValue(parseInt(localValue, 0) + 1);
         }
@@ -39,8 +39,8 @@ const ButtonQty = ({ value = 1, handleChange, max = 100 }) => {
                 variant: 'error',
             });
         } else {
-            if (handleChange) {
-                handleChange(val);
+            if (onChange) {
+                onChange(val);
             }
             setLocalValue(parseInt(val, 0));
         }

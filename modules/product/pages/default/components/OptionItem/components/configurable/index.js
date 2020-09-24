@@ -31,9 +31,6 @@ export default (props) => {
     const [selectConfigurable, setSelectConfigurable] = React.useState({});
     const [selectedProduct, setSelectedProduct] = React.useState({});
     const [qty, setQty] = React.useState(1);
-    const handleQty = (event) => {
-        setQty(event.target.value);
-    };
 
     const configProduct = getConfigurableProduct(sku);
 
@@ -250,7 +247,7 @@ export default (props) => {
                         />
                     );
                 })}
-            <Footer qty={qty} handleAddToCart={handleAddToCart} handleQty={handleQty} t={t} loading={loading || configProduct.loading} />
+            <Footer qty={qty} handleAddToCart={handleAddToCart} setQty={setQty} t={t} loading={loading || configProduct.loading} />
         </>
     );
 };

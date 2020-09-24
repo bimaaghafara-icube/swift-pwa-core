@@ -19,9 +19,6 @@ export default ({
     Footer,
 }) => {
     const [qty, setQty] = React.useState(1);
-    const handleQty = (event) => {
-        setQty(event.target.value);
-    };
     const client = useApolloClient();
     let cartId = '';
     let isLogin = '';
@@ -114,7 +111,7 @@ export default ({
     return (
         <Footer
             qty={qty}
-            handleQty={handleQty}
+            setQty={setQty}
             handleAddToCart={handleAddToCart}
             t={t}
             loading={loading}

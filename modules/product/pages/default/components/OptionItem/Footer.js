@@ -7,7 +7,7 @@ import useStyles from './style';
 
 export default ({
     qty = 1,
-    handleQty = () => { },
+    setQty = () => { },
     handleAddToCart = () => { },
     t,
     loading = false,
@@ -19,7 +19,7 @@ export default ({
                 <Typography type="bold" variant="span">{t('common:title:qty')}</Typography>
                 <Qty
                     value={qty}
-                    onChange={handleQty}
+                    onChange={setQty}
                     max={10000}
                 />
             </div>
