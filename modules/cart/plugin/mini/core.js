@@ -100,7 +100,6 @@ const MiniCart = (props) => {
     };
     return (
         <Content
-            Content={Content}
             open={open}
             setOpen={setOpen}
             count={count}
