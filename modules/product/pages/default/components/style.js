@@ -51,11 +51,13 @@ const useStyles = makeStyles((theme) => ({
         ...CreatePadding(20, 20, 20, 20),
         zIndex: theme.zIndex.drawer + 1,
     },
+
     title: {
         [theme.breakpoints.up('sm')]: {
             fontSize: 30,
         },
     },
+
     btnAddToCard: {
         width: '90%',
         [theme.breakpoints.up('sm')]: {
@@ -68,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
         color: WHITE,
         borderRadius: 100,
     },
+
     textBtnAddToCard: {
         fontSize: 16,
         color: `${WHITE} !important`,
@@ -78,6 +81,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-between',
         alignItems: 'center',
     },
+
     titlePriceContainer: {
         ...FlexColumn,
         flex: 1,
@@ -96,6 +100,20 @@ const useStyles = makeStyles((theme) => ({
         ...FlexRow,
         justifyContent: 'flex-end',
         flex: 1,
+        [theme.breakpoints.down('sm')]: {
+            '& button span': {
+                fontSize: 9,
+            },
+        },
+    },
+
+    shareRootContainer: {
+        ...CreatePadding(15, 30, 30, 30),
+        ...FlexColumn,
+        ...CreateBorder(0, 0, '1px', 0, GRAY_PRIMARY),
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: 40,
+        },
     },
 
     btnShare: {
