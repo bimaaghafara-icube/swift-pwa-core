@@ -8,12 +8,27 @@ const DiscountSection = (props) => {
         checkout,
         setCheckout,
         handleOpenMessage,
-        formik,
         storeConfig,
         StoreCreditView,
     } = props;
-    const [applyStoreCreditToCart] = gqlService.applyStoreCreditToCart({ onError: () => {} });
-    const [removeStoreCreditFromCart] = gqlService.removeStoreCreditFromCart({ onError: () => {} });
+    const [applyStoreCreditToCart] = gqlService.applyStoreCreditToCart({
+        onError: (e) => {
+            const message = e.message.split(':');
+            handleOpenMessage({
+                variant: 'error',
+                text: message[1] ? message[1] : e.message,
+            });
+        },
+    });
+    const [removeStoreCreditFromCart] = gqlService.removeStoreCreditFromCart({
+        onError: (e) => {
+            const message = e.message.split(':');
+            handleOpenMessage({
+                variant: 'error',
+                text: message[1] ? message[1] : e.message,
+            });
+        },
+    });
 
     let store_credit = null;
     let credit = '0';
@@ -35,7 +50,6 @@ const DiscountSection = (props) => {
         const state = { ...checkout };
         const cartId = state.data.cart.id;
         state.loading.storeCredit = true;
-        setCheckout(state);
 
         if (store_credit.is_use_store_credit) {
             const result = await removeStoreCreditFromCart({ variables: { cartId } });
@@ -43,26 +57,28 @@ const DiscountSection = (props) => {
                 ...state.data.cart,
                 ...result.data.removeStoreCreditFromCart.cart,
             });
-            handleOpenMessage({
-                variant: 'success',
-                text: t('checkout:message:storeCreditRemoved'),
-            });
+            if (result) {
+                handleOpenMessage({
+                    variant: 'success',
+                    text: t('checkout:message:storeCreditRemoved'),
+                });
+            }
         } else {
             const result = await applyStoreCreditToCart({ variables: { cartId } });
             cart = result && ({
                 ...state.data.cart,
                 ...result.data.applyStoreCreditToCart.cart,
             });
-            handleOpenMessage({
-                variant: 'success',
-                text: t('checkout:message:storeCreditApplied'),
-            });
+            if(result){
+                handleOpenMessage({
+                    variant: 'success',
+                    text: t('checkout:message:storeCreditApplied'),
+                });
+            }
         }
 
         if (cart) {
             state.data.cart = cart;
-        } else {
-            await formik.setFieldError('coupon', t('checkout:message:serverError'));
         }
 
         state.loading.storeCredit = false;
