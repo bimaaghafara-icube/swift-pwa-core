@@ -16,7 +16,7 @@ import Cookie from 'js-cookie';
 import cookies from 'next-cookies';
 import helperCookies from '@helper_cookies';
 import {
-    expiredCokies, storeConfigNameCokie, GTM, custDataNameCookie, features, sentry,
+    expiredCookies, storeConfigNameCookie, GTM, custDataNameCookie, features, sentry,
 } from '@config';
 import {
     getLoginInfo,
@@ -97,12 +97,12 @@ class MyApp extends App {
             res, req, query, asPath, isLogin, lastPathNoAuth,
         });
         let storeConfig;
-        if (!allcookie[storeConfigNameCokie] || (allcookie[storeConfigNameCokie] && !allcookie[storeConfigNameCokie].secure_base_media_url)) {
+        if (!allcookie[storeConfigNameCookie] || (allcookie[storeConfigNameCookie] && !allcookie[storeConfigNameCookie].secure_base_media_url)) {
             // storeConfig = await apolloClient.query({ query: ConfigSchema }).then(({ data }) => data.storeConfig);
             storeConfig = await graphRequest(ConfigSchema);
             storeConfig = storeConfig.storeConfig;
         } else {
-            storeConfig = allcookie[storeConfigNameCokie];
+            storeConfig = allcookie[storeConfigNameCookie];
         }
         // add get session from server
         return {
@@ -163,16 +163,16 @@ class MyApp extends App {
         // remove config cookie if page reload
         if (typeof window !== 'undefined') {
             window.onbeforeunload = function () {
-                helperCookies.remove(storeConfigNameCokie);
+                helperCookies.remove(storeConfigNameCookie);
             };
         }
     }
 
     render() {
         const { Component, pageProps } = this.props;
-        const storeCokie = helperCookies.get(storeConfigNameCokie);
-        if (!storeCokie) {
-            helperCookies.set(storeConfigNameCokie, pageProps.storeConfig);
+        const storeCookie = helperCookies.get(storeConfigNameCookie);
+        if (!storeCookie) {
+            helperCookies.set(storeConfigNameCookie, pageProps.storeConfig);
         }
         pageProps.storeConfig = pageProps.storeConfig ? pageProps.storeConfig : {};
         return (
