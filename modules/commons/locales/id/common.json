@@ -76,7 +76,9 @@
         "shortQty": "Jml",
         "action": "Aksi",
         "extraFee": "Biaya Tambahan",
-        "relatedProduct": "Relasi Produk"
+        "relatedProduct": "Relasi Produk",
+        "sale": "Diskon",
+        "new": "Baru"
     },
     "error": {
         "notFound" : "Data tidak di temukan",

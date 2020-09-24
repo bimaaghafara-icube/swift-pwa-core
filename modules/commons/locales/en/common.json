@@ -77,7 +77,9 @@
         "shortQty": "Qty",
         "action": "Action",
         "extraFee": "Extra Fee",
-        "relatedProduct": "Related products"
+        "relatedProduct": "Related products",
+        "sale": "Sale",
+        "new": "New"
     },
     "error": {
         "notFound": "Data not found",
