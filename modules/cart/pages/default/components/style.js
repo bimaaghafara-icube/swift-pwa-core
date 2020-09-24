@@ -111,6 +111,7 @@ const useStyles = makeStyles((theme) => ({
             position: 'absolute',
             padding: 0,
             left: 0,
+            width: '100%',
         },
     },
 }));
