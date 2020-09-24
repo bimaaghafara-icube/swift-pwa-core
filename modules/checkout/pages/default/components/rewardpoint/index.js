@@ -44,7 +44,10 @@ const RewardPoint = ({
         setLoading(true);
         if (reward_point.is_use_reward_points) {
             const result = await removeRewardPointsFromCart({ variables: { cartId: checkout.data.cart.id, coupon: formik.values.coupon } });
-            cart = result && result.data.removeRewardPointsFromCart.cart;
+            cart = result && ({
+                ...state.data.cart,
+                ...result.data.removeRewardPointsFromCart.cart,
+            });
             if (result) {
                 handleOpenMessage({
                     variant: 'success',
@@ -53,7 +56,10 @@ const RewardPoint = ({
             }
         } else {
             const result = await applyRewardPointsToCart({ variables: { cartId: id } });
-            cart = result && result.data.applyRewardPointsToCart.cart;
+            cart = result && ({
+                ...state.data.cart,
+                ...result.data.applyRewardPointsToCart.cart,
+            });
             if (result) {
                 handleOpenMessage({
                     variant: 'success',

@@ -39,14 +39,20 @@ const DiscountSection = (props) => {
 
         if (store_credit.is_use_store_credit) {
             const result = await removeStoreCreditFromCart({ variables: { cartId } });
-            cart = result && result.data.removeStoreCreditFromCart.cart;
+            cart = result && ({
+                ...state.data.cart,
+                ...result.data.removeStoreCreditFromCart.cart,
+            });
             handleOpenMessage({
                 variant: 'success',
                 text: t('checkout:message:storeCreditRemoved'),
             });
         } else {
             const result = await applyStoreCreditToCart({ variables: { cartId } });
-            cart = result && result.data.applyStoreCreditToCart.cart;
+            cart = result && ({
+                ...state.data.cart,
+                ...result.data.applyStoreCreditToCart.cart,
+            });
             handleOpenMessage({
                 variant: 'success',
                 text: t('checkout:message:storeCreditApplied'),

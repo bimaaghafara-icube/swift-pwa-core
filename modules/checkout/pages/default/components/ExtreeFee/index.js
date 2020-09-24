@@ -105,7 +105,10 @@ const AdditionSelect = (props) => {
             },
         }).then(async (res) => {
             const checkoutData = { ...checkout };
-            checkoutData.data.cart = res.data.updateExtraFeeOnCart.cart;
+            checkoutData.data.cart = {
+                ...checkoutData.data.cart,
+                ...res.data.updateExtraFeeOnCart.cart,
+            };
             await setCheckout(checkoutData);
             window.backdropLoader(false);
         }).catch(() => window.backdropLoader(false));

@@ -37,7 +37,10 @@ const GiftCard = (props) => {
 
         state = { ...checkout };
         if (result && result.data) {
-            const updatedCart = result.data.applyGiftCardToCart.cart;
+            const updatedCart = {
+                ...state.data.cart,
+                ...result.data.applyGiftCardToCart.cart,
+            };
             state.data.cart = updatedCart;
             formik.setFieldValue('giftCard', '');
             handleOpenMessage({
@@ -67,7 +70,10 @@ const GiftCard = (props) => {
 
         state = { ...checkout };
         if (result && result.data) {
-            const updatedCart = result.data.removeGiftCardFromCart.cart;
+            const updatedCart = {
+                ...state.data.cart,
+                ...result.data.removeGiftCardFromCart.cart,
+            };
             state.data.cart = updatedCart;
             handleOpenMessage({
                 variant: 'success',

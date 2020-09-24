@@ -1,12 +1,6 @@
 import { gql } from '@apollo/client';
 
-const cartSubSelection = `
-    id
-    email
-    dest_location {
-        dest_latitude
-        dest_longitude
-    }
+const subBillingAddress = `
     billing_address {
         city
         company
@@ -24,12 +18,9 @@ const cartSubSelection = `
         street
         telephone
     }
-    selected_payment_method {
-        code
-    }
-    applied_coupons {
-        code
-    }
+`;
+
+const shippingAddresses = `
     shipping_addresses {
         selected_shipping_method {
             method_code
@@ -66,6 +57,120 @@ const cartSubSelection = `
             }
         }
     }
+`;
+
+const subDesLocation = `
+    dest_location {
+        dest_latitude
+        dest_longitude
+    }
+`;
+
+const subAvailablePayment = `
+    available_payment_methods {
+        code
+        title
+    }
+`;
+
+const subPrice = `
+    prices {
+        discounts {
+            amount {
+                value
+                currency
+            }
+            label
+        }
+        grand_total {
+            value
+            currency
+        }
+    }
+`;
+
+const subGift = `
+    applied_giftcard {
+        giftcard_amount
+        giftcard_detail {
+            giftcard_amount_used
+            giftcard_code
+        }
+    }
+`;
+
+const subStoreCredit = `
+    applied_store_credit {
+        store_credit_amount
+        is_use_store_credit
+    }
+`;
+
+const subRewardPoint = `
+    applied_reward_points {
+        is_use_reward_points
+        reward_points_amount
+    }
+`;
+
+const subCashback = `
+    applied_cashback {
+        data {
+            amount
+            promo_name
+        }
+        is_cashback
+        total_cashback
+    }
+`;
+
+const subExtraFee = `
+addtional_fees {
+    data {
+      enabled
+      fee_name
+      frontend_type
+      id_fee
+      options {
+        default
+        label
+        option_id
+        price
+      }
+    }
+    show_on_cart
+  }
+applied_extra_fee {
+    extrafee_value {
+      currency
+      value
+    }
+    select_options {
+      default
+      label
+      option_id
+      price
+    }
+    show_on_cart
+    title
+}
+`;
+
+const cartSubSelection = `
+    id
+    email
+    dest_location {
+        dest_latitude
+        dest_longitude
+    }
+    ${subBillingAddress}
+    selected_payment_method {
+        code
+    }
+    applied_coupons {
+        code
+    }
+    ${shippingAddresses}
     items {
         id
         quantity
@@ -107,79 +212,14 @@ const cartSubSelection = `
             }
           }
     }
-    available_payment_methods {
-        code
-        title
-    }
-    applied_store_credit {
-        store_credit_amount
-        is_use_store_credit
-    }
-    applied_giftcard {
-        giftcard_amount
-        giftcard_detail {
-            giftcard_amount_used
-            giftcard_code
-        }
-    }
-    applied_reward_points {
-        is_use_reward_points
-        reward_points_amount
-    }
-    dest_location {
-        dest_latitude
-        dest_longitude
-    }
-    applied_cashback {
-        data {
-            amount
-            promo_name
-        }
-        is_cashback
-        total_cashback
-    }
-    addtional_fees {
-        data {
-          enabled
-          fee_name
-          frontend_type
-          id_fee
-          options {
-            default
-            label
-            option_id
-            price
-          }
-        }
-        show_on_cart
-      }
-    applied_extra_fee {
-        extrafee_value {
-          currency
-          value
-        }
-        select_options {
-          default
-          label
-          option_id
-          price
-        }
-        show_on_cart
-        title
-    }
-    prices {
-        discounts {
-            amount {
-                value
-                currency
-            }
-            label
-        }
-        grand_total {
-            value
-            currency
-        }
-    }
+    ${subAvailablePayment}
+    ${subStoreCredit}
+    ${subGift}
+    ${subRewardPoint}
+    ${subDesLocation}
+    ${subCashback}
+    ${subExtraFee}
+    ${subPrice}
 `;
 
 export const applyGiftCardToCart = gql`
@@ -191,7 +231,10 @@ export const applyGiftCardToCart = gql`
             }
         ) {
             cart {
-                ${cartSubSelection}
+                id
+                ${subGift}
+                ${subCashback}
+                ${subPrice}
             }
         }
     }
@@ -206,7 +249,10 @@ export const removeGiftCardFromCart = gql`
             }
         ) {
             cart {
-                ${cartSubSelection}
+                id
+                ${subGift}
+                ${subCashback}
+                ${subPrice}
             }
         }
     }
@@ -220,7 +266,10 @@ export const applyStoreCreditToCart = gql`
             }
         ) {
             cart {
-                ${cartSubSelection}
+                id
+                ${subStoreCredit}
+                ${subCashback}
+                ${subPrice}
             }
         }
     }
@@ -234,7 +283,10 @@ export const removeStoreCreditFromCart = gql`
             }
         ) {
             cart {
-                ${cartSubSelection}
+                id
+                ${subStoreCredit}
+                ${subCashback}
+                ${subPrice}
             }
         }
     }
@@ -294,7 +346,7 @@ export const setShippingAddressById = gql`
     mutation setShippingAddressById($addressId: Int!, $cartId: String!) {
         setShippingAddressesOnCart(input: { cart_id: $cartId, shipping_addresses: { customer_address_id: $addressId } }) {
             cart {
-                ${cartSubSelection}
+                id
             }
         }
     }
@@ -335,7 +387,7 @@ export const setShippingAddressByInput = gql`
             }
         ) {
             cart {
-                ${cartSubSelection}
+                id
             }
         }
     }
@@ -345,7 +397,10 @@ export const setBillingAddressById = gql`
     mutation setBillingAddressById($addressId: Int!, $cartId: String!) {
         setBillingAddressOnCart(input: { cart_id: $cartId, billing_address: { same_as_shipping: true, customer_address_id: $addressId } }) {
             cart {
-                ${cartSubSelection}
+                id
+                ${shippingAddresses}
+                ${subCashback}
+                ${subDesLocation}
             }
         }
     }
@@ -387,7 +442,10 @@ export const setBillingAddressByInput = gql`
             }
         ) {
             cart {
-                ${cartSubSelection}
+                id
+                ${shippingAddresses}
+                ${subCashback}
+                ${subDesLocation}
             }
         }
     }
@@ -397,7 +455,10 @@ export const setShippingMethod = gql`
     mutation setShippingMethod($cartId: String!, $carrierCode: String!, $methodCode: String!) {
         setShippingMethodsOnCart(input: { cart_id: $cartId, shipping_methods: { carrier_code: $carrierCode, method_code: $methodCode } }) {
             cart {
-                ${cartSubSelection}
+                id
+                ${subAvailablePayment}
+                ${subCashback}
+                ${subPrice}
             }
         }
     }
@@ -407,7 +468,12 @@ export const setPaymentMethod = gql`
     mutation setPaymentMethod($cartId: String!, $code: String!) {
         setPaymentMethodOnCart(input: { cart_id: $cartId, payment_method: { code: $code } }) {
             cart {
-                ${cartSubSelection}
+                id
+                selected_payment_method {
+                    code
+                }
+                ${subCashback}
+                ${subPrice}
             }
         }
     }
@@ -438,7 +504,12 @@ export const applyCouponToCart = gql`
     mutation($cartId: String!, $coupon: String!) {
         applyCouponToCart(input: { cart_id: $cartId, coupon_code: $coupon }) {
             cart {
-                ${cartSubSelection}
+                id
+                applied_coupons {
+                    code
+                }
+                ${subCashback}
+                ${subPrice}
             }
         }
     }
@@ -448,7 +519,12 @@ export const removeCouponFromCart = gql`
     mutation($cartId: String!) {
         removeCouponFromCart(input: { cart_id: $cartId }) {
             cart {
-                ${cartSubSelection}
+                id
+                applied_coupons {
+                    code
+                }
+                ${subCashback}
+                ${subPrice}
             }
         }
     }
@@ -458,7 +534,10 @@ export const applyRewardPointsToCart = gql`
     mutation($cartId: String!) {
         applyRewardPointsToCart(input: { cart_id: $cartId }) {
             cart {
-                ${cartSubSelection}
+                id
+                ${subRewardPoint}
+                ${subCashback}
+                ${subPrice}
             }
         }
     }
@@ -468,7 +547,10 @@ export const removeRewardPointsFromCart = gql`
     mutation($cartId: String!) {
         removeRewardPointsFromCart(input: { cart_id: $cartId }) {
             cart {
-                ${cartSubSelection}
+                id
+                ${subRewardPoint}
+                ${subCashback}
+                ${subPrice}
             }
         }
     }
@@ -722,7 +804,10 @@ mutation updateExtraFee(
         select_options: $select_options
     }) {
         cart {
-            ${cartSubSelection}
+            id
+            ${subCashback}
+            ${subExtraFee}
+            ${subPrice}
         }
     }
 }

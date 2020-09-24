@@ -86,10 +86,14 @@ const Address = (props) => {
         state.selected.address = dataAddress;
         state.selected.shipping = shippingAddress.selected_shipping_method;
         state.loading.addresses = false;
-        state.data.cart = updatedCart;
+        const mergeCart = {
+            ...state.data.cart,
+            ...updatedCart,
+        };
+        state.data.cart = mergeCart;
         setCheckout(state);
 
-        updateFormik(updatedCart);
+        updateFormik(mergeCart);
     };
 
     const setAddress = (selectedAddress, cart) => new Promise((resolve, reject) => {

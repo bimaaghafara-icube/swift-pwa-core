@@ -32,7 +32,10 @@ const Shipping = (props) => {
             setCheckout(state);
 
             if (updatedCart) {
-                updatedCart = updatedCart.data.setShippingMethodsOnCart.cart;
+                updatedCart = {
+                    ...checkout.data.cart,
+                    ...updatedCart.data.setShippingMethodsOnCart.cart,
+                };
                 updateFormik(updatedCart);
 
                 const paymentMethod = updatedCart.available_payment_methods.map((method) => ({

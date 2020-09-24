@@ -27,8 +27,12 @@ export default function CustomizedExpansionPanels({
             state = { ...checkout };
 
             if (result) {
-                state.data.cart = result.data.setPaymentMethodOnCart.cart;
-                updateFormik(result.data.setPaymentMethodOnCart.cart);
+                const mergeCart = {
+                    ...state.data.cart,
+                    ...result.data.setPaymentMethodOnCart.cart,
+                };
+                state.data.cart = mergeCart;
+                updateFormik(mergeCart);
             } else {
                 handleOpenMessage({
                     variant: 'error',
