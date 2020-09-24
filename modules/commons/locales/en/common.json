@@ -39,7 +39,11 @@
     },
     "cart": {
         "myCart": "My Cart",
-        "cardTotal": "Cart Subtotal"
+        "cardTotal": "Cart Subtotal",
+        "deleteSuccess": "Delete cart item success",
+        "deleteFailed": "Delete cart item failed",
+        "updateSuccess": "Update cart item success",
+        "updateFailed": "Update cart item failed"
     },
     "subtotal": "Subtotal",
     "price": {

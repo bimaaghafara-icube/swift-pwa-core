@@ -37,7 +37,11 @@
     },
     "cart" : {
         "myCart": "Cart Saya",
-        "cardTotal": "Cart Subtotal"
+        "cardTotal": "Cart Subtotal",
+        "deleteSuccess": "Hapus item cart berhasil",
+        "deleteFailed": "Hapus item cart gagal",
+        "updateSuccess": "Update item cart berhasil",
+        "updateFailed": "Update item cart gagal"
     },
     "subtotal": "Subtotal",
     "price": {

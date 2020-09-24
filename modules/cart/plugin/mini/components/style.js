@@ -141,6 +141,12 @@ const useStyles = makeStyles(() => ({
             },
         },
     },
+    emptyCart: {
+        marginTop: 40,
+        textAlign: 'center',
+        fontSize: 10,
+        textTransform: 'uppercase',
+    },
 }));
 
 export default useStyles;
