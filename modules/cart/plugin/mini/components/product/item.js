@@ -6,7 +6,7 @@ import { formatPrice } from '@helper_currency';
 
 const Item = (props) => {
     const {
-        quantity, prices, product, deleteCart, updateCart, id,
+        quantity, prices, product, deleteCart, updateCart, id, configurable_options,
     } = props;
     return (
         <li>
@@ -23,18 +23,20 @@ const Item = (props) => {
                     <strong className="product-item-name">
                         <Link href="/[...slug]" as={`/${product.url_key}`}><a>{product.name}</a></Link>
                     </strong>
-                    <div className="product-options">
-                        <div className="option-wrapper">
-                            <strong>Size</strong>
-                            {' '}
-                            : xl
+                    {configurable_options && configurable_options.length ? (
+                        <div className="product-options">
+                            {configurable_options.map((val, idx) => (
+                                <div className="option-wrapper" key={idx}>
+                                    <strong>{val.option_label}</strong>
+                                    {' '}
+                                    :
+                                    {' '}
+                                    {val.value_label}
+                                </div>
+                            ))}
                         </div>
-                        <div className="option-wrapper">
-                            <strong>Color</strong>
-                            {' '}
-                            : Blue
-                        </div>
-                    </div>
+                    ) : null}
+
                 </div>
                 <div className="product-item-pricing">
                     <div className="details-qty qty">
