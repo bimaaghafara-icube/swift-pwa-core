@@ -84,7 +84,7 @@ export default (props) => {
                 setOpen={handleOpenReview}
                 ViewDialog={AddReviewDialogView}
             />
-            <div className={styles.body}>
+            <div className={styles.shareRootContainer}>
                 <div className={styles.titleContainer}>
                     <div className={styles.titlePriceContainer}>
                         <Typography variant="span" type="bold" letter="uppercase" className={classNames('clear-margin-padding', styles.title)}>

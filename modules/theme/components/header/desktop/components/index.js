@@ -25,67 +25,74 @@ const ViewTopNavigation = (props) => {
                     <TopMenu t={t} isLogin={isLogin} data={customer} handleLogout={handleLogout} />
                 </main>
             </div>
-            <main>
-                <div className="header-middle">
-                    <div className="header-middle__left">
-                        <div className="box header-middle__logo">
-                            <Link href="/">
-                                <img
-                                    className="header-middle__logo-link"
-                                    src={`${storeConfig.secure_base_media_url}logo/${storeConfig.header_logo_src}`}
-                                />
-                            </Link>
-                        </div>
-                    </div>
-                    <div className="header-middle__center">
-                        <div className="header-small__menu">
-                            {loading ? null : <Menu data={data} storeConfig={storeConfig} />}
-                        </div>
-                    </div>
-                    <div className="header-middle__right">
-                        <div className="box">
-                            <div className="header-middle__icons">
-                                <div className="notification"><NotificationBell withLink /></div>
-                                <div className="shopping-bag"><ShoppingBagIcon withLink /></div>
+            <main style={{ width: '100%', maxWidth: 'unset' }}>
+                <div className="header-main">
+                    <div className="header-middle">
+                        <div className="header-middle__left">
+                            <div className="box header-middle__logo">
+                                <Link href="/">
+                                    <img
+                                        className="header-middle__logo-link"
+                                        src={`${storeConfig.secure_base_media_url}logo/${storeConfig.header_logo_src}`}
+                                    />
+                                </Link>
                             </div>
-                            <div className="header-middle__search">
-                                {/* <TextField
-                                    id="standard-basic"
-                                    label="Search..."
-                                    onChange={(e) => setValue(e.target.value)}
-                                    onKeyPress={(e) => handleSearch(e)}
-                                /> */}
-                                <Autocomplete
-                                    setValue={setValue}
-                                    handleSearch={handleSearch}
-                                    OptionsItem={OptionAutocomplete}
-                                />
-                                <div className="search-icon">
-                                    <IconButton
-                                        disabled={value === ''}
-                                        edge="start"
-                                        onClick={searchByClick}
-                                        aria-label="close"
-                                    >
-                                        <SearchIcon />
-                                    </IconButton>
+                        </div>
+                        <div className="header-middle__center">
+                            <div className="header-small__menu">
+                                {loading ? null : <Menu data={data} storeConfig={storeConfig} />}
+                            </div>
+                        </div>
+                        <div className="header-middle__right">
+                            <div className="box">
+                                <div className="header-middle__icons">
+                                    <div className="notification"><NotificationBell withLink /></div>
+                                    <div className="shopping-bag"><ShoppingBagIcon withLink /></div>
+                                </div>
+                                <div className="header-middle__search">
+                                    {/* <TextField
+                                        id="standard-basic"
+                                        label="Search..."
+                                        onChange={(e) => setValue(e.target.value)}
+                                        onKeyPress={(e) => handleSearch(e)}
+                                    /> */}
+                                    <Autocomplete
+                                        setValue={setValue}
+                                        handleSearch={handleSearch}
+                                        OptionsItem={OptionAutocomplete}
+                                    />
+                                    <div className="search-icon">
+                                        <IconButton
+                                            disabled={value === ''}
+                                            edge="start"
+                                            onClick={searchByClick}
+                                            aria-label="close"
+                                        >
+                                            <SearchIcon />
+                                        </IconButton>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div className="row menu-category">
-                    <div className="col-xs-12">
-                        {loading ? null : <Menu data={data} storeConfig={storeConfig} />}
+                    <div className="row menu-category">
+                        <div className="col-xs-12">
+                            {loading ? null : <Menu data={data} storeConfig={storeConfig} />}
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </main>
             <style jsx>
                 {`
                     #header {
                         height: 170px;
+                    }
+                    .header-main{
+                        max-width: 1440px;
+                        width: 97%;
+                        margin: 0 auto;
                     }
                     @media (min-width: 768px) {
                         #header{
@@ -174,7 +181,6 @@ const ViewTopNavigation = (props) => {
                             height: 75px !important;
                         }
                     }
-
                 `}
             </style>
         </div>
