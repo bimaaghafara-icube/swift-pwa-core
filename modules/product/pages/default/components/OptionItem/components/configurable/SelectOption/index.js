@@ -1,0 +1,55 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import classNames from 'classnames';
+import Typograpy from '@common_typography';
+import { GRAY_PRIMARY, PRIMARY } from '@theme_color';
+import useStyles from './style';
+
+const SelectOption = (props) => {
+    const {
+        value, selected, onChange, className = '', disabled = false, thumbnail, content = '',
+    } = props;
+    const styles = useStyles();
+    const containerStyle = selected && !disabled
+        ? classNames(
+            styles.container,
+            content.toLowerCase() === 'black' || content.toLowerCase() === '#000000' ? styles.borderedSecondary : styles.bordered,
+            className,
+        )
+        : classNames(styles.container, className);
+    const labelStyle = selected
+        ? classNames(styles.label, styles.labelActive)
+        : styles.label;
+    let customStyle = {
+        border: `1px solid ${selected ? PRIMARY : GRAY_PRIMARY}`,
+    };
+    let childContent = <Typograpy className={labelStyle}>{content}</Typograpy>;
+    if (content.includes('#')) {
+        customStyle = {
+            backgroundColor: content,
+        };
+        childContent = '';
+    }
+
+    if (thumbnail && thumbnail !== '') {
+        customStyle = {
+            backgroundImage: `url(${thumbnail})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+        };
+        childContent = '';
+    }
+
+    const handleChange = () => {
+        // eslint-disable-next-line no-unused-expressions
+        !disabled && onChange(value);
+    };
+    return (
+        <div className={containerStyle} style={customStyle} onClick={handleChange}>
+            {disabled ? <div className={styles.disabledBox} /> : childContent}
+        </div>
+    );
+};
+
+export default SelectOption;
