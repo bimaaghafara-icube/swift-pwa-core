@@ -51,7 +51,7 @@ export const removeCookies = (key) => {
 const set = (key, value) => {
     const maxChar = 1000;
     const str = JSON.stringify(value);
-    if (str.length > maxChar) {
+    if (str && (str.length > maxChar)) {
         let subKeys = '';
         for (let i = 0; i < str.length; i += maxChar) {
             Cookies.set(`__${key}_${i}`, str.slice(i, i + maxChar), { expires: expiredDefault });
