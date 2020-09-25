@@ -1,6 +1,29 @@
 import { gql } from '@apollo/client';
 
-const subBillingAddress = `
+const cartAvailableShippingMethods = `
+    shipping_addresses {
+        available_shipping_methods {
+            available
+            method_code
+            carrier_code
+            method_title
+            carrier_title
+            amount {
+                value
+                currency
+            }
+        }
+    }
+`;
+
+const cartAvailablePaymentMethods = `
+    available_payment_methods {
+        code
+        title
+    }
+`;
+
+const cartBillingAddress = `
     billing_address {
         city
         company
@@ -20,16 +43,8 @@ const subBillingAddress = `
     }
 `;
 
-const shippingAddresses = `
+const cartShippingAddress = `
     shipping_addresses {
-        selected_shipping_method {
-            method_code
-            carrier_code
-            amount {
-                value
-                currency
-            }
-        }
         firstname
         lastname
         street
@@ -45,35 +60,80 @@ const shippingAddresses = `
             code
             label
         }
-        available_shipping_methods {
-            available
+    }
+`;
+
+const cartRequiredSelection = `
+    id
+    email
+    shipping_addresses {
+        selected_shipping_method {
             method_code
             carrier_code
-            method_title
-            carrier_title
             amount {
                 value
                 currency
             }
         }
     }
-`;
-
-const subDesLocation = `
-    dest_location {
-        dest_latitude
-        dest_longitude
-    }
-`;
-
-const subAvailablePayment = `
-    available_payment_methods {
+    selected_payment_method {
         code
+    }
+    applied_store_credit {
+        store_credit_amount
+        is_use_store_credit
+    }
+    applied_giftcard {
+        giftcard_amount
+        giftcard_detail {
+            giftcard_amount_used
+            giftcard_code
+        }
+    }
+    applied_reward_points {
+        is_use_reward_points
+        reward_points_amount
+    }
+    applied_cashback {
+        data {
+            amount
+            promo_name
+        }
+        is_cashback
+        total_cashback
+    }
+    applied_coupons {
+        code
+    }
+    applied_extra_fee {
+        extrafee_value {
+          currency
+          value
+        }
+        select_options {
+          default
+          label
+          option_id
+          price
+        }
+        show_on_cart
         title
     }
-`;
-
-const subPrice = `
+    addtional_fees {
+        data {
+          enabled
+          fee_name
+          frontend_type
+          id_fee
+          options {
+            default
+            label
+            option_id
+            price
+          }
+        }
+        show_on_cart
+    }
     prices {
         discounts {
             amount {
@@ -89,139 +149,6 @@ const subPrice = `
     }
 `;
 
-const subGift = `
-    applied_giftcard {
-        giftcard_amount
-        giftcard_detail {
-            giftcard_amount_used
-            giftcard_code
-        }
-    }
-`;
-
-const subStoreCredit = `
-    applied_store_credit {
-        store_credit_amount
-        is_use_store_credit
-    }
-`;
-
-const subRewardPoint = `
-    applied_reward_points {
-        is_use_reward_points
-        reward_points_amount
-    }
-`;
-
-const subCashback = `
-    applied_cashback {
-        data {
-            amount
-            promo_name
-        }
-        is_cashback
-        total_cashback
-    }
-`;
-
-const subExtraFee = `
-addtional_fees {
-    data {
-      enabled
-      fee_name
-      frontend_type
-      id_fee
-      options {
-        default
-        label
-        option_id
-        price
-      }
-    }
-    show_on_cart
-  }
-applied_extra_fee {
-    extrafee_value {
-      currency
-      value
-    }
-    select_options {
-      default
-      label
-      option_id
-      price
-    }
-    show_on_cart
-    title
-}
-`;
-
-const cartSubSelection = `
-    id
-    email
-    dest_location {
-        dest_latitude
-        dest_longitude
-    }
-    ${subBillingAddress}
-    selected_payment_method {
-        code
-    }
-    applied_coupons {
-        code
-    }
-    ${shippingAddresses}
-    items {
-        id
-        quantity
-        ... on ConfigurableCartItem {
-            configurable_options {
-            option_label
-            value_label
-          }
-        }
-        prices {
-            row_total {
-                currency
-                value
-            }
-            discounts {
-                amount {
-                    currency
-                    value
-                }
-                label
-            }
-            price {
-                value
-                currency
-              }
-        }
-        product {
-            id
-            name
-            categories {
-              name
-            }
-            url_key
-            sku
-            stock_status
-            small_image {
-                url
-                label
-            }
-          }
-    }
-    ${subAvailablePayment}
-    ${subStoreCredit}
-    ${subGift}
-    ${subRewardPoint}
-    ${subDesLocation}
-    ${subCashback}
-    ${subExtraFee}
-    ${subPrice}
-`;
-
 export const applyGiftCardToCart = gql`
     mutation($cartId: String! $code: String!) {
         applyGiftCardToCart(
@@ -232,9 +159,7 @@ export const applyGiftCardToCart = gql`
         ) {
             cart {
                 id
-                ${subGift}
-                ${subCashback}
-                ${subPrice}
+                ${cartRequiredSelection}
             }
         }
     }
@@ -250,9 +175,7 @@ export const removeGiftCardFromCart = gql`
         ) {
             cart {
                 id
-                ${subGift}
-                ${subCashback}
-                ${subPrice}
+                ${cartRequiredSelection}
             }
         }
     }
@@ -267,9 +190,7 @@ export const applyStoreCreditToCart = gql`
         ) {
             cart {
                 id
-                ${subStoreCredit}
-                ${subCashback}
-                ${subPrice}
+                ${cartRequiredSelection}
             }
         }
     }
@@ -284,9 +205,7 @@ export const removeStoreCreditFromCart = gql`
         ) {
             cart {
                 id
-                ${subStoreCredit}
-                ${subCashback}
-                ${subPrice}
+                ${cartRequiredSelection}
             }
         }
     }
@@ -337,7 +256,56 @@ export const getCustomer = gql`
 export const getCart = gql`
     query Cart($cartId: String!) {
         cart(cart_id: $cartId) {
-            ${cartSubSelection}
+            items {
+                id
+                quantity
+                ... on ConfigurableCartItem {
+                    configurable_options {
+                    option_label
+                    value_label
+                }
+                }
+                prices {
+                    row_total {
+                        currency
+                        value
+                    }
+                    discounts {
+                        amount {
+                            currency
+                            value
+                        }
+                        label
+                    }
+                    price {
+                        value
+                        currency
+                    }
+                }
+                product {
+                    id
+                    name
+                    categories {
+                    name
+                    }
+                    url_key
+                    sku
+                    stock_status
+                    small_image {
+                        url
+                        label
+                    }
+                }
+            }
+            dest_location {
+                dest_latitude
+                dest_longitude
+            }
+            ${cartShippingAddress}
+            ${cartBillingAddress}
+            ${cartAvailableShippingMethods}
+            ${cartAvailablePaymentMethods}
+            ${cartRequiredSelection}
         }
     }
 `;
@@ -398,9 +366,14 @@ export const setBillingAddressById = gql`
         setBillingAddressOnCart(input: { cart_id: $cartId, billing_address: { same_as_shipping: true, customer_address_id: $addressId } }) {
             cart {
                 id
-                ${shippingAddresses}
-                ${subCashback}
-                ${subDesLocation}
+                dest_location {
+                    dest_latitude
+                    dest_longitude
+                }
+                ${cartShippingAddress}
+                ${cartBillingAddress}
+                ${cartAvailableShippingMethods}
+                ${cartRequiredSelection}
             }
         }
     }
@@ -443,9 +416,14 @@ export const setBillingAddressByInput = gql`
         ) {
             cart {
                 id
-                ${shippingAddresses}
-                ${subCashback}
-                ${subDesLocation}
+                dest_location {
+                    dest_latitude
+                    dest_longitude
+                }
+                ${cartShippingAddress}
+                ${cartBillingAddress}
+                ${cartAvailableShippingMethods}
+                ${cartRequiredSelection}
             }
         }
     }
@@ -456,9 +434,8 @@ export const setShippingMethod = gql`
         setShippingMethodsOnCart(input: { cart_id: $cartId, shipping_methods: { carrier_code: $carrierCode, method_code: $methodCode } }) {
             cart {
                 id
-                ${subAvailablePayment}
-                ${subCashback}
-                ${subPrice}
+                ${cartAvailablePaymentMethods}
+                ${cartRequiredSelection}
             }
         }
     }
@@ -472,8 +449,7 @@ export const setPaymentMethod = gql`
                 selected_payment_method {
                     code
                 }
-                ${subCashback}
-                ${subPrice}
+                ${cartRequiredSelection}
             }
         }
     }
@@ -483,7 +459,7 @@ export const setGuestEmailAddressOnCart = gql`
     mutation($cartId: String!, $email: String!) {
         setGuestEmailOnCart(input: { cart_id: $cartId, email: $email }) {
             cart {
-                ${cartSubSelection}
+                ${cartRequiredSelection}
             }
         }
     }
@@ -508,8 +484,7 @@ export const applyCouponToCart = gql`
                 applied_coupons {
                     code
                 }
-                ${subCashback}
-                ${subPrice}
+                ${cartRequiredSelection}
             }
         }
     }
@@ -523,8 +498,7 @@ export const removeCouponFromCart = gql`
                 applied_coupons {
                     code
                 }
-                ${subCashback}
-                ${subPrice}
+                ${cartRequiredSelection}
             }
         }
     }
@@ -535,9 +509,7 @@ export const applyRewardPointsToCart = gql`
         applyRewardPointsToCart(input: { cart_id: $cartId }) {
             cart {
                 id
-                ${subRewardPoint}
-                ${subCashback}
-                ${subPrice}
+                ${cartRequiredSelection}
             }
         }
     }
@@ -548,9 +520,7 @@ export const removeRewardPointsFromCart = gql`
         removeRewardPointsFromCart(input: { cart_id: $cartId }) {
             cart {
                 id
-                ${subRewardPoint}
-                ${subCashback}
-                ${subPrice}
+                ${cartRequiredSelection}
             }
         }
     }
@@ -641,7 +611,7 @@ mutation setPickupStore(
         extension_attributes: $extension_attributes
         store_address: $store_address
     }) {
-      ${cartSubSelection}
+      ${cartRequiredSelection}
     }
   }
 `;
@@ -653,7 +623,7 @@ mutation removePickupStore(
     removePickupStore(input: {
       cart_id: $cart_id
     }) {
-      ${cartSubSelection}
+      ${cartRequiredSelection}
     }
   }
 `;
@@ -805,9 +775,7 @@ mutation updateExtraFee(
     }) {
         cart {
             id
-            ${subCashback}
-            ${subExtraFee}
-            ${subPrice}
+            ${cartRequiredSelection}
         }
     }
 }
