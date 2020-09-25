@@ -4,12 +4,7 @@ import gqlService from '../../../../services/graphql';
 
 const DiscountSection = (props) => {
     const {
-        t,
-        checkout,
-        setCheckout,
-        handleOpenMessage,
-        storeConfig,
-        StoreCreditView,
+        t, checkout, setCheckout, handleOpenMessage, storeConfig, StoreCreditView,
     } = props;
     const [applyStoreCreditToCart] = gqlService.applyStoreCreditToCart({
         onError: (e) => {
@@ -53,10 +48,10 @@ const DiscountSection = (props) => {
 
         if (store_credit.is_use_store_credit) {
             const result = await removeStoreCreditFromCart({ variables: { cartId } });
-            cart = result && ({
+            cart = result && {
                 ...state.data.cart,
                 ...result.data.removeStoreCreditFromCart.cart,
-            });
+            };
             if (result) {
                 handleOpenMessage({
                     variant: 'success',
@@ -65,11 +60,11 @@ const DiscountSection = (props) => {
             }
         } else {
             const result = await applyStoreCreditToCart({ variables: { cartId } });
-            cart = result && ({
+            cart = result && {
                 ...state.data.cart,
                 ...result.data.applyStoreCreditToCart.cart,
-            });
-            if(result){
+            };
+            if (result) {
                 handleOpenMessage({
                     variant: 'success',
                     text: t('checkout:message:storeCreditApplied'),
