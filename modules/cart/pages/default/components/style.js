@@ -31,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
     toolbarButton: {
         fontSize: 11,
         marginTop: 20,
+        marginBottom: 10,
+        width: '85%',
+        maxWidth: '320px',
     },
     items: {
         ...FlexColumn,
