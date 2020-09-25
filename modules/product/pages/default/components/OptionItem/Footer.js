@@ -1,5 +1,5 @@
 import Typography from '@common_typography';
-import Qty from '@common_qty';
+import ButtonQty from '@common_buttonqty';
 // import Router from 'next/router';
 import React from 'react';
 import Button from '@common_button';
@@ -7,7 +7,7 @@ import useStyles from './style';
 
 export default ({
     qty = 1,
-    handleQty = () => { },
+    setQty = () => { },
     handleAddToCart = () => { },
     t,
     loading = false,
@@ -17,9 +17,9 @@ export default ({
         <>
             <div className={styles.qty}>
                 <Typography type="bold" variant="span">{t('common:title:qty')}</Typography>
-                <Qty
+                <ButtonQty
                     value={qty}
-                    onChange={handleQty}
+                    onChange={setQty}
                     max={10000}
                 />
             </div>

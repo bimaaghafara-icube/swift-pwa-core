@@ -1,7 +1,7 @@
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Typography from '@common_typography';
 import Button from '@common_button';
-import Qty from '@common_qty';
+import ButtonQty from '@common_buttonqty';
 import useStyles from './style';
 
 const EditDrawer = ({
@@ -37,9 +37,9 @@ const EditDrawer = ({
                 </Typography>
                 <div className={styles.qty}>
                     <Typography variant="span">{t('common:title:qty')}</Typography>
-                    <Qty
+                    <ButtonQty
                         value={qty}
-                        onChange={(e) => { setQty(e.target.value); }}
+                        onChange={setQty}
                         max={10000}
                     />
                 </div>
