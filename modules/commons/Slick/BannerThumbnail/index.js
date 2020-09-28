@@ -92,7 +92,7 @@ const Banner = ({
             <div className={classNames(styles.caraousel)}>
                 <Slider ref={(slider) => sliderRef = slider} {...settings}>
                     {data.map((item, key) => (
-                        <div onClick={actionImage}>
+                        <div onClick={actionImage} key={key}>
                             {
                                 zoom ? (
                                     <Zoom ref={zoomRef}>

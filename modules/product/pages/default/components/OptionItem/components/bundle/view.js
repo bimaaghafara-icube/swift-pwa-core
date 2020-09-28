@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@common_button';
 import Typography from '@common_typography';
 import useStyles from '../../style';
@@ -52,8 +53,17 @@ const BundleView = (props) => {
     const {
         t, data, items, changeQty, generateBundlePrice, selectOptions, handleAddToCart, loading,
     } = props;
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(false || (typeof window !== 'undefined' && window.innerWidth <= 768));
     const styles = useStyles();
+    if (loading || !data) {
+        return (
+            <div className={styles.loadingCart}>
+                <CircularProgress
+                    size={24}
+                />
+            </div>
+        );
+    }
     return (
         <div>
             <Accordion square expanded={open} onChange={() => setOpen(!open)}>

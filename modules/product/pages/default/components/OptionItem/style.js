@@ -121,4 +121,10 @@ export default makeStyles((theme) => ({
         transition: 'top 1s ease',
         opacity: '1',
     },
+    loadingCart: {
+        height: '100px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 }));

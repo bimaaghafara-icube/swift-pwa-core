@@ -76,7 +76,6 @@ export default (props) => {
             __typename, sku, name, categories,
             price_range, stock_status,
         },
-        loading,
         BundleView,
         Footer,
     } = props;
@@ -85,7 +84,7 @@ export default (props) => {
     const [loadingAdd, setLoadingAdd] = React.useState(false);
 
     const configProduct = getBundleProduct(sku);
-
+    const { loading } = configProduct;
     let cartId = '';
     let isLogin = 0;
 

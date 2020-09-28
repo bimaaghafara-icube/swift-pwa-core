@@ -6,8 +6,10 @@ import Fade from '@material-ui/core/Fade';
 import React from 'react';
 import ConfigurableOption from './components/configurable';
 import ConfigurableView from './components/configurable/view';
+import BundleView from './components/bundle/view';
 import SimpleOption from './components/simple';
 import VirtualOption from './components/virtual';
+import BundleOption from './components/bundle';
 import useStyles from './style';
 import Footer from './Footer';
 
@@ -46,6 +48,16 @@ const OptionDialog = (props) => {
                                 loading={loading}
                                 setLoading={setLoading}
                                 ConfigurableView={ConfigurableView}
+                                Footer={Footer}
+                            />
+                        )}
+
+                        {__typename === 'BundleProduct' && (
+                            <BundleOption
+                                {...props}
+                                loading={loading}
+                                setLoading={setLoading}
+                                BundleView={BundleView}
                                 Footer={Footer}
                             />
                         )}
