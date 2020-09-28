@@ -108,4 +108,17 @@ export default makeStyles((theme) => ({
         height: 30,
         margin: 10,
     },
+    customizeContainer: {
+        width: '100%',
+        height: 100,
+        backgroundColor: 'red',
+        visibility: 'hidden',
+        transition: 'top 1s ease',
+        opacity: '0',
+    },
+    customizeContainerOpen: {
+        visibility: 'visible',
+        transition: 'top 1s ease',
+        opacity: '1',
+    },
 }));

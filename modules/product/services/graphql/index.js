@@ -3,6 +3,7 @@ import * as Schema from './schema';
 
 export const getProduct = (urlpath) => useQuery(Schema.getProduct(urlpath));
 export const getConfigurableProduct = (sku) => useQuery(Schema.getConfigurableProduct(sku));
+export const getBundleProduct = (sku) => useQuery(Schema.getBundleProduct(sku));
 
 export const getReviews = (params) => useQuery(Schema.getReview(), {
     variables: {

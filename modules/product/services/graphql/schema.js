@@ -146,6 +146,54 @@ export const getProduct = (url) => {
     return query;
 };
 
+export const getBundleProduct = (sku) => {
+    const query = gql`{
+    products(
+      search: "" ,filter: {
+        sku: {
+          eq: "${sku}"
+        }
+      }
+    ) {
+      items {
+        ... on BundleProduct {
+    id
+    name
+    url_key
+    items {
+      position
+      title
+      type
+      required
+      options {
+        id
+        is_default
+        label
+        product {
+          id
+          name
+          price_range {
+            minimum_price {
+              discount {
+                amount_off
+                percent_off
+              }
+              final_price {
+                currency
+                value
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+      }
+    }
+  }`;
+    return query;
+};
+
 export const getConfigurableProduct = (sku) => {
     const query = gql`{
       products(
