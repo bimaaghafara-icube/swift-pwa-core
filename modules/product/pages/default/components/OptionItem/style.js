@@ -6,6 +6,7 @@ import {
     CreatePadding,
     FlexColumn,
     CreateMargin,
+    FlexRow,
 } from '@theme_mixins';
 
 export default makeStyles((theme) => ({
@@ -41,6 +42,9 @@ export default makeStyles((theme) => ({
         ...CreatePadding(15, 14, 20, 14),
         alignItems: 'center',
         overflowX: 'scroll',
+        [theme.breakpoints.down('xs')]: {
+            maxHeight: '80vh',
+        },
     },
     btnClose: {
         ...CreateMargin(0, 0, 15, 0),
@@ -99,9 +103,29 @@ export default makeStyles((theme) => ({
     select: {
         minWidth: '30%',
         width: 'auto',
-        maxWidth: '75%',
+        maxWidth: '100%',
         marginBottom: 10,
         ...FlexColumn,
+        [theme.breakpoints.up('sm')]: {
+            maxWidth: '75%',
+        },
+        '& .label-select': {
+            textAlign: 'center',
+            [theme.breakpoints.up('sm')]: {
+                textAlign: 'left',
+            },
+        },
+    },
+    labelContainer: {
+        ...FlexRow,
+        '& .label-select': {
+        },
+        '& .label-select-value': {
+            marginLeft: 20,
+            fontSize: 14,
+        },
+        justifyContent: 'flex-between',
+        alignItems: 'center',
     },
     stylesItemOption: {
         width: 30,
