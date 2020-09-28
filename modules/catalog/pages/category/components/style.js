@@ -27,6 +27,10 @@ const useStyles = makeStyles(() => ({
     breadcrumbs: {
         padding: '16px 16px 0',
     },
+    categoryName: {
+        padding: '16px 16px 0',
+        margin: 0,
+    },
 }));
 
 export default useStyles;
