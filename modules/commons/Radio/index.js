@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-unused-expressions */
 import React from 'react';
 import Radio from '@material-ui/core/Radio';
@@ -39,6 +40,7 @@ function CustomRadio({
     errorMessage = '',
     propsItem = {},
     disabled = false,
+    CustomLabel,
 }) {
     const styles = useStyles();
 
@@ -54,11 +56,14 @@ function CustomRadio({
     };
     return (
         <div className={rootStyle}>
-            {!noLabel ? (
-                <Typography variant="label" type="bold" letter="uppercase">
-                    {label.replace(/_/g, ' ')}
-                </Typography>
-            ) : null}
+            {!noLabel
+                ? CustomLabel ? (
+                    <CustomLabel />
+                ) : (
+                    <Typography variant="label" type="bold" letter="uppercase">
+                        {label.replace(/_/g, ' ')}
+                    </Typography>
+                ) : null}
 
             <RadioGroup
                 aria-label={ariaLabel}

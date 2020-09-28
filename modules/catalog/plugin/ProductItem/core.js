@@ -67,7 +67,7 @@ const ProductItem = (props) => {
         <>
             <div className={styles.itemContainer}>
                 {
-                    modules.catalog.productListing.label.enabled ? (
+                    modules.catalog.productListing.label.enabled && LabelView ? (
                         <LabelView {...other} spesificProduct={spesificProduct} />
                     ) : null
                 }
