@@ -10,46 +10,6 @@ import ButtonQty from '@common_buttonqty';
 import Button from '@common_button';
 import useStyles from '../style';
 
-const generateBundleSize = (items) => {
-    let price = 0;
-    let currency = 'USD';
-    for (let index = 0; index < items.length; index++) {
-        const element = items[index];
-        for (let idx = 0; idx < element.options.length; idx++) {
-            const opt = element.options[idx];
-            if (opt.is_default) {
-                price += opt.product.price_range.minimum_price.final_price.value;
-                currency = opt.product.price_range.minimum_price.final_price.currency;
-            }
-        }
-    }
-
-    return formatPrice(price, currency);
-};
-
-const changeSelectedOption = (position, id, items) => {
-    const result = [];
-    for (let index = 0; index < items.length; index++) {
-        // need to create new object because read only from graph ql
-        const element = { ...items[index] };
-        const optionArr = [];
-        if (element.position === parseInt(position)) {
-            for (let idx = 0; idx < element.options.length; idx++) {
-                const opt = { ...element.options[idx] };
-                if (element.type === 'radio') {
-                    opt.is_default = opt.id === parseInt(id);
-                }
-                optionArr.push(opt);
-            }
-            element.options = optionArr;
-        }
-
-        result.push(element);
-    }
-
-    return result;
-};
-
 const GenerateOptionsSelect = ({ data, options = [], selectOptions }) => options.map((val, idx) => (
     <div className="options-container" key={idx}>
         <input
@@ -73,23 +33,13 @@ const GenerateOptionsSelect = ({ data, options = [], selectOptions }) => options
 ));
 
 const Customize = (props) => {
-    const { data, t } = props;
+    const {
+        data, t, items, changeQty, generateBundlePrice, selectOptions, handleAddToCart, loading,
+    } = props;
+    const [qty, setQty] = React.useState(1);
+
     const styles = useStyles();
-    const [items, setItems] = React.useState([]);
-    const product = data.items && data.items[0] ? data.items[0] : {};
-
-    React.useEffect(() => {
-        if (items.length === 0 && product.items) {
-            setItems(product.items);
-        }
-    }, [product]);
-
-    const selectOptions = (group, id) => {
-        const itemsUpdate = changeSelectedOption(group.position, id, items);
-        setItems([...itemsUpdate]);
-    };
-
-    console.log(items);
+    const product = data && data.products ? data.products.items[0] : {};
 
     return (
         <>
@@ -117,7 +67,7 @@ const Customize = (props) => {
                                         </Typography>
                                         <ButtonQty
                                             value={1}
-                                            onChange={(e) => { console.log(e); }}
+                                            onChange={(e) => changeQty(val.position, e)}
                                             max={10000}
                                         />
                                     </div>
@@ -129,18 +79,18 @@ const Customize = (props) => {
                                 </Typography>
                                 <hr />
                                 <Typography variant="h3" type="bold">
-                                    {generateBundleSize(items)}
+                                    {generateBundlePrice(items)}
                                 </Typography>
                                 <ButtonQty
                                     value={1}
-                                    onChange={(e) => { console.log(e); }}
+                                    onChange={(e) => setQty(e)}
                                     max={10000}
                                 />
                                 <Button
                                     className={styles.btnAddToCard}
                                     color="primary"
-                                    onClick={() => {}}
-                                    loading={false}
+                                    onClick={() => handleAddToCart(qty)}
+                                    loading={loading}
                                 >
                                     <Typography
                                         align="center"

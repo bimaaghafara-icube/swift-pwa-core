@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import { gql } from '@apollo/client';
 import { features } from '@config';
 
@@ -318,6 +319,25 @@ mutation (
     }
   }
 }
+`;
+
+export const addBundleProductsToCart = gql`
+  mutation (
+    $cartId: String!,
+    $cartItems: [BundleProductCartItemInput]!
+  ) {
+        addBundleProductsToCart(
+          input: {
+            cart_id: $cartId
+            cart_items: $cartItems
+          }
+        ) {
+          cart {
+            id
+            total_quantity
+          }
+        }
+      }
 `;
 
 export const addReview = gql`

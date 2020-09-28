@@ -30,6 +30,12 @@ export const addConfigProductsToCart = () => useMutation(Schema.addConfigProduct
     },
 });
 
+export const addBundleProductsToCart = () => useMutation(Schema.addBundleProductsToCart, {
+    context: {
+        request: 'internal',
+    },
+});
+
 export const addWishlist = () => useMutation(Schema.addWishlist, {
     context: {
         request: 'internal',

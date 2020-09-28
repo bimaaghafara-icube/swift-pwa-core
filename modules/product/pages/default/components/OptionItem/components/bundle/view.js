@@ -49,7 +49,9 @@ const AccordionDetails = withStyles(() => ({
 }))(MuiAccordionDetails);
 
 const BundleView = (props) => {
-    const { t, data } = props;
+    const {
+        t, data, items, changeQty, generateBundlePrice, selectOptions, handleAddToCart, loading,
+    } = props;
     const [open, setOpen] = React.useState(false);
     const styles = useStyles();
     return (
@@ -69,12 +71,21 @@ const BundleView = (props) => {
                             color="white"
                             variant="span"
                         >
-                            {t('product:addToCart')}
+                            Customize and Add toCart
                         </Typography>
                     </Button>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Customize data={data.data ? data.data.products : {}} t={t} />
+                    <Customize
+                        data={data}
+                        items={items}
+                        t={t}
+                        changeQty={changeQty}
+                        generateBundlePrice={generateBundlePrice}
+                        selectOptions={selectOptions}
+                        handleAddToCart={handleAddToCart}
+                        loading={loading}
+                    />
                 </AccordionDetails>
             </Accordion>
         </div>
