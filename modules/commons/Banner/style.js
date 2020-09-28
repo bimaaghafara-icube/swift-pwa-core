@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: '60.104167%',
         [theme.breakpoints.up('sm')]: {
             height: 'auto',
-            paddingTop: 0,
+            paddingTop: 16,
             display: 'flex',
             justifyContent: 'center',
             backgroundColor: WHITE,
