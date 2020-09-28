@@ -17,7 +17,6 @@ const ContentDetail = ({
     isLogin,
 }) => {
     const item = product.items[0];
-
     const route = useRouter();
 
     const reviewValue = parseInt(item.review.rating_summary, 0) / 20;
@@ -81,6 +80,8 @@ const ContentDetail = ({
         };
         TagManager.dataLayer(tagManagerArgs);
     }, []);
+
+    // const client = useApolloClient();
 
     const bannerData = [];
     if (item.media_gallery.length > 0) {
@@ -268,7 +269,10 @@ const PageDetail = (props) => {
     const {
         slug, Content, t, isLogin, pageConfig, CustomHeader,
     } = props;
-    const { loading, data, error } = getProduct(slug[0]);
+    const {
+        loading, data, error,
+    } = getProduct(slug[0]);
+
     if (error || loading || !data) {
         return (
             <Layout pageConfig={{}} CustomHeader={CustomHeader ? <CustomHeader /> : <Header />} {...props}>

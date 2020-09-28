@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/no-danger */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -5,6 +7,9 @@ import Link from 'next/link';
 import { WHITE, PRIMARY } from '@theme_color';
 import Thumbor from '@common_image';
 import getPath from '@helper_getpath';
+import { useApolloClient } from '@apollo/client';
+import { localResolver as queryResolver } from '@services/graphql/schema/local';
+import Route from 'next/router';
 import {
     features,
 } from '@config';
@@ -12,12 +17,31 @@ import {
 const generateLevel2 = (data) => {
     const [active, setActive] = React.useState(0);
     const child = data[active];
+    const client = useApolloClient();
+    const handleClick = async (href, id) => {
+        await client.writeQuery({
+            query: queryResolver,
+            data: {
+                resolver: {
+                    type: 'CATEGORY',
+                    id,
+                },
+            },
+        });
+        Route.push(href);
+    };
     return (
         <>
             <div className="nav-column nav-column-left col-lg-2">
                 {data.map((val, idx) => (
-                    <Link href="/[...slug]" as={val.link ? getPath(val.link) : `/${val.url_path}`} key={idx}>
-                        <a className={active === idx ? 'active' : ''} onMouseEnter={() => setActive(idx)}>{val.name}</a>
+                    <Link href="/" key={idx}>
+                        <a
+                            onClick={() => handleClick(val.link ? getPath(val.link) : `/${val.url_path}`, val.id)}
+                            className={active === idx ? 'active' : ''}
+                            onMouseEnter={() => setActive(idx)}
+                        >
+                            {val.name}
+                        </a>
                     </Link>
                 ))}
             </div>
@@ -25,14 +49,18 @@ const generateLevel2 = (data) => {
                 <div className={`${child.image_path ? 'col-lg-9' : 'col-lg-12'} row`}>
                     {child.children.map((lvl3, id3) => (
                         <div className="col-lg-3" key={id3}>
-                            <Link href="/[...slug]" as={lvl3.link ? getPath(lvl3.link) : `/${lvl3.url_path}`}>
-                                <a>{lvl3.name}</a>
+                            <Link href="/" as={lvl3.link ? getPath(lvl3.link) : `/${lvl3.url_path}`}>
+                                <a onClick={() => handleClick(lvl3.link ? getPath(lvl3.link) : `/${lvl3.url_path}`, lvl3.id)}>{lvl3.name}</a>
                             </Link>
                             <ul className="list-item__menu">
                                 {lvl3.children.map((lvl4, id4) => (
                                     <li key={id4}>
-                                        <Link href="/[...slug]" as={lvl4.link ? getPath(lvl4.link) : `/${lvl4.url_path}`}>
-                                            <a>{lvl4.name}</a>
+                                        <Link href="/">
+                                            <a
+                                                onClick={() => handleClick(lvl4.link ? getPath(lvl4.link) : `/${lvl4.url_path}`, lvl4.id)}
+                                            >
+                                                {lvl4.name}
+                                            </a>
                                         </Link>
                                     </li>
                                 ))}
@@ -78,6 +106,19 @@ const generateLevel2 = (data) => {
 const Menu = (props) => {
     const { data } = props;
     const menu = features.vesMenu.enabled ? data.vesMenu.items : data.categoryList[0].children;
+    const client = useApolloClient();
+    const handleClick = async (href, id) => {
+        await client.writeQuery({
+            query: queryResolver,
+            data: {
+                resolver: {
+                    type: 'CATEGORY',
+                    id,
+                },
+            },
+        });
+        Route.push(href);
+    };
     return (
         <div className="menu-wrapper" role="navigation">
             <ul className="nav" role="menubar">
@@ -85,8 +126,11 @@ const Menu = (props) => {
                     if ((val.include_in_menu || features.vesMenu.enabled) && val.name) {
                         return (
                             <li key={idx} role="menuitem">
-                                <Link href="/[...slug]" as={val.link ? getPath(val.link) : `/${val.url_path}`}>
-                                    <a dangerouslySetInnerHTML={{ __html: val.name }} />
+                                <Link href="/">
+                                    <a
+                                        onClick={() => handleClick(val.link ? getPath(val.link) : `/${val.url_path}`, val.id)}
+                                        dangerouslySetInnerHTML={{ __html: val.name }}
+                                    />
                                 </Link>
                                 {val.children.length > 0 ? (
                                     <div className="mega-menu row" aria-hidden="true" role="menu">

@@ -6,6 +6,13 @@ export const localTotalCart = gql`
 }
 `;
 
+export const localResolver = gql`
+  {
+    resolver @client
+  }
+`;
+
 export default {
     localTotalCart,
+    localResolver,
 };

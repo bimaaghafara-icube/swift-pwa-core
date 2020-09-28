@@ -4,11 +4,11 @@ import Button from '@common_button';
 import IconButton from '@material-ui/core/IconButton';
 import Slide from '@material-ui/core/Slide';
 import ArrowBack from '@material-ui/icons/ArrowBack';
-import Router from 'next/router';
 import useStyles from './style';
 
 const SubCategory = ({
     open, data, setOpenModal, onBack,
+    handleClickMenu,
 }) => {
     const styles = useStyles();
     return (
@@ -26,10 +26,7 @@ const SubCategory = ({
                     onClick={() => {
                         setOpenModal(false);
                         setTimeout(() => {
-                            Router.push(
-                                '/[...slug]',
-                                `/${data[0].url_path}`,
-                            );
+                            handleClickMenu(data[0]);
                         }, 200);
                     }}
                 >
@@ -46,10 +43,7 @@ const SubCategory = ({
                             onClick={() => {
                                 setOpenModal(false);
                                 setTimeout(() => {
-                                    Router.push(
-                                        '/[...slug]',
-                                        `/${item.url_path}`,
-                                    );
+                                    handleClickMenu(item);
                                 }, 300);
                             }}
                             className={indx === data[0].children.length - 1 ? styles.lastCat : styles.cat}

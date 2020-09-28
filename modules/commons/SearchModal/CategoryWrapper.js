@@ -3,6 +3,8 @@ import { useTranslation } from '@i18n';
 import Alert from '@material-ui/lab/Alert';
 import { GraphCategory } from '@services/graphql';
 import React from 'react';
+import Router from 'next/router';
+import { localResolver as queryResolver } from '@services/graphql/schema/local';
 import Category from './Category';
 import SubCategory from './SubCategory';
 import CategorySkeleton from './CategorySkeleton';
@@ -11,7 +13,9 @@ const CategoryWrapper = (props) => {
     const {
         openedCategory, showCat, openSub, slideCat, showSubCat, closeSub,
     } = props;
-    const { loading, data, error } = GraphCategory.getCategories();
+    const {
+        loading, data, error, client,
+    } = GraphCategory.getCategories();
     const { t } = useTranslation(['common']);
 
     if (loading) return <CategorySkeleton />;
@@ -34,6 +38,25 @@ const CategoryWrapper = (props) => {
         );
     }
 
+    const handleClickMenu = async (cat, type = 'CATEGORY') => {
+        const link = cat.url_key;
+        if (link) {
+            await client.writeQuery({
+                query: queryResolver,
+                data: {
+                    resolver: {
+                        id: cat.id || '1',
+                        type,
+                    },
+                },
+            });
+            Router.push(
+                '/[...slug]',
+                `/${link}`,
+            );
+        }
+    };
+
     return (
         <>
             {!openedCategory.length ? (
@@ -44,6 +67,7 @@ const CategoryWrapper = (props) => {
                     onClick={openSub}
                     direction="right"
                     slide={slideCat}
+                    handleClickMenu={handleClickMenu}
                 />
             ) : (
                 <SubCategory
@@ -51,6 +75,7 @@ const CategoryWrapper = (props) => {
                     open={showSubCat}
                     {...props}
                     onBack={closeSub}
+                    handleClickMenu={handleClickMenu}
                 />
             )}
         </>

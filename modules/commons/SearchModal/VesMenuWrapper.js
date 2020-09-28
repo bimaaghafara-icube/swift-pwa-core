@@ -5,6 +5,7 @@ import { GraphCategory } from '@services/graphql';
 import React from 'react';
 import Router from 'next/router';
 import getPath from '@helper_getpath';
+import { localResolver as queryResolver } from '@services/graphql/schema/local';
 import CategorySkeleton from './CategorySkeleton';
 import SubVesMenu from './SubVesMenu';
 import VesMenu from './VesMenu';
@@ -19,7 +20,9 @@ const CategoryWrapper = () => {
     const [historyPosition, setHistoryPosition] = React.useState(-1);
     const [back, setBack] = React.useState(false);
 
-    const { loading, data, error } = GraphCategory.getVesMenu({
+    const {
+        loading, data, error, client,
+    } = GraphCategory.getVesMenu({
         variables: {
             alias: 'top-menu',
         },
@@ -58,9 +61,18 @@ const CategoryWrapper = () => {
         );
     }
 
-    const handleClickMenu = (cat) => {
+    const handleClickMenu = async (cat) => {
         const link = getPath(cat.link);
         if (link) {
+            await client.writeQuery({
+                query: queryResolver,
+                data: {
+                    resolver: {
+                        id: cat.id,
+                        type: 'CATEGORY',
+                    },
+                },
+            });
             Router.push(
                 '/[...slug]',
                 link,
