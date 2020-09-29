@@ -151,7 +151,22 @@ const pageConfig = {
     | setLoading     |  function to set loading      | Function |
     | Footer     |  Component footer view      | Function |
 
-4. Footer
+4. BundleCore
+
+    Component to handle add to cart bundle product, this component on select and add to cart options,
+    for detail see `@core_modules/product/pages/default/components/OptionItem/bundle` to  usage
+
+    ## properties
+
+    | Props       | Description | Type |
+    | :---        | :---        |:---  |
+    | data     |  data product detail     | Object |
+    | t     |  function to translate      | Function |
+    | setOpen     |  function to open option or not      | Function |
+    | loading     |  function to translate      | Boolean |
+    | setLoading     |  function to set loading      | Function |
+
+5. Footer
 
     Component to select and add to cart product id, this component usage on ConfigurableCore, VirtualCore, and SimpleCore
 
@@ -175,3 +190,5 @@ const pageConfig = {
 5. VirtualCore `@core_modules/product/pages/default/components/OptionItem/virtual`
 6. VirtualView `@core_modules/product/pages/default/components/OptionItem/virtual/view`
 7. Footer (bottom button and select qty) `@core_modules/product/pages/default/components/Footer`
+8. BundleCore `@core_modules/product/pages/default/components/OptionItem/bundle`
+9. BundleView `@core_modules/product/pages/default/components/OptionItem/bundle/view`
