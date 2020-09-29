@@ -207,6 +207,7 @@ export default (props) => {
             {configProduct.data
                 && configProduct.data.products.items[0].configurable_options.map((option, index) => {
                     const value = [];
+                    let isSwatch = false;
                     for (
                         let valIdx = 0;
                         valIdx < option.values.length;
@@ -216,9 +217,17 @@ export default (props) => {
                         if (value.indexOf(option.values[valIdx].label) === -1) {
                             const initValue = {
                                 label: option.values[valIdx].label,
-                                value: option.values[valIdx].label,
+                                value: option.values[valIdx].value_index,
                                 disabled: false,
+                                thumbnail: '',
                             };
+                            if (option.values[valIdx].swatch_data && Object.keys(option.values[valIdx].swatch_data).length > 0) {
+                                isSwatch = true;
+                                if (option.values[valIdx].swatch_data.thumbnail) {
+                                    initValue.thumbnail = option.values[valIdx].swatch_data.thumbnail;
+                                }
+                                initValue.content = option.values[valIdx].swatch_data.value;
+                            }
                             let available = true;
                             if (configProduct.data.products.items[0].configurable_options.length === 1) {
                                 available = CheckAvailableStock(option.values[valIdx], configProduct.data.products.items[0].variants);
@@ -237,7 +246,10 @@ export default (props) => {
                     return (
                         <ConfigurableView
                             key={index}
-                            option={option}
+                            option={{
+                                ...option,
+                                isSwatch,
+                            }}
                             selected={selected}
                             value={value}
                             handleSelect={handleSelect}

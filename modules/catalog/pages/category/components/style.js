@@ -25,7 +25,11 @@ const useStyles = makeStyles(() => ({
         fontWeight: 'bold',
     },
     breadcrumbs: {
-        padding: 15,
+        padding: '16px 16px 0',
+    },
+    categoryName: {
+        padding: '16px 16px 0',
+        margin: 0,
     },
 }));
 

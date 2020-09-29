@@ -216,6 +216,19 @@ export const getConfigurableProduct = (sku) => {
               values {
                 value_index
                 label
+                swatch_data {
+                  value
+                  ... on ImageSwatchData {
+                    thumbnail
+                    value
+                  }
+                  ... on ColorSwatchData {
+                    value
+                  }
+                  ... on TextSwatchData {
+                    value
+                  }
+                }
               }
               product_id
             }

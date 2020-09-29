@@ -75,7 +75,7 @@ export default function productByVariant(options = {}, variants = []) {
             // eslint-disable-next-line no-plusplus
             for (let idxAtt = 0; idxAtt < attributes.length; idxAtt++) {
                 if (typeof options[attributes[idxAtt].code] !== 'undefined') {
-                    if (options[attributes[idxAtt].code] === attributes[idxAtt].label) {
+                    if (options[attributes[idxAtt].code] === attributes[idxAtt].value_index) {
                         isSpesific = true;
                     } else {
                         isSpesific = false;
