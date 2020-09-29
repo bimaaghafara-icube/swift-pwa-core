@@ -77,6 +77,9 @@ export default makeStyles((theme) => ({
         [theme.breakpoints.down('sm')]: {
             border: 'none',
             padding: '8px 0',
+            '&:last-child': {
+                padding: '8px 0',
+            },
         },
     },
     mobLabel: {
