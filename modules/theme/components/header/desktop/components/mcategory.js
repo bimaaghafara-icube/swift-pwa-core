@@ -14,29 +14,16 @@ import {
     features,
 } from '@config';
 
-const generateLevel2 = (data) => {
+const generateLevel2 = (data, handleClick) => {
     const [active, setActive] = React.useState(0);
     const child = data[active];
-    const client = useApolloClient();
-    const handleClick = async (href, id) => {
-        await client.writeQuery({
-            query: queryResolver,
-            data: {
-                resolver: {
-                    type: 'CATEGORY',
-                    id,
-                },
-            },
-        });
-        Route.push(href);
-    };
     return (
         <>
             <div className="nav-column nav-column-left col-lg-2">
                 {data.map((val, idx) => (
                     <React.Fragment key={idx}>
                         <a
-                            onClick={() => handleClick(val.link ? getPath(val.link) : `/${val.url_path}`, val.id)}
+                            onClick={() => handleClick(val)}
                             className={active === idx ? 'active' : ''}
                             onMouseEnter={() => setActive(idx)}
                         >
@@ -50,14 +37,14 @@ const generateLevel2 = (data) => {
                     {child.children.map((lvl3, id3) => (
                         <div className="col-lg-3" key={id3}>
                             <>
-                                <a onClick={() => handleClick(lvl3.link ? getPath(lvl3.link) : `/${lvl3.url_path}`, lvl3.id)}>{lvl3.name}</a>
+                                <a onClick={() => handleClick(lvl3)}>{lvl3.name}</a>
                             </>
                             <ul className="list-item__menu">
                                 {lvl3.children.map((lvl4, id4) => (
                                     <li key={id4}>
                                         <>
                                             <a
-                                                onClick={() => handleClick(lvl4.link ? getPath(lvl4.link) : `/${lvl4.url_path}`, lvl4.id)}
+                                                onClick={() => handleClick(lvl4)}
                                             >
                                                 {lvl4.name}
                                             </a>
@@ -107,17 +94,34 @@ const Menu = (props) => {
     const { data } = props;
     const menu = features.vesMenu.enabled ? data.vesMenu.items : data.categoryList[0].children;
     const client = useApolloClient();
-    const handleClick = async (href, id) => {
-        await client.writeQuery({
-            query: queryResolver,
-            data: {
-                resolver: {
-                    type: 'CATEGORY',
-                    id,
+    const handleClick = async (cat) => {
+        if (features.vesMenu.enabled) {
+            if (cat.link_type === 'category_link') {
+                // await client.writeQuery({
+                //     query: queryResolver,
+                //     data: {
+                //         resolver: {
+                //             type: 'CATEGORY',
+                //             id: cat.id,
+                //         },
+                //     },
+                // });
+                Route.push(cat.link ? getPath(cat.link) : `/${cat.url_path}`);
+            } else {
+                Route.push(cat.link ? getPath(cat.link) : `/${cat.url_path}`);
+            }
+        } else {
+            await client.writeQuery({
+                query: queryResolver,
+                data: {
+                    resolver: {
+                        type: 'CATEGORY',
+                        id: cat.id,
+                    },
                 },
-            },
-        });
-        Route.push(href);
+            });
+            Route.push('/[...slug]', cat.link ? getPath(cat.link) : `/${cat.url_path}`);
+        }
     };
     return (
         <div className="menu-wrapper" role="navigation">
@@ -128,13 +132,13 @@ const Menu = (props) => {
                             <li key={idx} role="menuitem">
                                 <>
                                     <a
-                                        onClick={() => handleClick(val.link ? getPath(val.link) : `/${val.url_path}`, val.id)}
+                                        onClick={() => handleClick(val)}
                                         dangerouslySetInnerHTML={{ __html: val.name }}
                                     />
                                 </>
                                 {val.children.length > 0 ? (
                                     <div className="mega-menu row" aria-hidden="true" role="menu">
-                                        {generateLevel2(val.children)}
+                                        {generateLevel2(val.children, handleClick)}
                                     </div>
                                 ) : null}
                             </li>

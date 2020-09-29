@@ -5,7 +5,7 @@ import { GraphCategory } from '@services/graphql';
 import React from 'react';
 import Router from 'next/router';
 import getPath from '@helper_getpath';
-import { localResolver as queryResolver } from '@services/graphql/schema/local';
+// import { localResolver as queryResolver } from '@services/graphql/schema/local';
 import CategorySkeleton from './CategorySkeleton';
 import SubVesMenu from './SubVesMenu';
 import VesMenu from './VesMenu';
@@ -21,7 +21,7 @@ const CategoryWrapper = () => {
     const [back, setBack] = React.useState(false);
 
     const {
-        loading, data, error, client,
+        loading, data, error,
     } = GraphCategory.getVesMenu({
         variables: {
             alias: 'top-menu',
@@ -64,19 +64,20 @@ const CategoryWrapper = () => {
     const handleClickMenu = async (cat) => {
         const link = getPath(cat.link);
         if (link) {
-            await client.writeQuery({
-                query: queryResolver,
-                data: {
-                    resolver: {
-                        id: cat.id,
-                        type: 'CATEGORY',
-                    },
-                },
-            });
-            Router.push(
-                '/[...slug]',
-                link,
-            );
+            if (cat.link_type === 'category_link') {
+                // await client.writeQuery({
+                //     query: queryResolver,
+                //     data: {
+                //         resolver: {
+                //             type: 'CATEGORY',
+                //             id: cat.id,
+                //         },
+                //     },
+                // });
+                Router.push(link);
+            } else {
+                Router.push(link);
+            }
         }
     };
 
