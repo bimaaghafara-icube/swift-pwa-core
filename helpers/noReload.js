@@ -1,7 +1,9 @@
 /* eslint-disable func-names */
 import Router from 'next/router';
 
-const noReload = () => {
+const noReload = ({
+    action,
+}) => {
     const getClassLink = document.getElementsByClassName('pwa-link');
     for (let i = 0; i < getClassLink.length; i += 1) {
         getClassLink[i].onclick = function (e) {
@@ -10,6 +12,8 @@ const noReload = () => {
             const type = this.getAttribute('type');
             if (!type) {
                 Router.push(attribute);
+            } else if (action) {
+                action(type, attribute);
             } else {
                 Router.push('/[...slug]', attribute);
             }

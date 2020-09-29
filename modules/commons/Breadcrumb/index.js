@@ -5,6 +5,8 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Chip from '@material-ui/core/Chip';
 import Typography from '@common_typography';
 import NavigateNext from '@material-ui/icons/NavigateNext';
+import { localResolver as queryResolver } from '@services/graphql/schema/local';
+import { useApolloClient } from '@apollo/client';
 import Router from 'next/router';
 
 const useStyles = makeStyles({
@@ -14,7 +16,17 @@ const useStyles = makeStyles({
 });
 
 const CustomBreadcrumb = ({ data = [], variant = 'text' }) => {
-    const handleClick = (url) => {
+    const client = useApolloClient();
+    const handleClick = async (url, id) => {
+        await client.writeQuery({
+            query: queryResolver,
+            data: {
+                resolver: {
+                    id,
+                    type: 'CATEGORY',
+                },
+            },
+        });
         Router.push(
             '/[...slug]',
             `${url}`,
@@ -27,13 +39,17 @@ const CustomBreadcrumb = ({ data = [], variant = 'text' }) => {
                 <Typography variant="p">Home</Typography>
             </Link>
             {
-                variant === 'chip' ? data.map(({ label, link, active }, index) => (
-                    <Link color={active ? 'primary' : 'secondary'} onClick={() => handleClick(link)} key={index}>
+                variant === 'chip' ? data.map(({
+                    label, link, active, id,
+                }, index) => (
+                    <Link color={active ? 'primary' : 'secondary'} onClick={() => handleClick(link, id)} key={index}>
                         <Chip size="small" label={label} color={active ? 'secondary' : 'default'} />
                     </Link>
                 ))
-                    : data.map(({ label, link, active }, index) => (
-                        <Link color={active ? 'primary' : 'secondary'} onClick={() => handleClick(link)} key={index}>
+                    : data.map(({
+                        label, link, active, id,
+                    }, index) => (
+                        <Link color={active ? 'primary' : 'secondary'} onClick={() => handleClick(link, id)} key={index}>
                             <Typography variant="p" type={active ? 'bold' : 'regular'}>{label}</Typography>
                         </Link>
                     ))

@@ -200,12 +200,14 @@ const ContentDetail = ({
                     label: bc.category_name,
                     link: `/${bc.category_url_path}`,
                     active: false,
+                    id: bc.category_id,
                 }));
             }
             breadcrumbsData.push({
                 label: cat[0].name,
                 link: `/${cat[0].url_path}`,
                 active: false,
+                id: cat[0].id,
             });
         }
 
