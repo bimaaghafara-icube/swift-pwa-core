@@ -9,7 +9,7 @@ import Router from 'next/router';
 
 const useStyles = makeStyles({
     root: {
-        marginBottom: 20,
+        marginBottom: 0,
     },
 });
 

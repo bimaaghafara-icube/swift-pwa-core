@@ -84,7 +84,7 @@ const CategoryPage = ({
                 <div className={classNames(styles.breadcrumbs, 'hidden-desktop')}>
                     <BreadcrumbView data={breadcrumbsData} />
                 </div>
-                <Typography variant="h3">
+                <Typography variant="h1" className={styles.categoryName}>
                     {categoryList.name}
                 </Typography>
                 {dataBanner[0] && dataBanner[0].description && (
