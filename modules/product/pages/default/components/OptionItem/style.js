@@ -131,6 +131,9 @@ export default makeStyles((theme) => ({
         width: 30,
         height: 30,
         margin: 10,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     customizeContainer: {
         width: '100%',

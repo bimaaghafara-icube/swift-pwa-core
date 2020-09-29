@@ -1,19 +1,37 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable max-len */
 /* eslint-disable react/no-danger */
 import Link from 'next/link';
 import Button from '@common_button';
+import router from 'next/router';
 import {
     enableSocialMediaLink,
 } from '@config';
+import { localResolver as queryResolver } from '@services/graphql/schema/local';
+import { useApolloClient } from '@apollo/client';
 import SocialMediaLink from '../SocialMedia';
 import SocialMediaView from '../SocialMedia/view';
 import useStyles from './style';
 
 const FooterView = (props) => {
     const styles = useStyles();
+    const client = useApolloClient();
     const {
         t, isLogin, handleLogout, modules,
     } = props;
+    const handleClick = async (link) => {
+        await client.writeQuery({
+            query: queryResolver,
+            data: {
+                resolver: {
+                    type: 'CMS_PAGE',
+                },
+            },
+        });
+        router.push('/[...slug]', link);
+    };
     return (
         <div className={styles.account_block}>
             <ul className={styles.account_navigation}>
@@ -21,9 +39,14 @@ const FooterView = (props) => {
                 {
                     modules.about.enabled ? (
                         <li className={styles.account_navigation_item}>
-                            <Link href="/[...slug]" as="/about-us">
-                                <a className={styles.account_navigation_link}>{t('customer:menu:aboutUs')}</a>
-                            </Link>
+                            <>
+                                <a
+                                    onClick={() => handleClick('/about-us')}
+                                    className={styles.account_navigation_link}
+                                >
+                                    {t('customer:menu:aboutUs')}
+                                </a>
+                            </>
                         </li>
                     ) : null
                 }

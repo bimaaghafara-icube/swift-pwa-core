@@ -48,18 +48,23 @@ export const vesMenu = gql`
             id
             name
             link
+            content_type
+            link_type
             children {
               id
               name
               link
+              link_type
               children {
                id
                name
                link
+               link_type
                children {
                 id
                 name
                 link
+                link_type
                 }
               }
             }

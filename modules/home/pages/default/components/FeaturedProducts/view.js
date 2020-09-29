@@ -1,4 +1,6 @@
-import Link from 'next/link';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import Router from 'next/router';
 import { modules } from '@config';
 import Carousel from '@common_slick/Caraousel';
@@ -7,30 +9,45 @@ import { breakPointsUp } from '@helper_theme';
 import Typography from '@common_typography';
 import Button from '@common_button';
 import classNames from 'classnames';
+import { localResolver as queryResolver } from '@services/graphql/schema/local';
+import { useApolloClient } from '@apollo/client';
 import useStyles from '../style';
 import Image from './Image';
 
 const MobileView = ({
-    products, url_path, category_image, name, right = false, t,
+    products, url_path, category_image, name, right = false, t, id,
 }) => {
+    const client = useApolloClient();
     const styles = useStyles();
     const desktop = breakPointsUp('sm');
     const { categoryList } = modules.home;
     const width = desktop ? categoryList.imageSize.desktop.width : categoryList.imageSize.mobile.width;
     const height = desktop ? categoryList.imageSize.desktop.height : categoryList.imageSize.mobile.height;
+    const handleClick = async () => {
+        await client.writeQuery({
+            query: queryResolver,
+            data: {
+                resolver: {
+                    id,
+                    type: 'CATEGORY',
+                },
+            },
+        });
+        Router.push(
+            '/[...slug]',
+            `/${url_path}`,
+        );
+    };
     return (
         <div className={classNames('col-xs-12 row', styles.features)}>
             <div className={classNames('col-xs-12', styles.labelCategory)}>
-                <Link
-                    href="[...slug]"
-                    as={url_path}
-                >
-                    <a>
+                <>
+                    <a onClick={handleClick}>
                         <Typography letter="capitalize" type="bold" variant="h1" align="center">
                             {name || ''}
                         </Typography>
                     </a>
-                </Link>
+                </>
             </div>
             <div className={classNames('col-xs-12 row between-lg', styles.featuresBox, right ? 'reverse' : '')}>
                 <div
@@ -41,7 +58,7 @@ const MobileView = ({
                     {(category_image) ? (
                         <div className={styles.imgFeaturedItem}>
                             <Image
-                                handleClick={() => Router.push(`/${url_path}`)}
+                                handleClick={handleClick}
                                 name={name}
                                 src={category_image}
                                 width={width}
@@ -57,9 +74,9 @@ const MobileView = ({
                         </div>
                         <div className={classNames('col-xs-12', styles.footerFeatured)}>
                             <Button
-                                href={`/${url_path}`}
                                 fullWidth
                                 variant="outlined"
+                                onClick={handleClick}
                             >
                                 {t('common:button:viewAll')}
                             </Button>
@@ -91,6 +108,7 @@ const FeaturedView = ({ data = [], t }) => {
                             products={products}
                             category_image={category.image_path}
                             name={category.name}
+                            id={category.id}
                             right={(i + 1) % 2 === 0}
                             t={t}
                         />

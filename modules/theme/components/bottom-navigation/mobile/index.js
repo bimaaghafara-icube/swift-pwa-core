@@ -63,7 +63,7 @@ const Navigation = ({ active }) => {
                     <BottomNavigationAction
                         label="Cart"
                         value="cart"
-                        icon={<ShoppingBagIcon withLink />}
+                        icon={<ShoppingBagIcon />}
                         classes={{
                             label: 'hide',
                             root: styles.navAction,

@@ -31,6 +31,7 @@ const CategoryList = ({
                 {data.categoryList[0].children.map((category, i) => (
                     <CategoryListView
                         storeConfig={storeConfig}
+                        id={category.id}
                         imageSrc={category.image_path}
                         name={category.name}
                         description={category.description}

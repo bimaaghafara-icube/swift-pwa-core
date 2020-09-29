@@ -17,7 +17,6 @@ const ContentDetail = ({
     isLogin,
 }) => {
     const item = product.items[0];
-
     const route = useRouter();
 
     const reviewValue = parseInt(item.review.rating_summary, 0) / 20;
@@ -81,6 +80,8 @@ const ContentDetail = ({
         };
         TagManager.dataLayer(tagManagerArgs);
     }, []);
+
+    // const client = useApolloClient();
 
     const bannerData = [];
     if (item.media_gallery.length > 0) {
@@ -199,12 +200,14 @@ const ContentDetail = ({
                     label: bc.category_name,
                     link: `/${bc.category_url_path}`,
                     active: false,
+                    id: bc.category_id,
                 }));
             }
             breadcrumbsData.push({
                 label: cat[0].name,
                 link: `/${cat[0].url_path}`,
                 active: false,
+                id: cat[0].id,
             });
         }
 
@@ -268,7 +271,10 @@ const PageDetail = (props) => {
     const {
         slug, Content, t, isLogin, pageConfig, CustomHeader,
     } = props;
-    const { loading, data, error } = getProduct(slug[0]);
+    const {
+        loading, data, error,
+    } = getProduct(slug[0]);
+
     if (error || loading || !data) {
         return (
             <Layout pageConfig={{}} CustomHeader={CustomHeader ? <CustomHeader /> : <Header />} {...props}>

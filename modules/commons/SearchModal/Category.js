@@ -2,7 +2,6 @@ import React from 'react';
 import Typography from '@common_typography';
 import Button from '@common_button';
 import Slide from '@material-ui/core/Slide';
-import Router from 'next/router';
 import { modules } from '@config';
 import useStyles from './style';
 
@@ -13,6 +12,7 @@ const Category = ({
     onClick,
     direction = 'left',
     slide = false,
+    handleClickMenu,
 }) => {
     const styles = useStyles();
 
@@ -28,10 +28,7 @@ const Category = ({
                                 onClick={() => {
                                     setOpenModal(false);
                                     setTimeout(() => {
-                                        Router.push(
-                                            '/[...slug]',
-                                            `/${catlvl1.url_key}`,
-                                        );
+                                        handleClickMenu(catlvl1);
                                     }, 200);
                                 }}
                             >
@@ -67,9 +64,9 @@ const Category = ({
                         onClick={() => {
                             setOpenModal(false);
                             setTimeout(() => {
-                                Router.push(
-                                    '/brands',
-                                );
+                                handleClickMenu({
+                                    url_key: 'brands',
+                                }, 'CMS_PAGE');
                             }, 200);
                         }}
                         fullWidth
