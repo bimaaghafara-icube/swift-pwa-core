@@ -15,10 +15,10 @@ const MiniCart = (props) => {
     const [actUpdateItem, update] = useMutation(Schema.updateCartitem);
 
     let cartId = '';
+    const [getCart, data] = getMiniCartData();
     if (typeof window !== 'undefined') {
         cartId = getCartId();
         if (cartId) {
-            const [getCart, data] = getMiniCartData(cartId);
             getCartData = getCart;
             loadingCart = data.loading;
             if (data.data) {
@@ -38,8 +38,12 @@ const MiniCart = (props) => {
     }
 
     React.useEffect(() => {
-        if (open) {
-            getCartData();
+        if (open && typeof window !== 'undefined' && cartId && cartId !== '') {
+            getCartData({
+                variables: {
+                    cartId,
+                },
+            });
             loadingCart = true;
         }
     }, [open]);
@@ -82,7 +86,11 @@ const MiniCart = (props) => {
                 request: 'internal',
             },
         }).then(() => {
-            getCartData();
+            getCartData({
+                variables: {
+                    cartId,
+                },
+            });
             loadingCart = false;
             window.toastMessage({
                 open: true,

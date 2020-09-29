@@ -8,9 +8,8 @@ export const addWishlist = () => useMutation(Schema.addWishlist, {
     },
 });
 
-export const getCartData = (cartId) => useQuery(Schema.getCart,
+export const getCartData = () => useQuery(Schema.getCart,
     {
-        variables: { cartId },
         context: {
             request: 'internal',
         },
