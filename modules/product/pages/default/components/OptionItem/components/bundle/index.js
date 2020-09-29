@@ -40,8 +40,10 @@ const changeSelectedOption = (position, id, items) => {
         if (element.position === parseInt(position)) {
             for (let idx = 0; idx < element.options.length; idx++) {
                 const opt = { ...element.options[idx] };
-                if (element.type === 'radio') {
+                if (element.type === 'radio' || element.type === 'select') {
                     opt.is_default = opt.id === parseInt(id);
+                } else if ((element.type === 'checkbox' || element.type === 'multi') && (opt.id === parseInt(id))) {
+                    opt.is_default = !opt.is_default;
                 }
                 optionArr.push(opt);
             }

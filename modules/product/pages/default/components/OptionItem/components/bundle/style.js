@@ -35,4 +35,8 @@ export default makeStyles(() => ({
         color: WHITE,
         borderRadius: 100,
     },
+    selectItem: {
+        display: 'flex',
+        margin: '15px 0px',
+    },
 }));

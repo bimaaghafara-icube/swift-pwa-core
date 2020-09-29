@@ -55,7 +55,7 @@ const BundleView = (props) => {
     } = props;
     const [open, setOpen] = React.useState(false || (typeof window !== 'undefined' && window.innerWidth <= 768));
     const styles = useStyles();
-    if (loading || !data) {
+    if ((loading && !data) || !data) {
         return (
             <div className={styles.loadingCart}>
                 <CircularProgress

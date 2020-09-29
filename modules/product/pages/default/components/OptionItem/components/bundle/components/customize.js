@@ -5,39 +5,39 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-plusplus */
 import Typography from '@common_typography';
-import { formatPrice } from '@helper_currency';
 import ButtonQty from '@common_buttonqty';
 import Button from '@common_button';
+import dynamic from 'next/dynamic';
 import useStyles from '../style';
 
-const GenerateOptionsSelect = ({ data, options = [], selectOptions }) => options.map((val, idx) => (
-    <div className="options-container" key={idx}>
-        <input
-            type="radio"
-            onClick={() => selectOptions(data, val.id)}
-            id={val.id}
-            name={data.position}
-            value={val.id}
-            defaultChecked={val.is_default}
-        />
-        <label
-            className="label-options"
-            htmlFor={val.id}
-            dangerouslySetInnerHTML={{
-                __html: `${val.label} + <b>+${formatPrice(val.product.price_range.minimum_price.final_price.value,
-                    val.product.price_range.minimum_price.final_price.currency)}</b>`,
-            }}
-        />
-        <br />
-    </div>
-));
+const Select = dynamic(() => import('./customizeType/select'), { ssr: false });
+const Multiple = dynamic(() => import('./customizeType/multiple'), { ssr: false });
+const Radio = dynamic(() => import('./customizeType/radio'), { ssr: false });
+const Checkbox = dynamic(() => import('./customizeType/checkbox'), { ssr: false });
+
+const GenerateOptionsSelect = (props) => {
+    const { data, options = [], selectOptions } = props;
+    if (data.type === 'select') {
+        return <Select {...props} />;
+    } if (data.type === 'multi') {
+        return <Multiple {...props} />;
+    }
+    return options.map((val, idx) => {
+        if (data.type === 'radio') {
+            return <Radio val={val} key={idx} data={data} selectOptions={selectOptions} />;
+        } if (data.type === 'checkbox') {
+            return <Checkbox val={val} key={idx} data={data} selectOptions={selectOptions} />;
+        }
+
+        return null;
+    });
+};
 
 const Customize = (props) => {
     const {
         data, t, items, changeQty, generateBundlePrice, selectOptions, handleAddToCart, loading,
     } = props;
     const [qty, setQty] = React.useState(1);
-
     const styles = useStyles();
     const product = data && data.products ? data.products.items[0] : {};
 
