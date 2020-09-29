@@ -63,7 +63,7 @@ const Customize = (props) => {
                                         </Typography>
                                         <GenerateOptionsSelect data={val} options={val.options} selectOptions={selectOptions} />
                                         <Typography variant="label" type="bold">
-                                            Quantity
+                                            {t('product:quantity')}
                                         </Typography>
                                         <ButtonQty
                                             value={1}
@@ -75,7 +75,7 @@ const Customize = (props) => {
                             </div>
                             <div className="col-xs-12 col-lg-4">
                                 <Typography variant="label" type="bold">
-                                    Your Customization
+                                    {t('product:yourCustomization')}
                                 </Typography>
                                 <hr />
                                 <Typography variant="h3" type="bold">

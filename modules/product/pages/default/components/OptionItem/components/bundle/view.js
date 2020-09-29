@@ -81,7 +81,7 @@ const BundleView = (props) => {
                             color="white"
                             variant="span"
                         >
-                            Customize and Add toCart
+                            {t('product:customizeAdd')}
                         </Typography>
                     </Button>
                 </AccordionSummary>

@@ -24,5 +24,8 @@
     "successAddCart": "Item has been added into your bag",
     "failedAddCart": "Failed on adding item into your bag",
     "emptyProductSearchResult": "We can't find products matching the selection.",
-    "productNotAvailable": "We don’t support this product type yet"
+    "productNotAvailable": "We don’t support this product type yet",
+    "customizeAdd": "Customize and Add toCart",
+    "yourCustomization": "Your Customization",
+    "quantity": "Quantity"
 }

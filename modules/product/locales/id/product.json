@@ -24,5 +24,8 @@
     "successAddCart": "Produk telah ditambahkan ke keranjang",
     "failedAddCart": "Gagal menambahkan produk ke keranjang",
     "emptyProductSearchResult": "Kami tidak dapat menemukan produk yang sesuai dengan pilihan.",
-    "productNotAvailable": "Sekarang kami belum support untuk tipe produk ini"
+    "productNotAvailable": "Sekarang kami belum support untuk tipe produk ini",
+    "customizeAdd": "Sesuaikan dan Tambahkan ke Keranjang",
+    "yourCustomization": "Pilihan Kamu",
+    "quantity": "Jumlah"
 }
