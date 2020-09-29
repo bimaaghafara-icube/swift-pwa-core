@@ -17,6 +17,7 @@ const useStyles = makeStyles(() => ({
         userSelect: 'none',
     },
     input: {
+        margin: 0,
         flex: 1,
         minWidth: 60,
         border: `1px solid ${GRAY_PRIMARY}`,

@@ -128,6 +128,9 @@ const useStyles = makeStyles((theme) => ({
 
     carouselContainer: {
         paddingTop: '40px',
+        [theme.breakpoints.down('sm')]: {
+            paddingBottom: '70px',
+        },
     },
     carouselTitle: {
         marginBottom: '20px',
