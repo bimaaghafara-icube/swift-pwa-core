@@ -8,7 +8,7 @@ const MiniCart = (props) => {
     const {
         Content, open, setOpen, count, t,
     } = props;
-    let dataCart = {};
+    let dataCart = { items: [] };
     let loadingCart = false;
     let getCartData = () => {};
     const [actDeleteItem, delCart] = useMutation(Schema.deleteCartitem);
