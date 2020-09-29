@@ -29,7 +29,7 @@ const Page = (props) => {
         ogContent,
         schemaOrg,
     };
-    if (loading) {
+    if (loading && !data) {
         return (
             <Layout {...props} pageConfig={config}>
                 <SkeletonView />

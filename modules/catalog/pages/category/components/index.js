@@ -49,6 +49,7 @@ const CategoryPage = ({
             label: bc.category_name,
             link: `/${bc.category_url_path}`,
             active: false,
+            id: bc.category_id,
         }));
     }
     breadcrumbsData.push({

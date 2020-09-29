@@ -26,6 +26,7 @@ const productDetail = `
       name
       url_path
       breadcrumbs {
+        category_id
         category_url_path
         category_name
       }

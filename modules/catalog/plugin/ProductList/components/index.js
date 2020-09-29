@@ -4,7 +4,7 @@ import Typography from '@common_typography';
 import classNames from 'classnames';
 import Filter from './Filter';
 import FilterDesktop from './FilterDesktop';
-import ProductItem from '../../ProductItem/core';
+import ProductItem from '../../ProductItem/index';
 import LabelView from '../../ProductItem/components/LabelView';
 import useStyles from './style';
 import Sort from './FilterDesktop/sort';
