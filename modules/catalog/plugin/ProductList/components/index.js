@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import Filter from './Filter';
 import FilterDesktop from './FilterDesktop';
 import ProductItem from '../../ProductItem/core';
+import LabelView from '../../ProductItem/components/LabelView';
 import useStyles from './style';
 import Sort from './FilterDesktop/sort';
 
@@ -84,6 +85,7 @@ const Content = (props) => {
                                 ItemComponent={ProductItem}
                                 itemProps={{
                                     categorySelect: categoryPath,
+                                    LabelView,
                                     ...other,
                                 }}
                                 gridItemProps={{ xs: 6, sm: 4, md: 3 }}
