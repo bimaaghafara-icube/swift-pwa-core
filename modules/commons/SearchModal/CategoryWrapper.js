@@ -4,7 +4,7 @@ import Alert from '@material-ui/lab/Alert';
 import { GraphCategory } from '@services/graphql';
 import React from 'react';
 import Router from 'next/router';
-import { localResolver as queryResolver } from '@services/graphql/schema/local';
+import { setResolver } from '@helper_localstorage';
 import Category from './Category';
 import SubCategory from './SubCategory';
 import CategorySkeleton from './CategorySkeleton';
@@ -14,7 +14,7 @@ const CategoryWrapper = (props) => {
         openedCategory, showCat, openSub, slideCat, showSubCat, closeSub,
     } = props;
     const {
-        loading, data, error, client,
+        loading, data, error,
     } = GraphCategory.getCategories();
     const { t } = useTranslation(['common']);
 
@@ -41,14 +41,9 @@ const CategoryWrapper = (props) => {
     const handleClickMenu = async (cat, type = 'CATEGORY') => {
         const link = cat.url_key;
         if (link) {
-            await client.writeQuery({
-                query: queryResolver,
-                data: {
-                    resolver: {
-                        id: cat.id || '1',
-                        type,
-                    },
-                },
+            await setResolver({
+                id: cat.id || '1',
+                type,
             });
             Router.push(
                 '/[...slug]',

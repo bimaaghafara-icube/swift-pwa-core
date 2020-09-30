@@ -5,8 +5,7 @@ import { setCookies } from '@helper_cookies';
 import { useTranslation } from '@i18n';
 import route from 'next/router';
 import React from 'react';
-import { useApolloClient } from '@apollo/client';
-import { localResolver as queryResolver } from '@services/graphql/schema/local';
+import { setResolver } from '@helper_localstorage';
 import { addWishlist } from '../../services/graphql';
 import useStyles from './style';
 import ConfigurableOpt from './components/ConfigurableProductItem';
@@ -16,7 +15,6 @@ const ProductItem = (props) => {
         id, url_key = '', categorySelect, review, ImageProductView, DetailProductView, LabelView, ...other
     } = props;
     const styles = useStyles();
-    const client = useApolloClient();
     const { t } = useTranslation(['catalog']);
     const [feed, setFeed] = React.useState(false);
     const [spesificProduct, setSpesificProduct] = React.useState({});
@@ -54,13 +52,8 @@ const ProductItem = (props) => {
     };
 
     const handleClick = async () => {
-        await client.writeQuery({
-            query: queryResolver,
-            data: {
-                resolver: {
-                    type: 'PRODUCT',
-                },
-            },
+        await setResolver({
+            type: 'PRODUCT',
         });
         setCookies('lastCategory', categorySelect);
         route.push('/[...slug]', `/${url_key}`);

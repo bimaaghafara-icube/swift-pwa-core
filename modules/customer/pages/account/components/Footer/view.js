@@ -9,26 +9,19 @@ import router from 'next/router';
 import {
     enableSocialMediaLink,
 } from '@config';
-import { localResolver as queryResolver } from '@services/graphql/schema/local';
-import { useApolloClient } from '@apollo/client';
+import { setResolver } from '@helper_localstorage';
 import SocialMediaLink from '../SocialMedia';
 import SocialMediaView from '../SocialMedia/view';
 import useStyles from './style';
 
 const FooterView = (props) => {
     const styles = useStyles();
-    const client = useApolloClient();
     const {
         t, isLogin, handleLogout, modules,
     } = props;
     const handleClick = async (link) => {
-        await client.writeQuery({
-            query: queryResolver,
-            data: {
-                resolver: {
-                    type: 'CMS_PAGE',
-                },
-            },
+        await setResolver({
+            type: 'CMS_PAGE',
         });
         router.push('/[...slug]', link);
     };

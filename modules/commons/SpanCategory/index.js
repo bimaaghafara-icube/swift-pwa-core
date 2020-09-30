@@ -7,8 +7,7 @@ import { useTranslation } from '@i18n';
 import { features } from '@config';
 import setDefaultWhenEmpty from '@helper_checkimagesrc';
 import classNames from 'classnames';
-import { localResolver as queryResolver } from '@services/graphql/schema/local';
-import { useApolloClient } from '@apollo/client';
+import { setResolver } from '@helper_localstorage';
 import Router from 'next/router';
 import useStyles from './style';
 import Thumbor from '../Image';
@@ -17,18 +16,12 @@ const SpanCategory = (props) => {
     const {
         imageSrc, name, description, url, right = false, id,
     } = props;
-    const client = useApolloClient();
     const { t } = useTranslation(['common']);
     const styles = useStyles();
     const handleClick = async () => {
-        await client.writeQuery({
-            query: queryResolver,
-            data: {
-                resolver: {
-                    id,
-                    type: 'CATEGORY',
-                },
-            },
+        await setResolver({
+            id,
+            type: 'CATEGORY',
         });
         Router.push(
             '/[...slug]',

@@ -1,6 +1,6 @@
 import noReload from '@helper_noreload';
 import { useRouter } from 'next/router';
-import { localResolver as queryResolver } from '@services/graphql/schema/local';
+import { setResolver } from '@helper_localstorage';
 import { getCmsBlocks } from '../../../services/graphql';
 
 const Footer = (props) => {
@@ -8,7 +8,7 @@ const Footer = (props) => {
         Content, t, storeConfig,
     } = props;
     const {
-        data, loading, error, client,
+        data, loading, error,
     } = getCmsBlocks({ identifiers: ['pwa_footer'] });
     const router = useRouter();
     const Config = {
@@ -20,13 +20,8 @@ const Footer = (props) => {
 
     const linkAction = async (type, link) => {
         if (type === 'cms') {
-            await client.writeQuery({
-                query: queryResolver,
-                data: {
-                    resolver: {
-                        type: 'CMS_PAGE',
-                    },
-                },
+            await setResolver({
+                type: 'CMS_PAGE',
             });
             router.push('/[...slug]', link);
         } else {

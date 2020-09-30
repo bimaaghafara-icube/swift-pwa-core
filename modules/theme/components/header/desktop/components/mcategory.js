@@ -7,8 +7,7 @@ import React from 'react';
 import { WHITE, PRIMARY } from '@theme_color';
 import Thumbor from '@common_image';
 import getPath from '@helper_getpath';
-import { useApolloClient } from '@apollo/client';
-import { localResolver as queryResolver } from '@services/graphql/schema/local';
+import { setResolver } from '@helper_localstorage';
 import Route from 'next/router';
 import {
     features,
@@ -93,32 +92,21 @@ const generateLevel2 = (data, handleClick) => {
 const Menu = (props) => {
     const { data } = props;
     const menu = features.vesMenu.enabled ? data.vesMenu.items : data.categoryList[0].children;
-    const client = useApolloClient();
     const handleClick = async (cat) => {
         if (features.vesMenu.enabled) {
             if (cat.link_type === 'category_link') {
-                // await client.writeQuery({
-                //     query: queryResolver,
-                //     data: {
-                //         resolver: {
-                //             type: 'CATEGORY',
-                //             id: cat.id,
-                //         },
-                //     },
+                // await setResolver({
+                //     type: 'CATEGORY',
+                //     id: cat.id,
                 // });
-                Route.push(cat.link ? getPath(cat.link) : `/${cat.url_path}`);
+                Route.push('/[...slug]', cat.link ? getPath(cat.link) : `/${cat.url_path}`);
             } else {
-                Route.push(cat.link ? getPath(cat.link) : `/${cat.url_path}`);
+                Route.push('/[...slug]', cat.link ? getPath(cat.link) : `/${cat.url_path}`);
             }
         } else {
-            await client.writeQuery({
-                query: queryResolver,
-                data: {
-                    resolver: {
-                        type: 'CATEGORY',
-                        id: cat.id,
-                    },
-                },
+            await setResolver({
+                type: 'CATEGORY',
+                id: cat.id,
             });
             Route.push('/[...slug]', cat.link ? getPath(cat.link) : `/${cat.url_path}`);
         }

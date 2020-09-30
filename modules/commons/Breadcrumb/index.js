@@ -5,8 +5,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Chip from '@material-ui/core/Chip';
 import Typography from '@common_typography';
 import NavigateNext from '@material-ui/icons/NavigateNext';
-import { localResolver as queryResolver } from '@services/graphql/schema/local';
-import { useApolloClient } from '@apollo/client';
+import { setResolver } from '@helper_localstorage';
 import Router from 'next/router';
 
 const useStyles = makeStyles({
@@ -16,16 +15,10 @@ const useStyles = makeStyles({
 });
 
 const CustomBreadcrumb = ({ data = [], variant = 'text' }) => {
-    const client = useApolloClient();
     const handleClick = async (url, id) => {
-        await client.writeQuery({
-            query: queryResolver,
-            data: {
-                resolver: {
-                    id,
-                    type: 'CATEGORY',
-                },
-            },
+        await setResolver({
+            id,
+            type: 'CATEGORY',
         });
         Router.push(
             '/[...slug]',
