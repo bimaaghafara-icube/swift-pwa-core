@@ -3,7 +3,6 @@ import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@common_button';
 import Typography from '@common_typography';
 import useStyles from '../../style';
@@ -55,15 +54,6 @@ const BundleView = (props) => {
     } = props;
     const [open, setOpen] = React.useState(false || (typeof window !== 'undefined' && window.innerWidth <= 768));
     const styles = useStyles();
-    if ((loading && !data) || !data) {
-        return (
-            <div className={styles.loadingCart}>
-                <CircularProgress
-                    size={24}
-                />
-            </div>
-        );
-    }
     return (
         <div>
             <Accordion square expanded={open} onChange={() => setOpen(!open)}>
@@ -72,7 +62,7 @@ const BundleView = (props) => {
                         className={styles.btnAddToCard}
                         color="primary"
                         onClick={() => {}}
-                        loading={false}
+                        loading={(loading && !data) || !data}
                     >
                         <Typography
                             align="center"
@@ -86,16 +76,19 @@ const BundleView = (props) => {
                     </Button>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Customize
-                        data={data}
-                        items={items}
-                        t={t}
-                        changeQty={changeQty}
-                        generateBundlePrice={generateBundlePrice}
-                        selectOptions={selectOptions}
-                        handleAddToCart={handleAddToCart}
-                        loading={loading}
-                    />
+                    {data ? (
+                        <Customize
+                            data={data}
+                            items={items}
+                            t={t}
+                            changeQty={changeQty}
+                            generateBundlePrice={generateBundlePrice}
+                            selectOptions={selectOptions}
+                            handleAddToCart={handleAddToCart}
+                            loading={loading}
+                        />
+                    ) : null}
+
                 </AccordionDetails>
             </Accordion>
         </div>

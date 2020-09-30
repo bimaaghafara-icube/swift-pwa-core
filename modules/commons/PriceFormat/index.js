@@ -3,6 +3,7 @@ import React from 'react';
 import classNames from 'classnames';
 import Typography from '@common_typography';
 import { formatPrice } from '@helper_currency';
+import BundleProductTypePrice from './components/BundleProductTypePrice';
 import useStyles from './style';
 
 const getLowestTierPrice = (tier_price) => {
@@ -282,6 +283,15 @@ const Price = ({
     if (productType === 'SimpleProduct') {
         return (
             <SimpleProductTypePrice
+                priceRange={priceRange}
+                priceTiers={priceTiers}
+                {...other}
+            />
+        );
+    }
+    if (productType === 'BundleProduct') {
+        return (
+            <BundleProductTypePrice
                 priceRange={priceRange}
                 priceTiers={priceTiers}
                 {...other}

@@ -22,7 +22,7 @@ const generateBundlePrice = (items) => {
         for (let idx = 0; idx < element.options.length; idx++) {
             const opt = element.options[idx];
             if (opt.is_default) {
-                price += opt.product.price_range.minimum_price.final_price.value * qty;
+                price += (opt.quantity * opt.product.price_range.minimum_price.final_price.value) * qty;
                 currency = opt.product.price_range.minimum_price.final_price.currency;
             }
         }
@@ -166,7 +166,7 @@ export default (props) => {
                     }
                 }
                 options.push({
-                    id: element.position,
+                    id: element.option_id,
                     quantity: element.qty || 1,
                     value,
                 });

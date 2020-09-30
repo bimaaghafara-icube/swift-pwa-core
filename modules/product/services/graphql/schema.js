@@ -159,37 +159,39 @@ export const getBundleProduct = (sku) => {
     ) {
       items {
         ... on BundleProduct {
-    id
-    name
-    url_key
-    items {
-      position
-      title
-      type
-      required
-      options {
-        id
-        is_default
-        label
-        product {
           id
           name
-          price_range {
-            minimum_price {
-              discount {
-                amount_off
-                percent_off
-              }
-              final_price {
-                currency
-                value
+          url_key
+          items {
+            position
+            option_id
+            title
+            type
+            required
+            options {
+              id
+              is_default
+              label
+              quantity
+              product {
+                id
+                name
+                price_range {
+                  minimum_price {
+                    discount {
+                      amount_off
+                      percent_off
+                    }
+                    final_price {
+                      currency
+                      value
+                    }
+                  }
+                }
               }
             }
           }
         }
-      }
-    }
-  }
       }
     }
   }`;

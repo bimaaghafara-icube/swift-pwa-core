@@ -9,7 +9,6 @@ const Item = (props) => {
     const {
         quantity, prices, product, deleteCart, updateCart, id, configurable_options, bundle_options,
     } = props;
-    console.log(props);
     return (
         <li>
             <div className="product">
