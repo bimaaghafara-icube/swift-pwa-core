@@ -8,7 +8,7 @@ const MiniCart = (props) => {
     const {
         Content, open, setOpen, count, t,
     } = props;
-    let dataCart = {};
+    let dataCart = { items: [] };
     let loadingCart = false;
     let getCartData = () => {};
     const [actDeleteItem, delCart] = useMutation(Schema.deleteCartitem);
@@ -19,7 +19,11 @@ const MiniCart = (props) => {
     if (typeof window !== 'undefined') {
         cartId = getCartId();
         if (cartId) {
-            getCartData = getCart;
+            getCartData = () => getCart({
+                variables: {
+                    cartId,
+                },
+            });
             loadingCart = data.loading;
             if (data.data) {
                 dataCart = data.data.cart;
@@ -39,11 +43,7 @@ const MiniCart = (props) => {
 
     React.useEffect(() => {
         if (open && typeof window !== 'undefined' && cartId && cartId !== '') {
-            getCartData({
-                variables: {
-                    cartId,
-                },
-            });
+            getCartData();
             loadingCart = true;
         }
     }, [open]);
@@ -86,11 +86,7 @@ const MiniCart = (props) => {
                 request: 'internal',
             },
         }).then(() => {
-            getCartData({
-                variables: {
-                    cartId,
-                },
-            });
+            getCartData();
             loadingCart = false;
             window.toastMessage({
                 open: true,

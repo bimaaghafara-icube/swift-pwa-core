@@ -84,6 +84,7 @@ const useStyles = makeStyles(() => ({
             borderBottom: '1px solid #ccc',
             '& .product': {
                 minHeight: 80,
+                display: 'flow-root',
             },
             '& .product-item-photo': {
                 float: 'left',

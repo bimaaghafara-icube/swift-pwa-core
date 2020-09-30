@@ -7,8 +7,8 @@ const ProductItemSkeleton = () => {
     return (
         <div className={styles.itemContainer}>
             <Skeleton variant="rect" width={features.imageSize.product.width} height={features.imageSize.product.height} />
-            <Skeleton variant="text" />
-            <Skeleton variant="text" />
+            <Skeleton variant="text" width={features.imageSize.product.width} />
+            <Skeleton variant="text" width={features.imageSize.product.width} />
         </div>
     );
 };
