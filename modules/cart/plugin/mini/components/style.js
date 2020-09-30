@@ -83,10 +83,12 @@ const useStyles = makeStyles(() => ({
             position: 'relative',
             borderBottom: '1px solid #ccc',
             '& .product': {
-                height: 80,
+                minHeight: 80,
             },
             '& .product-item-photo': {
                 float: 'left',
+                width: '75px',
+                height: '75px',
             },
             '& .product-item-details': {
                 paddingLeft: 88,
@@ -94,11 +96,15 @@ const useStyles = makeStyles(() => ({
             '& .product-options': {
                 '& .option-wrapper': {
                     fontSize: 10,
+                    '& .option-wrapper__item': {
+                        paddingLeft: 10,
+                    },
                 },
             },
             '& .product-item-pricing': {
                 paddingLeft: 88,
                 fontSize: 10,
+                height: 20,
                 '& .details-qty': {
                     float: 'left',
                     marginTop: 5,

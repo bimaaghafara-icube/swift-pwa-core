@@ -2,17 +2,19 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import Link from 'next/link';
+import Thumbor from '@common_image';
 import { formatPrice } from '@helper_currency';
 
 const Item = (props) => {
     const {
-        quantity, prices, product, deleteCart, updateCart, id, configurable_options,
+        quantity, prices, product, deleteCart, updateCart, id, configurable_options, bundle_options,
     } = props;
+    console.log(props);
     return (
         <li>
             <div className="product">
                 <a className="product-item-photo">
-                    <img
+                    <Thumbor
                         className="product-image-photo"
                         src={product.small_image.url}
                         alt={product.small_image.label}
@@ -36,7 +38,32 @@ const Item = (props) => {
                             ))}
                         </div>
                     ) : null}
-
+                    {bundle_options && bundle_options.length ? (
+                        <div className="product-options">
+                            {bundle_options.map((val, idx) => (
+                                <div className="option-wrapper" key={idx}>
+                                    <strong>{val.label}</strong>
+                                    {' '}
+                                    :
+                                    <div className="option-wrapper__item">
+                                        {val.values.map((item, idt) => (
+                                            <div key={idt}>
+                                                {item.quantity}
+                                                {' '}
+                                                x
+                                                {item.label}
+                                                {' '}
+                                                <strong>
+                                                    + $
+                                                    {item.price}
+                                                </strong>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    ) : null}
                 </div>
                 <div className="product-item-pricing">
                     <div className="details-qty qty">
