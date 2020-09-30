@@ -138,6 +138,32 @@ const TableListProduct = ({
                                                             </Typography>
                                                         </a>
                                                     </Link>
+                                                    {val.bundle_options && val.bundle_options.length ? (
+                                                        <div className="product-options">
+                                                            {val.bundle_options.map((bundle, idb) => (
+                                                                <div className="option-wrapper" key={idb}>
+                                                                    <strong>{bundle.label}</strong>
+                                                                    {' '}
+                                                                    :
+                                                                    <div className="option-wrapper__item">
+                                                                        {bundle.values.map((item, idt) => (
+                                                                            <div key={idt}>
+                                                                                {item.quantity}
+                                                                                {' '}
+                                                                                x
+                                                                                {item.label}
+                                                                                {' '}
+                                                                                <strong>
+                                                                                    + $
+                                                                                    {item.price}
+                                                                                </strong>
+                                                                            </div>
+                                                                        ))}
+                                                                    </div>
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    ) : null}
                                                 </TableCell>
                                                 <TableCell
                                                     align="right"

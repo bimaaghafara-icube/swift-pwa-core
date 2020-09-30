@@ -54,6 +54,17 @@ export const getCart = gql`
                   value_label
                 }
               }
+              ... on BundleCartItem {
+                bundle_options {
+                  label
+                  type
+                  values {
+                    label
+                    price
+                    quantity
+                  }
+                }
+              }
               prices {
                 discounts {
                   amount {
@@ -81,12 +92,12 @@ export const getCart = gql`
                   url
                   label
                 }
-                categories {
-                  name
-                }
                 url_key
                 sku
                 stock_status
+                categories {
+                  name
+                }
                 crosssell_products {
                   id
                   name

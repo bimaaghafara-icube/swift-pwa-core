@@ -42,6 +42,11 @@ const useStyles = makeStyles((theme) => ({
         ...FlexRow,
         position: 'relative',
         marginTop: 20,
+        '& .product-options': {
+            fontSize: 11,
+            paddingLeft: 20,
+            marginBottom: 20,
+        },
     },
     itemImgWrapper: {
         flex: 1,

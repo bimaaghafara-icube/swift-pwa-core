@@ -18,6 +18,10 @@ export default makeStyles((theme) => ({
         marginTop: 30,
         boxShadow: 'none',
         width: '100%',
+        '& .product-options': {
+            paddingLeft: 20,
+            fontSize: 11,
+        },
     },
     table: {
         borderTop: '1px solid rgba(224, 224, 224, 1)',

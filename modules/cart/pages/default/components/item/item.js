@@ -15,7 +15,7 @@ const ItemView = (props) => {
     const {
         t, confirmDel, handleDelete, setConfirmDel,
         product, configurable_options, quantity, prices, handleAddWishlist,
-        editMode, toggleEditDrawer,
+        editMode, toggleEditDrawer, bundle_options,
     } = props;
     const styles = useStyles();
     return (
@@ -44,7 +44,7 @@ const ItemView = (props) => {
                     <a className={styles.itemName}>{product.name}</a>
                 </Link>
                 <div className={styles.itemVariant}>
-                    {configurable_options ? <div>{t('common:variant')}</div> : null}
+                    {configurable_options && configurable_options.length > 0 ? <div>{t('common:variant')}</div> : null}
                     { configurable_options ? configurable_options.map((item, idx) => (
                         <div key={idx}>
                             {item.option_label}
@@ -54,7 +54,32 @@ const ItemView = (props) => {
                             {item.value_label}
                         </div>
                     )) : null}
-
+                    {bundle_options && bundle_options.length ? (
+                        <div className="product-options">
+                            {bundle_options.map((val, idx) => (
+                                <div className="option-wrapper" key={idx}>
+                                    <strong>{val.label}</strong>
+                                    {' '}
+                                    :
+                                    <div className="option-wrapper__item">
+                                        {val.values.map((item, idt) => (
+                                            <div key={idt}>
+                                                {item.quantity}
+                                                {' '}
+                                                x
+                                                {item.label}
+                                                {' '}
+                                                <strong>
+                                                    + $
+                                                    {item.price}
+                                                </strong>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    ) : null}
                     <div>
                         Qty :
                         {' '}
