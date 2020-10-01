@@ -115,7 +115,6 @@ const Checkout = (props) => {
             shipping: null,
             payment: null,
             billing: null,
-            delivery: 'home',
         },
         validationSchema: CheckoutSchema,
         onSubmit: () => {},
@@ -128,7 +127,7 @@ const Checkout = (props) => {
         const payment = cart.selected_payment_method && cart.selected_payment_method.code;
         const billing = cart.billing_address;
 
-        if (!email && _.isEmpty(formik.values.email)) {
+        if (email && _.isEmpty(formik.values.email)) {
             formik.setFieldValue('email', email || '');
         }
 
@@ -212,6 +211,9 @@ const Checkout = (props) => {
                 name: { carrier_code: shippingMethod.carrier_code, method_code: shippingMethod.method_code },
                 price: formatPrice(shippingMethod.amount.value, shippingMethod.amount.currency),
             };
+            if (shippingMethod.carrier_code === 'pickup' && shippingMethod.method_code === 'pickup') {
+                state.selected.delivery = 'pickup';
+            }
         }
 
         // init payment method

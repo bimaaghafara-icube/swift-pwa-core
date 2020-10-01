@@ -22,7 +22,6 @@ const Summary = ({
     const [orderId, setOrderId] = useState(null);
     const [snapOpened, setSnapOpened] = useState(false);
     const [snapClosed, setSnapClosed] = useState(false);
-    const [setGuestEmailAddressOnCart] = gqlService.setGuestEmailAddressOnCart(({ onError: () => {} }));
     const [getSnapToken, manageSnapToken] = gqlService.getSnapToken({ onError: () => {} });
     const [setPaymentMethod] = gqlService.setPaymentMethod({ onError: () => {} });
     const [placeOrder] = gqlService.placeOrder({ onError: () => {} });
@@ -98,14 +97,6 @@ const Summary = ({
                     text: msg,
                 });
             } else {
-                if (isGuest) {
-                    result = await setGuestEmailAddressOnCart({ variables: { cartId: cart.id, email: formik.values.email } });
-
-                    if (!validateReponse(result, state)) {
-                        return;
-                    }
-                }
-
                 result = await placeOrder({ variables: { cartId: cart.id } });
 
                 state = { ...checkout };

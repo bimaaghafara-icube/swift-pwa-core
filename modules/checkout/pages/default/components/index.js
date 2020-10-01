@@ -90,6 +90,8 @@ const Content = (props) => {
                         EmailView={EmailView}
                         checkout={checkout}
                         config={config}
+                        setCheckout={setCheckout}
+                        handleOpenMessage={handleOpenMessage}
                     />
                     {
                         checkout.selected.delivery === 'home' ? (

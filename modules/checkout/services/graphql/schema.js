@@ -612,6 +612,7 @@ mutation setPickupStore(
         store_address: $store_address
     }) {
       ${cartRequiredSelection}
+      ${cartAvailablePaymentMethods}
     }
   }
 `;
@@ -624,6 +625,7 @@ mutation removePickupStore(
       cart_id: $cart_id
     }) {
       ${cartRequiredSelection}
+      ${cartAvailablePaymentMethods}
     }
   }
 `;
