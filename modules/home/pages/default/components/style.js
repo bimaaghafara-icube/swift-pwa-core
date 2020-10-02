@@ -44,8 +44,16 @@ const useStyles = makeStyles((theme) => ({
         height: '100%',
     },
     skeletonWrapper: {
-        padding: '12px 0',
+        padding: '0 0 12px 0',
         width: '100%',
+        postion: 'relative',
+        '& .logo': {
+            width: 100,
+            top: 5,
+            position: 'absolute',
+            zIndex: 99,
+            ...CenterAbsolute,
+        },
     },
     skeleton: {
         marginBottom: '8px',
