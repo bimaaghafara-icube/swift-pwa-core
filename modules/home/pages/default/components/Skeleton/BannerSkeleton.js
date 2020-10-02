@@ -5,7 +5,7 @@ const BannerSliderSkeleteon = ({ logoUrl }) => {
     const styles = useStyles();
     return (
         <div className={styles.skeletonWrapper}>
-            <img src={logoUrl} className="logo" alt="Logo" />
+            <img src={logoUrl} className="logo hidden-desktop" alt="Logo" />
             <Skeleton
                 variant="rect"
                 animation="wave"
