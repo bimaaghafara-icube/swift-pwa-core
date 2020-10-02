@@ -92,9 +92,18 @@ const View = (props) => {
                             <Button
                                 onClick={handleCotinue}
                                 className={styles.btnConfirm}
+                                align="left"
                                 endIcon={<IconArrow className={styles.btnConfirmIcon} />}
                             >
-                                <Typography size="10" type="bold" color="white" letter="uppercase">{t('thanks:continue')}</Typography>
+                                <Typography
+                                    size="10"
+                                    type="bold"
+                                    color="white"
+                                    letter="uppercase"
+                                    className={styles.txtConfirm}
+                                >
+                                    {t('thanks:continue')}
+                                </Typography>
                             </Button>
                         )
                 }
@@ -130,7 +139,15 @@ const View = (props) => {
                                 className={styles.btnConfirm}
                                 endIcon={<IconArrow className={styles.btnConfirmIcon} />}
                             >
-                                <Typography size="10" type="bold" color="white" letter="uppercase">{t('thanks:continue')}</Typography>
+                                <Typography
+                                    size="10"
+                                    type="bold"
+                                    color="white"
+                                    letter="uppercase"
+                                    className={styles.txtConfirm}
+                                >
+                                    {t('thanks:continue')}
+                                </Typography>
                             </Button>
                         )
                 }

@@ -77,6 +77,11 @@ export default makeStyles((theme) => ({
             paddingLeft: 0,
         },
     },
+    txtConfirm: {
+        [theme.breakpoints.up('sm')]: {
+            paddingLeft: 10,
+        },
+    },
     btnConfirmFirst: {
         marginBottom: 15,
     },
