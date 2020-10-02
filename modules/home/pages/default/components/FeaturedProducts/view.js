@@ -9,29 +9,22 @@ import { breakPointsUp } from '@helper_theme';
 import Typography from '@common_typography';
 import Button from '@common_button';
 import classNames from 'classnames';
-import { localResolver as queryResolver } from '@services/graphql/schema/local';
-import { useApolloClient } from '@apollo/client';
+import { setResolver } from '@helper_localstorage';
 import useStyles from '../style';
 import Image from './Image';
 
 const MobileView = ({
     products, url_path, category_image, name, right = false, t, id,
 }) => {
-    const client = useApolloClient();
     const styles = useStyles();
     const desktop = breakPointsUp('sm');
     const { categoryList } = modules.home;
     const width = desktop ? categoryList.imageSize.desktop.width : categoryList.imageSize.mobile.width;
     const height = desktop ? categoryList.imageSize.desktop.height : categoryList.imageSize.mobile.height;
     const handleClick = async () => {
-        await client.writeQuery({
-            query: queryResolver,
-            data: {
-                resolver: {
-                    id,
-                    type: 'CATEGORY',
-                },
-            },
+        await setResolver({
+            id,
+            type: 'CATEGORY',
         });
         Router.push(
             '/[...slug]',

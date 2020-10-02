@@ -11,7 +11,7 @@ import useStyles from '../style';
 
 const EmailView = (props) => {
     const {
-        t, formik, setAnchorEl, anchorEl, idButton, open, config,
+        t, formik, setAnchorEl, anchorEl, idButton, open, config, handleBlur,
     } = props;
     const styles = useStyles();
 
@@ -40,6 +40,7 @@ const EmailView = (props) => {
                         placeholder="john.doe@gmail.com"
                         value={formik.values.email}
                         onChange={formik.handleChange}
+                        onBlur={handleBlur}
                         endAdornment={(
                             <InputAdornment position="end">
                                 <IconButton

@@ -1,10 +1,11 @@
 import Skeleton from '@common_skeleton';
 import useStyles from '../style';
 
-const BannerSliderSkeleteon = () => {
+const BannerSliderSkeleteon = ({ logoUrl }) => {
     const styles = useStyles();
     return (
         <div className={styles.skeletonWrapper}>
+            <img src={logoUrl} className="logo hidden-desktop" alt="Logo" />
             <Skeleton
                 variant="rect"
                 animation="wave"

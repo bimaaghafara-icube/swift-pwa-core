@@ -72,7 +72,10 @@ const ModalSelectStore = ({
                     ...checkout,
                     data: {
                         ...checkout.data,
-                        cart: res.data.setPickupStore,
+                        cart: {
+                            ...checkout.data.cart,
+                            ...res.data.setPickupStore,
+                        },
                         paymentMethod,
                     },
                     selectStore: {
