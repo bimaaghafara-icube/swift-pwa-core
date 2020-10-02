@@ -5,6 +5,7 @@ import { setCheckoutData } from '@helper_cookies';
 import _ from 'lodash';
 import { localTotalCart } from '@services/graphql/schema/local';
 import SummaryPlugin from '@core_modules/cart/plugin/Summary';
+import { IPAY_URL } from '@config';
 import gqlService from '../../../../services/graphql';
 
 const Summary = ({
@@ -128,6 +129,9 @@ const Summary = ({
                 if (checkout.data.cart.selected_payment_method.code.match(/snap.*/)) {
                     setOrderId(orderNumber);
                     await getSnapToken({ variables: { orderId: orderNumber } });
+                } else if (checkout.data.cart.selected_payment_method.code.match(/ovo.*/)) {
+                    const ipayUrl = IPAY_URL[process.env.APP_ENV] || IPAY_URL.dev;
+                    window.location.href = ipayUrl + orderNumber;
                 } else {
                     handleOpenMessage({
                         variant: 'success',
