@@ -108,15 +108,15 @@ const useStyles = makeStyles((theme) => ({
             minHeight: 'calc(100vh - 437px)',
         },
         [theme.breakpoints.down('sm')]: {
-            minHeight: 'calc(100vh - 93px)',
+            minHeight: 400,
             position: 'relative',
             margin: 0,
         },
     },
     butonEmpty: {
         [theme.breakpoints.down('sm')]: {
-            bottom: 0,
-            position: 'absolute',
+            bottom: 15,
+            position: 'fixed',
             padding: 0,
             left: 0,
             width: '100%',
