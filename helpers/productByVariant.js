@@ -156,9 +156,41 @@ export const CheckAvailableOptions = (availableCombination = [], option = {}, va
             available = true;
             break;
         }
+        // }
     }
     return available;
 };
+
+// export const CheckAvailableOptions = (selected = {}, code, value = '', variants = []) => {
+//     let available = false;
+//     if (!selected || !selected[code]) {
+//         available = true;
+//     } else if (selected[code] && selected[code] === value) {
+//         available = true;
+//     } else {
+//         available = false;
+//         // // console.log('sini');
+//         // for (let index = 0; index < variants.length; index += 1) {
+//         //     let productAvailable = false;
+//         //     let attributeAvailable = false;
+//         //     const { attributes, product } = variants[index];
+//         //     for (let idxAtt = 0; idxAtt < attributes.length; idxAtt += 1) {
+//         //         if (attributes[idxAtt].code === code && attributes[idxAtt].value_index === value) {
+//         //             attributeAvailable = true;
+//         //         }
+//         //     }
+
+//         //     if (attributeAvailable && product.stock_status === 'IN_STOCK') {
+//         //         console.log('ketemu');
+//         //         productAvailable = true;
+//         //     }
+
+//         //     available = productAvailable;
+//         //     if (productAvailable) break;
+//         // }
+//     }
+//     return available;
+// };
 
 /**
  * function to get product by spesific variant
