@@ -19,7 +19,7 @@ import {
 import { shareIcon } from '@config';
 import useStyles from './style';
 
-export default ({ url }) => {
+const ShareComp = ({ url }) => {
     const styles = useStyles();
     const icons = Object.entries(shareIcon);
     return (
@@ -59,3 +59,5 @@ export default ({ url }) => {
         </div>
     );
 };
+
+export default ShareComp;

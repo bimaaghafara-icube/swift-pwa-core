@@ -10,7 +10,7 @@ import Link from 'next/link';
 import useStyles from './style';
 import ShareIcons from '../ShareIcon';
 
-export default (props) => {
+const Detail = (props) => {
     const {
         title, publish_date, featured_image_url, featured_image_alt, url_key,
         short = true, t, short_content, content,
@@ -78,3 +78,5 @@ export default (props) => {
         </div>
     );
 };
+
+export default Detail;
