@@ -41,7 +41,7 @@ const OptionsItemConfig = (props) => {
         const options = firstSelected.code === key && firstSelected.value !== value ? {} : selected;
         options[key] = value;
         selected[key] = value;
-        setSelectConfigurable({
+        await setSelectConfigurable({
             ...selected,
         });
         const product = await ProductByVariant(options, configProduct.data.products.items[0].variants);
@@ -94,12 +94,8 @@ const OptionsItemConfig = (props) => {
             });
         }
 
-        if (firstSelected.code === key) {
-            firstSelected.value = value;
-        } else if (!firstSelected.code) {
-            firstSelected.code = key;
-            firstSelected.value = value;
-        }
+        firstSelected.code = key;
+        firstSelected.value = value;
         await setFirstSelected({ ...firstSelected });
     };
 
@@ -201,7 +197,10 @@ const OptionsItemConfig = (props) => {
         }
     };
 
-    const combination = configProduct.data && getCombinationVariants(firstSelected, configProduct.data.products.items[0].variants);
+    const combination = configProduct.data && getCombinationVariants(
+        selected, configProduct.data.products.items[0].variants,
+        configProduct.data.products.items[0].configurable_options,
+    );
     return (
         <>
             {configProduct.data
@@ -232,14 +231,14 @@ const OptionsItemConfig = (props) => {
                             if (configProduct.data.products.items[0].configurable_options.length === 1) {
                                 available = CheckAvailableStock(option.values[valIdx], configProduct.data.products.items[0].variants);
                             }
-                            if (combination.code && combination.code !== option.attribute_code) {
-                                if (combination.available_combination.length > 0) {
-                                    available = CheckAvailableOptions(combination.available_combination, option.values[valIdx].label);
-                                } else {
-                                    available = false;
-                                }
+                            if (combination.available_combination.length > 0) {
+                                available = CheckAvailableOptions(
+                                    combination.available_combination, option, option.values[valIdx],
+                                );
                             }
-                            if (!available) initValue.disabled = true;
+                            if (!available) {
+                                initValue.disabled = true;
+                            }
                             value.push(initValue);
                         }
                     }

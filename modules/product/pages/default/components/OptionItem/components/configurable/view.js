@@ -59,7 +59,7 @@ const ConfigurableView = (props) => {
                 disabled={loading || configProduct.loading}
             >
                 {value.map((val, key) => (
-                    <MenuItem key={key} value={val.label} disabled={val.disabled}>
+                    <MenuItem key={key} value={val.value} disabled={val.disabled}>
                         {val.label}
                     </MenuItem>
                 ))}

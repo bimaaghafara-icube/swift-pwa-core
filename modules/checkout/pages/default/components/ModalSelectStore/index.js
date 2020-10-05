@@ -89,7 +89,6 @@ const ModalSelectStore = ({
                 await setLoading(false);
                 setOpen();
             }).catch(() => {
-                // console.log(e);
                 setLoading(false);
             });
         } else {
