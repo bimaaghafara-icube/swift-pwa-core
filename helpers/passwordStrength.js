@@ -66,7 +66,7 @@ const getScore = (password, minValue, numberOfRequiredClass) => {
     return 0;
 };
 
-export default ({
+const GetScore = ({
     value,
     minValue = defaultValue,
     numberOfRequiredClass = defaultRequiredClass,
@@ -99,3 +99,5 @@ export default ({
         return false;
     }
 };
+
+export default GetScore;

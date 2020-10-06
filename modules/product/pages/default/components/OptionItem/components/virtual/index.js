@@ -7,7 +7,7 @@ import React from 'react';
 import TagManager from 'react-gtm-module';
 import { addVirtualProductToCart, getGuestCartId as queryGetGuestCartId, getCustomerCartId } from '../../../../../../services/graphql';
 
-export default ({
+const OptionsItemVirtual = ({
     setOpen,
     t,
     data: {
@@ -118,3 +118,5 @@ export default ({
         />
     );
 };
+
+export default OptionsItemVirtual;

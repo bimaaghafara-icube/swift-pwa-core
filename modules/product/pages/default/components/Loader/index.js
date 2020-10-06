@@ -4,7 +4,7 @@ import CarouselSkeleton from '@common_slick/Caraousel/Skeleton';
 import { features } from '@config';
 import useStyles from './style';
 
-export default () => {
+const SkeletonLoader = () => {
     const styles = useStyles();
     return (
         <div className="column row">
@@ -69,3 +69,5 @@ export default () => {
         </div>
     );
 };
+
+export default SkeletonLoader;

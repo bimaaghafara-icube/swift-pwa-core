@@ -1,6 +1,6 @@
 import { InfoWindow } from 'react-google-maps';
 
-export default (({ store, onCloseClick, t }) => (
+const InfoWindowComp = (({ store, onCloseClick, t }) => (
     <>
         <style jsx>
             {`
@@ -76,3 +76,5 @@ export default (({ store, onCloseClick, t }) => (
     </>
 
 ));
+
+export default InfoWindowComp;

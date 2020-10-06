@@ -2,7 +2,7 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import classNames from 'classnames';
 import useStyles from './styles';
 
-export default () => {
+const SkeletonLoader = () => {
     const styles = useStyles();
     return (
         <div className="row" style={{ paddingBottom: 100 }}>
@@ -45,3 +45,5 @@ export default () => {
         </div>
     );
 };
+
+export default SkeletonLoader;

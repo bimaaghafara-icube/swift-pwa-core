@@ -1,7 +1,7 @@
 import Alert from '@material-ui/lab/Alert';
 import useStyles from './style';
 
-export default ({ variant, text }) => {
+const ErrorInfo = ({ variant, text }) => {
     const styles = useStyles();
     return (
         <div className={styles.container}>
@@ -11,3 +11,4 @@ export default ({ variant, text }) => {
         </div>
     );
 };
+export default ErrorInfo;

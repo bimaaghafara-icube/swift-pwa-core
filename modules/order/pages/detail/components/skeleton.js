@@ -2,7 +2,7 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import classNames from 'classnames';
 import useStyles from '../style';
 
-export default () => {
+const SkeletonLoader = () => {
     const styles = useStyles();
     return (
         <>
@@ -35,3 +35,5 @@ export default () => {
         </>
     );
 };
+
+export default SkeletonLoader;

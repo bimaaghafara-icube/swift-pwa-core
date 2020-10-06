@@ -1,7 +1,7 @@
 import Skeleton from '@material-ui/lab/Skeleton';
 import useStyles from './style';
 
-export default () => {
+const SkeletonLoader = () => {
     const styles = useStyles();
     return (
         <div className={styles.container}>
@@ -18,3 +18,5 @@ export default () => {
         </div>
     );
 };
+
+export default SkeletonLoader;

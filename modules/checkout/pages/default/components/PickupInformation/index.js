@@ -10,7 +10,7 @@ import ModalSelectStore from '../ModalSelectStore';
 import gqlService from '../../../../services/graphql';
 import useParentStyles from '../style';
 
-export default (props) => {
+const PickupInformation = (props) => {
     const {
         t, checkout, setCheckout,
     } = props;
@@ -135,3 +135,5 @@ export default (props) => {
         </div>
     );
 };
+
+export default PickupInformation;

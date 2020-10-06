@@ -48,7 +48,7 @@ export const SkeletonContent = () => {
     );
 };
 
-export default () => {
+const SkeletonLoader = () => {
     const styles = useStyles();
     return (
         <>
@@ -84,3 +84,5 @@ export default () => {
         </>
     );
 };
+
+export default SkeletonLoader;

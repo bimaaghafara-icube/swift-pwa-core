@@ -2,7 +2,7 @@ import Button from '@common_button';
 import Typography from '@common_typography';
 import useStyles from './styles';
 
-export default ({ t, data: { detail } }) => {
+const Footer = ({ t, data: { detail } }) => {
     const styles = useStyles();
     return (
         <div className={styles.footer}>
@@ -23,3 +23,5 @@ export default ({ t, data: { detail } }) => {
         </div>
     );
 };
+
+export default Footer;

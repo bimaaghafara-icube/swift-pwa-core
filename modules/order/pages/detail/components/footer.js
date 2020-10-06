@@ -3,7 +3,7 @@ import Typography from '@common_typography';
 import Router from 'next/router';
 import useStyles from '../style';
 
-export default ({ t, detail }) => {
+const Footer = ({ t, detail }) => {
     const styles = useStyles();
     return (
         <div className={styles.footer}>
@@ -25,3 +25,5 @@ export default ({ t, detail }) => {
         </div>
     );
 };
+
+export default Footer;
