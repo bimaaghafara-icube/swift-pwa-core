@@ -28,6 +28,9 @@ const SelectOption = (props) => {
         customStyle = {
             backgroundColor: content,
         };
+        if (content === '#ffffff') {
+            customStyle.border = `1px solid ${selected ? PRIMARY : GRAY_PRIMARY}`;
+        }
         childContent = '';
     }
 
@@ -46,7 +49,7 @@ const SelectOption = (props) => {
         !disabled && onChange(value);
     };
     return (
-        <div className={containerStyle} style={customStyle} onClick={handleChange}>
+        <div style={customStyle} className={containerStyle} onClick={handleChange}>
             {disabled ? <div className={styles.disabledBox} /> : childContent}
         </div>
     );

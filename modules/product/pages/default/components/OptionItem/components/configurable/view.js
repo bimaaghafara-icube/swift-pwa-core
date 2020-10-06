@@ -4,7 +4,7 @@ import CustomRadio from '@common_radio';
 import Typography from '@common_typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import SelectOption from './SelectOption';
+import SelectOption from '@common_optionconfigurable';
 import useStyles from '../../style';
 
 const ConfigurableView = (props) => {

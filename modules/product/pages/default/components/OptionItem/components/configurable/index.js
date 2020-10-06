@@ -38,13 +38,16 @@ const OptionsItemConfig = (props) => {
     const [firstSelected, setFirstSelected] = React.useState({});
 
     const handleSelect = async (value, key) => {
-        const options = firstSelected.code === key && firstSelected.value !== value ? {} : selected;
-        options[key] = value;
-        selected[key] = value;
+        if (selected[key] && selected[key] === value) {
+            delete selected[key];
+        } else {
+            selected[key] = value;
+        }
         await setSelectConfigurable({
             ...selected,
         });
-        const product = await ProductByVariant(options, configProduct.data.products.items[0].variants);
+        const product = await ProductByVariant(selected, configProduct.data.products.items[0].variants);
+        console.log(product);
         if (product && JSON.stringify(product) !== '{}') {
             setSelectedProduct({ ...product });
             const bannerData = [];
