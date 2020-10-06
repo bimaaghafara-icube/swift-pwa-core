@@ -8,7 +8,7 @@ const MiniCart = (props) => {
     const {
         Content, open, setOpen, count, t,
     } = props;
-    let dataCart = { items: [] };
+    const [cart, setCart] = React.useState({ items: [] });
     let loadingCart = false;
     let getCartData = () => {};
     const [actDeleteItem, delCart] = useMutation(Schema.deleteCartitem);
@@ -25,13 +25,32 @@ const MiniCart = (props) => {
                 },
             });
             loadingCart = data.loading;
-            if (data.data) {
-                dataCart = data.data.cart;
-            }
+            React.useMemo(() => {
+                if (!data.loading && data.data && data.data.cart) {
+                    setCart({ ...data.data.cart });
+                }
+            },
+            [data.loading]);
         } else {
             loadingCart = false;
         }
     }
+
+    React.useMemo(() => {
+        if (!update.loading && update.data) {
+            setCart({ ...update.data.updateCartItems.cart });
+        }
+    },
+    [update.loading]);
+
+    React.useMemo(() => {
+        if (!delCart.loading && delCart.data) {
+            setCart({ ...delCart.data.removeItemFromCart.cart });
+        }
+    },
+    [delCart.loading]);
+
+    console.log(cart);
 
     if (!loadingCart && update.loading) {
         loadingCart = update.loading;
@@ -41,8 +60,9 @@ const MiniCart = (props) => {
         loadingCart = delCart.loading;
     }
 
-    React.useEffect(() => {
+    React.useMemo(() => {
         if (open && typeof window !== 'undefined' && cartId && cartId !== '') {
+            setCart({ ...{ items: [] } });
             getCartData();
             loadingCart = true;
         }
@@ -61,7 +81,7 @@ const MiniCart = (props) => {
                 request: 'internal',
             },
         }).then(() => {
-            getCartData();
+            // getCartData();
             window.toastMessage({
                 open: true,
                 text: t('common:cart:updateSuccess'),
@@ -86,8 +106,8 @@ const MiniCart = (props) => {
                 request: 'internal',
             },
         }).then(() => {
-            getCartData();
-            loadingCart = false;
+            // getCartData();
+            // loadingCart = false;
             window.toastMessage({
                 open: true,
                 text: t('common:cart:deleteSuccess'),
@@ -108,7 +128,7 @@ const MiniCart = (props) => {
             setOpen={setOpen}
             count={count}
             loading={loadingCart}
-            data={dataCart}
+            data={cart}
             deleteCart={deleteCart}
             updateCart={updateCart}
             t={t}

@@ -242,7 +242,159 @@ export const deleteCartitem = gql`
       ) {
         cart {
           id
-          total_quantity
+            total_quantity
+            applied_coupons {
+                code
+            }
+            prices {
+                discounts {
+                    amount {
+                        currency
+                        value
+                    }
+                    label
+                }
+                grand_total {
+                    currency
+                    value
+                }
+                subtotal_excluding_tax {
+                  currency
+                  value
+                }
+            }
+            # applied_store_credit {
+            #   store_credit_amount
+            #   is_use_store_credit
+            # }
+            # applied_giftcard {
+            #     giftcard_amount
+            #     giftcard_detail {
+            #         giftcard_amount_used
+            #         giftcard_code
+            #     }
+            # }
+            # applied_reward_points {
+            #     is_use_reward_points
+            #     reward_points_amount
+            # }
+            # applied_cashback {
+            #     data {
+            #         amount
+            #         promo_name
+            #     }
+            #     is_cashback
+            #     total_cashback
+            # }
+            items {
+              id
+              quantity
+              ... on ConfigurableCartItem {
+                  configurable_options {
+                  option_label
+                  value_label
+                }
+              }
+              ... on BundleCartItem {
+                bundle_options {
+                  label
+                  type
+                  values {
+                    label
+                    price
+                    quantity
+                  }
+                }
+              }
+              prices {
+                discounts {
+                  amount {
+                    currency
+                    value
+                  }
+                }
+                price {
+                  value
+                  currency
+                }
+                row_total {
+                  currency
+                  value
+                }
+                total_item_discount {
+                  currency
+                  value
+                }
+            }
+            product {
+                id
+                name
+                small_image {
+                  url
+                  label
+                }
+                url_key
+                sku
+                stock_status
+                categories {
+                  name
+                }
+                crosssell_products {
+                  id
+                  name
+                  url_key
+                  sku
+                  thumbnail {
+                    url
+                  }
+                  small_image {
+                    url,
+                    label
+                  }
+                  price_tiers {
+                    discount {
+                      percent_off
+                      amount_off
+                    }
+                    final_price {
+                      currency
+                      value
+                    }
+                    quantity
+                  }
+                  price_range {
+                    maximum_price {
+                      discount {
+                        amount_off
+                        percent_off
+                      }
+                      final_price {
+                        currency
+                        value
+                      }
+                      regular_price {
+                        currency
+                        value
+                      }
+                    }
+                    minimum_price {
+                      discount {
+                        amount_off
+                        percent_off
+                      }
+                      final_price {
+                        currency
+                        value
+                      }
+                      regular_price {
+                        currency
+                        value
+                      }
+                    }
+                  }
+                }
+              }
+          }
         }
       }
     }
@@ -258,7 +410,159 @@ export const updateCartitem = gql`
       ) {
         cart {
           id
-          total_quantity
+            total_quantity
+            applied_coupons {
+                code
+            }
+            prices {
+                discounts {
+                    amount {
+                        currency
+                        value
+                    }
+                    label
+                }
+                grand_total {
+                    currency
+                    value
+                }
+                subtotal_excluding_tax {
+                  currency
+                  value
+                }
+            }
+            applied_store_credit {
+              store_credit_amount
+              is_use_store_credit
+            }
+            applied_giftcard {
+                giftcard_amount
+                giftcard_detail {
+                    giftcard_amount_used
+                    giftcard_code
+                }
+            }
+            applied_reward_points {
+                is_use_reward_points
+                reward_points_amount
+            }
+            applied_cashback {
+                data {
+                    amount
+                    promo_name
+                }
+                is_cashback
+                total_cashback
+            }
+            items {
+              id
+              quantity
+              ... on ConfigurableCartItem {
+                  configurable_options {
+                  option_label
+                  value_label
+                }
+              }
+              ... on BundleCartItem {
+                bundle_options {
+                  label
+                  type
+                  values {
+                    label
+                    price
+                    quantity
+                  }
+                }
+              }
+              prices {
+                discounts {
+                  amount {
+                    currency
+                    value
+                  }
+                }
+                price {
+                  value
+                  currency
+                }
+                row_total {
+                  currency
+                  value
+                }
+                total_item_discount {
+                  currency
+                  value
+                }
+            }
+            product {
+                id
+                name
+                small_image {
+                  url
+                  label
+                }
+                url_key
+                sku
+                stock_status
+                categories {
+                  name
+                }
+                crosssell_products {
+                  id
+                  name
+                  url_key
+                  sku
+                  thumbnail {
+                    url
+                  }
+                  small_image {
+                    url,
+                    label
+                  }
+                  price_tiers {
+                    discount {
+                      percent_off
+                      amount_off
+                    }
+                    final_price {
+                      currency
+                      value
+                    }
+                    quantity
+                  }
+                  price_range {
+                    maximum_price {
+                      discount {
+                        amount_off
+                        percent_off
+                      }
+                      final_price {
+                        currency
+                        value
+                      }
+                      regular_price {
+                        currency
+                        value
+                      }
+                    }
+                    minimum_price {
+                      discount {
+                        amount_off
+                        percent_off
+                      }
+                      final_price {
+                        currency
+                        value
+                      }
+                      regular_price {
+                        currency
+                        value
+                      }
+                    }
+                  }
+                }
+              }
+          }
         }
       }
     }
