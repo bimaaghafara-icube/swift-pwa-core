@@ -5,7 +5,7 @@ const style = {
     marginBottom: 20,
 };
 
-export default () => (
+const SkeletonLoader = () => (
     <>
         <div className="row">
             <div className="col-sm-2 hidden-mobile" style={{ paddingTop: 30 }}>
@@ -37,3 +37,5 @@ export default () => (
         </div>
     </>
 );
+
+export default SkeletonLoader;

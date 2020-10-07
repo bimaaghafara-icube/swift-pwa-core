@@ -5,7 +5,7 @@ import React from 'react';
 import Button from '@common_button';
 import useStyles from './style';
 
-export default ({
+const Footer = ({
     qty = 1,
     setQty = () => { },
     handleAddToCart = () => { },
@@ -44,3 +44,5 @@ export default ({
         </>
     );
 };
+
+export default Footer;

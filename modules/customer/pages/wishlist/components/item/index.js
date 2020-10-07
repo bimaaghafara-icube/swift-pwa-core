@@ -9,7 +9,7 @@ import Image from '@common_image';
 import { features } from '@config';
 import useStyles from './style';
 
-export default ({
+const WishlistComp = ({
     price_range, price_tiers, __typename, imageSrc,
     name, wishlistItemId, t, sku, url_key,
     handleRemove, handleToCart, special_from_date, special_to_date,
@@ -71,3 +71,5 @@ export default ({
         </>
     );
 };
+
+export default WishlistComp;

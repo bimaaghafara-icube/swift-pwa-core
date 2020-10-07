@@ -71,7 +71,7 @@ const changeQtyOption = (position, qty, items) => {
     return result;
 };
 
-export default (props) => {
+const OptionsItemsBundle = (props) => {
     const {
         t,
         data: {
@@ -222,3 +222,5 @@ export default (props) => {
         />
     );
 };
+
+export default OptionsItemsBundle;

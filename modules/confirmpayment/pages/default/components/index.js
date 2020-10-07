@@ -92,8 +92,10 @@ const ConfirmPayment = (props) => {
     );
 };
 
-export default (props) => (
+const ConfirmPaymentComp = (props) => (
     <MuiPickersUtilsProvider utils={DateDayJs}>
         <ConfirmPayment {...props} />
     </MuiPickersUtilsProvider>
 );
+
+export default ConfirmPaymentComp;

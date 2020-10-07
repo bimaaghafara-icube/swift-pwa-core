@@ -9,7 +9,7 @@ import {
 } from '@config';
 import { removeToken as deleteToken } from '../../../../services/graphql';
 
-export default ({
+const Footer = ({
     t, isLogin, storeConfig, FooterView, modules,
 }) => {
     const { aw_blog_general_enabled: blog } = storeConfig;
@@ -28,3 +28,5 @@ export default ({
     };
     return <FooterView blog={blog} t={t} isLogin={isLogin} handleLogout={handleLogout} modules={modules} />;
 };
+
+export default Footer;

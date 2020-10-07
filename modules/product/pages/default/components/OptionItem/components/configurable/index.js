@@ -10,7 +10,7 @@ import {
     addConfigProductsToCart, getConfigurableProduct, getGuestCartId as queryGetGuestCartId, getCustomerCartId,
 } from '../../../../../../services/graphql';
 
-export default (props) => {
+const OptionsItemConfig = (props) => {
     const {
         setBanner,
         setPrice,
@@ -263,3 +263,5 @@ export default (props) => {
         </>
     );
 };
+
+export default OptionsItemConfig;

@@ -5,7 +5,7 @@ import TagManager from 'react-gtm-module';
 import gqlService from '../../../../services/graphql';
 import useStyles from '../style';
 
-export default (props) => {
+const DeliveryComp = (props) => {
     const {
         t, checkout, setCheckout,
         handleOpenMessage, storeConfig, DeliveryView, Skeleton,
@@ -113,3 +113,5 @@ export default (props) => {
         <DeliveryView {...props} handleSelect={handleSelect} />
     );
 };
+
+export default DeliveryComp;

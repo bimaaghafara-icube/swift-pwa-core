@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import Typography from '@common_typography';
 import useStyles from './style';
 
-export default ({
+const ListMessage = ({
     data = [],
 }) => {
     const styles = useStyles();
@@ -43,3 +43,5 @@ export default ({
         </div>
     );
 };
+
+export default ListMessage;

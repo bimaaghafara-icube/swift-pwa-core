@@ -26,7 +26,7 @@ function Alert(props) {
     return <MuiAlert elevation={6} classes={{ root: styles.container, message: styles.message }} variant="standard" {...props} />;
 }
 
-export default ({
+const Toast = ({
     open, message, setOpen, variant = 'info', autoHideDuration = 3000,
 }) => {
     const handleClose = (event, reason) => {
@@ -52,3 +52,5 @@ export default ({
         </Snackbar>
     );
 };
+
+export default Toast;

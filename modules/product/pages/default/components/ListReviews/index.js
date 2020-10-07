@@ -13,7 +13,7 @@ import AddReviewDialog from '../AddReviewDialog';
 import AddReviewDialogView from '../AddReviewDialog/view';
 import CustomerReview from '../CustomerReview';
 
-export default (props) => {
+const ListReviews = (props) => {
     const styles = useStyles();
     // sementara di comment dulu sudah confirm ke mas @rifki kalau tidak dipakai. dan jika tidak masalah bakal di hapus
     // const dispatch = useDispatch();
@@ -120,3 +120,5 @@ export default (props) => {
         </>
     );
 };
+
+export default ListReviews;
