@@ -50,8 +50,6 @@ const MiniCart = (props) => {
     },
     [delCart.loading]);
 
-    console.log(cart);
-
     if (!loadingCart && update.loading) {
         loadingCart = update.loading;
     }
