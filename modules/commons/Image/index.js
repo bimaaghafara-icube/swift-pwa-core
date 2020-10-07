@@ -22,7 +22,6 @@ const Image = ({
     >
         {!lazy ? (
             <img
-                ARIA
                 data-pagespeed-no-defer
                 style={{
                     width: '100%',

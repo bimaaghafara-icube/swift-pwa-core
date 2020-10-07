@@ -10,13 +10,14 @@ const MiniCart = (props) => {
     } = props;
     const [cart, setCart] = React.useState({ items: [] });
     let loadingCart = false;
+    let dataCart = null;
     let getCartData = () => {};
     const [actDeleteItem, delCart] = useMutation(Schema.deleteCartitem);
     const [actUpdateItem, update] = useMutation(Schema.updateCartitem);
 
     let cartId = '';
     const [getCart, data] = getMiniCartData();
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && open) {
         cartId = getCartId();
         if (cartId) {
             getCartData = () => getCart({
@@ -25,16 +26,19 @@ const MiniCart = (props) => {
                 },
             });
             loadingCart = data.loading;
-            React.useMemo(() => {
-                if (!data.loading && data.data && data.data.cart) {
-                    setCart({ ...data.data.cart });
-                }
-            },
-            [data.loading]);
+            if (!data.loading && data.data && data.data.cart) {
+                dataCart = data.data.cart;
+            }
         } else {
             loadingCart = false;
         }
     }
+    React.useMemo(() => {
+        if (dataCart && dataCart.id) {
+            setCart({ ...data.data.cart });
+        }
+    },
+    [loadingCart]);
 
     React.useMemo(() => {
         if (!update.loading && update.data) {
@@ -66,7 +70,6 @@ const MiniCart = (props) => {
         }
     }, [open]);
 
-    // update items
     // update items
     const updateCart = (id, qty) => {
         actUpdateItem({
