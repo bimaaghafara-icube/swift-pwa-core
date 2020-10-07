@@ -1,7 +1,10 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
 import { useApolloClient } from '@apollo/client';
-import ProductByVariant, { getCombinationVariants, CheckAvailableOptions, CheckAvailableStock } from '@helper_productbyvariant';
+import ProductByVariant, {
+    CheckAvailableOptions, CheckAvailableStock, getOptionVariant,
+    generateAvailableCombination,
+} from '@helper_productbyvariant';
 import { getLoginInfo } from '@helper_auth';
 import { getCartId, setCartId } from '@helper_cartid';
 import TagManager from 'react-gtm-module';
@@ -36,6 +39,7 @@ const OptionsItemConfig = (props) => {
 
     const selected = selectConfigurable;
     const [firstSelected, setFirstSelected] = React.useState({});
+    const [variantOption, setVariant] = React.useState([]);
 
     const handleSelect = async (value, key) => {
         if (selected[key] && selected[key] === value) {
@@ -200,10 +204,20 @@ const OptionsItemConfig = (props) => {
         }
     };
 
-    const combination = configProduct.data && getCombinationVariants(
-        selected, configProduct.data.products.items[0].variants,
-        configProduct.data.products.items[0].configurable_options,
-    );
+    React.useEffect(() => {
+        if (configProduct.data && variantOption.length === 0) {
+            const variants = configProduct.data && getOptionVariant(
+                configProduct.data.products.items[0].variants,
+                configProduct.data.products.items[0].configurable_options,
+            );
+            setVariant(variants);
+        }
+    }, [configProduct.data]);
+
+    const combination = variantOption && variantOption.length > 0
+    && generateAvailableCombination(selected, variantOption, configProduct.data.products.items[0].configurable_options);
+    // console.log(variantOption);
+    // console.log(combination);
     return (
         <>
             {configProduct.data
@@ -234,9 +248,9 @@ const OptionsItemConfig = (props) => {
                             if (configProduct.data.products.items[0].configurable_options.length === 1) {
                                 available = CheckAvailableStock(option.values[valIdx], configProduct.data.products.items[0].variants);
                             }
-                            if (combination.available_combination.length > 0) {
+                            if (combination.length > 0) {
                                 available = CheckAvailableOptions(
-                                    combination.available_combination, option, option.values[valIdx],
+                                    combination, option, option.values[valIdx],
                                 );
                             }
                             if (!available) {

@@ -50,9 +50,7 @@ export const getCombinationVariants = (selected = {}, variants = [], options = [
                     for (let idxAtt = 0; idxAtt < attributes.length; idxAtt += 1) {
                         const { value_index, code } = attributes[idxAtt];
                         if (value_index !== selected[code]) {
-                            alloptions = alloptions.filter(
-                                (att) => att.value_index !== value_index,
-                            );
+                            alloptions = alloptions.filter((att) => att.value_index !== value_index);
                         }
                     }
                 }
@@ -61,7 +59,93 @@ export const getCombinationVariants = (selected = {}, variants = [], options = [
         combination.available_combination = alloptions;
     }
 
-    return combination;
+    return combination.available_combination;
+};
+
+export const getOptionVariant = (variants = [], options = []) => {
+    const optionVariant = [];
+
+    // lop get all varion options
+    for (let index = 0; index < options.length; index += 1) {
+        const { values, attribute_code } = options[index];
+        for (let idxVal = 0; idxVal < values.length; idxVal += 1) {
+            optionVariant.push({
+                code: attribute_code,
+                label: values[idxVal].label,
+                value_index: values[idxVal].value_index,
+            });
+        }
+    }
+
+    // loop variant product to get combine variant
+    const optionVariantWithCombine = [];
+    for (let index = 0; index < optionVariant.length; index += 1) {
+        const option = optionVariant[index];
+        let combineVariant = [];
+        for (let idxVar = 0; idxVar < variants.length; idxVar += 1) {
+            const { product, attributes } = variants[idxVar];
+            if (product.stock_status === 'IN_STOCK') {
+                let haveOption = false;
+                const combineAttribute = [];
+                for (let idxAtt = 0; idxAtt < attributes.length; idxAtt += 1) {
+                    const att = attributes[idxAtt];
+                    if (att.value_index === option.value_index) {
+                        haveOption = true;
+                    }
+                    combineAttribute.push({
+                        code: att.code,
+                        label: att.label,
+                        value_index: att.value_index,
+                    });
+                }
+                if (haveOption) {
+                    // const sameOption = optionVariant.filter((item) => item.code === option.code);
+                    // tolong tambahun option item yang sejenis dengan selectednya, misal color semua color di masukin ke combinationnya
+                    combineVariant = [
+                        ...combineVariant,
+                        ...combineAttribute,
+                        // ...sameOption,
+                    ];
+                }
+            }
+        }
+        optionVariantWithCombine.push({
+            ...option,
+            combination: combineVariant,
+        });
+    }
+
+    return optionVariantWithCombine;
+};
+
+export const generateAvailableCombination = (selected = {}, variantsCombination = [], configurable_options = []) => {
+    let available = [];
+    const selectKey = Object.keys(selected);
+
+    for (let index = 0; index < variantsCombination.length; index += 1) {
+        const variant = variantsCombination[index];
+        if (selected[variant.code] === variant.value_index) {
+            let defaultAvailable = [
+                { values: [] },
+            ];
+            if (selectKey.length === 1) {
+                defaultAvailable = configurable_options.filter((item) => item.attribute_code === variant.code);
+            }
+            if (defaultAvailable && defaultAvailable.values) {
+                available = [
+                    ...available,
+                    ...variant.combination,
+                    ...defaultAvailable[0].values,
+                ];
+            }
+            available = [
+                ...available,
+                ...variant.combination,
+            ];
+        }
+    }
+
+    return available;
 };
 
 // eslint-disable-next-line no-unused-vars
