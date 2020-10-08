@@ -51,6 +51,8 @@ const CustomBreadcrumb = ({ data = [], variant = 'text' }) => {
     );
 };
 
-export default (props) => (
+const BreadcrumbsComp = (props) => (
     <CustomBreadcrumb {...props} />
 );
+
+export default BreadcrumbsComp;

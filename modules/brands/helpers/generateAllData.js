@@ -1,5 +1,7 @@
 /* eslint-disable no-param-reassign */
 const generateAllData = (data = []) => {
+    // create new array because array from apollo read only
+    let brandsList = Object.assign([], data);
     const compare = (a, b) => {
         // Use toUpperCase() to ignore character casing
         const brandA = a.name.toUpperCase();
@@ -14,9 +16,9 @@ const generateAllData = (data = []) => {
         return comparison;
     };
 
-    data = data.sort(compare);
+    brandsList = brandsList.sort(compare);
 
-    let brands = data.reduce((r, e) => {
+    let brands = brandsList.reduce((r, e) => {
         // get first letter of name of current element
         const group = e.name[0];
         // if there is no property in accumulator with this letter create it

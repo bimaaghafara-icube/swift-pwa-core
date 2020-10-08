@@ -40,6 +40,7 @@
     "trackingInformation": "Tracking information",
     "orderStatus": "Order status",
     "status": "Status",
+    "action": "Action",
     "orderTotal": "Order total",
     "orderNotFound": "Sorry, order number is not valid",
     "smReturn": "Return",

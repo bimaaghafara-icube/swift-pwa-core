@@ -37,42 +37,43 @@ class NextScriptCustom extends NextScript {
             }),
         );
 
-        const initialFilterer = (props) => !props.src || !props.src.includes('chunk');
+        const initialFilterer = (props) => !props.src || !props.src.includes('chunk')
+        || props.src.includes('main') || props.src.includes('webpack') || props.src.includes('pages');
         const initialLoadScripts = scripts.filter(({ props }) => initialFilterer(props));
         const chunkedScripts = scripts.filter(({ props }) => !initialFilterer(props));
 
         const jsContent = `
-      var chunkedScripts = ${JSON.stringify(chunkedScripts)};
-      if (chunkedScripts.length === 0) {
-        setTimeout(() => {
-          document.body.className = document.body.className.replace("loading","");
-        },500)
-      }
-      setTimeout(() => {
-        chunkedScripts.map((script) => {
-          if (!script || !script.props) return;
-          try {
-            var scriptTag = document.createElement('script');
-  
-            scriptTag.src = script.props.src;
-            scriptTag.async = script.props.async;
-            scriptTag.defer = script.props.defer;
-            
-            if (script.props.id) scriptTag.id = script.props.id;
-            if (script.content) scriptTag.innerHTML = script.content;
-            document.body.appendChild(scriptTag);
-
+          var chunkedScripts = ${JSON.stringify(chunkedScripts)};
+          if (chunkedScripts.length === 0) {
             setTimeout(() => {
               document.body.className = document.body.className.replace("loading","");
             },500)
           }
-          catch(err) {
-            console.log(err);
-          }
-        });
-      // 1800ms seems like when PageSpeed Insights stop waiting for more js       
-      }, 1400);
-    `;
+          setTimeout(() => {
+            chunkedScripts.map((script) => {
+              if (!script || !script.props) return;
+              try {
+                var scriptTag = document.createElement('script');
+      
+                scriptTag.src = script.props.src;
+                scriptTag.async = script.props.async;
+                scriptTag.defer = script.props.defer;
+                
+                if (script.props.id) scriptTag.id = script.props.id;
+                if (script.content) scriptTag.innerHTML = script.content;
+                document.body.appendChild(scriptTag);
+
+                setTimeout(() => {
+                  document.body.className = document.body.className.replace("loading","");
+                },500)
+              }
+              catch(err) {
+                console.log(err);
+              }
+            });
+          // 1800ms seems like when PageSpeed Insights stop waiting for more js       
+          }, 1400);
+        `;
 
         return (
             <>

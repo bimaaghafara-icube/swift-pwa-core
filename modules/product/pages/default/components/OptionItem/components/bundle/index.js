@@ -21,9 +21,9 @@ const generateBundlePrice = (items) => {
         const qty = element.qty ? element.qty : 1;
         for (let idx = 0; idx < element.options.length; idx++) {
             const opt = element.options[idx];
+            currency = opt.product.price_range.minimum_price.final_price.currency;
             if (opt.is_default) {
                 price += (opt.quantity * opt.product.price_range.minimum_price.final_price.value) * qty;
-                currency = opt.product.price_range.minimum_price.final_price.currency;
             }
         }
     }
@@ -71,7 +71,7 @@ const changeQtyOption = (position, qty, items) => {
     return result;
 };
 
-export default (props) => {
+const OptionsItemsBundle = (props) => {
     const {
         t,
         data: {
@@ -222,3 +222,5 @@ export default (props) => {
         />
     );
 };
+
+export default OptionsItemsBundle;

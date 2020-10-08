@@ -43,7 +43,7 @@ const DefaultView = (props) => {
                                 <TableCell align="left"><Typography variant="span" type="bold">{t('order:orderTotal')}</Typography></TableCell>
                                 <TableCell align="left"><Typography variant="span" type="bold">{t('order:status')}</Typography></TableCell>
                                 <TableCell align="left">
-                                    <Typography variant="span" type="bold"> Action</Typography>
+                                    <Typography variant="span" type="bold">{t('order:action')}</Typography>
                                     {' '}
                                 </TableCell>
                             </TableRow>
@@ -157,14 +157,14 @@ const DefaultView = (props) => {
                                                                 align="left"
                                                                 data-th={(
                                                                     <Typography align="center" type="bold" letter="capitalize">
-                                                                        Status
+                                                                        {t('order:status')}
                                                                     </Typography>
                                                                 )}
                                                             >
                                                                 <div className={styles.displayFlexRow}>
                                                                     <div className={styles.mobLabel}>
                                                                         <Typography align="center" type="bold" letter="capitalize">
-                                                                            Status
+                                                                            {t('order:status')}
                                                                         </Typography>
                                                                     </div>
                                                                     <div className={styles.value}>
@@ -179,14 +179,14 @@ const DefaultView = (props) => {
                                                                 align="left"
                                                                 data-th={(
                                                                     <Typography align="center" type="bold" letter="capitalize">
-                                                                        Aksi
+                                                                        {t('order:action')}
                                                                     </Typography>
                                                                 )}
                                                             >
                                                                 <div className={styles.displayFlexRow}>
                                                                     <div className={styles.mobLabel}>
                                                                         <Typography align="center" type="bold" letter="capitalize">
-                                                                            Aksi
+                                                                            {t('order:action')}
                                                                         </Typography>
                                                                     </div>
                                                                     <div className={classNames(styles.value, styles.action)}>

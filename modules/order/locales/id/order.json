@@ -41,6 +41,7 @@
     "trackingInformation": "Informasi pesanan",
     "orderStatus": "Status pesanan",
     "status": "Status",
+    "action": "Aksi",
     "orderTotal": "Total pesanan",
     "orderNotFound": "Maaf, nomor pesanan tidak ditemukan",
     "smReturn": "Kembalikan",
