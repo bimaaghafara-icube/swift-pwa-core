@@ -52,7 +52,7 @@ const Customize = (props) => {
                 items.length > 0 ? (
                     <div className={styles.customizeContainer}>
                         <div className="row">
-                            <div className="col-xs-12 col-lg-8">
+                            <div className="col-xs-12 col-lg-12">
                                 {items.map((val, idx) => (
                                     <div className="item-list" key={idx}>
                                         <Typography variant="label" type="bold">
@@ -73,7 +73,7 @@ const Customize = (props) => {
                                     </div>
                                 ))}
                             </div>
-                            <div className="col-xs-12 col-lg-4">
+                            <div className="col-xs-12 col-lg-12" style={{ marginTop: 20 }}>
                                 <Typography variant="label" type="bold">
                                     {t('product:yourCustomization')}
                                 </Typography>
