@@ -1,6 +1,6 @@
 /* eslint-disable radix */
 /* eslint-disable no-plusplus */
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { getCartId } from '@helper_cartid';
 import { useMutation } from '@apollo/client';
 import TagManager from 'react-gtm-module';
@@ -24,6 +24,15 @@ const Cart = (props) => {
     const {
         t, token, isLogin, EmptyView, SkeletonView, pageConfig, Content, storeConfig, ...other
     } = props;
+
+    const dataCart = {
+        id: null,
+        total_quantity: 0,
+        applied_coupons: null,
+        prices: {},
+        items: [],
+    };
+    const [cart, setCart] = React.useState(dataCart);
     const [editMode, setEditMode] = useState(false);
     const [editItem, setEditItem] = useState({});
     const [openEditDrawer, setOpenEditDrawer] = useState(false);
@@ -35,13 +44,6 @@ const Cart = (props) => {
         headerBackIcon: 'close', // available values: "close", "arrow"
         bottomNav: false,
         pageType: 'cart',
-    };
-    let dataCart = {
-        id: null,
-        total_quantity: 0,
-        applied_coupons: null,
-        prices: {},
-        items: [],
     };
     let loadingCart = true;
     let crosssell = [];
@@ -56,8 +58,29 @@ const Cart = (props) => {
     };
 
     // delete item from cart
-    const [actDeleteItem] = useMutation(Schema.deleteCartitem);
-    const [actUpdateItem] = useMutation(Schema.updateCartitem);
+    const [actDeleteItem, deleteData] = useMutation(Schema.deleteCartitem);
+    const [actUpdateItem, update] = useMutation(Schema.updateCartitem);
+
+    let tmpData = null;
+    if (typeof window !== 'undefined') {
+        cartId = getCartId();
+        if (cartId) {
+            const { loading, data } = getCartData(cartId);
+            loadingCart = loading;
+            if (!loading && data && data.cart) {
+                tmpData = data.cart;
+            }
+        } else {
+            loadingCart = false;
+        }
+    }
+
+    React.useMemo(() => {
+        if (!loadingCart && tmpData && tmpData.id) {
+            setCart({ ...tmpData });
+        }
+    },
+    [loadingCart]);
 
     // delete items
     const deleteItem = (itemProps) => {
@@ -90,17 +113,8 @@ const Cart = (props) => {
             context: {
                 request: 'internal',
             },
-            refetchQueries: [
-                {
-                    query: Schema.getCart,
-                    variables: { cartId },
-                    fetchPolicy: 'cache-and-network',
-                    context: {
-                        request: 'internal',
-                    },
-                },
-            ],
         }).then(() => {
+            loadingCart = true;
             toggleEditMode();
             window.backdropLoader(false);
             window.toastMessage({
@@ -131,16 +145,6 @@ const Cart = (props) => {
             context: {
                 request: 'internal',
             },
-            refetchQueries: [
-                {
-                    query: Schema.getCart,
-                    variables: { cartId },
-                    context: {
-                        request: 'internal',
-                    },
-                    fetchPolicy: 'cache-and-network',
-                },
-            ],
         }).then(() => {
             toggleEditMode();
             window.backdropLoader(false);
@@ -159,21 +163,24 @@ const Cart = (props) => {
             });
         });
     };
-    if (typeof window !== 'undefined') {
-        cartId = getCartId();
-        if (cartId) {
-            const { loading, data } = getCartData(cartId);
-            loadingCart = loading;
-            if (!loading && data && data.cart) {
-                dataCart = data.cart;
-            }
-        } else {
-            loadingCart = false;
+
+    React.useMemo(() => {
+        if (!update.loading && update.data && update.data.updateCartItems) {
+            setCart({ ...update.data.updateCartItems.cart });
         }
-    }
-    useEffect(() => {
-        if (dataCart.items.length > 0) {
-            const crosssellData = getCrossSellProduct(dataCart.items);
+    },
+    [update.loading]);
+
+    React.useMemo(() => {
+        if (!deleteData.loading && deleteData.data && deleteData.data.removeItemFromCart) {
+            setCart(Object.assign(cart, deleteData.data.removeItemFromCart.cart));
+        }
+    },
+    [deleteData.loading]);
+
+    React.useMemo(() => {
+        if (cart.items.length > 0) {
+            const crosssellData = getCrossSellProduct(cart.items);
             const dataLayer = {
                 pageName: t('cart:pageTitle'),
                 pageType: 'cart',
@@ -195,7 +202,7 @@ const Cart = (props) => {
             };
             TagManager.dataLayer({ dataLayer });
         }
-    }, [dataCart]);
+    }, [cart.items.length]);
     // add to wishlist
     const [addWishlist] = mutationWishlist();
     const handleFeed = (itemProps) => {
@@ -251,12 +258,12 @@ const Cart = (props) => {
         return <Layout pageConfig={config || pageConfig} {...props}><SkeletonView /></Layout>;
     }
 
-    crosssell = getCrossSellProduct(dataCart.items);
+    crosssell = getCrossSellProduct(cart.items);
     const globalCurrency = storeConfig.default_display_currency_code;
 
-    if (dataCart.id && dataCart.items.length > 0 && dataCart.total_quantity > 0) {
+    if (cart.id && cart.items.length > 0 && cart.total_quantity > 0) {
         const contentProps = {
-            dataCart,
+            dataCart: cart,
             t,
             handleFeed,
             toggleEditMode,
