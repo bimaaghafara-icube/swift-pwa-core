@@ -20,6 +20,10 @@ const useStyles = makeStyles(() => ({
         position: 'relative',
         backgroundColor: WHITE,
         boxShadow: 'none',
+        '& .MuiFormControl-marginNormal': {
+            marginTop: 10,
+            marginBottom: 30,
+        },
     },
     iconClose: {
         size: 30,
