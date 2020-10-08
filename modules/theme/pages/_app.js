@@ -96,14 +96,14 @@ class MyApp extends App {
         routeMiddleware({
             res, req, query, asPath, isLogin, lastPathNoAuth,
         });
-        let storeConfig;
-        if (!allcookie[storeConfigNameCookie] || (allcookie[storeConfigNameCookie] && !allcookie[storeConfigNameCookie].secure_base_media_url)) {
+
+        let storeConfig = helperCookies.get(storeConfigNameCookie);
+        if (!(storeConfig && storeConfig.secure_base_media_url)) {
             // storeConfig = await apolloClient.query({ query: ConfigSchema }).then(({ data }) => data.storeConfig);
             storeConfig = await graphRequest(ConfigSchema);
             storeConfig = storeConfig.storeConfig;
-        } else {
-            storeConfig = allcookie[storeConfigNameCookie];
         }
+
         // add get session from server
         return {
             pageProps: {
