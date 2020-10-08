@@ -35,7 +35,7 @@ const MiniCart = (props) => {
     }
     React.useMemo(() => {
         if (dataCart && dataCart.id) {
-            setCart({ ...data.data.cart });
+            setCart({ ...dataCart });
         }
     },
     [loadingCart]);
