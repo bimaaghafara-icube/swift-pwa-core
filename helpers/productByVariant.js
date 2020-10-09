@@ -1,3 +1,4 @@
+/* eslint-disable brace-style */
 /**
  * function to get combination available
  * @param selected object example {code: "color", value: "Black"}
@@ -118,34 +119,135 @@ export const getOptionVariant = (variants = [], options = []) => {
     return optionVariantWithCombine;
 };
 
-export const generateAvailableCombination = (selected = {}, variantsCombination = [], configurable_options = []) => {
-    let available = [];
+export const generateAvailableCombination = (selected = {}, product = []) => {
+    const available = {};
     const selectKey = Object.keys(selected);
+    let countSelected = selectKey.length;
 
-    for (let index = 0; index < variantsCombination.length; index += 1) {
-        const variant = variantsCombination[index];
-        if (selected[variant.code] === variant.value_index) {
-            let defaultAvailable = [
-                { values: [] },
-            ];
-            if (selectKey.length === 1) {
-                defaultAvailable = configurable_options.filter((item) => item.attribute_code === variant.code);
-            }
-            if (defaultAvailable && defaultAvailable.values) {
-                available = [
-                    ...available,
-                    ...variant.combination,
-                    ...defaultAvailable[0].values,
-                ];
-            }
-            available = [
-                ...available,
-                ...variant.combination,
-            ];
-        }
+    // di cari kombinasi hanya 2 kondisi pertama
+    if (countSelected === product.configurable_options.length) {
+        countSelected -= 1;
     }
 
+    for (let index = 0; index < product.variants.length; index += 1) {
+        const element = product.variants[index];
+        const availableOnVariant = {};
+        // inisialisasi kalau semua yang di select false
+        for (let sltKey = 0; sltKey < countSelected; sltKey += 1) {
+            const key = selectKey[sltKey];
+            availableOnVariant[selected[key]] = false;
+        }
+
+        // ubah menjadi true yang di seleck jika ada dalam variands
+        for (let slId = 0; slId < element.attributes.length; slId += 1) {
+            const attr = element.attributes[slId];
+            if (typeof availableOnVariant[attr.value_index] !== 'undefined') {
+                availableOnVariant[attr.value_index] = true;
+            }
+        }
+
+        let inCombination = true;
+
+        // cek dari semua yang select apakah ada semua
+        for (let sltKey = 0; sltKey < countSelected; sltKey += 1) {
+            const key = selectKey[sltKey];
+            if (inCombination && !availableOnVariant[selected[key]]) {
+                inCombination = false;
+            }
+        }
+        if (inCombination) {
+            if (element.product.stock_status === 'IN_STOCK') {
+                for (let slId = 0; slId < element.attributes.length; slId += 1) {
+                    const attr = element.attributes[slId];
+                    available[attr.value_index] = attr;
+                }
+            }
+        }
+    }
     return available;
+};
+
+export const generateValue = (selected = {}, configurable = [], combination = {}) => {
+    const selectKey = Object.keys(selected);
+    const options = [];
+    for (let index = 0; index < configurable.length; index += 1) {
+        const element = { ...configurable[index] };
+        const value = [];
+        let isSwatch = false;
+        for (let idSub = 0; idSub < element.values.length; idSub += 1) {
+            const subVal = element.values[idSub];
+            const initValue = {
+                label: subVal.label,
+                value: subVal.value_index,
+                disabled: false,
+                thumbnail: '',
+            };
+            if (subVal.swatch_data && Object.keys(subVal.swatch_data).length > 0) {
+                isSwatch = true;
+                if (element.values[idSub].swatch_data.thumbnail) {
+                    initValue.thumbnail = subVal.swatch_data.thumbnail;
+                }
+                initValue.content = subVal.swatch_data.value;
+            }
+
+            // kondisi jika belum select semua maka option setelahyang diselect di disabled jika tidak ada
+            if (!combination[subVal.value_index] && !selected[element.attribute_code] && selectKey.length !== 0) {
+                initValue.disabled = true;
+            }
+            // jika sudah select semua maka kecuali urutan pertama di coret jika tidak ada
+            else if (selectKey.length === configurable.length && selectKey[0] !== element.attribute_code) {
+                if (!combination[subVal.value_index]) {
+                    initValue.disabled = true;
+                }
+            }
+            value.push(initValue);
+        }
+        element.isSwatch = isSwatch;
+        options.push({
+            options: { ...element },
+            value,
+        });
+    }
+
+    return options;
+};
+
+export const handleSelected = (selected, key, value) => {
+    const selectKey = Object.keys(selected);
+    const result = { ...selected };
+    // kondisi jika unselect
+    if (result[key] && result[key] === value) {
+        let position = 0;
+        // get position delete item
+        for (let index = 0; index < selectKey.length; index += 1) {
+            if (key === selectKey[index]) {
+                position = index;
+            }
+        }
+        // delete all item after position
+        for (let index = 0; index < selectKey.length; index += 1) {
+            if (index >= position) {
+                delete result[selectKey[index]];
+            }
+        }
+    } else if (result[key]) { // kondisi jika key sama tapi merubah value
+        let position = 0;
+        for (let index = 0; index < selectKey.length; index += 1) {
+            if (key === selectKey[index]) {
+                position = index;
+            }
+        }
+        result[key] = value;
+        // delete all item after position
+        for (let index = 0; index < selectKey.length; index += 1) {
+            if (index > position) {
+                delete result[selectKey[index]];
+            }
+        }
+    } else {
+        result[key] = value;
+    }
+    return result;
 };
 
 // eslint-disable-next-line no-unused-vars
