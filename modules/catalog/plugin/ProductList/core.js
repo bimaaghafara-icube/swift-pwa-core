@@ -92,36 +92,38 @@ const Product = (props) => {
     };
 
     const handleLoadMore = () => {
-        setLoadmore(true);
-        setPage(page + 1);
-        fetchMore({
-            query: Schema.getProduct({
-                customFilter: typeof customFilter !== 'undefined',
-                search: config.search,
-                pageSize: config.pageSize,
-                currentPage: page + 1,
-                filter: config.filter,
-            }),
-            variables: {
-                pageSize: 8,
-                currentPage: page + 1,
-            },
-            updateQuery: (
-                previousResult,
-                { fetchMoreResult },
-            ) => {
-                setLoadmore(false);
-                return {
-                    products: {
-                        ...fetchMoreResult.products,
-                        items: [
-                            ...previousResult.products.items,
-                            ...fetchMoreResult.products.items,
-                        ],
-                    },
-                };
-            },
-        });
+        if (fetchMore && typeof fetchMore !== 'undefined') {
+            setLoadmore(true);
+            setPage(page + 1);
+            fetchMore({
+                query: Schema.getProduct({
+                    customFilter: typeof customFilter !== 'undefined',
+                    search: config.search,
+                    pageSize: config.pageSize,
+                    currentPage: page + 1,
+                    filter: config.filter,
+                }),
+                variables: {
+                    pageSize: 8,
+                    currentPage: page + 1,
+                },
+                updateQuery: (
+                    previousResult,
+                    { fetchMoreResult },
+                ) => {
+                    setLoadmore(false);
+                    return {
+                        products: {
+                            ...fetchMoreResult.products,
+                            items: [
+                                ...previousResult.products.items,
+                                ...fetchMoreResult.products.items,
+                            ],
+                        },
+                    };
+                },
+            });
+        }
     };
 
     React.useEffect(() => {
