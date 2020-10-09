@@ -13,6 +13,9 @@ export default makeStyles((theme) => ({
         overflow: 'hidden',
         ...CreateMargin(0, 0, 16, 0),
         position: 'relative',
+        '& .MuiSkeleton-rect': {
+            paddingBottom: '120%',
+        },
     },
     badgesNewSales: {
         position: 'absolute',
