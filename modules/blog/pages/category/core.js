@@ -55,33 +55,35 @@ const Category = (props) => {
         config.headerTitle = data.getBlogCategory.data[0].name;
 
         const handleLoadMore = () => {
-            setPage(page + 1);
-            setLoadMore(true);
-            loadBlog.fetchMore({
-                query: Schema.getAllPost,
-                variables: {
-                    current_page: page + 1,
-                    page_size: pageSize,
-                    category_id: data.getBlogCategory.data[0].id,
-                    id: 0,
-                },
-                updateQuery: (previousResult, { fetchMoreResult }) => {
-                    setLoadMore(false);
-                    const prevItems = previousResult.getBlogByFilter;
-                    const newItems = fetchMoreResult.getBlogByFilter;
-                    return {
-                        getBlogByFilter: {
-                            current_page: prevItems.current_page,
-                            page_size: prevItems.page_size,
-                            total_count: prevItems.total_count,
-                            total_pages: prevItems.total_pages,
-                            // eslint-disable-next-line no-underscore-dangle
-                            __typename: prevItems.__typename,
-                            items: [...prevItems.items, ...newItems.items],
-                        },
-                    };
-                },
-            });
+            if (loadBlog.fetchMore && typeof loadBlog.fetchMore !== 'undefined') {
+                setPage(page + 1);
+                setLoadMore(true);
+                loadBlog.fetchMore({
+                    query: Schema.getAllPost,
+                    variables: {
+                        current_page: page + 1,
+                        page_size: pageSize,
+                        category_id: data.getBlogCategory.data[0].id,
+                        id: 0,
+                    },
+                    updateQuery: (previousResult, { fetchMoreResult }) => {
+                        setLoadMore(false);
+                        const prevItems = previousResult.getBlogByFilter;
+                        const newItems = fetchMoreResult.getBlogByFilter;
+                        return {
+                            getBlogByFilter: {
+                                current_page: prevItems.current_page,
+                                page_size: prevItems.page_size,
+                                total_count: prevItems.total_count,
+                                total_pages: prevItems.total_pages,
+                                // eslint-disable-next-line no-underscore-dangle
+                                __typename: prevItems.__typename,
+                                items: [...prevItems.items, ...newItems.items],
+                            },
+                        };
+                    },
+                });
+            }
         };
 
         const mediaUrl = storeConfig.base_media_url || '';
