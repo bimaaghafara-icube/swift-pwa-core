@@ -14,8 +14,6 @@ import {
     addConfigProductsToCart, getConfigurableProduct, getGuestCartId as queryGetGuestCartId, getCustomerCartId,
 } from '../../../../../../services/graphql';
 
-let options = [];
-
 const OptionsItemConfig = (props) => {
     const {
         setBanner,
@@ -42,7 +40,7 @@ const OptionsItemConfig = (props) => {
 
     const [firstSelected, setFirstSelected] = React.useState({});
     const [combination, setCombination] = React.useState({});
-    // const [variantOption, setVariant] = React.useState([]);
+    const [options, setOptions] = React.useState([]);
 
     const handleSelect = async (value, key) => {
         const selectedOption = handleSelected(selectConfigurable, key, value);
@@ -205,15 +203,17 @@ const OptionsItemConfig = (props) => {
         }
     };
 
-    React.useMemo(() => {
+    React.useEffect(() => {
         if (configProduct.data && options.length === 0) {
-            options = generateValue(selectConfigurable, configProduct.data.products.items[0].configurable_options, combination);
+            const op = generateValue(selectConfigurable, configProduct.data.products.items[0].configurable_options, combination);
+            setOptions(op);
         }
-    }, [configProduct.data]);
+    }, [configProduct]);
 
     React.useMemo(() => {
         if (configProduct.data) {
-            options = generateValue(selectConfigurable, configProduct.data.products.items[0].configurable_options, combination);
+            const op = generateValue(selectConfigurable, configProduct.data.products.items[0].configurable_options, combination);
+            setOptions(op);
         }
     }, [selectConfigurable]);
     return (

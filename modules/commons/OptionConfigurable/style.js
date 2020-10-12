@@ -1,5 +1,5 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { CreateMargin, CreateBorder } from '@theme_mixins';
+import { CreateMargin, CreateBorder, Centering } from '@theme_mixins';
 import { PRIMARY, SECONDARY, GRAY_PRIMARY } from '@theme_color';
 
 export default makeStyles(() => ({
@@ -8,6 +8,7 @@ export default makeStyles(() => ({
         width: 47,
         height: 47,
         ...CreateMargin(11, 11, 11, 11),
+        ...Centering,
     },
     bordered: {
         ...CreateBorder('3px', '3px', '3px', '3px', PRIMARY),

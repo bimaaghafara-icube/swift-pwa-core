@@ -80,7 +80,7 @@ const ProductItem = (props) => {
                 </div>
                 <div className={styles.detailItem}>
                     <DetailProductView {...DetailProps} {...other} />
-                    {modules.catalog.productListing.configurableOptions ? (
+                    {modules.catalog.productListing.configurableOptions.enabled ? (
                         <ConfigurableOpt setSpesificProduct={setSpesificProduct} {...other} />
                     ) : null}
                 </div>

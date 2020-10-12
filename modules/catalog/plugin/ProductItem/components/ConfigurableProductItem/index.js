@@ -1,97 +1,66 @@
-import ProductByVariant, { getCombinationVariants, CheckAvailableOptions } from '@helper_productbyvariant';
-import useStyles from './style';
+import ProductByVariant, {
+    generateValue,
+    generateAvailableCombination,
+    handleSelected,
+} from '@helper_productbyvariant';
 
 const ConfigurableOpt = (props) => {
     const {
-        variants = [], configurable_options = [], setSpesificProduct, ListColorView, ListSizeView,
+        variants = [], configurable_options = [], setSpesificProduct,
+        ConfigurableView,
     } = props;
-    const styles = useStyles();
-    const [selected, setSelected] = React.useState({});
-    const [firstSelected, setFirstSelected] = React.useState({});
-    const selectedVariant = (key, value) => {
-        // reset child filter if parent filter or first filter change
-        const options = (firstSelected.code === key && firstSelected.value !== value) ? {} : selected;
-        options[key] = value;
-        setSpesificProduct({ ...ProductByVariant(options, variants) });
-        setSelected({ ...options });
 
-        if (firstSelected.code === key) {
-            firstSelected.value = value;
-        } else if (!firstSelected.code) {
-            firstSelected.code = key;
-            firstSelected.value = value;
-        }
-        setFirstSelected({ ...firstSelected });
+    const [firstSelected, setFirstSelected] = React.useState({});
+    const [combination, setCombination] = React.useState({});
+    const [options, setOptions] = React.useState([]);
+    const [selectConfigurable, setSelectConfigurable] = React.useState({});
+
+    const handleSelect = async (value, key) => {
+        const selectedOption = handleSelected(selectConfigurable, key, value);
+
+        const comb = configurable_options && variants && generateAvailableCombination(selectedOption, {
+            configurable_options,
+            variants,
+        });
+        setCombination({ ...comb });
+        setSelectConfigurable({
+            ...selectedOption,
+        });
+        const product = await ProductByVariant(selectedOption, variants);
+        setSpesificProduct({ ...product });
+
+        firstSelected.code = key;
+        firstSelected.value = value;
+        await setFirstSelected({ ...firstSelected });
     };
 
-    // get combination from helpers
-    const combination = getCombinationVariants(firstSelected, variants);
-    return configurable_options.map((conf, idx) => {
-        const value = [];
-        for (
-            let valIdx = 0;
-            valIdx < conf.values.length;
-            // eslint-disable-next-line no-plusplus
-            valIdx++
-        ) {
-            if (value.indexOf(conf.values[valIdx].label) === -1) {
-                value.push(conf.values[valIdx].label);
-            }
+    React.useEffect(() => {
+        if (configurable_options && options.length === 0) {
+            const op = generateValue(selectConfigurable, configurable_options, combination);
+            setOptions(op);
         }
-        if (conf.attribute_code === 'color') {
-            return (
-                <div className={styles.colorContainer} key={idx}>
-                    {value.map((clr, index) => {
-                        let available = true;
-                        if (combination.code && combination.code !== conf.attribute_code) {
-                            if (combination.available_combination.length > 0) {
-                                available = CheckAvailableOptions(combination.available_combination, clr);
-                            } else {
-                                available = false;
-                            }
-                        }
-                        return (
-                            <ListColorView
-                                value={selected.color}
-                                onClick={selectedVariant}
-                                key={index}
-                                disabled={!available}
-                                color={clr}
-                                size={16}
-                                className={styles.btnColor}
-                            />
-                        );
-                    })}
-                </div>
-            );
+    }, []);
+
+    React.useMemo(() => {
+        if (configurable_options) {
+            const op = generateValue(selectConfigurable, configurable_options, combination);
+            setOptions(op);
         }
-        return (
-            <div className={styles.colorContainer} key={idx}>
-                {value.map((sz, index) => {
-                    let available = true;
-                    if (combination.code && combination.code !== conf.attribute_code) {
-                        if (combination.available_combination.length > 0) {
-                            available = CheckAvailableOptions(combination.available_combination, sz);
-                        } else {
-                            available = false;
-                        }
-                    }
-                    return (
-                        <ListSizeView
-                            value={selected[conf.attribute_code]}
-                            code={conf.attribute_code}
-                            onClick={selectedVariant}
-                            data={sz}
-                            disabled={!available}
-                            key={index}
-                            width={16}
-                            className={styles.btnColor}
-                        />
-                    );
-                })}
-            </div>
-        );
-    });
+    }, [selectConfigurable]);
+
+    return (
+        <>
+            { options.map((data, index) => (
+                <ConfigurableView
+                    key={index}
+                    option={data.options}
+                    selected={selectConfigurable}
+                    value={data.value}
+                    handleSelect={handleSelect}
+                />
+            ))}
+        </>
+    );
 };
 
 export default ConfigurableOpt;
