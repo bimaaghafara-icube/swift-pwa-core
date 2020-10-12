@@ -1,6 +1,6 @@
 /* eslint-disable radix */
 import AppBar from '@material-ui/core/AppBar';
-import Dialog from '@material-ui/core/Dialog';
+import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import Slide from '@material-ui/core/Slide';
 import CloseIcon from '@material-ui/icons/Close';
@@ -16,7 +16,7 @@ import Loading from '@common_loaders';
 import useStyles from './style';
 
 const Transition = React.forwardRef((props, ref) => (
-    <Slide direction="up" ref={ref} {...props} />
+    <Slide direction={window.innerWidth >= 758 ? 'left' : 'up'} ref={ref} {...props} />
 ));
 
 const FilterDialog = ({
@@ -41,11 +41,14 @@ const FilterDialog = ({
     const styles = useStyles();
     const data = filter;
     return (
-        <Dialog
-            fullScreen
+        <Drawer
+            anchor={typeof window !== 'undefined' && window.innerWidth >= 758 ? 'right' : 'bottom'}
             open={open}
             TransitionComponent={Transition}
             onClose={setOpen}
+            classes={{
+                paper: styles.drawerPaper,
+            }}
         >
             <AppBar className={styles.appBar}>
                 <IconButton
@@ -176,7 +179,7 @@ const FilterDialog = ({
                     {t('catalog:button:save')}
                 </Button>
             </div>
-        </Dialog>
+        </Drawer>
     );
 };
 

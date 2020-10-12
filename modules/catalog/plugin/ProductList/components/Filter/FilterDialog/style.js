@@ -9,7 +9,14 @@ import {
 } from '@theme_mixins';
 import { FONT_BIG } from '@theme_typography';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
+    drawerPaper: {
+        width: '100%',
+        backgroundColor: WHITE,
+        [theme.breakpoints.up('md')]: {
+            width: '20%',
+        },
+    },
     appBar: {
         position: 'relative',
         backgroundColor: WHITE,
@@ -79,6 +86,9 @@ const useStyles = makeStyles(() => ({
         backgroundColor: WHITE,
         borderTop: `1px solid ${GRAY_PRIMARY}`,
         ...CreatePadding(20, 20, 20, 20),
+        [theme.breakpoints.up('md')]: {
+            width: '20%',
+        },
     },
     btnSave: {
         display: 'block',

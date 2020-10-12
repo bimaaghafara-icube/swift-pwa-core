@@ -2,6 +2,7 @@ import React from 'react';
 import GridList from '@common_gridlist';
 import Typography from '@common_typography';
 import classNames from 'classnames';
+import { modules } from '@config';
 import Filter from './Filter';
 import FilterDesktop from './FilterDesktop';
 import ProductItem from '../../ProductItem/index';
@@ -30,7 +31,7 @@ const Content = (props) => {
                     />
                 </div>
             ) : null}
-            <div className="hidden-desktop">
+            <div className={modules.catalog.productListing.desktopView.enabled ? 'hidden-desktop' : ''}>
                 <Filter
                     filter={customFilter || aggregations}
                     defaultSort={JSON.stringify(defaultSort)}
@@ -44,39 +45,49 @@ const Content = (props) => {
                     {...other}
                 />
             </div>
-            <div className={classNames(styles.filterBtnContainer, 'hidden-mobile')}>
-                <Sort
-                    filter={customFilter || aggregations}
-                    defaultSort={JSON.stringify(defaultSort)}
-                    filterValue={query}
-                    setFiltervalue={setFiltervalue}
-                    isSearch={!!config.search}
-                    t={t}
-                    {...other}
-                />
-            </div>
-            <div className="row">
-                <div className="col-sm-12 col-lg-2 hidden-mobile">
-                    <FilterDesktop
+            {modules.catalog.productListing.desktopView.enabled ? (
+                <div className={classNames(styles.filterBtnContainer, 'hidden-mobile')}>
+                    <Sort
                         filter={customFilter || aggregations}
                         defaultSort={JSON.stringify(defaultSort)}
                         filterValue={query}
                         setFiltervalue={setFiltervalue}
                         isSearch={!!config.search}
-                        products={products}
-                        renderEmptyMessage={renderEmptyMessage}
-                        loading={loading}
-                        tabs={dataTabs}
                         t={t}
-                        onChangeTabs={onChangeTabs}
+                        {...other}
                     />
                 </div>
-                <div className="col-sm-12 col-xs-12 col-lg-10">
-                    <Typography variant="p" type="regular" className={classNames('hidden-mobile', styles.countProductTextDesktop)}>
-                        {products.total_count}
-                        {' '}
-                        {t('catalog:product:name')}
-                    </Typography>
+            ) : null}
+
+            <div className="row">
+                {modules.catalog.productListing.desktopView.enabled
+                    ? (
+                        <div className="col-sm-12 col-lg-2 hidden-mobile">
+                            <FilterDesktop
+                                filter={customFilter || aggregations}
+                                defaultSort={JSON.stringify(defaultSort)}
+                                filterValue={query}
+                                setFiltervalue={setFiltervalue}
+                                isSearch={!!config.search}
+                                products={products}
+                                renderEmptyMessage={renderEmptyMessage}
+                                loading={loading}
+                                tabs={dataTabs}
+                                t={t}
+                                onChangeTabs={onChangeTabs}
+                            />
+                        </div>
+                    )
+                    : null }
+                <div className={`col-sm-12 col-xs-12 col-lg-${modules.catalog.productListing.desktopView.enabled ? '10' : '12'}`}>
+                    {modules.catalog.productListing.desktopView.enabled
+                        ? (
+                            <Typography variant="p" type="regular" className={classNames('hidden-mobile', styles.countProductTextDesktop)}>
+                                {products.total_count}
+                                {' '}
+                                {t('catalog:product:name')}
+                            </Typography>
+                        ) : null }
                     <div className={styles.productContainer}>
                         {loading && <ProductListSkeleton />}
                         {!loading && (
@@ -88,7 +99,7 @@ const Content = (props) => {
                                     LabelView,
                                     ...other,
                                 }}
-                                gridItemProps={{ xs: 6, sm: 4, md: 3 }}
+                                gridItemProps={{ xs: 6, sm: 4, md: modules.catalog.productListing.desktopView.enabled ? 3 : 2 }}
                             />
                         )}
                         {(products.items.length === products.total_count) || loading
