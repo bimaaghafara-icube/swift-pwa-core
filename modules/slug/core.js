@@ -1,14 +1,44 @@
 import Error from '@core_modules/error/pages/default';
 import { cmsPages } from '@root/swift.config.js';
-import { getResolver as getLocalResolver } from '@helper_localstorage';
+import { getResolver as getLocalResolver, setResolver } from '@helper_localstorage';
 import { getResolver } from './services/graphql';
 
 const ContainerResolver = (props) => {
     const {
-        slug, storeConfig, CategoryPage, ProductPage, CmsPage,
-        ProductLoader, CategorySkeleton,
-        LoadingView, localResolver, ...other
+        CategoryPage, ProductPage, CmsPage,
+        resolver, contentProps, storeConfig, ...other
     } = props;
+
+    React.useEffect(() => {
+        if (typeof window !== 'undefined') {
+            setResolver('');
+        }
+    }, []);
+
+    if (resolver.type === 'CATEGORY') {
+        return <CategoryPage {...contentProps} categoryId={resolver.id} {...other} />;
+    }
+    if (resolver.type === 'PRODUCT') {
+        return <ProductPage {...contentProps} {...other} />;
+    }
+    if (resolver.type === 'CMS_PAGE') {
+        return <CmsPage {...contentProps} {...other} />;
+    }
+    return <Error statusCode={404} {...contentProps} />;
+};
+
+const Slug = (props) => {
+    const {
+        slug, storeConfig,
+        ProductLoader, CategorySkeleton,
+        LoadingView, ...other
+    } = props;
+
+    let localResolver;
+    if (typeof window !== 'undefined') {
+        localResolver = getLocalResolver();
+    }
+
     let url = slug.join('/');
     // suffix based on storeConfig
     const suffix = (storeConfig || {}).category_url_suffix || '.html';
@@ -18,6 +48,7 @@ const ContainerResolver = (props) => {
     const {
         error, loading, data,
     } = getResolver(url);
+
     if (error) return <Error statusCode={500} />;
     if (loading) {
         if (localResolver && localResolver.type === 'PRODUCT') {
@@ -35,28 +66,11 @@ const ContainerResolver = (props) => {
     const resolver = data.urlResolver ? data.urlResolver : {};
     const contentProps = { slug, storeConfig };
 
-    if (resolver.type === 'CATEGORY') {
-        return <CategoryPage {...contentProps} categoryId={resolver.id} {...other} />;
-    }
-    if (resolver.type === 'PRODUCT') {
-        return <ProductPage {...contentProps} {...other} />;
-    }
-    if (resolver.type === 'CMS_PAGE') {
-        return <CmsPage {...contentProps} {...other} />;
-    }
-    return <Error statusCode={404} storeConfig={storeConfig} />;
-};
-
-const Slug = (props) => {
-    let resolver;
-    if (typeof window !== 'undefined') {
-        resolver = getLocalResolver();
-    }
-
     return (
         <ContainerResolver
-            localResolver={resolver}
-            {...props}
+            resolver={resolver}
+            {...other}
+            contentProps={contentProps}
         />
     );
 };
