@@ -31,7 +31,7 @@ const Content = (props) => {
                     />
                 </div>
             ) : null}
-            <div className={modules.catalog.productListing.desktopView.enabled ? 'hidden-desktop' : ''}>
+            <div className={modules.catalog.productListing.drawerFilterOnDesktop.enabled ? 'hidden-desktop' : ''}>
                 <Filter
                     filter={customFilter || aggregations}
                     defaultSort={JSON.stringify(defaultSort)}
@@ -45,7 +45,7 @@ const Content = (props) => {
                     {...other}
                 />
             </div>
-            {modules.catalog.productListing.desktopView.enabled ? (
+            {modules.catalog.productListing.drawerFilterOnDesktop.enabled ? (
                 <div className={classNames(styles.filterBtnContainer, 'hidden-mobile')}>
                     <Sort
                         filter={customFilter || aggregations}
@@ -60,7 +60,7 @@ const Content = (props) => {
             ) : null}
 
             <div className="row">
-                {modules.catalog.productListing.desktopView.enabled
+                {modules.catalog.productListing.drawerFilterOnDesktop.enabled
                     ? (
                         <div className="col-sm-12 col-lg-2 hidden-mobile">
                             <FilterDesktop
@@ -79,8 +79,8 @@ const Content = (props) => {
                         </div>
                     )
                     : null }
-                <div className={`col-sm-12 col-xs-12 col-lg-${modules.catalog.productListing.desktopView.enabled ? '10' : '12'}`}>
-                    {modules.catalog.productListing.desktopView.enabled
+                <div className={`col-sm-12 col-xs-12 col-lg-${modules.catalog.productListing.drawerFilterOnDesktop.enabled ? '10' : '12'}`}>
+                    {modules.catalog.productListing.drawerFilterOnDesktop.enabled
                         ? (
                             <Typography variant="p" type="regular" className={classNames('hidden-mobile', styles.countProductTextDesktop)}>
                                 {products.total_count}
@@ -99,7 +99,7 @@ const Content = (props) => {
                                     LabelView,
                                     ...other,
                                 }}
-                                gridItemProps={{ xs: 6, sm: 4, md: modules.catalog.productListing.desktopView.enabled ? 3 : 2 }}
+                                gridItemProps={{ xs: 6, sm: 4, md: modules.catalog.productListing.drawerFilterOnDesktop.enabled ? 3 : 2 }}
                             />
                         )}
                         {(products.items.length === products.total_count) || loading

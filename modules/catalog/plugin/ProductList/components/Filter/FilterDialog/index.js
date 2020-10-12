@@ -13,10 +13,11 @@ import CheckBoxSize from '@common_forms/CheckBoxSize';
 import CheckBoxColor from '@common_forms/CheckBoxColor';
 import Button from '@common_button';
 import Loading from '@common_loaders';
+import { BREAKPOINTS } from '@theme/vars';
 import useStyles from './style';
 
 const Transition = React.forwardRef((props, ref) => (
-    <Slide direction={window.innerWidth >= 758 ? 'left' : 'up'} ref={ref} {...props} />
+    <Slide direction={window.innerWidth >= BREAKPOINTS.sm ? 'left' : 'up'} ref={ref} {...props} />
 ));
 
 const FilterDialog = ({
@@ -42,7 +43,7 @@ const FilterDialog = ({
     const data = filter;
     return (
         <Drawer
-            anchor={typeof window !== 'undefined' && window.innerWidth >= 758 ? 'right' : 'bottom'}
+            anchor={typeof window !== 'undefined' && window.innerWidth >= BREAKPOINTS.sm ? 'right' : 'bottom'}
             open={open}
             TransitionComponent={Transition}
             onClose={setOpen}
