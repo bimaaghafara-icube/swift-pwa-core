@@ -105,5 +105,9 @@
     "header": {
         "welcome": "Welcome!",
         "hi": "Hi, $!"
+    },
+    "message": {
+        "feedSuccess": "Product success added to wishlist",
+        "feedFailed": "Add to wishlist failed"
     }
 }

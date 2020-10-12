@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { modules } from '@config';
+import { modules, debuging } from '@config';
 import { getLoginInfo } from '@helper_auth';
 import { setCookies } from '@helper_cookies';
 import { useTranslation } from '@i18n';
@@ -32,14 +32,14 @@ const ProductItem = (props) => {
             })
                 .then(async () => {
                     await setFeed(!feed);
-                    await window.toastMessage({ open: true, variant: 'success', text: 'add wishlist success' });
+                    await window.toastMessage({ open: true, variant: 'success', text: t('common:message:feedSuccess') });
                     route.push('/wishlist');
                 })
                 .catch((e) => {
                     window.toastMessage({
                         open: true,
                         variant: 'error',
-                        text: e.message.split(':')[1] || 'add wishlist failed',
+                        text: debuging.originalError ? e.message.split(':')[1] : t('common:message:feedFailed'),
                     });
                 });
         } else if (typeof window.toastMessage !== 'undefined') {

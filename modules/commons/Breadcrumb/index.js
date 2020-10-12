@@ -42,7 +42,11 @@ const CustomBreadcrumb = ({ data = [], variant = 'text' }) => {
                     : data.map(({
                         label, link, active, id,
                     }, index) => (
-                        <Link color={active ? 'primary' : 'secondary'} onClick={() => handleClick(link, id)} key={index}>
+                        <Link
+                            color={active ? 'primary' : 'secondary'}
+                            onClick={index === data.length - 1 ? () => {} : () => handleClick(link, id)}
+                            key={index}
+                        >
                             <Typography variant="p" type={active ? 'bold' : 'regular'}>{label}</Typography>
                         </Link>
                     ))
