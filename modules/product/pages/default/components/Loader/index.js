@@ -46,7 +46,7 @@ const SkeletonLoader = () => {
                     animation="wave"
                     xsStyle={{
                         width: '100%',
-                        paddingBottom: '140%',
+                        paddingBottom: '110%',
                     }}
                     mdStyle={{
                         width: '100%',
