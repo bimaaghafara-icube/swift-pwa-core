@@ -2,7 +2,7 @@
 import Layout from '@layout';
 import Error from 'next/error';
 import { StripHtmlTags } from '@helper_text';
-import { features, modules } from '@config';
+import { features, modules, debuging } from '@config';
 import { useRouter } from 'next/router';
 import TagManager from 'react-gtm-module';
 import { getCookies } from '@helper_cookies';
@@ -144,13 +144,13 @@ const ContentDetail = ({
                 },
             }).then(async () => {
                 await setWishlist(!wishlist);
-                await window.toastMessage({ open: true, variant: 'success', text: t('wishlist:addSuccess') });
+                await window.toastMessage({ open: true, variant: 'success', text: t('common:message:feedSuccess') });
                 route.push('/wishlist');
             }).catch((e) => {
                 window.toastMessage({
                     open: true,
                     variant: 'error',
-                    text: e.message.split(':')[1] || t('wishlist:addFailed'),
+                    text: debuging.originalError ? e.message.split(':')[1] : t('common:message:feedFailed'),
                 });
             });
         } else {

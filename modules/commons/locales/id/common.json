@@ -104,5 +104,9 @@
     "header": {
         "welcome": "Selamat Datang!",
         "hi": "Hai, $!"
+    },
+    "message": {
+        "feedSuccess": "Produk berhasil di tambahkan ke wishlist",
+        "feedFailed": "Tambah wishlist gagal"
     }
 }

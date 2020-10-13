@@ -147,7 +147,6 @@ const AddressFormDialog = (props) => {
             };
 
             const type = addressId ? 'update' : 'add';
-
             if (onSubmitAddress) {
                 onSubmitAddress(data, type);
             }

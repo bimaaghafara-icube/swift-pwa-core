@@ -8,6 +8,7 @@ import useStyles from './style';
 const SelectOption = (props) => {
     const {
         value, selected, onChange, className = '', disabled = false, thumbnail, content = '',
+        labelClassName = '',
     } = props;
     const styles = useStyles();
     const containerStyle = selected && !disabled
@@ -18,8 +19,8 @@ const SelectOption = (props) => {
         )
         : classNames(styles.container, className);
     const labelStyle = selected
-        ? classNames(styles.label, styles.labelActive)
-        : styles.label;
+        ? classNames(styles.label, styles.labelActive, labelClassName)
+        : classNames(styles.label, labelClassName);
     let customStyle = {
         border: `1px solid ${selected ? PRIMARY : GRAY_PRIMARY}`,
     };
@@ -28,6 +29,9 @@ const SelectOption = (props) => {
         customStyle = {
             backgroundColor: content,
         };
+        if (content === '#ffffff') {
+            customStyle.border = `1px solid ${selected ? PRIMARY : GRAY_PRIMARY}`;
+        }
         childContent = '';
     }
 
@@ -46,7 +50,7 @@ const SelectOption = (props) => {
         !disabled && onChange(value);
     };
     return (
-        <div className={containerStyle} style={customStyle} onClick={handleChange}>
+        <div style={customStyle} className={containerStyle} onClick={handleChange}>
             {disabled ? <div className={styles.disabledBox} /> : childContent}
         </div>
     );

@@ -95,10 +95,9 @@ const Menu = (props) => {
     const handleClick = async (cat) => {
         if (features.vesMenu.enabled) {
             if (cat.link_type === 'category_link') {
-                // await setResolver({
-                //     type: 'CATEGORY',
-                //     id: cat.id,
-                // });
+                await setResolver({
+                    type: 'CATEGORY',
+                });
                 Route.push('/[...slug]', cat.link ? getPath(cat.link) : `/${cat.url_path}`);
             } else {
                 Route.push('/[...slug]', cat.link ? getPath(cat.link) : `/${cat.url_path}`);

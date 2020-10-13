@@ -5,7 +5,7 @@ import { GraphCategory } from '@services/graphql';
 import React from 'react';
 import Router from 'next/router';
 import getPath from '@helper_getpath';
-// import { setResolver } from '@helper_localstorage';
+import { setResolver } from '@helper_localstorage';
 import CategorySkeleton from './CategorySkeleton';
 import SubVesMenu from './SubVesMenu';
 import VesMenu from './VesMenu';
@@ -65,10 +65,10 @@ const CategoryWrapper = () => {
         const link = getPath(cat.link);
         if (link) {
             if (cat.link_type === 'category_link') {
-                // await setResolver({
-                //     type: 'CATEGORY',
-                //     id: cat.id,
-                // });
+                await setResolver({
+                    type: 'CATEGORY',
+                    id: cat.id,
+                });
                 Router.push('/[...slug]', link);
             } else {
                 Router.push('/[...slug]', link);

@@ -1,7 +1,11 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
 import { useApolloClient } from '@apollo/client';
-import ProductByVariant, { getCombinationVariants, CheckAvailableOptions, CheckAvailableStock } from '@helper_productbyvariant';
+import ProductByVariant, {
+    generateValue,
+    generateAvailableCombination,
+    handleSelected,
+} from '@helper_productbyvariant';
 import { getLoginInfo } from '@helper_auth';
 import { getCartId, setCartId } from '@helper_cartid';
 import TagManager from 'react-gtm-module';
@@ -34,17 +38,19 @@ const OptionsItemConfig = (props) => {
 
     const configProduct = getConfigurableProduct(sku);
 
-    const selected = selectConfigurable;
     const [firstSelected, setFirstSelected] = React.useState({});
+    const [combination, setCombination] = React.useState({});
+    const [options, setOptions] = React.useState([]);
 
     const handleSelect = async (value, key) => {
-        const options = firstSelected.code === key && firstSelected.value !== value ? {} : selected;
-        options[key] = value;
-        selected[key] = value;
+        const selectedOption = handleSelected(selectConfigurable, key, value);
+
+        const comb = configProduct.data && generateAvailableCombination(selectedOption, configProduct.data.products.items[0]);
+        setCombination({ ...comb });
         setSelectConfigurable({
-            ...selected,
+            ...selectedOption,
         });
-        const product = await ProductByVariant(options, configProduct.data.products.items[0].variants);
+        const product = await ProductByVariant(selectedOption, configProduct.data.products.items[0].variants);
         if (product && JSON.stringify(product) !== '{}') {
             setSelectedProduct({ ...product });
             const bannerData = [];
@@ -94,12 +100,8 @@ const OptionsItemConfig = (props) => {
             });
         }
 
-        if (firstSelected.code === key) {
-            firstSelected.value = value;
-        } else if (!firstSelected.code) {
-            firstSelected.code = key;
-            firstSelected.value = value;
-        }
+        firstSelected.code = key;
+        firstSelected.value = value;
         await setFirstSelected({ ...firstSelected });
     };
 
@@ -126,7 +128,7 @@ const OptionsItemConfig = (props) => {
         const errorData = {};
         // eslint-disable-next-line array-callback-return
         configProduct.data.products.items[0].configurable_options.map((option) => {
-            if (selected[option.attribute_code] === '' || !selected[option.attribute_code]) {
+            if (selectConfigurable[option.attribute_code] === '' || !selectConfigurable[option.attribute_code]) {
                 errorData[option.attribute_code] = `${option.attribute_code} ${t('validate:required')}`;
             }
         });
@@ -201,64 +203,33 @@ const OptionsItemConfig = (props) => {
         }
     };
 
-    const combination = configProduct.data && getCombinationVariants(firstSelected, configProduct.data.products.items[0].variants);
+    React.useEffect(() => {
+        if (configProduct.data && options.length === 0) {
+            const op = generateValue(selectConfigurable, configProduct.data.products.items[0].configurable_options, combination);
+            setOptions(op);
+        }
+    }, [configProduct]);
+
+    React.useMemo(() => {
+        if (configProduct.data) {
+            const op = generateValue(selectConfigurable, configProduct.data.products.items[0].configurable_options, combination);
+            setOptions(op);
+        }
+    }, [selectConfigurable]);
     return (
         <>
-            {configProduct.data
-                && configProduct.data.products.items[0].configurable_options.map((option, index) => {
-                    const value = [];
-                    let isSwatch = false;
-                    for (
-                        let valIdx = 0;
-                        valIdx < option.values.length;
-                        // eslint-disable-next-line no-plusplus
-                        valIdx++
-                    ) {
-                        if (value.indexOf(option.values[valIdx].label) === -1) {
-                            const initValue = {
-                                label: option.values[valIdx].label,
-                                value: option.values[valIdx].value_index,
-                                disabled: false,
-                                thumbnail: '',
-                            };
-                            if (option.values[valIdx].swatch_data && Object.keys(option.values[valIdx].swatch_data).length > 0) {
-                                isSwatch = true;
-                                if (option.values[valIdx].swatch_data.thumbnail) {
-                                    initValue.thumbnail = option.values[valIdx].swatch_data.thumbnail;
-                                }
-                                initValue.content = option.values[valIdx].swatch_data.value;
-                            }
-                            let available = true;
-                            if (configProduct.data.products.items[0].configurable_options.length === 1) {
-                                available = CheckAvailableStock(option.values[valIdx], configProduct.data.products.items[0].variants);
-                            }
-                            if (combination.code && combination.code !== option.attribute_code) {
-                                if (combination.available_combination.length > 0) {
-                                    available = CheckAvailableOptions(combination.available_combination, option.values[valIdx].label);
-                                } else {
-                                    available = false;
-                                }
-                            }
-                            if (!available) initValue.disabled = true;
-                            value.push(initValue);
-                        }
-                    }
-                    return (
-                        <ConfigurableView
-                            key={index}
-                            option={{
-                                ...option,
-                                isSwatch,
-                            }}
-                            selected={selected}
-                            value={value}
-                            handleSelect={handleSelect}
-                            error={error}
-                            loading={loading}
-                            configProduct={configProduct}
-                        />
-                    );
-                })}
+            { options.map((data, index) => (
+                <ConfigurableView
+                    key={index}
+                    option={data.options}
+                    selected={selectConfigurable}
+                    value={data.value}
+                    handleSelect={handleSelect}
+                    error={error}
+                    loading={loading}
+                    configProduct={configProduct}
+                />
+            ))}
             <Footer qty={qty} handleAddToCart={handleAddToCart} setQty={setQty} t={t} loading={loading || configProduct.loading} />
         </>
     );
