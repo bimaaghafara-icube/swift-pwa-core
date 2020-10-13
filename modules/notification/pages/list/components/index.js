@@ -18,9 +18,11 @@ const NotificationList = (props) => {
 
     if (data.customerNotificationList.items.length === 0) {
         return (
-            <Alert severity="error">
-                {t('notification:empty')}
-            </Alert>
+            <Layout {...props}>
+                <Alert severity="error">
+                    {t('notification:empty')}
+                </Alert>
+            </Layout>
         );
     }
     return (
