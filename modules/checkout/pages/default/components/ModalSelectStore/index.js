@@ -108,17 +108,26 @@ const ModalSelectStore = ({
         }
     };
 
-    const getStyle = (key) => {
+    const getStyle = (key, index) => {
         let classname;
-        if (key === listStores.length - 1 && key === selected.key) {
+        if (Object.keys(checkout.selectStore).length > 0) {
+            if (key === checkout.selectStore.code) {
+                classname = classNames(styles.card, styles.cardActive);
+            } else if (index === listStores.length - 1) {
+                classname = classNames(styles.card, styles.cardLast);
+            } else {
+                classname = styles.card;
+            }
+        } else if (index === listStores.length - 1 && key === selected.key) {
             classname = classNames(styles.card, styles.cardActive, styles.cardLast);
-        } else if (key === listStores.length - 1) {
+        } else if (index === listStores.length - 1) {
             classname = classNames(styles.card, styles.cardLast);
         } else if (key === selected.key) {
             classname = classNames(styles.card, styles.cardActive);
         } else {
             classname = styles.card;
         }
+
         return classname;
     };
 
@@ -165,9 +174,9 @@ const ModalSelectStore = ({
                                 ? (
                                     stores.map((item, index) => (
                                         <div
-                                            key={index}
-                                            onClick={() => handleSelect(index, item)}
-                                            className={getStyle(index)}
+                                            key={item.code}
+                                            onClick={() => handleSelect(item.code, item)}
+                                            className={getStyle(item.code, index)}
                                         >
                                             <Typography variant="span" type="bold">
                                                 {item.name}
