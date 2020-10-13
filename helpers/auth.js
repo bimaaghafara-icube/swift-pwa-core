@@ -32,4 +32,8 @@ export const getLoginInfo = () => {
 
 export const removeIsLoginFlagging = () => {
     cookies.remove('isLogin');
+
+    // add remove cookies on header and next-cookies
+    // base on https://www.npmjs.com/package/next-cookies
+    document.cookie = 'foo=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
 };
