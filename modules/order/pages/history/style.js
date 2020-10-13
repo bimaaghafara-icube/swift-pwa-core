@@ -60,6 +60,9 @@ export default makeStyles((theme) => ({
     table: {
         borderTop: '1px solid rgba(224, 224, 224, 1)',
         width: '100%',
+        [theme.breakpoints.down('sm')]: {
+            borderTop: '0px',
+        },
     },
     tableRowHead: {
         [theme.breakpoints.down('sm')]: {

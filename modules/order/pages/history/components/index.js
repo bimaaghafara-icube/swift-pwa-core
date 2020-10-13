@@ -199,7 +199,7 @@ const DefaultView = (props) => {
                                                                                     ? styles.linkView : ''
                                                                             }
                                                                             >
-                                                                                <Typography variant="span" type="regular">
+                                                                                <Typography variant="span" type="regular" decoration="underline">
                                                                                     {t('order:view')}
                                                                                 </Typography>
                                                                             </a>
