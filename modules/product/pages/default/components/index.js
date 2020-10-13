@@ -2,7 +2,8 @@
 import Button from '@common_button';
 import PriceFormat from '@common_priceformat';
 import Banner from '@common_slick/BannerThumbnail';
-import Caraousel from '@common_slick/Caraousel';
+// import Caraousel from '@common_slick/Caraousel';
+import CarouselSkeleton from '@common_slick/Caraousel/Skeleton';
 import Typography from '@common_typography';
 import IconButton from '@material-ui/core/IconButton';
 import Favorite from '@material-ui/icons/Favorite';
@@ -28,6 +29,7 @@ import ModalPopupImage from './ModalPopupImage';
 const DesktopOptions = dynamic(() => import('./OptionItem/DesktopOptions'), { ssr: false });
 const TabsView = dynamic(() => import('./DesktopTabs'), { ssr: false });
 const ItemShare = dynamic(() => import('./SharePopup/item'), { ssr: false });
+const Caraousel = dynamic(() => import('@common_slick/Caraousel'), { ssr: false });
 
 const ProductPage = (props) => {
     const styles = useStyles();
@@ -60,6 +62,13 @@ const ProductPage = (props) => {
     ) : (
         <FavoriteBorderOutlined className={styles.iconShare} />
     );
+
+    let contentCaraousel = '';
+    if (typeof window === 'undefined') {
+        contentCaraousel = <CarouselSkeleton />;
+    } else if (relateData.length > 0) {
+        contentCaraousel = <Caraousel data={relateData} Item={ProductItem} />;
+    }
 
     return (
         <>
@@ -244,10 +253,9 @@ const ProductPage = (props) => {
                         >
                             {t('common:title:relatedProduct')}
                         </Typography>
-                        <Caraousel
-                            data={relateData}
-                            Item={ProductItem}
-                        />
+                        {
+                            contentCaraousel
+                        }
                     </div>
                 ) : null}
 
