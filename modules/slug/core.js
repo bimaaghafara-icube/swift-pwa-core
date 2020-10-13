@@ -1,6 +1,7 @@
 import Error from '@core_modules/error/pages/default';
 import { cmsPages } from '@root/swift.config.js';
 import { getResolver as getLocalResolver, setResolver } from '@helper_localstorage';
+import Layout from '@layout';
 import { getResolver } from './services/graphql';
 
 const ContainerResolver = (props) => {
@@ -49,13 +50,25 @@ const Slug = (props) => {
         error, loading, data,
     } = getResolver(url);
 
+    const config = {
+        ogContent: {},
+    };
+
     if (error) return <Error statusCode={500} />;
     if (loading) {
         if (localResolver && localResolver.type === 'PRODUCT') {
-            return <ProductLoader />;
+            return (
+                <Layout storeConfig={storeConfig} pageConfig={config}>
+                    <ProductLoader />
+                </Layout>
+            );
         }
         if (localResolver && localResolver.type === 'CATEGORY') {
-            return <CategorySkeleton />;
+            return (
+                <Layout storeConfig={storeConfig} pageConfig={config}>
+                    <CategorySkeleton />
+                </Layout>
+            );
         }
         return (
             <main style={{ backgroundColor: '#ffffff' }}>
