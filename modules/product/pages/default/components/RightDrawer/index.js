@@ -76,7 +76,7 @@ const RightDrawer = (props) => {
                         </div>
                     </div>
                     <div className={contetStyle}>
-                        <div className="row" style={{ height: 'fit-content' }}>
+                        <div className="row" style={{ height: 'fit-content', width: '100%' }}>
                             {
                                 data.length > 0
                                 && data.map((item, index) => (<ItemLook key={index} {...item} features={features} />))
