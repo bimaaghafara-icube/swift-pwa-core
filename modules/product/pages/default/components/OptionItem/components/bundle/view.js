@@ -57,7 +57,7 @@ const BundleView = (props) => {
     return (
         <div>
             <Accordion square expanded={open} onChange={() => setOpen(!open)}>
-                <AccordionSummary aria-controls="panel1d-content" id="panel1d-header" className="hidden-mobile">
+                <AccordionSummary className="hidden-mobile" aria-controls="panel1d-content" id="panel1d-header">
                     <Button
                         className={styles.btnAddToCard}
                         color="primary"
