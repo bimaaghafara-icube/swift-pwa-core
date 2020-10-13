@@ -151,3 +151,11 @@ a {
     display: flex;
     align-items: center;
 }
+
+.grid {
+    background-color: #ffffff;
+}
+
+.grid .grid-item {
+    
+}

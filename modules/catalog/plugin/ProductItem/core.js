@@ -6,13 +6,15 @@ import { useTranslation } from '@i18n';
 import route from 'next/router';
 import React from 'react';
 import { setResolver } from '@helper_localstorage';
+import classNames from 'classnames';
 import { addWishlist } from '../../services/graphql';
 import useStyles from './style';
 import ConfigurableOpt from './components/ConfigurableProductItem';
 
 const ProductItem = (props) => {
     const {
-        id, url_key = '', categorySelect, review, ImageProductView, DetailProductView, LabelView, ...other
+        id, url_key = '', categorySelect, review, ImageProductView, DetailProductView, LabelView, className = '',
+        ...other
     } = props;
     const styles = useStyles();
     const { t } = useTranslation(['catalog']);
@@ -69,7 +71,7 @@ const ProductItem = (props) => {
     };
     return (
         <>
-            <div className={styles.itemContainer}>
+            <div className={classNames(styles.itemContainer, className)}>
                 {
                     modules.catalog.productListing.label.enabled && LabelView ? (
                         <LabelView {...other} spesificProduct={spesificProduct} />

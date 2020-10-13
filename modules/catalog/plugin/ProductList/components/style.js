@@ -50,6 +50,11 @@ const useStyles = makeStyles(() => ({
         fontSize: 12,
         marginTop: -25,
     },
+    divLoadMore: {
+        width: '100%',
+        textAlign: 'center',
+        padding: 20,
+    },
 }));
 
 export default useStyles;

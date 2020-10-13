@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import GridList from '@common_gridlist';
 import Typography from '@common_typography';
 import classNames from 'classnames';
@@ -18,6 +18,28 @@ const Content = (props) => {
         loadmore, handleLoadMore, dataTabs, onChangeTabs, ...other
     } = props;
     const styles = useStyles();
+
+    const handleScroll = () => {
+        // To get page offset of last user
+        const lastUserLoaded = document.querySelector(
+            '.grid-item:last-child',
+        );
+        if (lastUserLoaded) {
+            const lastUserLoadedOffset = lastUserLoaded.offsetTop + lastUserLoaded.clientHeight;
+            const pageOffset = window.pageYOffset + window.innerHeight;
+            if (pageOffset > lastUserLoadedOffset && !loadmore && products.items.length < products.total_count) {
+                handleLoadMore();
+            }
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    });
+
     return (
         <>
             {showTabs ? (
@@ -94,9 +116,11 @@ const Content = (props) => {
                             <GridList
                                 data={products.items}
                                 ItemComponent={ProductItem}
+                                className="grid"
                                 itemProps={{
                                     categorySelect: categoryPath,
                                     LabelView,
+                                    className: 'grid-item',
                                     ...other,
                                 }}
                                 gridItemProps={{ xs: 6, sm: 4, md: modules.catalog.productListing.drawerFilterOnDesktop.enabled ? 3 : 2 }}
@@ -104,17 +128,14 @@ const Content = (props) => {
                         )}
                         {(products.items.length === products.total_count) || loading
                             ? renderEmptyMessage(products.items.length, loading)
-                            : (
-                                <button
-                                    className={styles.btnLoadmore}
-                                    type="button"
-                                    onClick={handleLoadMore}
-                                >
-                                    <Typography variant="span" type="bold" letter="uppercase" color="gray">
-                                        {loadmore ? 'Loading' : t('common:button:loadMore')}
-                                    </Typography>
-                                </button>
-                            )}
+                            : null}
+                        { loadmore ? (
+                            <div className={styles.divLoadMore}>
+                                <Typography align="center" variant="span" type="bold" letter="uppercase" color="gray">
+                                    Loading
+                                </Typography>
+                            </div>
+                        ) : null }
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@ import useStyles from './style';
 
 const GridList = ({
     data = [],
-    className = {},
+    className = '',
     ItemComponent,
     itemProps = {},
     gridContainerProps = {},

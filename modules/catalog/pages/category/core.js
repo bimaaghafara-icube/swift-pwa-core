@@ -8,7 +8,7 @@ const Page = (props) => {
         Content, categoryId, storeConfig, SkeletonView, pageConfig = {}, ...other
     } = props;
     const { loading, data } = getCategory({
-        productSize: 20,
+        productSize: 10,
         id: categoryId,
     });
     const ogContent = {};

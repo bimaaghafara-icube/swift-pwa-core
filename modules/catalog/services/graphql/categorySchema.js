@@ -8,7 +8,7 @@ import { gql } from '@apollo/client';
 
 export const getCategory = (
     variables = {
-        productSize: 20,
+        productSize: 10,
     },
 ) => gql`
     {

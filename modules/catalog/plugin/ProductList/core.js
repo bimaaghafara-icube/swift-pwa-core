@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Router, { useRouter } from 'next/router';
 import getQueryFromPath from '@helper_generatequery';
 import TagManager from 'react-gtm-module';
+import { modules } from '@config';
 import { getProduct, getProductAgragations } from '../../services/graphql';
 import * as Schema from '../../services/graphql/productSchema';
 import getCategoryFromAgregations from '../../helpers/getCategory';
@@ -60,7 +61,7 @@ const Product = (props) => {
     config = generateConfig(query, config, elastic, availableFilter);
     const { loading, data, fetchMore } = getProduct(config, {
         variables: {
-            pageSize: 8,
+            pageSize: modules.catalog.productListing.pageSize || 10,
             currentPage: 1,
         },
     });
@@ -91,9 +92,9 @@ const Product = (props) => {
         return <ErrorMessage variant="warning" text={t('catalog:emptyProductSearchResult')} open />;
     };
 
-    const handleLoadMore = () => {
+    const handleLoadMore = async () => {
         if (fetchMore && typeof fetchMore !== 'undefined') {
-            setLoadmore(true);
+            await setLoadmore(true);
             setPage(page + 1);
             fetchMore({
                 query: Schema.getProduct({
@@ -104,7 +105,7 @@ const Product = (props) => {
                     filter: config.filter,
                 }),
                 variables: {
-                    pageSize: 8,
+                    pageSize: modules.catalog.productListing.pageSize || 10,
                     currentPage: page + 1,
                 },
                 updateQuery: (
