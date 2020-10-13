@@ -1,5 +1,13 @@
 import { gql } from '@apollo/client';
 
+const cartPickupStorePerson = `
+pickup_store_person {
+    email
+    handphone
+    name
+}
+`;
+
 const cartAvailableShippingMethods = `
     shipping_addresses {
         available_shipping_methods {
@@ -261,9 +269,13 @@ export const getCart = gql`
                 quantity
                 ... on ConfigurableCartItem {
                     configurable_options {
-                    option_label
-                    value_label
+                        option_label
+                        value_label
+                    }
                 }
+                pickup_item_store_info {
+                    is_pickup
+                    loc_code
                 }
                 prices {
                     row_total {
@@ -301,6 +313,7 @@ export const getCart = gql`
                 dest_latitude
                 dest_longitude
             }
+            ${cartPickupStorePerson}
             ${cartShippingAddress}
             ${cartBillingAddress}
             ${cartAvailableShippingMethods}

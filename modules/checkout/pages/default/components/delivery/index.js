@@ -26,11 +26,15 @@ const DeliveryComp = (props) => {
                     ...checkout,
                     data: {
                         ...checkout.data,
-                        cart: res.data.removePickupStore,
+                        cart: {
+                            ...checkout.data.cart,
+                            ...res.data.removePickupStore,
+                        },
                     },
                     selected: {
                         ...checkout.selected,
                         delivery,
+                        address: checkout.data.isGuest ? null : checkout.selected.address,
                     },
                     selectStore: {},
                     pickupInformation: {},

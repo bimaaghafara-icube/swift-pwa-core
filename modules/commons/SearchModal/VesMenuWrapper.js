@@ -64,15 +64,11 @@ const CategoryWrapper = () => {
     const handleClickMenu = async (cat) => {
         const link = getPath(cat.link);
         if (link) {
-            if (cat.link_type === 'category_link') {
-                await setResolver({
-                    type: 'CATEGORY',
-                    id: cat.id,
-                });
-                Router.push('/[...slug]', link);
-            } else {
-                Router.push('/[...slug]', link);
-            }
+            await setResolver({
+                type: 'CATEGORY',
+                id: cat.id,
+            });
+            Router.push('/[...slug]', link);
         }
     };
 

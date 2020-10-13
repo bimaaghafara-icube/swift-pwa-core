@@ -93,22 +93,11 @@ const Menu = (props) => {
     const { data } = props;
     const menu = features.vesMenu.enabled ? data.vesMenu.items : data.categoryList[0].children;
     const handleClick = async (cat) => {
-        if (features.vesMenu.enabled) {
-            if (cat.link_type === 'category_link') {
-                await setResolver({
-                    type: 'CATEGORY',
-                });
-                Route.push('/[...slug]', cat.link ? getPath(cat.link) : `/${cat.url_path}`);
-            } else {
-                Route.push('/[...slug]', cat.link ? getPath(cat.link) : `/${cat.url_path}`);
-            }
-        } else {
-            await setResolver({
-                type: 'CATEGORY',
-                id: cat.id,
-            });
-            Route.push('/[...slug]', cat.link ? getPath(cat.link) : `/${cat.url_path}`);
-        }
+        await setResolver({
+            type: 'CATEGORY',
+            id: cat.id,
+        });
+        Route.push('/[...slug]', cat.link ? getPath(cat.link) : `/${cat.url_path}`);
     };
     return (
         <div className="menu-wrapper" role="navigation">
