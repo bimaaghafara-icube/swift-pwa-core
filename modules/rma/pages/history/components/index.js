@@ -49,10 +49,10 @@ const HistoryContent = (props) => {
                                 <TableCell align="left">{t('rma:table:returnId')}</TableCell>
                                 <TableCell align="left">{t('rma:table:orderId')}</TableCell>
                                 <TableCell align="left">{t('rma:table:products')}</TableCell>
-                                <TableCell align="left">Status</TableCell>
+                                <TableCell align="left">{t('rma:table:status')}</TableCell>
                                 <TableCell align="left">{t('rma:table:createdAt')}</TableCell>
                                 <TableCell align="left">{t('rma:table:updatedAt')}</TableCell>
-                                <TableCell align="left">Actions</TableCell>
+                                <TableCell align="left">{t('rma:table:actions')}</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -124,14 +124,14 @@ const HistoryContent = (props) => {
                                                     align="left"
                                                     data-th={(
                                                         <Typography align="center" type="bold" letter="capitalize">
-                                                            Status
+                                                            {t('rma:table:status')}
                                                         </Typography>
                                                     )}
                                                 >
                                                     <div className={styles.displayFlexRow}>
                                                         <div className={styles.mobLabel}>
                                                             <Typography align="center" type="bold" letter="capitalize">
-                                                                Status
+                                                                {t('rma:table:status')}
                                                             </Typography>
                                                         </div>
                                                         <div className={styles.value}>{val.status.name}</div>
@@ -180,14 +180,14 @@ const HistoryContent = (props) => {
                                                     align="left"
                                                     data-th={(
                                                         <Typography align="center" type="bold" letter="capitalize">
-                                                            Actions
+                                                            {t('rma:table:actions')}
                                                         </Typography>
                                                     )}
                                                 >
                                                     <div className={styles.displayFlexRow}>
                                                         <div className={styles.mobLabel}>
                                                             <Typography align="center" type="bold" letter="capitalize">
-                                                                Actions
+                                                                {t('rma:table:actions')}
                                                             </Typography>
                                                         </div>
                                                         <div className={styles.value}>
@@ -203,6 +203,7 @@ const HistoryContent = (props) => {
                                                                 <Typography
                                                                     className="clear-margin-padding"
                                                                     variant="span"
+                                                                    decoration="underline"
                                                                 >
                                                                     {t('rma:table:view')}
                                                                 </Typography>
