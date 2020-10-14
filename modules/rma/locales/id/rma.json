@@ -29,7 +29,9 @@
             "products": "Produk",
             "createdAt": "Dibuat pada",
             "updatedAt": "Diupdate pada",
-            "view": "Lihat detail"
+            "view": "Lihat detail",
+            "status": "Status",
+            "actions": "Aksi"
         },
 
         "empty": "Kamu tidah mempunyai retur produk",
