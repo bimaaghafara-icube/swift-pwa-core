@@ -33,9 +33,19 @@ const AddReviewDialog = ({
                 setOpen({
                     variant: 'success',
                 });
+                window.toastMessage({
+                    open: true,
+                    text: t('product:addRateSuccess'),
+                    variant: 'success',
+                });
             }).catch((e) => {
                 setOpen({
                     message: e.message.split(':')[1] || t('product:addRateFailed'),
+                    variant: 'error',
+                });
+                window.toastMessage({
+                    open: true,
+                    text: t('product:addRateFailed'),
                     variant: 'error',
                 });
             });
