@@ -121,6 +121,10 @@ export default makeStyles((theme) => ({
             height: '95%',
             padding: 5,
         },
+        [theme.breakpoints.up('sm')]: {
+            maxWidth: 140,
+            maxHeight: 160,
+        },
     },
     img: {
         width: 99,
