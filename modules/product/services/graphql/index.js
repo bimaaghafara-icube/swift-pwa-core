@@ -10,7 +10,12 @@ export const getReviews = (params) => useQuery(Schema.getReview(), {
         ...params,
     },
 });
-export const addReview = () => useMutation(Schema.addReview);
+
+export const addReview = () => useMutation(Schema.addReview, {
+    context: {
+        request: 'internal',
+    },
+});
 
 export const addSimpleProductsToCart = () => useMutation(Schema.addSimpleProductsToCart, {
     context: {
