@@ -24,11 +24,14 @@ export default makeStyles((theme) => ({
         paddingTop: 10,
     },
     tableContainer: {
-        boxShadow: 'none',
+        boxShadow: 'none !important',
     },
     table: {
         borderTop: '1px solid rgba(224, 224, 224, 1)',
         width: '100%',
+        [theme.breakpoints.down('sm')]: {
+            borderTop: '0px',
+        },
     },
     tableRowHead: {
         [theme.breakpoints.down('sm')]: {
@@ -44,8 +47,8 @@ export default makeStyles((theme) => ({
     },
     tableCellResponsive: {
         [theme.breakpoints.down('sm')]: {
-            border: 'none',
-            padding: '8px 0',
+            border: 'none !important',
+            padding: '8px 0 !important',
         },
     },
     mobLabel: {
