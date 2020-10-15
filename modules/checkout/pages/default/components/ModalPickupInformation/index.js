@@ -41,9 +41,9 @@ const ModalPickupInformation = ({
     const [loading, setLoading] = React.useState(false);
     const formik = useFormik({
         initialValues: {
-            email: checkout.pickupInformation.email || '',
-            phoneNumber: checkout.pickupInformation.phoneNumber || '',
-            person: checkout.pickupInformation.person || '',
+            email: checkout.pickupInformation.pickup_person_email || '',
+            phoneNumber: checkout.pickupInformation.pickup_person_phone || '',
+            person: checkout.pickupInformation.pickup_person_name || '',
         },
         validationSchema,
         onSubmit: async (values) => {
