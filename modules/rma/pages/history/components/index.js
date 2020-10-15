@@ -39,7 +39,6 @@ const HistoryContent = (props) => {
             );
         }
     }
-    console.log(t);
     return (
         <Layout {...props}>
             <div className={styles.tableOuterContainer}>
