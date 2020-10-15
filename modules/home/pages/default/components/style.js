@@ -54,6 +54,11 @@ const useStyles = makeStyles((theme) => ({
             zIndex: 99,
             ...CenterAbsolute,
         },
+        [theme.breakpoints.down('sm')]: {
+            '& .MuiGrid-spacing-xs-2': {
+                marginTop: 10,
+            },
+        },
     },
     skeleton: {
         marginBottom: '8px',
