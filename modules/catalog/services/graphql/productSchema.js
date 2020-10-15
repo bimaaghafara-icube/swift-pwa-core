@@ -57,201 +57,201 @@ export const getProductAgragations = () => gql`
  */
 
 export const getProduct = (config = {}) => gql`
-    query getProducts(
-      $pageSize: Int,
-      $currentPage: Int,
-    ){
-    products( search: "${config.search}" ,filter: ${filterProduct(config.filter)},
-    pageSize: $pageSize,
-    currentPage: $currentPage
-    ${
+  query getProducts(
+    $pageSize: Int,
+    $currentPage: Int,
+  ){
+  products( search: "${config.search}" ,filter: ${filterProduct(config.filter)},
+  pageSize: $pageSize,
+  currentPage: $currentPage
+  ${
     config.sort
         ? `, sort: {${config.sort.key} : ${config.sort.value}}`
         : ''
 }
-      ) {
-        total_count
-        ${!config.customFilter
+    ) {
+      total_count
+      ${!config.customFilter
         ? `aggregations {
-          attribute_code
+        attribute_code
+        label
+        options {
+          count
           label
-          options {
-            count
-            label
+          value
+        }
+      }` : ''}
+      __typename
+      items {
+        id
+        sku
+        name
+        url_key
+        ${modules.catalog.productListing.configurableOptions ? `review {
+          rating_summary
+          reviews_count
+        }` : ''}
+        small_image {
+          url(width: ${features.imageSize.product.width}, height: ${features.imageSize.product.height}),
+          label
+        }
+        categories {
+          name
+        }
+        __typename
+        price_tiers {
+          discount {
+            percent_off
+            amount_off
+          }
+          final_price {
+            currency
             value
           }
-        }` : ''}
-        __typename
-        items {
-          id
-          sku
-          name
-          url_key
-          ${modules.catalog.productListing.configurableOptions ? `review {
-            rating_summary
-            reviews_count
-          }` : ''}
-          small_image {
-            url(width: ${features.imageSize.product.width}, height: ${features.imageSize.product.height}),
-            label
-          }
-          categories {
-            name
-          }
-          __typename
-          price_tiers {
-            discount {
-              percent_off
+          quantity
+        }
+        price_range {
+          maximum_price {
+            discount{
               amount_off
+              percent_off
             }
             final_price {
               currency
               value
             }
-            quantity
-          }
-          price_range {
-            maximum_price {
-              discount{
-                amount_off
-                percent_off
-              }
-              final_price {
-                currency
-                value
-              }
-              regular_price {
-                currency
-                value
-              }
-            }
-            minimum_price {
-              discount{
-                amount_off
-                percent_off
-              }
-              final_price {
-                currency
-                value
-              }
-              regular_price {
-                currency
-                value
-              }
+            regular_price {
+              currency
+              value
             }
           }
+          minimum_price {
+            discount{
+              amount_off
+              percent_off
+            }
+            final_price {
+              currency
+              value
+            }
+            regular_price {
+              currency
+              value
+            }
+          }
+        }
 
-          special_from_date
-          special_to_date
-          new
-          new_from_date
-          new_to_date
-          sale
-          ${modules.catalog.productListing.configurableOptions ? `
-          ... on ConfigurableProduct {
-            configurable_options {
-              id
-              attribute_id
+        special_from_date
+        special_to_date
+        new
+        new_from_date
+        new_to_date
+        sale
+        ${modules.catalog.productListing.configurableOptions.enabled ? `
+        ... on ConfigurableProduct {
+          configurable_options {
+            id
+            attribute_id
+            label
+            attribute_code
+            values {
+              value_index
               label
-              attribute_code
-              values {
-                value_index
-                label
-                swatch_data {
+              swatch_data {
+                value
+                ... on ImageSwatchData {
+                  thumbnail
                   value
-                  ... on ImageSwatchData {
-                    thumbnail
-                    value
-                  }
-                  ... on ColorSwatchData {
-                    value
-                  }
-                  ... on TextSwatchData {
-                    value
-                  }
+                }
+                ... on ColorSwatchData {
+                  value
+                }
+                ... on TextSwatchData {
+                  value
                 }
               }
-              product_id
             }
-            variants {
-              attributes {
-                code
-                label
-                value_index
-              }
-              product {
-                id
-                sku
-                stock_status
-                ${modules.catalog.productListing.rating
+            product_id
+          }
+          variants {
+            attributes {
+              code
+              label
+              value_index
+            }
+            product {
+              id
+              sku
+              stock_status
+              ${modules.catalog.productListing.rating
         ? `review {
-                  rating_summary
-                  reviews_count
-                }`
+                rating_summary
+                reviews_count
+              }`
         : ''}
-                price_tiers {
+              price_tiers {
+                discount {
+                  percent_off
+                  amount_off
+                }
+                final_price {
+                  currency
+                  value
+                }
+                quantity
+              }
+              price_range {
+                maximum_price {
                   discount {
-                    percent_off
                     amount_off
+                    percent_off
                   }
                   final_price {
                     currency
                     value
                   }
-                  quantity
-                }
-                price_range {
-                  maximum_price {
-                    discount {
-                      amount_off
-                      percent_off
-                    }
-                    final_price {
-                      currency
-                      value
-                    }
-                    regular_price {
-                      currency
-                      value
-                    }
-                  }
-                  minimum_price {
-                    discount {
-                      amount_off
-                      percent_off
-                    }
-                    final_price {
-                      currency
-                      value
-                    }
-                    regular_price {
-                      currency
-                      value
-                    }
+                  regular_price {
+                    currency
+                    value
                   }
                 }
-                special_from_date
-                special_to_date
-                new
-                new_from_date
-                new_to_date
-                sale
-                small_image{
-                  url(width: ${features.imageSize.product.width}, height: ${features.imageSize.product.height}),
-                  label
+                minimum_price {
+                  discount {
+                    amount_off
+                    percent_off
+                  }
+                  final_price {
+                    currency
+                    value
+                  }
+                  regular_price {
+                    currency
+                    value
+                  }
                 }
-                image {
-                  url
-                  label
-                }
+              }
+              special_from_date
+              special_to_date
+              new
+              new_from_date
+              new_to_date
+              sale
+              small_image{
+                url(width: ${features.imageSize.product.width}, height: ${features.imageSize.product.height}),
+                label
+              }
+              image {
+                url
+                label
               }
             }
           }
-          ` : ''}
         }
+        ` : ''}
       }
     }
-  `;
+  }
+`;
 
 export const addWishlist = gql`
     mutation addWishlist($productId: Int!) {
