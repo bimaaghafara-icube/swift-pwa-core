@@ -23,7 +23,7 @@ export default makeStyles((theme) => ({
         left: 5,
         right: 5,
         borderRadius: 5,
-        zIndex: 99,
+        zIndex: 1,
         ...FlexRow,
         justifyContent: 'space-between',
         width: '100%',
